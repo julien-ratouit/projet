@@ -43,8 +43,30 @@ extern void ajout_texture(SDL_Texture *texture ,const char * lien_img , SDL_Rend
     dimension_image.y = (hauteur - dimension_image.h) / 2;
 
     SDL_RenderCopy(renderer, texture, NULL, &dimension_image);
-  free(image);
-  image = NULL;
+}
+
+//ajoute une texture non centré
+extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img , SDL_Renderer *renderer, SDL_Window *window, int hauteur, int largeur){
+  SDL_Surface *image = NULL;
+  image = IMG_Load(lien_img);
+
+    if(image == NULL)
+        SDL_ExitImageWithError("L'image n'as pas été récupéré", renderer, window);
+
+    texture = SDL_CreateTextureFromSurface(renderer, image);
+
+    SDL_FreeSurface(image);
+
+    if(texture == NULL)
+        SDL_ExitImageWithError("La texture n'as pas été créé", renderer, window);
+
+    SDL_Rect dimension_image;
+    SDL_QueryTexture(texture, NULL, NULL, &dimension_image.w, &dimension_image.h);
+
+    dimension_image.x = largeur;
+    dimension_image.y = hauteur; 
+
+    SDL_RenderCopy(renderer, texture, NULL, &dimension_image);
 }
 
 //ajoute une texture non centré
