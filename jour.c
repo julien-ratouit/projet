@@ -6,21 +6,20 @@
 #include "include/SDL_ttf.h"
 #include "jour.h"
 #include "fonction.h" 
+#include "coords.h"
 
 //affiche les action en prenant en compte les achats passé
-void aff_action(int *achat,  SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture_achat1, SDL_Texture *texture_achat2, SDL_Texture *texture_achat3, SDL_Texture *texture_achat4, SDL_Texture *texture_achat5)
+void aff_action(int *achat,  SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture_achat1, SDL_Texture *texture_achat2, SDL_Texture *texture_achat3, SDL_Texture *texture_achat4)
 {
 	
 	if(achat >= 0)
-		ajout_texture_non_centre(texture_achat1 ,"images/bouton_action.png" , renderer, window, 703 , 38);
+		ajout_texture_non_centre(texture_achat1 ,"images/bouton_action.png" , renderer, window, ACTION1_HAUTEUR , ACTION1_LARGEUR);
 	if(achat >= 1)
-		ajout_texture_non_centre(texture_achat2 ,"images/bouton_action.png" , renderer, window, 703 , 163);
+		ajout_texture_non_centre(texture_achat2 ,"images/bouton_action.png" , renderer, window, ACTION2_HAUTEUR , ACTION2_LARGEUR);
 	if(achat >= 2)
-		ajout_texture_non_centre(texture_achat3 ,"images/bouton_action.png" , renderer, window, 612 , 72);
+		ajout_texture_non_centre(texture_achat3 ,"images/bouton_action.png" , renderer, window, ACTION3_HAUTEUR , ACTION3_LARGEUR);
 	if(achat >= 3)
-		ajout_texture_non_centre(texture_achat4 ,"images/bouton_action.png" , renderer, window, 612 , 192);
-	if(achat >= 4)
-		ajout_texture_non_centre(texture_achat5 ,"images/bouton_action.png" , renderer, window, 521 , 89);
+		ajout_texture_non_centre(texture_achat4 ,"images/bouton_action.png" , renderer, window, ACTION4_HAUTEUR , ACTION4_LARGEUR);
 	SDL_RenderPresent(renderer);
 }
 
@@ -42,7 +41,7 @@ void demis_journee(int ms, int *achat, int *depression)
 					mana += 10;
 
 					//action 1
-					if((event.button.x < 54 && event.button.x > 38) && (event.button.y < 719 && event.button.y > 703))
+					if((event.button.x < ACTION1_X_MAX && event.button.x > ACTION1_X_MIN) && (event.button.y < ACTION1_Y_MAX && event.button.y > ACTION1_Y_MIN))
 					{
 						if(mana > 10)
 						{
@@ -59,7 +58,7 @@ void demis_journee(int ms, int *achat, int *depression)
 					}
 
 					//action 2
-					if((event.button.x < 179 && event.button.x > 163)&&(event.button.y < 719 && event.button.y > 703) && *achat >= 1)
+					if((event.button.x < ACTION2_X_MAX && event.button.x > ACTION2_X_MIN)&&(event.button.y < ACTION2_Y_MAX && event.button.y > ACTION2_Y_MIN) && *achat >= 1)
 					{
 						if(mana > 20)
 						{
@@ -76,7 +75,7 @@ void demis_journee(int ms, int *achat, int *depression)
 					}
 
 					//action 3
-					if((event.button.x < 88 && event.button.x > 72)&&(event.button.y < 628 && event.button.y > 612) && *achat >= 2)
+					if((event.button.x < ACTION3_X_MAX && event.button.x > ACTION3_X_MIN)&&(event.button.y < ACTION3_Y_MAX && event.button.y > ACTION3_Y_MIN) && *achat >= 2)
 					{
 						if(mana > 40)
 						{
@@ -93,7 +92,7 @@ void demis_journee(int ms, int *achat, int *depression)
 					}
 
 					//action 4
-					if((event.button.x < 208 && event.button.x > 192)&&(event.button.y < 628 && event.button.y > 612) && *achat >= 3)
+					if((event.button.x < ACTION4_X_MAX && event.button.x > ACTION4_X_MIN)&&(event.button.y < ACTION4_Y_MAX && event.button.y > ACTION4_Y_MIN) && *achat >= 3)
 					{
 						if(mana > 50)
 						{
@@ -108,24 +107,6 @@ void demis_journee(int ms, int *achat, int *depression)
 							depression += 20;
 			
 					}
-
-					//action 5
-					if((event.button.x < 105 && event.button.x > 89)&&(event.button.y < 537 && event.button.y > 521) && *achat >= 4)
-					{
-						if(mana > 80)
-						{
-							agitation -= 90;
-							if(agitation < 0)
-								agitation = 0;
-							mana -= 80;
-							if(mana < 0)
-								mana = 0;
-						}
-						if(agitation >= 100)
-							depression += 20;
-			
-					}
-
 				};
 				break;
 	}
@@ -137,9 +118,8 @@ void journee_complete(int ms, int *achat, int *depression, SDL_Renderer *rendere
 	SDL_Texture *texture_achat2 = NULL;
 	SDL_Texture *texture_achat3 = NULL;
 	SDL_Texture *texture_achat4 = NULL;
-	SDL_Texture *texture_achat5 = NULL;
 
-	aff_action(achat, renderer, window, texture_achat1, texture_achat2, texture_achat3, texture_achat4, texture_achat5);
+	aff_action(achat, renderer, window, texture_achat1, texture_achat2, texture_achat3, texture_achat4);
 	demis_journee(ms, achat, depression);
 	//argent += 10; ??
 	//fonction de self qui reduit la depression en achetant des plats
@@ -147,7 +127,6 @@ void journee_complete(int ms, int *achat, int *depression, SDL_Renderer *rendere
 	//argent += 10; ??
 	//fonction de salle des profs qui permet d'acheter des actions
 
-	SDL_DestroyTexture(texture_achat5);
 	SDL_DestroyTexture(texture_achat4);
 	SDL_DestroyTexture(texture_achat3);
 	SDL_DestroyTexture(texture_achat2);

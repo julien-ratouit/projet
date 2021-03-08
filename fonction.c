@@ -43,8 +43,6 @@ extern void ajout_texture(SDL_Texture *texture ,const char * lien_img , SDL_Rend
     dimension_image.y = (hauteur - dimension_image.h) / 2;
 
     SDL_RenderCopy(renderer, texture, NULL, &dimension_image);
-  free(image);
-  image = NULL;
 }
 
 //ajoute une texture non centré
@@ -69,6 +67,4 @@ extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img
     dimension_image.y = hauteur; 
 
     SDL_RenderCopy(renderer, texture, NULL, &dimension_image);
-  free(image);
-  image = NULL;
 }
