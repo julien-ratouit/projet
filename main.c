@@ -5,16 +5,12 @@
 #include "include/SDL_ttf.h"
 #include "fonction.h"
 #include "jour.h"
-
-#define HAUTEUR 600
-#define LARGEUR 800
-
-//temps en milliseconde
-#define TIMER 2000
+#include "coords.h"
 
 /*
 * Rappel sur la compilation : gcc aff_fenetre.c -o bin/aff_fenetre -I include -L lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 */
+#define TIMER 2000
 
 int main (int argc, char ** argv)
 {
@@ -47,7 +43,7 @@ int main (int argc, char ** argv)
 	if(renderer == NULL)
 		SDL_ExitWithFailure("Creation renu echoue");
 
-	ajout_texture(texture ,"images/fond.bmp" , renderer, window, HAUTEUR , LARGEUR);
+	ajout_texture(texture ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 	ajout_texture(texture2 ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
 
 	SDL_RenderPresent(renderer);
@@ -66,8 +62,8 @@ int main (int argc, char ** argv)
 				
 
 				case SDL_MOUSEBUTTONDOWN:
-					//printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
-					if((event.button.x < 475 && event.button.x > 325)&&(event.button.y < 328 && event.button.y > 270) && verif_exist == 0)
+					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
+					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && verif_exist == 0)
 					{
 						//printf("tu as clique sur bouton jouer\n");
 						verif_exist = 1;
@@ -76,7 +72,7 @@ int main (int argc, char ** argv)
 						SDL_DestroyRenderer(renderer);
 						SDL_DestroyWindow(window);
 
-						window2 = SDL_CreateWindow("Survive Student", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,1280,720, SDL_WINDOW_SHOWN);
+						window2 = SDL_CreateWindow("Survive Student", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, LARGEUR, HAUTEUR, SDL_WINDOW_SHOWN);
 						if(window2 == NULL)
 							SDL_ExitWithFailure("Creation fenetre echoue");
 					
@@ -84,7 +80,7 @@ int main (int argc, char ** argv)
 						if(renderer2 == NULL)
 							SDL_ExitWithFailure("Creation renu echoue");
 
-						ajout_texture(texture3 ,"images/salle_de_classe.png" , renderer2, window2, 720 , 1280);
+						ajout_texture(texture3 ,"images/salle_de_classe.png" , renderer2, window2, HAUTEUR , LARGEUR);
 						SDL_RenderPresent(renderer2);
 						achat = 5;
 						depression = 0;
@@ -92,22 +88,22 @@ int main (int argc, char ** argv)
 					}
 					if((event.button.x < 1236 && event.button.x > 1184)&&(event.button.y < 417 && event.button.y > 177) && verif_exist == 1)
 					{
-						ajout_texture(texture3, "images/self.png", renderer2, window2, 720 , 1280);
+						ajout_texture(texture3, "images/self.png", renderer2, window2, HAUTEUR , LARGEUR);
 						SDL_RenderPresent(renderer2);
 					}
 					if((event.button.x < 524 && event.button.x > 448)&&(event.button.y < 49 && event.button.y > 17) && verif_exist == 1)
 					{
-						ajout_texture(texture3, "images/salle_de_classe.png", renderer2, window2, 720 , 1280);
+						ajout_texture(texture3, "images/salle_de_classe.png", renderer2, window2, HAUTEUR , LARGEUR);
 						SDL_RenderPresent(renderer2);
 					}
 					if((event.button.x < 280 && event.button.x > 145)&&(event.button.y < 390 && event.button.y > 311) && verif_exist == 1)
 					{
-						ajout_texture(texture3, "images/salle_prof.png", renderer2, window2, 720 , 1280);
+						ajout_texture(texture3, "images/salle_prof.png", renderer2, window2, HAUTEUR , LARGEUR);
 						SDL_RenderPresent(renderer2);
 					}
 					if((event.button.x < 419 && event.button.x > 167)&&(event.button.y < 217 && event.button.y > 12) && verif_exist == 1)
 					{
-						ajout_texture(texture3, "images/salle_de_classe.png", renderer2, window2, 720 , 1280);
+						ajout_texture(texture3, "images/salle_de_classe.png", renderer2, window2, HAUTEUR , LARGEUR);
 						SDL_RenderPresent(renderer2);
 					}
 					break;
