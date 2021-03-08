@@ -33,12 +33,7 @@ typedef struct Timer_s{
     //Fonctions de vérification du status du timer
     bool (*is_started)(struct Timer_s *);
     bool (*is_paused)(struct Timer_s *);
-<<<<<<< Updated upstream
-};Timer_t
-
-=======
 }Timer_t;
->>>>>>> Stashed changes
 
 
 //Démarre le timer et initialise le début du timer 
@@ -128,10 +123,7 @@ bool timer_is_paused(Timer_t * Timer){
     return (Timer->paused);
 
 }
-//Initialise le timer
-Timer_t * timer_init(){
 
-<<<<<<< Updated upstream
 //Initialise le timer
 Timer_t * timer_init(){
 
@@ -156,27 +148,3 @@ Timer_t * timer_init(){
 	
 	return Timer;
 }
-=======
-    //Création de l'espace du timer
-    Timer_t * Timer;
-    Timer = malloc(sizeof(Timer_t));
-
-    //Initialisation de valeur de base
-    Timer->start = false;
-    Timer->paused = false;
-    Timer->tick_debut = 0;
-    Timer->tick_pause = 0;
-
-    //Initialisation des fonctions a utiliser
-    Timer->debut = timer_debut;
-    Timer->stop = timer_stop;
-    Timer->pause = timer_pause;
-    Timer->unpause = timer_unpause;
-    Timer->get_ticks = timer_get_ticks;
-    Timer->is_started = timer_is_started;
-    Timer->is_paused = timer_is_paused;
-
-    return Timer;
-}
-
->>>>>>> Stashed changes
