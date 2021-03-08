@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>  
 #include "include/SDL.h"
 #include "include/SDL_image.h"
 #include "include/SDL_ttf.h"
@@ -14,7 +15,7 @@ typedef struct Timer_s{
     //Tick du début de la pause (Pour sauvegarder le temps depuis le début de la pause)
     int tick_pause;
     //Status du timer
-    bool pause;
+    bool paused;
     bool start;
  
     //Initialise les fonctions------------------------------------------
@@ -32,8 +33,7 @@ typedef struct Timer_s{
     //Fonctions de vérification du status du timer
     bool (*is_started)(struct Timer_s *);
     bool (*is_paused)(struct Timer_s *);
-};Timer_t
-
+}Timer_t;
 
 
 //Démarre le timer et initialise le début du timer 
@@ -42,12 +42,13 @@ void timer_debut(Timer_t * Timer){
 
     //On demarre le timer
     Timer->start = true;
- 
+    printf("Je suis rentré ! \n");
     //On enlève la pause du timer
     Timer->paused = false;
- 
+    printf("J'avance \n");
     //On récupére le temps courant
     Timer->tick_debut = SDL_GetTicks();
+    printf(":OOOOOOOOOO \n");
 }
 
 //On stoppe définitivement le timer pour pouvoir le réutiliser plus tard
@@ -68,13 +69,13 @@ int timer_get_ticks(Timer_t * Timer){
         if( Timer->paused == true ){
 
             //On retourne le nombre de ticks quand le timer a été mis en pause
-            return SDL_GetTicks() - Timer->Tick_pause;
+            return SDL_GetTicks() - Timer->tick_pause;
 
         }
         else{
 
             //On retourne le temps courant moins le temps quand il a démarré
-            return SDL_GetTicks() - Timer->Tick_debut;
+            return SDL_GetTicks() - Timer->tick_debut;
 
         }
     }
@@ -88,38 +89,38 @@ void timer_pause(Timer_t * Timer){
     if(( Timer->start == true ) && ( Timer->paused == false )){
 
         //On met en pause le timer
-        paused = true;
+        Timer->paused = true;
  
         //On calcul le pausedTicks
-        Timer->Tick_pause = SDL_GetTicks() - Timer->Tick_debut;
+        Timer->tick_pause = SDL_GetTicks() - Timer->tick_debut;
+        
     }
 }
 
 void timer_unpause(Timer_t * Timer){
 
     //Si le timer est en pause
-    if( Timer->paused == true )
-    {
+    if( Timer->paused == true ){
         //on enlève la pause du timer
         Timer->paused = false;
  
         //On remet à zero le startTicks
-        Timer->Tick_debut = SDL_GetTicks() - Timer->Tick_pause;
+        Timer->tick_debut = SDL_GetTicks() - Timer->tick_pause;
  
         //Remise à zero du pausedTicks
-        Timer->Tick_pause = 0;
+        Timer->tick_pause = 0;
     }
 }
 
-bool timer_is_started(Timer_t Timer){
+bool timer_is_started(Timer_t * Timer){
 
-    return Timer->start
+    return (Timer->start);
 
 }
 
-bool timer_is_paused(){
+bool timer_is_paused(Timer_t * Timer){
 
-    return Timer->paused;
+    return (Timer->paused);
 
 }
 
