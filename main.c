@@ -29,8 +29,10 @@ int main (int argc, char ** argv)
 	SDL_bool program_launched = SDL_TRUE;
 	SDL_DisplayMode dm;
 
-	SDL_Rect *barre_sonor = NULL;
-	SDL_Rect *barre_depression = NULL;
+	SDL_Rect *barre_sonor;
+	barre_sonor = malloc(sizeof(SDL_Rect));
+	SDL_Rect *barre_depression;
+	barre_depression = malloc(sizeof(SDL_Rect));
 	int verif_exist = 0;
 	int *achat = malloc(sizeof(int));
 	int *depression = malloc(sizeof(int));
@@ -86,7 +88,10 @@ int main (int argc, char ** argv)
 						if(renderer2 == NULL)
 							SDL_ExitWithError("Creation renu echoue");
 
+						
 						ajout_texture(texture3 ,"images/salle_de_classe.png" , renderer2, window2, HAUTEUR , LARGEUR);
+						/*init_barre_sonore(renderer2, barre_sonor);
+						init_barre_depression(renderer2, barre_depression);*/
 						SDL_RenderPresent(renderer2);
 						*achat = 5;
 						*depression = 0;
@@ -94,8 +99,6 @@ int main (int argc, char ** argv)
 						timer_debut(temps_jeu);
 						while(timer_get_ticks(temps_jeu) <= 5000)
 						{
-							/*init_barre_sonore(renderer2, barre_sonor);
-							init_barre_depression(renderer2, barre_depression);*/
 							journee_complete(achat, depression, renderer2, window2);
 						}
 						while(timer_get_ticks(temps_jeu) > 5000 && timer_get_ticks(temps_jeu) <= 10000)
@@ -103,13 +106,16 @@ int main (int argc, char ** argv)
 							ajout_texture(texture3, "images/self.png", renderer2, window2, HAUTEUR , LARGEUR);
 							SDL_RenderPresent(renderer2);
 						}
-						while(timer_get_ticks(temps_jeu) > 5000 && timer_get_ticks(temps_jeu) <= 10000)
+						while(timer_get_ticks(temps_jeu) > 10000 && timer_get_ticks(temps_jeu) <= 15000)
 						{
+							
 							ajout_texture(texture3, "images/salle_de_classe.png", renderer2, window2, HAUTEUR , LARGEUR);
+							/*init_barre_sonore(renderer2, barre_sonor);
+							init_barre_depression(renderer2, barre_depression);*/
 							SDL_RenderPresent(renderer2);
 							journee_complete(achat, depression, renderer2, window2);
 						}
-						while(timer_get_ticks(temps_jeu) > 10000 && timer_get_ticks(temps_jeu) <= 15000)
+						while(timer_get_ticks(temps_jeu) > 15000 && timer_get_ticks(temps_jeu) <= 20000)
 						{
 							ajout_texture(texture3, "images/salle_prof.png", renderer2, window2, HAUTEUR , LARGEUR);
 							SDL_RenderPresent(renderer2);
