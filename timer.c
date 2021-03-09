@@ -5,35 +5,9 @@
 #include "include/SDL_image.h"
 #include "include/SDL_ttf.h"
 #include "fonction.h"
-
-//Le Timer
-typedef struct Timer_s{
-
-    //Initialise les variables-----------------------------------------
-    //Tick du lancé du timer
-    int tick_debut;
-    //Tick du début de la pause (Pour sauvegarder le temps depuis le début de la pause)
-    int tick_pause;
-    //Status du timer
-    bool paused;
-    bool start;
- 
-    //Initialise les fonctions------------------------------------------
+#include "timer.h"
 
 
-
-    //Les différentes actions du timer
-    void (*debut)(struct Timer_s *);
-    void (*stop)(struct Timer_s *);
-    void (*pause)(struct Timer_s *);
-    void (*unpause)(struct Timer_s *);
-    //Récupère les millisecondes depuis le lancé du timer
-    // ou peux aussi récuperer les millisecondes depuis le début de la pause
-    int (*get_ticks)(struct Timer_s *);
-    //Fonctions de vérification du status du timer
-    bool (*is_started)(struct Timer_s *);
-    bool (*is_paused)(struct Timer_s *);
-}Timer_t;
 
 
 //Démarre le timer et initialise le début du timer 
