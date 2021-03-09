@@ -4,7 +4,3 @@ extern void ajout_texture(SDL_Texture *texture ,const char * lien_img , SDL_Rend
 extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img , SDL_Renderer *renderer, SDL_Window *window, int y, int x);
 extern void aff_action(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *texture_action1, SDL_Texture *texture_action2, SDL_Texture *texture_action3, SDL_Texture *texture_action4, int nb_action_acheter);
 extern int press_action(SDL_Renderer *renderer, int nb_action_acheter);
-extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre);
-extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre);
-extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int score);
-extern void update_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre_depression, SDL_Rect *barre_sonore, int score);
