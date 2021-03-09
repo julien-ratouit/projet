@@ -1,3 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h> 
+#include "include/SDL.h"
+#include "include/SDL_image.h"
+#include "include/SDL_ttf.h"
+#include "fonction.h"
+#include "jour.h"
+#include "coords.h"
+#include "timer.h"
+#include "barre.h"
+
 //Initialisation de la barre sonore
 extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre){
 

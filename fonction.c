@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <SDL.h>
 #include <SDL_image.h>
-#include "fonctions.h"
+#include "fonction.h"
 
 extern void SDL_ExitWithError(const char *message){ // Quitte le programme si ERREUR
   SDL_Log("ERREUR : %s > %s\n",message, SDL_GetError());
@@ -64,7 +64,7 @@ extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img
       SDL_ExitImageWithError("Impossible d'afficher la texture", renderer, window);
 }
 
-extern void aff_action(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *texture_action1, SDL_Texture *texture_action2, SDL_Texture *texture_action3, SDL_Texture *texture_action4, int nb_action_acheter){
+/*extern void aff_action(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *texture_action1, SDL_Texture *texture_action2, SDL_Texture *texture_action3, SDL_Texture *texture_action4, int nb_action_acheter){
 
   if(nb_action_acheter >= 1)
     ajout_texture_non_centre(texture_action1, "img/bonton.png", renderer, window, 70, 530);
@@ -76,7 +76,7 @@ extern void aff_action(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *
     ajout_texture_non_centre(texture_action1, "img/bonton.png", renderer, window, 130, 615);
 
   SDL_RenderPresent(renderer);
-}
+}*/
 
 extern int press_action(SDL_Renderer *renderer, int num_action){
   int i = -50;
