@@ -2,11 +2,7 @@ all : prog
 lib = -I include -L lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 
 prog : main.o fonction.o jour.o timer.o barre.o
-<<<<<<< HEAD
-	gcc -o bin/prog main.o fonction.o jour.o timer.c barre.c$(lib)
-=======
 	gcc -o bin/prog main.o fonction.o jour.o timer.c barre.c $(lib)
->>>>>>> 4e61ad2cbe7691a8b6bdcd565a0a0964c17a5a71
 
 main.o : main.c
 	gcc -o main.o -c main.c $(lib) 
