@@ -98,18 +98,18 @@ int main (int argc, char ** argv)
 						*achat = 5;
 						*depression = 0;
 
-						timer_debut(temps_jeu);
-						while(timer_get_ticks(temps_jeu) <= 5000)
+						temps_jeu->debut(temps_jeu);
+						while(temps_jeu->get_ticks(temps_jeu) <= 5000)
 						{
 							printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 							//journee_complete(achat, depression, renderer2, window2);
 						}
-						while(timer_get_ticks(temps_jeu) > 5000 && timer_get_ticks(temps_jeu) <= 10000)
+						while(temps_jeu->get_ticks(temps_jeu) > 5000 && temps_jeu->get_ticks(temps_jeu) <= 10000)
 						{
 							ajout_texture(texture3, "images/self.png", renderer2, window2, HAUTEUR , LARGEUR);
 							SDL_RenderPresent(renderer2);
 						}
-						while(timer_get_ticks(temps_jeu) > 10000 && timer_get_ticks(temps_jeu) <= 15000)
+						while(temps_jeu->get_ticks(temps_jeu) > 10000 && temps_jeu->get_ticks(temps_jeu) <= 15000)
 						{
 							
 							ajout_texture(texture3, "images/salle_de_classe.png", renderer2, window2, HAUTEUR , LARGEUR);
@@ -118,7 +118,7 @@ int main (int argc, char ** argv)
 							SDL_RenderPresent(renderer2);
 							journee_complete(achat, depression, renderer2, window2);
 						}
-						while(timer_get_ticks(temps_jeu) > 15000 && timer_get_ticks(temps_jeu) <= 20000)
+						while(temps_jeu->get_ticks(temps_jeu) > 15000 && temps_jeu->get_ticks(temps_jeu) <= 20000)
 						{
 							ajout_texture(texture3, "images/salle_prof.png", renderer2, window2, HAUTEUR , LARGEUR);
 							SDL_RenderPresent(renderer2);

@@ -10,19 +10,16 @@
 
 
 
-//Démarre le timer et initialise le début du timer 
-//(A utiliser 1 fois ! Pour enlever la pause faire unpause)
+//Démarre le timer 
+//Pour enlever la pause faire unpause
 void timer_debut(Timer_t * Timer){
 
     //On demarre le timer
     Timer->start = true;
-    printf("Je suis rentré ! \n");
     //On enlève la pause du timer
     Timer->paused = false;
-    printf("J'avance \n");
     //On récupére le temps courant
     Timer->tick_debut = SDL_GetTicks();
-    printf(":OOOOOOOOOO \n");
 }
 
 //On stoppe définitivement le timer pour pouvoir le réutiliser plus tard
