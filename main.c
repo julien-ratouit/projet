@@ -26,6 +26,7 @@ int main (int argc, char ** argv)
 	SDL_Texture *texture = NULL;
 	SDL_Texture *texture2 = NULL;
 	SDL_Texture *texture3 = NULL;
+	SDL_Texture *texture4 = NULL;
 	SDL_bool program_launched = SDL_TRUE;
 	SDL_DisplayMode dm;
 
@@ -69,7 +70,7 @@ int main (int argc, char ** argv)
 				
 
 				case SDL_MOUSEBUTTONDOWN:
-					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
+					//printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && verif_exist == 0)
 					{
 						
@@ -90,6 +91,7 @@ int main (int argc, char ** argv)
 
 						
 						ajout_texture(texture3 ,"images/salle_de_classe.png" , renderer2, window2, HAUTEUR , LARGEUR);
+						ajout_texture_non_centre(texture4, "images/quitte.png", renderer2, window2, HAUTEUR , LARGEUR);
 						/*init_barre_sonore(renderer2, barre_sonor);
 						init_barre_depression(renderer2, barre_depression);*/
 						SDL_RenderPresent(renderer2);
@@ -99,7 +101,8 @@ int main (int argc, char ** argv)
 						timer_debut(temps_jeu);
 						while(timer_get_ticks(temps_jeu) <= 5000)
 						{
-							journee_complete(achat, depression, renderer2, window2);
+							printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
+							//journee_complete(achat, depression, renderer2, window2);
 						}
 						while(timer_get_ticks(temps_jeu) > 5000 && timer_get_ticks(temps_jeu) <= 10000)
 						{
