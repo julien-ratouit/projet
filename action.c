@@ -46,24 +46,28 @@ void fonc_action_1 (int jour)
 {
 	//à faire.
 	//diminue de quelques pourcent la barre d'agitation
+	printf("Test 1\n");
 }
 
 void fonc_action_2 (int jour)
 {
 	//à faire.
 	//diminue encore plus la barre d'agitation
+	printf("Test 2\n");
 }
 
 void fonc_action_3 (int jour)
 {
 	//à faire.
 	//ralentit la progression de la barre d'agitation
+	printf("Test 3\n");
 }
 
 void fonc_action_4 (int jour)
 {
 	//à faire.
 	//bloque la barre de depression pendant un temps donné
+	printf("Test 4\n");
 }
 
 /*----------------------------------------------------------*/
