@@ -26,7 +26,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window){
   barre_sonore=malloc(sizeof(SDL_Rect));
 
   /*variables de test*/
-  int score;
+  int score = 0;
   int test;
   int *achat = malloc(sizeof(int));
   (*achat) = 4;
