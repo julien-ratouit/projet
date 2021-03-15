@@ -64,19 +64,6 @@ extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img
       SDL_ExitImageWithError("Impossible d'afficher la texture", renderer, window);
 }
 
-/*extern void aff_action(SDL_Window *window, SDL_Renderer *renderer, SDL_Texture *texture_action1, SDL_Texture *texture_action2, SDL_Texture *texture_action3, SDL_Texture *texture_action4, int nb_action_acheter){
-
-  if(nb_action_acheter >= 1)
-    ajout_texture_non_centre(texture_action1, "img/bonton.png", renderer, window, 70, 530);
-  if(nb_action_acheter >= 2)
-    ajout_texture_non_centre(texture_action1, "img/bonton.png", renderer, window, 155, 530);
-  if(nb_action_acheter >= 3)
-    ajout_texture_non_centre(texture_action1, "img/bonton.png", renderer, window, 45, 615);
-  if(nb_action_acheter >= 4)
-    ajout_texture_non_centre(texture_action1, "img/bonton.png", renderer, window, 130, 615);
-
-  SDL_RenderPresent(renderer);
-}*/
 
 extern int press_action(SDL_Renderer *renderer, int num_action){
   int i = -50;
@@ -84,5 +71,6 @@ extern int press_action(SDL_Renderer *renderer, int num_action){
 
   return i;
 }
+
 
 
