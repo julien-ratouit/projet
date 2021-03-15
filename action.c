@@ -22,10 +22,10 @@ action_t *init_action(int id, int prix, int cd,void (*fonction)(int))
 //seul fonction à utiliser, elle initialise un tableau avec toute les actions qu'on a creer.
 void init_tab_action(action_t * tab[])
 {
-	tab[0] = init_action(0, 100, fonc_action_1);
-	tab[1] = init_action(1, 100, fonc_action_2);
-	tab[2] = init_action(2, 100, fonc_action_3);
-	tab[3] = init_action(3, 100, fonc_action_4); 
+	tab[0] = init_action(0, 100, 1,fonc_action_1);
+	tab[1] = init_action(1, 100, 2,fonc_action_2);
+	tab[2] = init_action(2, 100, 3,fonc_action_3);
+	tab[3] = init_action(3, 100, 4,fonc_action_4); 
 }
 
 //modifie le statut d'une action si elle est acheter, retourne faux si on n'a pas assez d'argent.
