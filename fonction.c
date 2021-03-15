@@ -67,7 +67,7 @@ extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img
 
 extern int press_action(SDL_Renderer *renderer, int num_action){
   int i = -50;
-  printf("Vous avez pressé l'action %i\n",num_action);
+  printf("Vous avez appuyer sur l'action %i\n",num_action);
 
   return i;
 }

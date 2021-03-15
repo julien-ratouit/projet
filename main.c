@@ -26,6 +26,7 @@ int main (int argc, char ** argv)
 
 	SDL_Texture *texture_menu = NULL;
 	SDL_Texture *texture_btn_jouer = NULL;
+	SDL_Texture *texture_btn_option = NULL;
 
 	SDL_bool program_launched = SDL_TRUE;
 

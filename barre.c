@@ -55,13 +55,13 @@ extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre){
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
   if(SDL_RenderFillRect(renderer, barre) != 0)//Pour dessiner un rectangle remplit
-    SDL_ExitWithError("Impossible de dessiner un rectange");
+    SDL_ExitWithError("Impossible de dessiner un rectangle");
 
   if(SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE) != 0)//changer la couleur du dessin
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
   if(SDL_RenderDrawRect(renderer, &contour_barre) != 0)//Pour dessiner un rectangle
-    SDL_ExitWithError("Impossible de dessiner un rectange");
+    SDL_ExitWithError("Impossible de dessiner un rectangle");
 
 }
 //Mise à jour de la barre sonore
@@ -100,7 +100,7 @@ extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int sco
 
 
   if(SDL_RenderFillRect(renderer, barre) != 0)//Pour dessiner un rectangle remplit
-    SDL_ExitWithError("Impossible de dessiner un rectange");
+    SDL_ExitWithError("Impossible de dessiner un rectangle");
 
   SDL_RenderPresent(renderer);
   if(score < 0 ){
@@ -131,7 +131,7 @@ extern void update_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre_depr
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
   if(SDL_RenderFillRect(renderer, barre_depression) != 0)//Pour dessiner un rectangle remplit
-    SDL_ExitWithError("Impossible de dessiner un rectange");
+    SDL_ExitWithError("Impossible de dessiner un rectangle");
 
   SDL_RenderPresent(renderer);
 }
