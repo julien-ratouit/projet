@@ -6,14 +6,14 @@ void sauvegarde(int money, int jour,int nb_action, int action_achete[], int acti
     
     FILE * save;
     int i = 0;
-
+    printf("C'est bon ? \n");
     //Sauvegarde de la money et du jour
     save = fopen("save.txt","w"); 
     fprintf(save,"%i\n%i\n",money,jour);
-
+    printf("C'est bon 2? \n");
     //Sauvegarde du nombre d'action achetées
     fprintf(save,"%i ",nb_action);
-
+    printf("C'est bon 3? \n");
     //Sauvegarde de toute les actions achetées
     while(i < nb_action){
 
@@ -22,16 +22,17 @@ void sauvegarde(int money, int jour,int nb_action, int action_achete[], int acti
 
     }
     fprintf(save,"\n");
+    printf("C'est bon le retour \n");
 
     //Sauvegarde des 4 actions équipées (Si vide, écris -1)
     i = 0;
     while(i < 4){
 
-        if(action_equipe[i]) fprintf(save,"%i ",action_equipe[i]);
-        else fprintf(save,"-1 ");
-        i++;
+        fprintf(save,"%i ",action_equipe[i]);
+        i++; 
 
     }
+    printf("C'est bon encore :'() \n");
     fprintf(save,"\n");
     fclose(save);
 }
@@ -41,7 +42,8 @@ int charger(int * money, int * jour, int * nb_action, int action_achete[], int a
 
     FILE * save;
     int i = 0;
-
+    //Billy le dieu :OOOOO
+    int billy;
     //Ouvre le fichier en lecture, si il n'existe pas renvoie une erreur
     if(save = fopen("save.txt","r")){
 
@@ -51,20 +53,22 @@ int charger(int * money, int * jour, int * nb_action, int action_achete[], int a
         fscanf(save,"%i",nb_action);
 
         //Recupere les id des actions achetées
-        while(i < (*nb_action)){
-
-            fscanf(save,"%i", *(action_achete + i));
+       while(i < (*nb_action)){
+           printf("i = %i\n",i);
+            fscanf(save,"%i",&billy); //On prend l'adresse de billy pour mettre un truc dedans
+            printf("%i\n",billy);
+            action_achete[i]=billy; 
             i++;
-
         }
         i = 0;
 
         //Recupere les id des actions équipées
         while(i < 4){
 
-            fscanf(save,"%i", *(action_achete + i));
+            fscanf(save,"%i",&billy);
+            printf("%i\n",billy);
+            action_equipe[i]= billy;
             i++;
-
         }
 
         return 1;
@@ -73,7 +77,7 @@ int charger(int * money, int * jour, int * nb_action, int action_achete[], int a
     else return 0;
     fclose(save);
 }
-
+//Test
 int main(){
 
     int jour;
@@ -83,12 +87,12 @@ int main(){
     int test_e[4] = {0,1,2,8};
     int action_a[50];
     int action_e[4];
-
+    printf("Coucou");
     sauvegarde(5,1,6,test_a,test_e);
     charger(&money, &jour, &nb_action, action_a, action_e);
 
     printf("%i\n%i\n",money, jour);
-    for(int i = 0; action_a[i]; i++){
+    for(int i = 0; i < nb_action; i++){ //Billy > ALL
 
         printf("%i ", action_a[i]);
 
