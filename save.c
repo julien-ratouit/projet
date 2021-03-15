@@ -29,6 +29,7 @@ void sauvegarde(int money, int jour,int nb_action, int action_achete[], int acti
 
         if(action_equipe[i]) fprintf(save,"%i ",action_equipe[i]);
         else fprintf(save,"-1 ");
+        i++;
 
     }
     fprintf(save,"\n");
@@ -52,7 +53,8 @@ int charger(int * money, int * jour, int * nb_action, int action_achete[], int a
         //Recupere les id des actions achetées
         while(i < (*nb_action)){
 
-            fscanf(save,"%i", action_achete + i);
+            fscanf(save,"%i", *(action_achete + i));
+            i++;
 
         }
         i = 0;
@@ -60,7 +62,8 @@ int charger(int * money, int * jour, int * nb_action, int action_achete[], int a
         //Recupere les id des actions équipées
         while(i < 4){
 
-            fscanf(save,"%i", action_achete + i);
+            fscanf(save,"%i", *(action_achete + i));
+            i++;
 
         }
 
