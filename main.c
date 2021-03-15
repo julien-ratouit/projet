@@ -142,26 +142,6 @@ int main (int argc, char ** argv)
 						SDL_RenderPresent(renderer);
 
 					}
-					/*if((event.button.x < 1236 && event.button.x > 1184)&&(event.button.y < 417 && event.button.y > 177) && verif_exist == 1)
-					{
-						ajout_texture(texture3, "images/self.png", renderer2, window2, HAUTEUR , LARGEUR);
-						SDL_RenderPresent(renderer2);
-					}
-					if((event.button.x < 524 && event.button.x > 448)&&(event.button.y < 49 && event.button.y > 17) && verif_exist == 1)
-					{
-						ajout_texture(texture3, "images/salle_de_classe.png", renderer2, window2, HAUTEUR , LARGEUR);
-						SDL_RenderPresent(renderer2);
-					}
-					if((event.button.x < 280 && event.button.x > 145)&&(event.button.y < 390 && event.button.y > 311) && verif_exist == 1)
-					{
-						ajout_texture(texture3, "images/salle_prof.png", renderer2, window2, HAUTEUR , LARGEUR);
-						SDL_RenderPresent(renderer2);
-					}
-					if((event.button.x < 419 && event.button.x > 167)&&(event.button.y < 217 && event.button.y > 12) && verif_exist == 1)
-					{
-						ajout_texture(texture3, "images/salle_de_classe.png", renderer2, window2, HAUTEUR , LARGEUR);
-						SDL_RenderPresent(renderer2);
-					}*/
 					break;
 
 				default : break;
