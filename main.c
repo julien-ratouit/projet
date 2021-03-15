@@ -9,6 +9,7 @@
 #include "coords.h"
 #include "timer.h"
 #include "barre.h"
+#include "action.h"
 
 /*
 * Rappel sur la compilation : gcc aff_fenetre.c -o bin/aff_fenetre -I include -L lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
