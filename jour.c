@@ -1,31 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <stdbool.h> 
 #include "include/SDL.h"
 #include "include/SDL_image.h"
 #include "include/SDL_ttf.h"
 #include "jour.h"
-#include "fonction.h" 
+#include "fonction.h"  
 #include "coords.h"
 
 //affiche les action en prenant en compte les achats passé
 void aff_action(int *achat,  SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture_achat1, SDL_Texture *texture_achat2, SDL_Texture *texture_achat3, SDL_Texture *texture_achat4)
 {
 	
-	if(achat >= 0)
+	if((*achat) >= 0)
 		ajout_texture_non_centre(texture_achat1 ,"images/bouton_action.png" , renderer, window, ACTION1_HAUTEUR , ACTION1_LARGEUR);
-	if(achat >= 1)
+	if((*achat) >= 1)
 		ajout_texture_non_centre(texture_achat2 ,"images/bouton_action.png" , renderer, window, ACTION2_HAUTEUR , ACTION2_LARGEUR);
-	if(achat >= 2)
+	if((*achat) >= 2)
 		ajout_texture_non_centre(texture_achat3 ,"images/bouton_action.png" , renderer, window, ACTION3_HAUTEUR , ACTION3_LARGEUR);
-	if(achat >= 3)
+	if((*achat) >= 3)
 		ajout_texture_non_centre(texture_achat4 ,"images/bouton_action.png" , renderer, window, ACTION4_HAUTEUR , ACTION4_LARGEUR);
 	SDL_RenderPresent(renderer);
 }
 
 
 //fonction qui s'occupe d'une demis journée
-void demis_journee(int ms, int *achat, int *depression)
+void demis_journee(int *achat, int *depression)
 {
 	SDL_Event event;
 	
@@ -112,7 +112,7 @@ void demis_journee(int ms, int *achat, int *depression)
 	}
 }
 
-void journee_complete(int ms, int *achat, int *depression, SDL_Renderer *renderer, SDL_Window *window/*, int *argent ???*/)
+void journee_complete(int *achat, int *depression, SDL_Renderer *renderer, SDL_Window *window/*, int *argent ???*/)
 {
 	SDL_Texture *texture_achat1 = NULL;
 	SDL_Texture *texture_achat2 = NULL;
@@ -120,10 +120,10 @@ void journee_complete(int ms, int *achat, int *depression, SDL_Renderer *rendere
 	SDL_Texture *texture_achat4 = NULL;
 
 	aff_action(achat, renderer, window, texture_achat1, texture_achat2, texture_achat3, texture_achat4);
-	demis_journee(ms, achat, depression);
+	demis_journee(achat, depression);
 	//argent += 10; ??
 	//fonction de self qui reduit la depression en achetant des plats
-	demis_journee(ms, achat, depression);
+	demis_journee(achat, depression);
 	//argent += 10; ??
 	//fonction de salle des profs qui permet d'acheter des actions
 
