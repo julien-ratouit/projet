@@ -49,16 +49,16 @@
 
 /*Coordonnées placement des boutons 'actions'*/
 /*----------------------------------------*/
-#define ACTION1_LARGEUR 38
-#define ACTION1_HAUTEUR 703
+#define ACTION1_LARGEUR 530
+#define ACTION1_HAUTEUR 70
 
-#define ACTION2_LARGEUR 163
-#define ACTION2_HAUTEUR 703
+#define ACTION2_LARGEUR 530
+#define ACTION2_HAUTEUR 155
 
-#define ACTION3_LARGEUR 72
-#define ACTION3_HAUTEUR 612
+#define ACTION3_LARGEUR 615
+#define ACTION3_HAUTEUR 45
 
-#define ACTION4_LARGEUR 192
-#define ACTION4_HAUTEUR 612
+#define ACTION4_LARGEUR 615
+#define ACTION4_HAUTEUR 130
 /*----------------------------------------*/
 
