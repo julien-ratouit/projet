@@ -83,12 +83,14 @@ void timer_unpause(Timer_t * Timer){
     }
 }
 
+//Renvoie vrai si le timer a commencer 
 bool timer_is_started(Timer_t * Timer){
 
     return (Timer->start);
 
 }
 
+//Renvoie vrai si le timer est en pause
 bool timer_is_paused(Timer_t * Timer){
 
     return (Timer->paused);
@@ -119,3 +121,40 @@ Timer_t * timer_init(){
 	
 	return Timer;
 }
+/*
+int main(int arv, char *argc[]){
+
+    SDL_Init(SDL_INIT_VIDEO);
+
+    //Initialisation du timer test
+
+    Timer_t * test;
+    test = timer_init();
+    
+    //Lance le timer
+    test->debut(test);
+    printf("%i\n",test->get_ticks(test));
+    printf("A commence : %i\n", test->is_started(test));
+    printf("En pause : %i \n", test->is_paused(test));
+
+    SDL_Delay(1000);
+    //Mets en pause le timer
+    printf("%i\n",test->get_ticks(test));
+    test->pause(test);
+    printf("A commence : %i\n", test->is_started(test));
+    printf("En pause : %i \n", test->is_paused(test));
+    SDL_Delay(1000);
+
+    //Depause le timer
+    test->unpause(test);
+    printf("%i\n",test->get_ticks(test)); //N'a pas bouger par rapport au dernier affichage
+    printf("A commence : %i\n", test->is_started(test));
+    printf("En pause : %i \n", test->is_paused(test));
+
+    //Arrete completement le timer
+    test->stop(test);
+    printf("%i\n",test->get_ticks(test)); //Censer renvoyer 0
+    printf("A commence : %i\n", test->is_started(test));
+    printf("En pause : %i \n", test->is_paused(test));
+}
+*/
