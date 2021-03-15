@@ -7,12 +7,13 @@
 #include "action.h"
 
 //fonction à ne pas utiliser dans le main
-action_t *init_action(int id, int prix, void (*fonction)(int))
+action_t *init_action(int id, int prix, int cd,void (*fonction)(int))
 {
 	action_t *action = malloc(sizeof(action_t));
 	action->id = id;
 	action->prix = prix;
 	action->statut = false;
+	action->cd = cd;
 	action->action_realise = fonction;
 
 	return action;
