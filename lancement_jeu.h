@@ -1,1 +1,1 @@
-extern void lancement(SDL_Renderer *renderer, SDL_Window *window);
+extern void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu);

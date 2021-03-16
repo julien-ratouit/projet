@@ -62,3 +62,44 @@
 #define ACTION4_HAUTEUR 130
 /*----------------------------------------*/
 
+
+
+/*Coordonnées placement du bouton 'option'*/
+/*----------------------------------------*/
+#define OPTION_LARGEUR 10
+#define OPTION_HAUTEUR 1200
+/*----------------------------------------*/
+
+
+/*Zone bouton 'option'*/
+/*----------------------------------------*/
+#define OPTION_X_MIN 1208
+#define OPTION_X_MAX 1256
+#define OPTION_Y_MIN 15
+#define OPTION_Y_MAX 62
+/*----------------------------------------*/
+
+
+
+/*Zone bouton dans menu 'option'*/
+/*----------------------------------------*/
+#define QUIT_X_MIN 441
+#define QUIT_X_MAX 532
+#define QUIT_Y_MIN 410
+#define QUIT_Y_MAX 442
+
+#define REPRENDRE_X_MIN 714
+#define REPRENDRE_X_MAX 806
+#define REPRENDRE_Y_MIN 410
+#define REPRENDRE_Y_MAX 442
+/*----------------------------------------*/
+
+
+/*Coordonnée des textures liée au barres sonore et depression*/
+/*----------------------------------------*/
+#define BARRE_SON_X 250
+#define BARRE_SON_Y 20
+
+#define BARRE_DEPRESSION_X 1065
+#define BARRE_DEPRESSION_Y 20
+/*----------------------------------------*/
