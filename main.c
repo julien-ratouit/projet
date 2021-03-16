@@ -53,6 +53,9 @@ int main (int argc, char ** argv)
 					//printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN))
 					{
+						/*si on appuie sur le bouton jouer*/
+						SDL_DestroyTexture(texture_btn_jouer);
+						SDL_DestroyTexture(texture_menu);
 
 						lancement(renderer, window);
 
