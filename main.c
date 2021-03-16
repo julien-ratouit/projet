@@ -39,7 +39,7 @@ int main (int argc, char ** argv)
 
 	ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 	ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-	ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, BOUTON_TUTO_Y_MAX, BOUTON_TUTO_X_MIN);
+	ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_HAUTEUR , TUTO_LARGEUR);
 
 	SDL_RenderPresent(renderer);
 
@@ -64,7 +64,7 @@ int main (int argc, char ** argv)
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, HAUTEUR , BOUTON_TUTO_X_MIN);
+						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_HAUTEUR , TUTO_LARGEUR);
 
 						SDL_RenderPresent(renderer);
 					}
@@ -79,7 +79,7 @@ int main (int argc, char ** argv)
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_HAUTEUR , TUTO_LARGEUR);
 
 						SDL_RenderPresent(renderer);
 						
