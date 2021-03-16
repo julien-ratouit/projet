@@ -28,8 +28,11 @@ int main (int argc, char ** argv)
 	SDL_Texture *texture_btn_jouer = NULL;
 	SDL_Texture *texture_btn_option = NULL;
 	SDL_Texture *texture_btn_tuto = NULL;
+	SDL_Texture *texture_tuto = NULL;
 
 	SDL_bool program_launched = SDL_TRUE;
+
+	int status_tuto = -1;
 
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 		SDL_ExitWithError("Initialisation SDL");
@@ -53,7 +56,7 @@ int main (int argc, char ** argv)
 			{
 				case SDL_MOUSEBUTTONDOWN:
 					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
-					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN))
+					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
 						/*si on appuie sur le bouton jouer*/
 						SDL_DestroyTexture(texture_btn_jouer);
@@ -68,22 +71,26 @@ int main (int argc, char ** argv)
 
 						SDL_RenderPresent(renderer);
 					}
-					else if ((event.button.x < BOUTON_TUTO_X_MAX && event.button.x > BOUTON_TUTO_X_MIN)&&(event.button.y < BOUTON_TUTO_Y_MAX && event.button.y > BOUTON_TUTO_Y_MIN))
+					if ((event.button.x < BOUTON_TUTO_X_MAX && event.button.x > BOUTON_TUTO_X_MIN)&&(event.button.y < BOUTON_TUTO_Y_MAX && event.button.y > BOUTON_TUTO_Y_MIN) && status_tuto == -1)
 					{
 						/*si on appuie sur le bouton tuto*/
-						SDL_DestroyTexture(texture_btn_jouer);
-						SDL_DestroyTexture(texture_menu);
-						SDL_DestroyTexture(texture_btn_tuto);
+						status_tuto = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le tuto
+						ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR);
+						SDL_RenderPresent(renderer);
+					}
+					if((event.button.x < FERMER_TUTO_X_MAX && event.button.x > FERMER_TUTO_X_MIN)&&(event.button.y < FERMER_TUTO_Y_MAX && event.button.y > FERMER_TUTO_Y_MIN) && status_tuto == 1)
+					{
+						/*si on clique sur le tuto*/
+						status_tuto = -1;//variable qui permet d'evite d'agire sur les autres bouton pendant le tuto
 
-						lancement(renderer, window);
+						SDL_RenderClear(renderer);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_LARGEUR, TUTO_HAUTEUR);
-
+					
 						SDL_RenderPresent(renderer);
-						
-					}
+					}	
 					break;
 
 				case SDL_QUIT:

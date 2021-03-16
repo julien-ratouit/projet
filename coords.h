@@ -24,13 +24,22 @@
 #define TUTO_HAUTEUR 400
 /*----------------------------------------*/
 
+/*Zone bouton 'fermer_tuto'*/
+/*----------------------------------------*/
+#define FERMER_TUTO_X_MAX 1070
+#define FERMER_TUTO_X_MIN 1010
+
+#define FERMER_TUTO_Y_MAX 130
+#define FERMER_TUTO_Y_MIN 70
+/*----------------------------------------*/
+
 /*Zone bouton 'tuto'*/
 /*----------------------------------------*/
-#define BOUTON_TUTO_X_MAX 715
+#define BOUTON_TUTO_X_MAX 700
 #define BOUTON_TUTO_X_MIN 565
 
-#define BOUTON_TUTO_Y_MAX 300
-#define BOUTON_TUTO_Y_MIN 250
+#define BOUTON_TUTO_Y_MAX 455
+#define BOUTON_TUTO_Y_MIN 400
 /*----------------------------------------*/
 
 
