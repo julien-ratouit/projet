@@ -13,12 +13,6 @@
 //Initialisation de la barre sonore
 extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre){
 
-  SDL_Rect contour_barre;
-  contour_barre.x = 250;
-  contour_barre.y = 15;
-  contour_barre.w = 50;
-  contour_barre.h = 250;
-
   (*barre).x = 251;
   (*barre).y = 264;
   (*barre).w = 48;
@@ -33,18 +27,9 @@ extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre){
   if(SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE) != 0)//changer la couleur du dessin
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
-  if(SDL_RenderDrawRect(renderer, &contour_barre) != 0)//Pour dessiner un rectangle
-    SDL_ExitWithError("Impossible de dessiner un rectange");
-
 }
 //Initialisation de la barre de depression
 extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre){
-
-  SDL_Rect contour_barre;
-  contour_barre.x = 1065;
-  contour_barre.y = 15;
-  contour_barre.w = 50;
-  contour_barre.h = 250;
 
   (*barre).x = 1066;
   (*barre).y = 264;
@@ -55,13 +40,10 @@ extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre){
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
   if(SDL_RenderFillRect(renderer, barre) != 0)//Pour dessiner un rectangle remplit
-    SDL_ExitWithError("Impossible de dessiner un rectange");
+  	SDL_ExitWithError("Impossible de dessiner un rectangle");
 
   if(SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE) != 0)//changer la couleur du dessin
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
-
-  if(SDL_RenderDrawRect(renderer, &contour_barre) != 0)//Pour dessiner un rectangle
-    SDL_ExitWithError("Impossible de dessiner un rectange");
 
 }
 //Mise à jour de la barre sonore
@@ -70,22 +52,22 @@ extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int sco
   //printf("Score de la barre sonore : %i et score : %i\n", (*barre).h, score);
   if((*barre).h-score > -248 && score > 0){
     (*barre).h = (*barre).h-score;
-    printf("INCREMENTATION\n");
+    //printf("INCREMENTATION\n");
   }
   else if((*barre).h-score <= -248 && score > 0){
     (*barre).h = -248;
-    printf("FULL\n");
+    //printf("FULL\n");
   }
   else if(score < 0){
     (*barre).y = (*barre).y + (*barre).h;
     if((*barre).h-score >= -5){
       (*barre).h = 264 - (*barre).y - 5;
-      printf("VIDE\n");
+      //printf("VIDE\n");
     }
     else{
       tempo = (*barre).h;
       (*barre).h = -score;
-      printf("DECREMENTATION et tempo = %i et h= %i\n",tempo ,(*barre).h);
+      //printf("DECREMENTATION et tempo = %i et h= %i\n",tempo ,(*barre).h);
     }
   }
 
@@ -100,7 +82,7 @@ extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int sco
 
 
   if(SDL_RenderFillRect(renderer, barre) != 0)//Pour dessiner un rectangle remplit
-    SDL_ExitWithError("Impossible de dessiner un rectange");
+    SDL_ExitWithError("Impossible de dessiner un rectangle");
 
   SDL_RenderPresent(renderer);
   if(score < 0 ){
@@ -108,7 +90,7 @@ extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int sco
       (*barre).h = -5;
     }
     else{
-      printf("test tempo score\n");
+      //printf("test tempo score\n");
       (*barre).h = tempo - score;
     }
     (*barre).y = 264;
@@ -131,7 +113,7 @@ extern void update_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre_depr
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
   if(SDL_RenderFillRect(renderer, barre_depression) != 0)//Pour dessiner un rectangle remplit
-    SDL_ExitWithError("Impossible de dessiner un rectange");
+    SDL_ExitWithError("Impossible de dessiner un rectangle");
 
   SDL_RenderPresent(renderer);
 }
