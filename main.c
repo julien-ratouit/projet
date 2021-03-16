@@ -10,6 +10,7 @@
 #include "timer.h"
 #include "barre.h"
 #include "lancement_jeu.h"
+#include "tuto.h"
 
 /*
 * Rappel sur la compilation : gcc aff_fenetre.c -o bin/aff_fenetre -I include -L lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
@@ -28,7 +29,6 @@ int main (int argc, char ** argv)
 	SDL_Texture *texture_btn_jouer = NULL;
 	SDL_Texture *texture_btn_option = NULL;
 	SDL_Texture *texture_btn_tuto = NULL;
-	SDL_Texture *texture_tuto = NULL;
 
 	SDL_bool program_launched = SDL_TRUE;
 
@@ -71,17 +71,11 @@ int main (int argc, char ** argv)
 
 						SDL_RenderPresent(renderer);
 					}
-					if ((event.button.x < BOUTON_TUTO_X_MAX && event.button.x > BOUTON_TUTO_X_MIN)&&(event.button.y < BOUTON_TUTO_Y_MAX && event.button.y > BOUTON_TUTO_Y_MIN) && status_tuto == -1)
+					if ((event.button.x < BOUTON_TUTO_X_MAX && event.button.x > BOUTON_TUTO_X_MIN)&&(event.button.y < BOUTON_TUTO_Y_MAX && event.button.y > BOUTON_TUTO_Y_MIN))
 					{
 						/*si on appuie sur le bouton tuto*/
-						status_tuto = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le tuto
-						ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR);
-						SDL_RenderPresent(renderer);
-					}
-					if((event.button.x < FERMER_TUTO_X_MAX && event.button.x > FERMER_TUTO_X_MIN)&&(event.button.y < FERMER_TUTO_Y_MAX && event.button.y > FERMER_TUTO_Y_MIN) && status_tuto == 1)
-					{
-						/*si on clique sur le tuto*/
-						status_tuto = -1;//variable qui permet d'evite d'agire sur les autres bouton pendant le tuto
+
+						tuto(renderer, window);
 
 						SDL_RenderClear(renderer);
 
@@ -90,7 +84,7 @@ int main (int argc, char ** argv)
 						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_LARGEUR, TUTO_HAUTEUR);
 					
 						SDL_RenderPresent(renderer);
-					}	
+					}
 					break;
 
 				case SDL_QUIT:
