@@ -20,8 +20,8 @@
 
 /*Coordonnées placement du bouton 'tuto'*/
 /*----------------------------------------*/
-#define TUTO_LARGEUR 900
-#define TUTO_HAUTEUR 300
+#define TUTO_LARGEUR 565
+#define TUTO_HAUTEUR 400
 /*----------------------------------------*/
 
 /*Zone bouton 'tuto'*/

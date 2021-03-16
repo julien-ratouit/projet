@@ -39,7 +39,7 @@ int main (int argc, char ** argv)
 
 	ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 	ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-	ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_HAUTEUR , TUTO_LARGEUR);
+	ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_LARGEUR, TUTO_HAUTEUR);
 
 	SDL_RenderPresent(renderer);
 
@@ -52,7 +52,7 @@ int main (int argc, char ** argv)
 			switch(event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
-					//printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
+					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN))
 					{
 						/*si on appuie sur le bouton jouer*/
@@ -64,7 +64,7 @@ int main (int argc, char ** argv)
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_HAUTEUR , TUTO_LARGEUR);
+						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_LARGEUR, TUTO_HAUTEUR);
 
 						SDL_RenderPresent(renderer);
 					}
@@ -79,7 +79,7 @@ int main (int argc, char ** argv)
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_HAUTEUR , TUTO_LARGEUR);
+						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_LARGEUR, TUTO_HAUTEUR);
 
 						SDL_RenderPresent(renderer);
 						
