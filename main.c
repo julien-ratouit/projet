@@ -27,6 +27,7 @@ int main (int argc, char ** argv)
 	SDL_Texture *texture_menu = NULL;
 	SDL_Texture *texture_btn_jouer = NULL;
 	SDL_Texture *texture_btn_option = NULL;
+	SDL_Texture *texture_btn_tuto = NULL;
 
 	SDL_bool program_launched = SDL_TRUE;
 
@@ -38,6 +39,7 @@ int main (int argc, char ** argv)
 
 	ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 	ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
+	ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, BOUTON_TUTO_Y_MAX, BOUTON_TUTO_X_MIN);
 
 	SDL_RenderPresent(renderer);
 
@@ -56,14 +58,32 @@ int main (int argc, char ** argv)
 						/*si on appuie sur le bouton jouer*/
 						SDL_DestroyTexture(texture_btn_jouer);
 						SDL_DestroyTexture(texture_menu);
+						SDL_DestroyTexture(texture_btn_tuto);
 
 						lancement(renderer, window);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, HAUTEUR , BOUTON_TUTO_X_MIN);
 
 						SDL_RenderPresent(renderer);
-					}	
+					}
+					else if ((event.button.x < BOUTON_TUTO_X_MAX && event.button.x > BOUTON_TUTO_X_MIN)&&(event.button.y < BOUTON_TUTO_Y_MAX && event.button.y > BOUTON_TUTO_Y_MIN))
+					{
+						/*si on appuie sur le bouton tuto*/
+						SDL_DestroyTexture(texture_btn_jouer);
+						SDL_DestroyTexture(texture_menu);
+						SDL_DestroyTexture(texture_btn_tuto);
+
+						lancement(renderer, window);
+
+						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, HAUTEUR , LARGEUR);
+
+						SDL_RenderPresent(renderer);
+						
+					}
 					break;
 
 				case SDL_QUIT:
@@ -75,6 +95,7 @@ int main (int argc, char ** argv)
 		}
 	}
 	SDL_DestroyTexture(texture_btn_jouer);
+	SDL_DestroyTexture(texture_btn_tuto);
 	SDL_DestroyTexture(texture_menu);
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
