@@ -5,16 +5,10 @@
 #include "include/SDL_image.h"
 #include "include/SDL_ttf.h"
 #include "fonction.h"
-#include "jour.h"
 #include "coords.h"
 #include "timer.h"
 #include "barre.h"
 #include "lancement_jeu.h"
-
-/*
-* Rappel sur la compilation : gcc aff_fenetre.c -o bin/aff_fenetre -I include -L lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
-*/
-#define TIMER 2000
 
 int main (int argc, char ** argv)
 {
@@ -27,6 +21,9 @@ int main (int argc, char ** argv)
 	SDL_Texture *texture_menu = NULL;
 	SDL_Texture *texture_btn_jouer = NULL;
 	SDL_Texture *texture_btn_option = NULL;
+
+	Timer_t *temps_jeu;
+	temps_jeu = timer_init();
 
 	SDL_bool program_launched = SDL_TRUE;
 
@@ -57,7 +54,7 @@ int main (int argc, char ** argv)
 						SDL_DestroyTexture(texture_btn_jouer);
 						SDL_DestroyTexture(texture_menu);
 
-						lancement(renderer, window);
+						lancement(renderer, window, temps_jeu);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
