@@ -5,18 +5,20 @@
 #include "include/SDL_image.h"
 #include "include/SDL_ttf.h"
 #include "fonction.h"
-#include "jour.h"
 #include "coords.h"
 #include "timer.h"
 #include "barre.h"
 #include "lancement_jeu.h"
 
 
-void lancement(SDL_Renderer *renderer, SDL_Window *window)
+void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 {
 	SDL_Texture *texture_classe = NULL;
+	SDL_Texture *texture_self = NULL;
+
 	SDL_Texture *texture_btn_option = NULL;
 	SDL_Texture *texture_menu_option = NULL;
+
 	SDL_Texture *texture_barre_son = NULL;
 	SDL_Texture *texture_barre_depression = NULL;
 
@@ -32,6 +34,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
 	barre_sonore=malloc(sizeof(SDL_Rect));
 
 	int status_menu = -1;
+	int indice_salle = 0;
 
 	/*variables de test*/
 	int score = 0;
@@ -47,11 +50,12 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
 	init_barre_depression(renderer, barre_depression);
 	init_barre_sonore(renderer, barre_sonore);
 
-	ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, 250, 20);
-	ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, 1065, 20);
+	ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
+	ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
 	SDL_RenderPresent(renderer);
 
+	temps_jeu->debut(temps_jeu);
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
@@ -62,6 +66,18 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
 
 		while(SDL_PollEvent(&event))
 		{
+			if(temps_jeu->get_ticks(temps_jeu) >= 10000 && indice_salle == 0)
+			{
+				indice_salle = 1;
+				if(indice_salle == 1)
+				{
+					SDL_RenderClear(renderer);
+
+					ajout_texture(texture_self, "images/self.png", renderer, window, HAUTEUR, LARGEUR);
+
+				}
+			}
+
 			switch (event.type)
 			{
 				case SDL_KEYUP:
@@ -73,12 +89,12 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
 								/*mise a jour de la barre sonore + remise en place de la texture associé*/
 								update_barre_sonore(renderer, barre_sonore, score);
 								SDL_DestroyTexture(texture_barre_son);
-								ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, 250, 20);
+								ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
 
 								/*mise a jour de la barre de depression + remise en place de la texture associé*/
 								update_barre_depression(renderer, barre_depression, barre_sonore, score);
 								SDL_DestroyTexture(texture_barre_depression);
-								ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, 1065, 20);
+								ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
 								SDL_RenderPresent(renderer);
 								continue;
@@ -99,16 +115,17 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
 						update_barre_sonore(renderer, barre_sonore, press_action(renderer, 1));
 
 						SDL_DestroyTexture(texture_barre_son);
-						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, 250, 20);
+						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
 
 						SDL_DestroyTexture(texture_barre_depression);
-						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, 1065, 20);
+						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
 						SDL_RenderPresent(renderer);
 					}
 
 					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN))
 					{
+						temps_jeu->pause(temps_jeu);
 						/*si on clique sur le menu*/
 						status_menu = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
 
@@ -119,14 +136,18 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
 					}
 
 					if((event.button.x < QUIT_X_MAX && event.button.x > QUIT_X_MIN)&&(event.button.y < QUIT_Y_MAX && event.button.y > QUIT_Y_MIN)&&status_menu == 1)
-					{ 
+					{
+						temps_jeu->stop(temps_jeu); 
 						/*si on clique sur le bouton 'quitter le jeu'*/ 
 						program_launched = SDL_FALSE;
 					}
 
 					if((event.button.x < REPRENDRE_X_MAX && event.button.x > REPRENDRE_X_MIN)&&(event.button.y < REPRENDRE_Y_MAX && event.button.y > REPRENDRE_Y_MIN)&&status_menu == 1)
 					{
+
+						temps_jeu->unpause(temps_jeu);
 						/*si on clique sur le bouton 'reprendre le jeu'*/
+						printf("%d ms\n", temps_jeu->get_ticks(temps_jeu));
 
 						status_menu = -1;
 
@@ -148,10 +169,10 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
 						update_barre_depression(renderer, barre_depression, barre_sonore, 0);
 
 						SDL_DestroyTexture(texture_barre_son);
-						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, 250, 20);
+						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
 
 						SDL_DestroyTexture(texture_barre_depression);
-						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, 1065, 20);
+						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
 						SDL_RenderPresent(renderer);
 					};

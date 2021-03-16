@@ -139,3 +139,13 @@
 #define REPRENDRE_Y_MIN 410
 #define REPRENDRE_Y_MAX 442
 /*----------------------------------------*/
+
+
+/*Coordonnée des textures liée au barres sonore et depression*/
+/*----------------------------------------*/
+#define BARRE_SON_X 250
+#define BARRE_SON_Y 20
+
+#define BARRE_DEPRESSION_X 1065
+#define BARRE_DEPRESSION_Y 20
+/*----------------------------------------*/
