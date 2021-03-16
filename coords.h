@@ -19,6 +19,15 @@
 
 
 
+/*Zone bouton 'tuto'*/
+/*----------------------------------------*/
+#define BOUTON_TUTO_X_MAX 715
+#define BOUTON_TUTO_X_MIN 565
+
+#define BOUTON_TUTO_Y_MAX 300
+#define BOUTON_TUTO_Y_MIN 250
+/*----------------------------------------*/
+
 
 
 /*Zone des boutons 'actions'*/
