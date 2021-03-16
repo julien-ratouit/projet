@@ -5,7 +5,6 @@
 #include "include/SDL_image.h"
 #include "include/SDL_ttf.h"
 #include "fonction.h"
-#include "jour.h"
 #include "coords.h"
 #include "timer.h"
 #include "barre.h"
