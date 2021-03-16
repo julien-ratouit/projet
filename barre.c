@@ -13,11 +13,11 @@
 //Initialisation de la barre sonore
 extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre){
 
-  SDL_Rect contour_barre;
+  /*SDL_Rect contour_barre;
   contour_barre.x = 250;
   contour_barre.y = 15;
   contour_barre.w = 50;
-  contour_barre.h = 250;
+  contour_barre.h = 250;*/
 
   (*barre).x = 251;
   (*barre).y = 264;
@@ -33,18 +33,18 @@ extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre){
   if(SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE) != 0)//changer la couleur du dessin
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
-  if(SDL_RenderDrawRect(renderer, &contour_barre) != 0)//Pour dessiner un rectangle
-    SDL_ExitWithError("Impossible de dessiner un rectange");
+  /*if(SDL_RenderDrawRect(renderer, &contour_barre) != 0)//Pour dessiner un rectangle
+    SDL_ExitWithError("Impossible de dessiner un rectange");*/
 
 }
 //Initialisation de la barre de depression
 extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre){
 
-  SDL_Rect contour_barre;
+  /*SDL_Rect contour_barre;
   contour_barre.x = 1065;
   contour_barre.y = 15;
   contour_barre.w = 50;
-  contour_barre.h = 250;
+  contour_barre.h = 250;*/
 
   (*barre).x = 1066;
   (*barre).y = 264;
@@ -60,8 +60,8 @@ extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre){
   if(SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE) != 0)//changer la couleur du dessin
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
-  if(SDL_RenderDrawRect(renderer, &contour_barre) != 0)//Pour dessiner un rectangle
-    SDL_ExitWithError("Impossible de dessiner un rectangle");
+ /* if(SDL_RenderDrawRect(renderer, &contour_barre) != 0)//Pour dessiner un rectangle
+    SDL_ExitWithError("Impossible de dessiner un rectangle");*/
 
 }
 //Mise à jour de la barre sonore

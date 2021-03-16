@@ -17,6 +17,8 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
   SDL_Texture *texture_classe = NULL;
   SDL_Texture *texture_btn_option = NULL;
   SDL_Texture *texture_menu_option = NULL;
+  SDL_Texture *texture_barre_son = NULL;
+  SDL_Texture *texture_barre_depression = NULL;
 
   SDL_Texture *texture_action1 = NULL;//action 1
 	SDL_Texture *texture_action2 = NULL;//action 2
@@ -45,6 +47,9 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
   init_barre_depression(renderer, barre_depression);
   init_barre_sonore(renderer, barre_sonore);
 
+  ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, 250, 20);
+  ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, 1065, 20);
+
   SDL_RenderPresent(renderer);
 
 
@@ -66,7 +71,10 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
               {
                 score++;
                 update_barre_sonore(renderer, barre_sonore, score);
+                ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, 250, 20);
+
                 update_barre_depression(renderer, barre_depression, barre_sonore, score);
+                ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, 1065, 20);
                 continue;
               }
               else
@@ -77,11 +85,14 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
           }
 
         case SDL_MOUSEBUTTONDOWN:
-          //printf("x : %i & y : %i\n", event.button.x, event.button.y);
+          printf("x : %i & y : %i\n", event.button.x, event.button.y);
           
           if((event.button.x > 70 && event.button.x < 134)&&(event.button.y > 530 && event.button.y < 594)&&status_menu == -1)
           {
             update_barre_sonore(renderer, barre_sonore, press_action(renderer, 1));
+
+            ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, 250, 20);
+            ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, 1065, 20);
           }
           if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN))
           {
@@ -102,8 +113,12 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window)
             
             aff_action(achat, renderer, window, texture_action1, texture_action2, texture_action3, texture_action4);
             ajout_texture_non_centre(texture_btn_option , "images/option.png", renderer, window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
             update_barre_sonore(renderer, barre_sonore, score);
             update_barre_depression(renderer, barre_depression, barre_sonore, score);
+
+            ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, 250, 20);
+            ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, 1065, 20);
 
             SDL_RenderPresent(renderer);
           };
