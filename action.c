@@ -18,7 +18,7 @@
 
 //Initialise les informations d'une action
 //En static pour ne pas l'utiliser dans le main 
-static action_t *init_action(int id, int prix, int cd,void (*fonction)(int))
+extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int))
 {
 	action_t *action = malloc(sizeof(action_t));
 	action->id = id;
@@ -51,7 +51,7 @@ extern void init_tab_action(action_t * tab[])
 //-------------------------------------------------------
 
 
-static int clic_choix_sdp(){
+extern int clic_choix_sdp(){
 
 	SDL_Event event;
 	
@@ -128,7 +128,7 @@ extern int achat_action(action_t *action, int *argent)
 //Equipe une action si elle est acheté et si elle n'est pas déjà équipé
 extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[]){ 
 	
-	affiche_action();//A FAIRE MON P'TIT CHARLES :DDDDD 
+	//affiche_action();//A FAIRE MON P'TIT CHARLES :DDDDD 
 
 	int id;
 	id = clic_choix_sdp();
@@ -187,7 +187,7 @@ extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_a
 	int test_sortie = 0;
 	int choix;
 
-	affichage_menu_action(); //A FAIIIIIIIIIIIIIIIIRE
+	//affichage_menu_action(); //A FAIIIIIIIIIIIIIIIIRE
 
 	while(test_sortie != QUITTE_MENU){//Test_sortie vaut vrai quand on clique sur la croix
 
@@ -207,7 +207,7 @@ extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_a
 
 	}
 	
-	fermer_menu_action(); //A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
+	//fermer_menu_action();//A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
 
 }
 
@@ -254,4 +254,4 @@ int main(){
 	init_tab_action(test);
 	
 
-}
+}*/
