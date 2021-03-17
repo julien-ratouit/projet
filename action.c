@@ -1,11 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h> 
-#include "include/SDL.h"
-#include "include/SDL_image.h"
-#include "include/SDL_ttf.h"
+#include "commun.h"
 #include "action.h"
-#include "coords.h"
 
 //Constantes renvoyer quand on clique sur les emplacement d'équipement respectifs
 #define EQUIP_1 -1

@@ -1,3 +1,6 @@
+#ifndef _ACTION_H_
+#define _ACTION_H_
+
 typedef struct action_s
 {
 	//Identifiant dans le tableau des actions
@@ -24,3 +27,5 @@ void fonc_action_1 (int jour);
 void fonc_action_2 (int jour);
 void fonc_action_3 (int jour);
 void fonc_action_4 (int jour);
+
+#endif
