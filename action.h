@@ -19,3 +19,4 @@ extern void init_tab_action(action_t * tab[]);
 extern int achat_action(action_t *action, int *argent);
 extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[]);
 extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[]);
+extern int clic_choix_sdp();

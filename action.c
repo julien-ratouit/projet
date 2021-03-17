@@ -40,7 +40,78 @@ extern void init_tab_action(action_t * tab[])
 	tab[3] = init_action(3, 100, 4,fonc_action_4); 
 }
 
-//modifie le statut d'une action si elle est acheter, retourne faux si on n'a pas assez d'argent.
+
+//Pour la fonction clic_choix()--------------------------
+
+//Attends de voir sur quelle action on clique
+//Si on clique le bouton pour quitter le menu, renvoie QUITTE_MENU
+//Si on clique sur une action, renvoie l'id de l'action (allant de 0 a ...)
+//Si on clique sur un emplacement d'équipement, renvoie la place en valeur négatif (allant de -1 a -4)
+
+//-------------------------------------------------------
+
+
+static int clic_choix_sdp(){
+
+	SDL_Event event;
+	
+	switch(event.type)
+	{
+			case SDL_MOUSEBUTTONDOWN:
+			//Si on clique sur la croix //Salle des profs
+			if((event.button.x < EMPLACEMENT_QUITTE_MENU_ACTION_X_MAX && event.button.x > EMPLACEMENT_QUITTE_MENU_ACTION_X_MIN) && (event.button.y < EMPLACEMENT_QUITTE_MENU_ACTION_Y_MAX && event.button.y > EMPLACEMENT_QUITTE_MENU_ACTION_Y_MIN)){
+
+				return QUITTE_MENU;
+
+			}
+			//Si on clique sur les emplacement d'équipement
+			if((event.button.x < EMPLACEMENT_EQUIPE_1_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_1_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_1_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_1_Y_MIN)){
+
+				return EQUIP_1;
+
+			}
+			if((event.button.x < EMPLACEMENT_EQUIPE_2_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_2_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_2_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_2_Y_MIN)){
+
+				return EQUIP_2;
+
+			}
+			if((event.button.x < EMPLACEMENT_EQUIPE_3_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_3_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_3_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_3_Y_MIN)){
+
+				return EQUIP_3;
+
+			}
+			if((event.button.x < EMPLACEMENT_EQUIPE_4_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_4_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_4_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_4_Y_MIN)){
+
+				return EQUIP_4;
+
+			}
+			//Si on clique sur les actions
+			if((event.button.x < EMPLACEMENT_ACTION_0_X_MAX && event.button.x > EMPLACEMENT_ACTION_0_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_0_Y_MAX && event.button.y > EMPLACEMENT_ACTION_0_Y_MIN)){
+
+				return 0;
+
+			}
+			if((event.button.x < EMPLACEMENT_ACTION_1_X_MAX && event.button.x > EMPLACEMENT_ACTION_1_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_1_Y_MAX && event.button.y > EMPLACEMENT_ACTION_1_Y_MIN)){
+
+				return 1;
+
+			}
+			if((event.button.x < EMPLACEMENT_ACTION_2_X_MAX && event.button.x > EMPLACEMENT_ACTION_2_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_2_Y_MAX && event.button.y > EMPLACEMENT_ACTION_2_Y_MIN)){
+
+				return 2;
+
+			}
+			if((event.button.x < EMPLACEMENT_ACTION_3_X_MAX && event.button.x > EMPLACEMENT_ACTION_3_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_3_Y_MAX && event.button.y > EMPLACEMENT_ACTION_3_Y_MIN)){
+
+				return 3;
+
+			}
+			break;
+	}
+}
+
+
+//Modifie le statut d'une action si elle est acheter, retourne faux si on n'a pas assez d'argent.
 extern int achat_action(action_t *action, int *argent)
 {
 	if((*argent) >= action->prix)
@@ -55,19 +126,11 @@ extern int achat_action(action_t *action, int *argent)
 
 //Ajoutez un bouton Equiper pour lancer la fonction
 //Equipe une action si elle est acheté et si elle n'est pas déjà équipé
-extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[]){ //Pas fini
+extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[]){ 
 	
+	affiche_action();//A FAIRE MON P'TIT CHARLES :DDDDD 
+
 	int id;
-
-	//Pour la fonction clic_choix()--------------------------
-
-	//Attends de voir sur quelle action on clique
-	//Si on clique le bouton pour quitter le menu, renvoie QUITTE_MENU
-	//Si on clique sur une action, renvoie l'id de l'action (allant de 0 a ...)
-	//Si on clique sur un emplacement d'équipement, renvoie la place en valeur négatif (allant de -1 a -4)
-
-	//-------------------------------------------------------
-
 	id = clic_choix_sdp();
 
 	switch(id){
@@ -80,7 +143,6 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 		case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action); break;
 		default : break;
 	}
-	
 
 	//Sinon on fait soit un échange si l'action est déjà équipé, sinon ça l'équipe simplement (En écrasant l'action déjà placé)
 	if(tab_action[id]->statut){
@@ -144,7 +206,7 @@ extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_a
 		}
 
 	}
-
+	
 	fermer_menu_action(); //A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
 
 }
@@ -182,3 +244,14 @@ void fonc_action_4 (int jour)
 }
 
 /*----------------------------------------------------------*/
+
+//PHASE DE TEST du boss
+/* Je suis une merde ça fonctionne pas si j'ai pas d'interface XDD 
+int main(){
+	
+	action_t test[4];
+	int argent = 100;
+	init_tab_action(test);
+	
+
+}
