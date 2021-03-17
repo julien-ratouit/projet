@@ -70,7 +70,7 @@ extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int sco
     }
   }
 
-  if(score > 0 || (*barre).h == -5){
+  if(score >= 0 || (*barre).h == -5){
     if(SDL_SetRenderDrawColor(renderer, 50, 50, 150, SDL_ALPHA_OPAQUE) != 0)
       SDL_ExitWithError("Impossible de changer la couleur du rendu");
   }

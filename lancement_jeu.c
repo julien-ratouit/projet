@@ -66,7 +66,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 
 		while(SDL_PollEvent(&event))
 		{
-			if(temps_jeu->get_ticks(temps_jeu) >= 10000 && indice_salle == 0)
+			/*if(temps_jeu->get_ticks(temps_jeu) >= 10000 && indice_salle == 0)
 			{
 				indice_salle = 1;
 				if(indice_salle == 1)
@@ -76,7 +76,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 					ajout_texture(texture_self, "images/self.png", renderer, window, HAUTEUR, LARGEUR);
 
 				}
-			}
+			}*/
 
 			switch (event.type)
 			{
