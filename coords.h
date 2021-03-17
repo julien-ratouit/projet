@@ -153,7 +153,6 @@
 /*----------------------------------------*/
 
 
-
 /*Zone bouton dans menu 'option'*/
 /*----------------------------------------*/
 #define QUIT_X_MIN 441
@@ -220,24 +219,65 @@
 
 
 
+//-----------------------Toutes les constantes des emplacement des cases sur lesquels ils faut cliquer pour les actions----------------------------
 
+//-----------------------------------------Les emplacements pour quitter les menus------------------------------------------------
 
+#define EMPLACEMENT_QUITTE_MENU_ACTION_X_MIN 0//A remplir
+#define EMPLACEMENT_QUITTE_MENU_ACTION_X_MAX 0//A remplir
+#define EMPLACEMENT_QUITTE_MENU_ACTION_Y_MIN 0//A remplir
+#define EMPLACEMENT_QUITTE_MENU_ACTION_Y_MAX 0//A remplir
 
+#define EMPLACEMENT_QUITTE_SDP_X_MIN 0//A remplir
+#define EMPLACEMENT_QUITTE_SDP_X_MAX 0//A remplir
+#define EMPLACEMENT_QUITTE_SDP_Y_MIN 0//A remplir
+#define EMPLACEMENT_QUITTE_SDP_Y_MAX 0//A remplir
 
+//--------------------------------------------Les emplacement des 4 cases pour équiper--------------------------------------------
+#define EMPLACEMENT_EQUIPE_1_X_MIN 0//A remplir
+#define EMPLACEMENT_EQUIPE_1_X_MAX 0//A remplir
+#define EMPLACEMENT_EQUIPE_1_Y_MIN 0//A remplir
+#define EMPLACEMENT_EQUIPE_1_Y_MAX 0//A remplir
 
+#define EMPLACEMENT_EQUIPE_2_X_MIN 0//A remplir
+#define EMPLACEMENT_EQUIPE_2_X_MAX 0//A remplir
+#define EMPLACEMENT_EQUIPE_2_Y_MIN 0//A remplir
+#define EMPLACEMENT_EQUIPE_2_Y_MAX 0//A remplir
 
+#define EMPLACEMENT_EQUIPE_3_X_MIN 0//A remplir
+#define EMPLACEMENT_EQUIPE_3_X_MAX 0//A remplir
+#define EMPLACEMENT_EQUIPE_3_Y_MIN 0//A remplir
+#define EMPLACEMENT_EQUIPE_3_Y_MAX 0//A remplir
 
+#define EMPLACEMENT_EQUIPE_4_X_MIN 0//A remplir
+#define EMPLACEMENT_EQUIPE_4_X_MAX 0//A remplir
+#define EMPLACEMENT_EQUIPE_4_Y_MIN 0//A remplir
+#define EMPLACEMENT_EQUIPE_4_Y_MAX 0//A remplir
 
+//-----------------------------Les emplacement des actions une fois le menu pour équiper/acheter ouvert--------------------------
 
+#define EMPLACEMENT_ACTION_0_X_MIN 0//A remplir
+#define EMPLACEMENT_ACTION_0_X_MAX 0//A remplir
+#define EMPLACEMENT_ACTION_0_Y_MIN 0//A remplir
+#define EMPLACEMENT_ACTION_0_Y_MAX 0//A remplir
 
+#define EMPLACEMENT_ACTION_1_X_MIN 0//A remplir
+#define EMPLACEMENT_ACTION_1_X_MAX 0//A remplir
+#define EMPLACEMENT_ACTION_1_Y_MIN 0//A remplir
+#define EMPLACEMENT_ACTION_1_Y_MAX 0//A remplir
 
+#define EMPLACEMENT_ACTION_2_X_MIN 0//A remplir
+#define EMPLACEMENT_ACTION_2_X_MAX 0//A remplir
+#define EMPLACEMENT_ACTION_2_Y_MIN 0//A remplir
+#define EMPLACEMENT_ACTION_2_Y_MAX 0//A remplir
 
+#define EMPLACEMENT_ACTION_3_X_MIN 0//A remplir
+#define EMPLACEMENT_ACTION_3_X_MAX 0//A remplir
+#define EMPLACEMENT_ACTION_3_Y_MIN 0//A remplir
+#define EMPLACEMENT_ACTION_3_Y_MAX 0//A remplir
 
+//Va falloir en rajouter plus tard, parce que y en a que 4
 
-
-
-
-
-
+//------------------------------------------------Fin constante emplacement-------------------------------------------------------
 
 #endif
