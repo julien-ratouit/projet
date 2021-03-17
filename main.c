@@ -36,6 +36,8 @@ int main (int argc, char ** argv)
 	ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 	ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
 
+	//SDL_SetWindowIcon(SDL_Window* window, SDL_Surface* surface);
+
 	SDL_RenderPresent(renderer);
 
 	while(program_launched)
