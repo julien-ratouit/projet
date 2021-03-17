@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "commun.h"
 
 //Sauvegarde la partie a la fin de la journée
 void sauvegarde(int money, int jour,int nb_action, int action_achete[], int action_equipe[]){

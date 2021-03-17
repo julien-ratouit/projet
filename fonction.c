@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <SDL.h>
-#include <SDL_image.h>
-#include "fonction.h"
-#include "coords.h"
+#include "commun.h"
+
 
 extern void SDL_ExitWithError(const char *message){ // Quitte le programme si ERREUR
   SDL_Log("ERREUR : %s > %s\n",message, SDL_GetError());

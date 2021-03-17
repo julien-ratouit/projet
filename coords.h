@@ -1,3 +1,7 @@
+#ifndef _COORDS_H_
+#define _COORDS_H_
+
+
 /*Dimmension de la fenêtre*/
 /*----------------------------------------*/
 #define HAUTEUR 720
@@ -16,6 +20,65 @@
 #define BOUTON_PLAY_Y_MAX 389
 #define BOUTON_PLAY_Y_MIN 332
 /*----------------------------------------*/
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*TUTO
+/*------------------------------------------------------------------------------------*/
+
+/*Coordonnées placement du bouton 'tuto'*/
+/*----------------------------------------*/
+#define TUTO_LARGEUR 565
+#define TUTO_HAUTEUR 400
+/*----------------------------------------*/
+
+/*Zone bouton 'fermer_tuto'*/
+/*----------------------------------------*/
+#define FERMER_TUTO_X_MAX 1070
+#define FERMER_TUTO_X_MIN 1010
+
+#define FERMER_TUTO_Y_MAX 130
+#define FERMER_TUTO_Y_MIN 70
+/*----------------------------------------*/
+
+/*Zone bouton 'tuto'*/
+/*----------------------------------------*/
+#define BOUTON_TUTO_X_MAX 700
+#define BOUTON_TUTO_X_MIN 565
+
+#define BOUTON_TUTO_Y_MAX 455
+#define BOUTON_TUTO_Y_MIN 400
+/*----------------------------------------*/
+
+/*Zone bouton 'next'*/
+/*----------------------------------------*/
+#define NEXT_TUTO_X_MAX 1060
+#define NEXT_TUTO_X_MIN 950
+
+#define NEXT_TUTO_Y_MAX 640
+#define NEXT_TUTO_Y_MIN 600
+/*----------------------------------------*/
+
+/*Zone bouton 'prev'*/
+/*----------------------------------------*/
+#define PREV_TUTO_X_MAX 310
+#define PREV_TUTO_X_MIN 200
+
+#define PREV_TUTO_Y_MAX 640
+#define PREV_TUTO_Y_MIN 600
+/*----------------------------------------*/
+
+/*-----------------------------------------------------------------------------------*/
+/*FIN TUTO
+/*------------------------------------------------------------------------------------*/
+
+
+
 
 
 
@@ -64,6 +127,16 @@
 
 
 
+
+
+
+
+
+
+/*----------------------------------------*/
+/*OPTION
+/*----------------------------------------*/
+
 /*Coordonnées placement du bouton 'option'*/
 /*----------------------------------------*/
 #define OPTION_LARGEUR 10
@@ -93,6 +166,13 @@
 #define REPRENDRE_Y_MIN 410
 #define REPRENDRE_Y_MAX 442
 /*----------------------------------------*/
+/*----------------------------------------*/
+/* FIN OPTION
+/*----------------------------------------*/
+
+
+
+
 
 
 /*Coordonnée des textures liée au barres sonore et depression*/
@@ -103,3 +183,61 @@
 #define BARRE_DEPRESSION_X 1065
 #define BARRE_DEPRESSION_Y 20
 /*----------------------------------------*/
+
+
+
+/*----------------------------------------*/
+/*ARGENT
+/*----------------------------------------*/
+
+/*placement texture du fond*/
+#define FOND_X
+#define FOND_Y
+
+/*placement texture de la piece de monnaie*/
+#define PIECE_X
+#define PIECE_Y
+
+/*placement texture de la centaine*/
+#define CENT_X
+#define CENT_Y
+
+/*placement texture de la dizaine*/
+#define DIZ_X
+#define DIZ_Y
+
+/*placement texture de l'unite*/
+#define UNIT_X
+#define UNIT_y
+
+/*----------------------------------------*/
+/*FIN ARGENT
+/*----------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif

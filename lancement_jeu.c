@@ -1,17 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "include/SDL.h"
-#include "include/SDL_image.h"
-#include "include/SDL_ttf.h"
-#include "fonction.h"
-#include "coords.h"
+#include "commun.h"
 #include "timer.h"
 #include "barre.h"
 #include "lancement_jeu.h"
 
 
-void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
+void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
@@ -37,10 +30,11 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 	int indice_salle = 0;
 
 	/*variables de test*/
-	int score = 0;
-	int test;
 	int *achat = malloc(sizeof(int));
 	(*achat) = 4;
+	int score = 0;
+	int test;
+	
 	/*-----------------*/
 
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , renderer, window, HAUTEUR , LARGEUR);
@@ -56,6 +50,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 	SDL_RenderPresent(renderer);
 
 	temps_jeu->debut(temps_jeu);
+	
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
@@ -66,6 +61,19 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 
 		while(SDL_PollEvent(&event))
 		{
+
+			/*if(temps_jeu->get_ticks(temps_jeu) >= 10000 && indice_salle == 0)
+			{
+				indice_salle = 1;
+				if(indice_salle == 1)
+				{
+					SDL_RenderClear(renderer);
+
+					ajout_texture(texture_self, "images/self.png", renderer, window, HAUTEUR, LARGEUR);
+
+				}
+			}*/
+
 			switch (event.type)
 			{
 				case SDL_KEYUP:
@@ -125,8 +133,8 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 
 					if((event.button.x < QUIT_X_MAX && event.button.x > QUIT_X_MIN)&&(event.button.y < QUIT_Y_MAX && event.button.y > QUIT_Y_MIN)&&status_menu == 1)
 					{
-						temps_jeu->stop(temps_jeu);
-						/*si on clique sur le bouton 'quitter le jeu'*/
+						temps_jeu->stop(temps_jeu); 
+						/*si on clique sur le bouton 'quitter le jeu'*/ 
 						program_launched = SDL_FALSE;
 					}
 
@@ -143,7 +151,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 
 						SDL_DestroyTexture(texture_classe);
 						ajout_texture(texture_classe ,"images/salle_de_classe.png" , renderer, window, HAUTEUR , LARGEUR);
-
+						
 						SDL_DestroyTexture(texture_action1);
 						SDL_DestroyTexture(texture_action2);
 						SDL_DestroyTexture(texture_action3);
