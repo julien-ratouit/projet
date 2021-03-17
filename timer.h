@@ -1,3 +1,6 @@
+#ifndef _TIMER_H_
+#define _TIMER_H_
+
 //Le Timer
 typedef struct Timer_s{
 
@@ -33,3 +36,5 @@ extern void timer_unpause(Timer_t * Timer);
 extern bool timer_is_started(Timer_t * Timer);
 extern bool timer_is_paused(Timer_t * Timer);
 extern Timer_t * timer_init();
+
+#endif

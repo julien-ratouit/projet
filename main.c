@@ -1,13 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h> 
-#include "include/SDL.h"
-#include "include/SDL_image.h"
-#include "include/SDL_ttf.h"
-#include "fonction.h"
-#include "coords.h"
+#include "commun.h"
 #include "timer.h"
-#include "barre.h"
 #include "lancement_jeu.h"
 #include "tuto.h"
 
@@ -29,7 +21,9 @@ int main (int argc, char ** argv)
 
 	SDL_bool program_launched = SDL_TRUE;
 
+
 	int status_tuto = -1;
+	int argent = 0;
 
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 		SDL_ExitWithError("Initialisation SDL");
@@ -60,7 +54,7 @@ int main (int argc, char ** argv)
 						SDL_DestroyTexture(texture_menu);
 						SDL_DestroyTexture(texture_btn_tuto);
 
-						lancement(renderer, window, temps_jeu);
+						lancement(renderer, window, temps_jeu, argent);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);

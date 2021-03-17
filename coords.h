@@ -1,3 +1,7 @@
+#ifndef _COORDS_H_
+#define _COORDS_H_
+
+
 /*Dimmension de la fenêtre*/
 /*----------------------------------------*/
 #define HAUTEUR 720
@@ -16,6 +20,12 @@
 #define BOUTON_PLAY_Y_MAX 389
 #define BOUTON_PLAY_Y_MIN 332
 /*----------------------------------------*/
+
+
+
+
+
+
 
 /*-----------------------------------------------------------------------------------*/
 /*TUTO
@@ -67,6 +77,13 @@
 /*FIN TUTO
 /*------------------------------------------------------------------------------------*/
 
+
+
+
+
+
+
+
 /*Zone des boutons 'actions'*/
 /*----------------------------------------*/
 #define ACTION1_X_MIN 38
@@ -110,6 +127,16 @@
 
 
 
+
+
+
+
+
+
+/*----------------------------------------*/
+/*OPTION
+/*----------------------------------------*/
+
 /*Coordonnées placement du bouton 'option'*/
 /*----------------------------------------*/
 #define OPTION_LARGEUR 10
@@ -139,6 +166,13 @@
 #define REPRENDRE_Y_MIN 410
 #define REPRENDRE_Y_MAX 442
 /*----------------------------------------*/
+/*----------------------------------------*/
+/* FIN OPTION
+/*----------------------------------------*/
+
+
+
+
 
 
 /*Coordonnée des textures liée au barres sonore et depression*/
@@ -149,3 +183,61 @@
 #define BARRE_DEPRESSION_X 1065
 #define BARRE_DEPRESSION_Y 20
 /*----------------------------------------*/
+
+
+
+/*----------------------------------------*/
+/*ARGENT
+/*----------------------------------------*/
+
+/*placement texture du fond*/
+#define FOND_X
+#define FOND_Y
+
+/*placement texture de la piece de monnaie*/
+#define PIECE_X
+#define PIECE_Y
+
+/*placement texture de la centaine*/
+#define CENT_X
+#define CENT_Y
+
+/*placement texture de la dizaine*/
+#define DIZ_X
+#define DIZ_Y
+
+/*placement texture de l'unite*/
+#define UNIT_X
+#define UNIT_y
+
+/*----------------------------------------*/
+/*FIN ARGENT
+/*----------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif

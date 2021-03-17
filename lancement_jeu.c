@@ -1,17 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h> 
-#include "include/SDL.h"
-#include "include/SDL_image.h"
-#include "include/SDL_ttf.h"
-#include "fonction.h"
-#include "coords.h"
+#include "commun.h"
 #include "timer.h"
 #include "barre.h"
 #include "lancement_jeu.h"
 
 
-void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
+void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
@@ -37,10 +30,11 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 	int indice_salle = 0;
 
 	/*variables de test*/
-	int score = 0;
-	int test;
 	int *achat = malloc(sizeof(int));
 	(*achat) = 4;
+	int score = 0;
+	int test;
+	
 	/*-----------------*/
 
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , renderer, window, HAUTEUR , LARGEUR);
@@ -56,6 +50,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 	SDL_RenderPresent(renderer);
 
 	temps_jeu->debut(temps_jeu);
+	
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
@@ -66,6 +61,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 
 		while(SDL_PollEvent(&event))
 		{
+
 			/*if(temps_jeu->get_ticks(temps_jeu) >= 10000 && indice_salle == 0)
 			{
 				indice_salle = 1;
