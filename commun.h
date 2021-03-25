@@ -4,6 +4,8 @@
 int argent;
 int val_depression;
 
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -13,6 +15,7 @@ int val_depression;
 #include "include/SDL_ttf.h"
 #include "fonction.h"
 #include "coords.h"
+#include "timer.h"
 
 
 #endif

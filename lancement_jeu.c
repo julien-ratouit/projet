@@ -3,19 +3,18 @@
 #include "barre.h"
 #include "lancement_jeu.h"
 #include "self.h"
+#include "salle_prof.h"
 
 void *fonc_pthread_timer_cb(void *parametre)
 {
-	printf("je passe dans la fonction de callback");
 	fonc_pthread_timer(parametre);
 }
 
 
 void fonc_pthread_timer(param_t *parametre)
 {
-	printf("je passe par la fonction : fonc_pthread_timer\n");
-	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 3000);
-	printf("je fini");
+	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 1000);
+	printf("je fini\n");
 	changement_salle(parametre);
 	pthread_exit(NULL);
 }
@@ -25,11 +24,11 @@ void fonc_pthread_timer(param_t *parametre)
 
 void changement_salle(param_t *parametre)
 {
-	printf("je passe par la fonction : changement_salle\n");
-	if((parametre->id_salle) == 1)
-	{		
-		lancement_self((parametre->renderer), (parametre->window));
-	}
+	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
+	if((parametre->id_salle) == 1)	
+		lancement_self(parametre);
+	else
+		lancement_salle_prof(parametre);
 }
 
 
@@ -42,6 +41,8 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 	param_t *parametre = malloc(sizeof(param_t));
 	parametre->temps_jeu = temps_jeu;
 	parametre->id_salle = id_salle;
+	parametre->window = window;
+	parametre->renderer = renderer;
 
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
@@ -88,7 +89,6 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 	temps_jeu->debut(temps_jeu);
 
 	pthread_create(&thread_minuteur, NULL, fonc_pthread_timer_cb, parametre);
-	printf("je suis là !\n");
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
