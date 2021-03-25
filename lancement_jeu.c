@@ -117,7 +117,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu)
 						/*si on clique sur le menu*/
 						status_menu = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
 
-						SDL_DestroyTexture(texture_menu_option);
+						//SDL_DestroyTexture(texture_menu_option);
 						ajout_texture(texture_menu_option ,"images/menu_pause.png" , renderer, window, HAUTEUR , LARGEUR);
 
 						SDL_RenderPresent(renderer);
