@@ -1,6 +1,7 @@
 #include "commun.h"
-#include "salle_prof.h"
 #include "lancement_jeu.h"
+#include "salle_prof.h"
+
 
 void lancement_salle_prof(param_t *parametre)
 {

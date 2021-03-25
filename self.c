@@ -1,9 +1,13 @@
 #include "commun.h"
-#include "self.h"
 #include "lancement_jeu.h"
+#include "self.h"
+
+
+
 
 void lancement_self(param_t *parametre)
 {
+
 	SDL_Texture *texture_self = NULL;
 
 	SDL_RenderClear((parametre->renderer));
