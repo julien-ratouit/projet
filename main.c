@@ -54,7 +54,7 @@ int main (int argc, char ** argv)
 						SDL_DestroyTexture(texture_menu);
 						SDL_DestroyTexture(texture_btn_tuto);
 
-						lancement(renderer, window, temps_jeu, argent);
+						lancement(renderer, window, temps_jeu, 1);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
