@@ -6,15 +6,16 @@
 
 void *fonc_pthread_timer_cb(void *parametre)
 {
+	printf("je passe dans la fonction de callback");
 	fonc_pthread_timer(parametre);
 }
 
 
-void *fonc_pthread_timer(param_t *parametre)
+void fonc_pthread_timer(param_t *parametre)
 {
 	printf("je passe par la fonction : fonc_pthread_timer\n");
 	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 3000);
-	printf("je fini")
+	printf("je fini");
 	changement_salle(parametre);
 	pthread_exit(NULL);
 }
@@ -36,7 +37,7 @@ void changement_salle(param_t *parametre)
 
 void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int id_salle)
 {
-	pthread_t *thread_minuteur;
+	pthread_t thread_minuteur;
 
 	param_t *parametre = malloc(sizeof(param_t));
 	parametre->temps_jeu = temps_jeu;
@@ -86,7 +87,8 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 
 	temps_jeu->debut(temps_jeu);
 
-	pthread_create(thread_minuteur, NULL, fonc_pthread_timer_cb, parametre);
+	pthread_create(&thread_minuteur, NULL, fonc_pthread_timer_cb, parametre);
+	printf("je suis là !\n");
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
