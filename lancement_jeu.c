@@ -6,6 +6,9 @@
 
 void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {
+	pthread_t * minuteur;
+	int pthread_create (minuteur, NULL, void * (* start_routine) (void *), NULL);
+
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
 
@@ -79,7 +82,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 				case SDL_KEYUP:
 					switch(event.key.keysym.sym){
 						case SDLK_a:
-							if(((*barre_depression).h>(-250))&&status_menu == -1)
+							if(((*barre_depression).h>(-250))&&status_menu == -1) 
 							{
 								score++;
 								/*mise a jour de la barre sonore + remise en place de la texture associé*/
