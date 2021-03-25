@@ -1,3 +1,4 @@
+#include <time.h>
 #include "commun.h"
 #include "timer.h"
 #include "lancement_jeu.h"
