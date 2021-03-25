@@ -147,6 +147,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 
 						status_menu = -1;
 
+						
 						SDL_DestroyTexture(texture_menu_option);
 
 						SDL_DestroyTexture(texture_classe);

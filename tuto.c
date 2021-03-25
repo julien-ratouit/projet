@@ -32,9 +32,8 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 							
 							page++;
 
-							SDL_RenderClear(renderer);
+							SDL_SetRenderTarget(renderer, NULL);// Dorénavent, on modifie à nouveau le renderer
 
-							ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 							switch(page)
 							{
 								case 1:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
@@ -51,9 +50,8 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 							
 							page--;
 
-							SDL_RenderClear(renderer);
+							SDL_SetRenderTarget(renderer, NULL);// Dorénavent, on modifie à nouveau le renderer
 
-							ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 							switch(page)
 							{
 								case 1:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;

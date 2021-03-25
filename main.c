@@ -67,7 +67,7 @@ int main (int argc, char ** argv)
 						/*si on appuie sur le bouton tuto*/
 
 						tuto(renderer, window);
-
+						
 						SDL_RenderClear(renderer);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
