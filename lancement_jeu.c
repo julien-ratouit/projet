@@ -4,10 +4,17 @@
 #include "lancement_jeu.h"
 
 
+void *fonc_pthread_timer(void *arg)
+{
+	while(temps_jeu->get_ticks(temps_jeu) <= 10000);
+	SDL_RenderClear(renderer);
+	ajout_texture(texture_self, "images/self.png", renderer, window, HAUTEUR, LARGEUR);
+	thread_exit(NULL);
+}
+
 void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {
-	pthread_t * minuteur;
-	int pthread_create (minuteur, NULL, void * (* start_routine) (void *), NULL);
+	pthread_t * thread_minuteur;
 
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
@@ -53,6 +60,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 	SDL_RenderPresent(renderer);
 
 	temps_jeu->debut(temps_jeu);
+
 	
 
 	/*----------------------------------------------------------------------*/
@@ -64,19 +72,6 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 
 		while(SDL_PollEvent(&event))
 		{
-
-			/*if(temps_jeu->get_ticks(temps_jeu) >= 10000 && indice_salle == 0)
-			{
-				indice_salle = 1;
-				if(indice_salle == 1)
-				{
-					SDL_RenderClear(renderer);
-
-					ajout_texture(texture_self, "images/self.png", renderer, window, HAUTEUR, LARGEUR);
-
-				}
-			}*/
-
 			switch (event.type)
 			{
 				case SDL_KEYUP:
