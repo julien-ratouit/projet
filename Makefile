@@ -1,7 +1,7 @@
 all : prog
 lib = -I include -L lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread
 opt = -m32
-prog.o = main.o fonction.o timer.o barre.o lancement_jeu.o tuto.o argent.o
+prog.o = main.o fonction.o timer.o barre.o lancement_jeu.o tuto.o argent.o self.o salle_prof.o
 
 prog : $(prog.o)
 	gcc $(opt) -o bin/prog $(prog.o) $(lib)
@@ -26,5 +26,12 @@ tuto.o : tuto.c
 
 argent.o : argent.c
 	gcc $(opt) -o argent.o -c argent.c $(lib)
+
+self.o : self.c
+	gcc $(opt) -o self.o -c self.c $(lib)
+
+salle_prof.o : salle_prof.c
+	gcc $(opt) -o salle_prof.o -c salle_prof.c $(lib)
+
 clean : 
 	rm *.o
