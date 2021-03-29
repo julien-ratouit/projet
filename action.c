@@ -249,3 +249,13 @@ int main(){
 
 
 }*/
+
+void afficher_icone(char * image, int place){
+	switch(place){
+
+		case 0: //afficher l'image au coordonnées de la case 1
+		case 1: //afficher l'image au coordonnées de la case 1
+		case 2: //afficher l'image au coordonnées de la case 1
+		case 3: //afficher l'image au coordonnées de la case 1
+	}
+}
