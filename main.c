@@ -6,6 +6,7 @@
 
 int main (int argc, char ** argv)
 {
+	srand(time(NULL));
 	system("cls");
 	SDL_Window *window = NULL;
 	SDL_Renderer *renderer = NULL;
