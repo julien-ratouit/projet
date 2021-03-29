@@ -13,7 +13,7 @@ void *fonc_pthread_timer_cb(void *parametre)
 
 void fonc_pthread_timer(param_t *parametre)
 {
-	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 10000);
+	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 5000);
 	printf("je fini\n");
 	changement_salle(parametre);
 	pthread_exit(NULL);

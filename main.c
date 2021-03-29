@@ -15,6 +15,7 @@ int main (int argc, char ** argv)
 	SDL_Texture *texture_btn_jouer = NULL;
 	SDL_Texture *texture_btn_option = NULL;
 	SDL_Texture *texture_btn_tuto = NULL;
+	SDL_Texture *texture_logo = NULL;
 
 	Timer_t *temps_jeu;
 	temps_jeu = timer_init();
@@ -32,8 +33,9 @@ int main (int argc, char ** argv)
     	SDL_ExitWithError("Impossible de créer la fenêtre et le rendu");
 
 	ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-	ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-	ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_LARGEUR, TUTO_HAUTEUR);
+	ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+	ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+	ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 	SDL_RenderPresent(renderer);
 
@@ -49,7 +51,7 @@ int main (int argc, char ** argv)
 					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
-						/*si on appuie sur le bouton jouer*/
+						//si on appuie sur le bouton jouer
 						SDL_DestroyTexture(texture_btn_jouer);
 						SDL_DestroyTexture(texture_menu);
 						SDL_DestroyTexture(texture_btn_tuto);
@@ -57,22 +59,24 @@ int main (int argc, char ** argv)
 						lancement(renderer, window, temps_jeu, 1);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_LARGEUR, TUTO_HAUTEUR);
+						ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 						SDL_RenderPresent(renderer);
 					}
 					if ((event.button.x < BOUTON_TUTO_X_MAX && event.button.x > BOUTON_TUTO_X_MIN)&&(event.button.y < BOUTON_TUTO_Y_MAX && event.button.y > BOUTON_TUTO_Y_MIN))
 					{
-						/*si on appuie sur le bouton tuto*/
+						//si on appuie sur le bouton tuto
 
 						tuto(renderer, window);
 
 						SDL_RenderClear(renderer);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture_non_centre(texture_btn_tuto ,"images/tuto_petit.png" , renderer, window, TUTO_LARGEUR, TUTO_HAUTEUR);
+						ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 					
 						SDL_RenderPresent(renderer);
 					}

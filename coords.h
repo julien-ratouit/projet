@@ -14,11 +14,13 @@
 
 /*Zone bouton 'jouer'*/
 /*----------------------------------------*/
-#define BOUTON_PLAY_X_MAX 715
-#define BOUTON_PLAY_X_MIN 565
+#define BOUTON_PLAY_X_MAX 788
+#define BOUTON_PLAY_X_MIN 492
 
-#define BOUTON_PLAY_Y_MAX 389
-#define BOUTON_PLAY_Y_MIN 332
+#define BOUTON_PLAY_Y_MAX 403
+#define BOUTON_PLAY_Y_MIN 313
+
+
 /*----------------------------------------*/
 
 
@@ -31,12 +33,6 @@
 /*TUTO
 /*------------------------------------------------------------------------------------*/
 
-/*Coordonnées placement du bouton 'tuto'*/
-/*----------------------------------------*/
-#define TUTO_LARGEUR 565
-#define TUTO_HAUTEUR 400
-/*----------------------------------------*/
-
 /*Zone bouton 'fermer_tuto'*/
 /*----------------------------------------*/
 #define FERMER_TUTO_X_MAX 1070
@@ -48,11 +44,11 @@
 
 /*Zone bouton 'tuto'*/
 /*----------------------------------------*/
-#define BOUTON_TUTO_X_MAX 700
-#define BOUTON_TUTO_X_MIN 565
+#define BOUTON_TUTO_X_MAX 790
+#define BOUTON_TUTO_X_MIN 490
 
-#define BOUTON_TUTO_Y_MAX 455
-#define BOUTON_TUTO_Y_MIN 400
+#define BOUTON_TUTO_Y_MAX 510
+#define BOUTON_TUTO_Y_MIN 424
 /*----------------------------------------*/
 
 /*Zone bouton 'next'*/
