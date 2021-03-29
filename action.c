@@ -11,7 +11,7 @@
 #define QUITTE_SDP -6
 
 //Initialise les informations d'une action
-//En static pour ne pas l'utiliser dans le main 
+//En static pour ne pas l'utiliser dans le main
 extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int))
 {
 	action_t *action = malloc(sizeof(action_t));
@@ -31,7 +31,7 @@ extern void init_tab_action(action_t * tab[])
 	tab[0] = init_action(0, 100, 1,fonc_action_1);
 	tab[1] = init_action(1, 100, 2,fonc_action_2);
 	tab[2] = init_action(2, 100, 3,fonc_action_3);
-	tab[3] = init_action(3, 100, 4,fonc_action_4); 
+	tab[3] = init_action(3, 100, 4,fonc_action_4);
 }
 
 
@@ -48,7 +48,7 @@ extern void init_tab_action(action_t * tab[])
 extern int clic_choix_sdp(){
 
 	SDL_Event event;
-	
+
 	switch(event.type)
 	{
 			case SDL_MOUSEBUTTONDOWN:
@@ -120,9 +120,9 @@ extern int achat_action(action_t *action, int *argent)
 
 //Ajoutez un bouton Equiper pour lancer la fonction
 //Equipe une action si elle est acheté et si elle n'est pas déjà équipé
-extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[]){ 
-	
-	//affiche_action();//A FAIRE MON P'TIT CHARLES :DDDDD 
+extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[]){
+
+	//affiche_action();//A FAIRE MON P'TIT CHARLES :DDDDD
 
 	int id;
 	id = clic_choix_sdp();
@@ -167,7 +167,7 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 	//Si sur ce que l'on clique n'est pas acheté, ça veut dire qu'on veut l'acheter :D
 	else if(achat_action(tab_action[id], argent )){
 
-		return equipe_action(place,argent, tab_equipe, tab_action);//Si on achète je relance la procédure d'équipationnagization :D 
+		return equipe_action(place,argent, tab_equipe, tab_action);//Si on achète je relance la procédure d'équipationnagization :D
 
 	}
 	else return  equipe_action(place,argent, tab_equipe, tab_action); //Si y a rien de tout ça c'est que le joueur a dû missclick où cliquer n'importe où, alors je recommence la procédure
@@ -200,7 +200,7 @@ extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_a
 		}
 
 	}
-	
+
 	//fermer_menu_action();//A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
 
 }
@@ -240,12 +240,22 @@ void fonc_action_4 (int jour)
 /*----------------------------------------------------------*/
 
 //PHASE DE TEST du boss
-/* Je suis une merde ça fonctionne pas si j'ai pas d'interface XDD 
+/* Je suis une merde ça fonctionne pas si j'ai pas d'interface XDD
 int main(){
-	
+
 	action_t test[4];
 	int argent = 100;
 	init_tab_action(test);
-	
+
 
 }*/
+
+void afficher_icone(char * image, int place){
+	switch(place){
+
+		case 0: //afficher l'image au coordonnées de la case 1
+		case 1: //afficher l'image au coordonnées de la case 1
+		case 2: //afficher l'image au coordonnées de la case 1
+		case 3: //afficher l'image au coordonnées de la case 1
+	}
+}
