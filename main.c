@@ -37,7 +37,7 @@ int main (int argc, char ** argv)
 	ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
 	ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
 	ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
-	affiche_argent(window, renderer, 876);
+	affiche_argent(window, renderer, argent);
 
 
 	SDL_RenderPresent(renderer);

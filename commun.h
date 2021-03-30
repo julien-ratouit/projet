@@ -1,7 +1,7 @@
 #ifndef _COMMUN_H_
 #define _COMMUN_H_
 
-int argent;
+#define argent = 25;
 int val_depression;
 
 
