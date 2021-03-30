@@ -16,6 +16,7 @@ int val_depression;
 #include "fonction.h"
 #include "coords.h"
 #include "timer.h"
+#include "argent.h"
 
 
 #endif

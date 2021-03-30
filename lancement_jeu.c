@@ -5,6 +5,8 @@
 #include "self.h"
 #include "salle_prof.h"
 
+
+//////////////////////////////////////////////////////////////////////////////////
 void *fonc_pthread_timer_cb(void *parametre)
 {
 	fonc_pthread_timer(parametre);
@@ -15,21 +17,14 @@ void fonc_pthread_timer(param_t *parametre)
 {
 	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 5000);
 	printf("je fini\n");
-	changement_salle(parametre);
-	pthread_exit(NULL);
-}
-
-
-
-
-void changement_salle(param_t *parametre)
-{
 	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
 	if((parametre->id_salle) == 1)	
 		lancement_self(parametre);
 	else
 		lancement_salle_prof(parametre);
+	pthread_exit(NULL);
 }
+//////////////////////////////////////////////////////////////////////////////////
 
 
 
