@@ -11,16 +11,10 @@ void affiche_argent(SDL_Window *window, SDL_Renderer *renderer, int argent)
 	int centaine;
 
 	//je calcule la quantité d'unite, de dizaine et de centaine en fonction de l'argent donné en paramettre
-	
-
 	centaine = argent_total / 100;
-	printf("%d centaine\n", centaine);
-
 	argent_total -= centaine * 100;
-
+	
 	dizaine = argent_total / 10;
-	printf("%d dizaine\n", dizaine);
-
 	argent_total -= dizaine * 10;
 
 	if(centaine == 0)

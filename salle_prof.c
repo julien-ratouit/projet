@@ -16,6 +16,7 @@ void lancement_salle_prof(param_t *parametre)
 	ajout_texture(texture_salle_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 	ajout_texture(texture_mess, "images/felicitation.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 	ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
+	affiche_argent((parametre->window), (parametre->renderer), 876);
 
 	SDL_RenderPresent((parametre->renderer));
 
@@ -44,6 +45,7 @@ void lancement_salle_prof(param_t *parametre)
 
 						ajout_texture(texture_salle_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 						ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
+						affiche_argent((parametre->window), (parametre->renderer), 876);
 
 						SDL_RenderPresent((parametre->renderer));
 					}
@@ -54,6 +56,7 @@ void lancement_salle_prof(param_t *parametre)
 						statut_opt = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
 
 						SDL_DestroyTexture(texture_menu_option);
+
 						ajout_texture(texture_menu_option ,"images/menu_pause.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 
 						SDL_RenderPresent((parametre->renderer));
@@ -71,8 +74,11 @@ void lancement_salle_prof(param_t *parametre)
 						/*si on clique sur reprendre*/
 						statut_opt = 0;
 						SDL_RenderClear((parametre->renderer));
+
 						ajout_texture(texture_salle_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 						ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
+						affiche_argent((parametre->window), (parametre->renderer), 876);
+
 						SDL_RenderPresent((parametre->renderer));
 					}
 					break;

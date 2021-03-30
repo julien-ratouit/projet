@@ -212,6 +212,16 @@
 
 
 
+/*----------------------------------------*/
+/*BOUTON SUIVANT
+/*----------------------------------------*/
+#define BTN_SUIVANT_X_MAX 832
+#define BTN_SUIVANT_X_MIN 457
+
+#define BTN_SUIVANT_Y_MAX 702
+#define BTN_SUIVANT_Y_MIN 627
+
+
 
 
 

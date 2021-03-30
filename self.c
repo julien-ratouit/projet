@@ -10,12 +10,15 @@ void lancement_self(param_t *parametre)
 	SDL_Texture *texture_mess = NULL;
 	SDL_Texture *texture_btn_option = NULL;
 	SDL_Texture *texture_menu_option = NULL;
+	SDL_Texture *texture_btn_suivant = NULL;
 
 	SDL_RenderClear((parametre->renderer));
 
 	ajout_texture(texture_self ,"images/self.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 	ajout_texture(texture_mess, "images/felicitation.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 	ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
+	ajout_texture(texture_btn_suivant, "images/bouton_suivant.png", (parametre->renderer), (parametre->window), HAUTEUR*1.85 , LARGEUR);
+	affiche_argent((parametre->window), (parametre->renderer), 876);
 
 	SDL_RenderPresent((parametre->renderer));
 
@@ -45,6 +48,8 @@ void lancement_self(param_t *parametre)
 						
 						ajout_texture(texture_self ,"images/self.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 						ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
+						ajout_texture(texture_btn_suivant, "images/bouton_suivant.png", (parametre->renderer), (parametre->window), HAUTEUR*1.85 , LARGEUR);
+						affiche_argent((parametre->window), (parametre->renderer), 876);
 
 						SDL_RenderPresent((parametre->renderer));
 					}
@@ -56,7 +61,10 @@ void lancement_self(param_t *parametre)
 						statut_opt = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
 
 						SDL_DestroyTexture(texture_menu_option);
+
 						ajout_texture(texture_menu_option ,"images/menu_pause.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+						ajout_texture(texture_btn_suivant, "images/bouton_suivant.png", (parametre->renderer), (parametre->window), HAUTEUR*1.85 , LARGEUR);
+						affiche_argent((parametre->window), (parametre->renderer), 876);
 
 						SDL_RenderPresent((parametre->renderer));
 					}
@@ -73,13 +81,17 @@ void lancement_self(param_t *parametre)
 						/*si on clique sur reprendre*/
 						statut_opt = 0;
 						SDL_RenderClear((parametre->renderer));
+
 						ajout_texture(texture_self ,"images/self.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 						ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
+						ajout_texture(texture_btn_suivant, "images/bouton_suivant.png", (parametre->renderer), (parametre->window), HAUTEUR*1.85 , LARGEUR);
+						affiche_argent((parametre->window), (parametre->renderer), 876);
+
 						SDL_RenderPresent((parametre->renderer));
 					}
 
 
-					if((event.button.x > 453 && event.button.x < 516)&&(event.button.y > 26 && event.button.y < 43) && statut_mess == 0 && statut_opt == 0)
+					if((event.button.x > BTN_SUIVANT_X_MIN && event.button.x < BTN_SUIVANT_X_MAX)&&(event.button.y > BTN_SUIVANT_Y_MIN && event.button.y < BTN_SUIVANT_Y_MAX) && statut_mess == 0 && statut_opt == 0)
 					{
 						lancement((parametre->renderer), (parametre->window), (parametre->temps_jeu), 2);
 					}
