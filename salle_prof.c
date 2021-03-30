@@ -76,6 +76,7 @@ void lancement_salle_prof(param_t *parametre)
 						SDL_RenderPresent((parametre->renderer));
 					}
 					break;
+					default: break;
 			}
 		}
 	}
