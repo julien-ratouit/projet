@@ -3,25 +3,34 @@
 #include "salle_prof.h"
 
 
+void textures_sp(param_t *parametre, SDL_Texture *texture_prof)
+{
+	ajout_texture(texture_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+	ajout_texture(texture_prof, "images/btn_restart.png", (parametre->renderer), (parametre->window), HAUTEUR*1.8 , LARGEUR*1.5);
+	ajout_texture(texture_prof, "images/btn_save.png", (parametre->renderer), (parametre->window), HAUTEUR*1.835 , LARGEUR/1.75);
+	ajout_texture_non_centre(texture_prof , "images/btn_info.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
+	affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
+}
+
+
 void lancement_salle_prof(param_t *parametre)
 {
 
-	SDL_Texture *texture_salle_prof = NULL;
+	(parametre->argent) += 5;
+
+	SDL_Texture *texture_prof = NULL;
 	SDL_Texture *texture_mess = NULL;
-	SDL_Texture *texture_btn_option = NULL;
-	SDL_Texture *texture_menu_option = NULL;
+	SDL_Texture *texture_menu_info = NULL;
 
 	SDL_RenderClear((parametre->renderer));
 
-	ajout_texture(texture_salle_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+	textures_sp(parametre, texture_prof);
 	ajout_texture(texture_mess, "images/felicitation.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
-	ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
-	affiche_argent((parametre->window), (parametre->renderer), 876);
 
 	SDL_RenderPresent((parametre->renderer));
 
 	int statut_mess = 1;
-	int statut_opt = 0;
+	int statut_info = 0;
 
 	SDL_bool program_launched = SDL_TRUE;
 
@@ -43,46 +52,58 @@ void lancement_salle_prof(param_t *parametre)
 						
 						SDL_RenderClear((parametre->renderer));
 
-						ajout_texture(texture_salle_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
-						ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
-						affiche_argent((parametre->window), (parametre->renderer), 876);
+						textures_sp(parametre, texture_prof);
 
 						SDL_RenderPresent((parametre->renderer));
 					}
 
 					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN) && statut_mess == 0)
 					{
-						/*si on clique sur le bouton option*/
-						statut_opt = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
+						//si on clique sur le bouton info
 
-						SDL_DestroyTexture(texture_menu_option);
+						statut_info = 1;
+						SDL_RenderClear((parametre->renderer));
 
-						ajout_texture(texture_menu_option ,"images/menu_pause.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+						textures_sp(parametre, texture_prof);
+						ajout_texture(texture_menu_info ,"images/info2.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 
 						SDL_RenderPresent((parametre->renderer));
+
 					}
 
-
-					if((event.button.x < QUIT_X_MAX && event.button.x > QUIT_X_MIN)&&(event.button.y < QUIT_Y_MAX && event.button.y > QUIT_Y_MIN) && statut_opt == 1)
+					if((event.button.x < COMPRIS_X_MAX && event.button.x > COMPRIS_X_MIN)&&(event.button.y < COMPRIS_Y_MAX && event.button.y > COMPRIS_Y_MIN) && statut_info == 1)
 					{
-						/*si on clique sur le bouton 'quitter le jeu'*/ 
+						//si on clique sur le bouton compris
+
+						statut_info = 0;
+
+						SDL_RenderClear((parametre->renderer));
+
+						textures_sp(parametre, texture_prof);
+
+						SDL_RenderPresent((parametre->renderer));
+
+					}
+
+					if((event.button.x > BTN_RESTART_X_MIN && event.button.x < BTN_RESTART_X_MAX)&&(event.button.y > BTN_RESTART_Y_MIN && event.button.y < BTN_RESTART_Y_MAX) && statut_mess == 0)
+					{
+						//on clique sur bouton pour commencer une nouvelle journee
+
+						printf("tu as clique sur le bouton restart\n");
+						lancement((parametre->renderer), (parametre->window), (parametre->temps_jeu), 1, (parametre->argent));
+					}
+
+					if((event.button.x > BTN_SAVE_X_MIN && event.button.x < BTN_SAVE_X_MAX)&&(event.button.y > BTN_SAVE_Y_MIN && event.button.y < BTN_SAVE_Y_MAX) && statut_mess == 0)
+					{
+						//on clique pour sauvegarder et quitter
+
+						printf("tu as clique sur le bouton save\n");
 						program_launched = SDL_FALSE;
 					}
 
-					if((event.button.x < REPRENDRE_X_MAX && event.button.x > REPRENDRE_X_MIN)&&(event.button.y < REPRENDRE_Y_MAX && event.button.y > REPRENDRE_Y_MIN) && statut_opt == 1)
-					{
-						/*si on clique sur reprendre*/
-						statut_opt = 0;
-						SDL_RenderClear((parametre->renderer));
-
-						ajout_texture(texture_salle_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
-						ajout_texture_non_centre(texture_btn_option , "images/option.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
-						affiche_argent((parametre->window), (parametre->renderer), 876);
-
-						SDL_RenderPresent((parametre->renderer));
-					}
 					break;
-					default: break;
+				default: 
+					break;
 			}
 		}
 	}

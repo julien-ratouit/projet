@@ -15,13 +15,16 @@ void *fonc_pthread_timer_cb(void *parametre)
 
 void fonc_pthread_timer(param_t *parametre)
 {
-	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 5000);
+	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 1000);
 	printf("je fini\n");
 	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
 	if((parametre->id_salle) == 1)	
 		lancement_self(parametre);
 	else
+	{
 		lancement_salle_prof(parametre);
+		printf("tu viens de sauvegarder et quitter.\n");
+	}
 	pthread_exit(NULL);
 }
 //////////////////////////////////////////////////////////////////////////////////
@@ -29,13 +32,14 @@ void fonc_pthread_timer(param_t *parametre)
 
 
 
-void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int id_salle)
+void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int id_salle, int argent)
 {
 	pthread_t thread_minuteur;
 
 	param_t *parametre = malloc(sizeof(param_t));
 	parametre->temps_jeu = temps_jeu;
 	parametre->id_salle = id_salle;
+	parametre->argent = argent;
 	parametre->window = window;
 	parametre->renderer = renderer;
 

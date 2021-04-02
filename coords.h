@@ -165,6 +165,17 @@
 /* FIN OPTION
 /*----------------------------------------*/
 
+/*----------------------------------------*/
+/* INFORMATIONS
+/*----------------------------------------*/
+#define COMPRIS_X_MIN 529
+#define COMPRIS_X_MAX 744
+#define COMPRIS_Y_MIN 581
+#define COMPRIS_Y_MAX 658
+/*----------------------------------------*/
+/* FIN INFORMATIONS
+/*----------------------------------------*/
+
 
 
 
@@ -181,33 +192,7 @@
 
 
 
-/*----------------------------------------*/
-/*ARGENT
-/*----------------------------------------*/
 
-/*placement texture du fond*/
-#define FOND_X 10
-#define FOND_Y 10
-
-/*placement texture de la piece de monnaie*/
-#define PIECE_X 103
-#define PIECE_Y 16
-
-/*placement texture de la centaine*/
-#define CENT_X 15
-#define CENT_Y 16
-
-/*placement texture de la dizaine*/
-#define DIZ_X 45
-#define DIZ_Y 16
-
-/*placement texture de l'unite*/
-#define UNIT_X 75
-#define UNIT_Y 16
-
-/*----------------------------------------*/
-/*FIN ARGENT
-/*----------------------------------------*/
 
 
 
@@ -222,6 +207,24 @@
 #define BTN_SUIVANT_Y_MIN 627
 
 
+/*----------------------------------------*/
+/*ZONE BOUTON SAUVEGARDER/QUITTER
+/*----------------------------------------*/
+
+#define BTN_SAVE_X_MIN 208
+#define BTN_SAVE_X_MAX 524
+#define BTN_SAVE_Y_MIN 614
+#define BTN_SAVE_Y_MAX 701
+
+
+/*----------------------------------------*/
+/*ZONE BOUTON COMMENCER NOUVELLE JOURNEE
+/*----------------------------------------*/
+
+#define BTN_RESTART_X_MIN 799
+#define BTN_RESTART_X_MAX 1123
+#define BTN_RESTART_Y_MIN 614
+#define BTN_RESTART_Y_MAX 701
 
 
 

@@ -53,11 +53,12 @@ int main (int argc, char ** argv)
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
 						//si on appuie sur le bouton jouer
+
 						SDL_DestroyTexture(texture_btn_jouer);
 						SDL_DestroyTexture(texture_menu);
 						SDL_DestroyTexture(texture_btn_tuto);
 
-						lancement(renderer, window, temps_jeu, 1);
+						lancement(renderer, window, temps_jeu, 1, argent);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
