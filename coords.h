@@ -14,11 +14,13 @@
 
 /*Zone bouton 'jouer'*/
 /*----------------------------------------*/
-#define BOUTON_PLAY_X_MAX 715
-#define BOUTON_PLAY_X_MIN 565
+#define BOUTON_PLAY_X_MAX 788
+#define BOUTON_PLAY_X_MIN 492
 
-#define BOUTON_PLAY_Y_MAX 389
-#define BOUTON_PLAY_Y_MIN 332
+#define BOUTON_PLAY_Y_MAX 403
+#define BOUTON_PLAY_Y_MIN 313
+
+
 /*----------------------------------------*/
 
 
@@ -31,12 +33,6 @@
 /*TUTO
 /*------------------------------------------------------------------------------------*/
 
-/*Coordonnées placement du bouton 'tuto'*/
-/*----------------------------------------*/
-#define TUTO_LARGEUR 565
-#define TUTO_HAUTEUR 400
-/*----------------------------------------*/
-
 /*Zone bouton 'fermer_tuto'*/
 /*----------------------------------------*/
 #define FERMER_TUTO_X_MAX 1070
@@ -48,11 +44,11 @@
 
 /*Zone bouton 'tuto'*/
 /*----------------------------------------*/
-#define BOUTON_TUTO_X_MAX 700
-#define BOUTON_TUTO_X_MIN 565
+#define BOUTON_TUTO_X_MAX 790
+#define BOUTON_TUTO_X_MIN 490
 
-#define BOUTON_TUTO_Y_MAX 455
-#define BOUTON_TUTO_Y_MIN 400
+#define BOUTON_TUTO_Y_MAX 510
+#define BOUTON_TUTO_Y_MIN 424
 /*----------------------------------------*/
 
 /*Zone bouton 'next'*/
@@ -169,6 +165,17 @@
 /* FIN OPTION
 /*----------------------------------------*/
 
+/*----------------------------------------*/
+/* INFORMATIONS
+/*----------------------------------------*/
+#define COMPRIS_X_MIN 529
+#define COMPRIS_X_MAX 744
+#define COMPRIS_Y_MIN 581
+#define COMPRIS_Y_MAX 658
+/*----------------------------------------*/
+/* FIN INFORMATIONS
+/*----------------------------------------*/
+
 
 
 
@@ -185,74 +192,65 @@
 
 
 
+
+
+
+
+
 /*----------------------------------------*/
-/*ARGENT
+/*BOUTON SUIVANT
 /*----------------------------------------*/
+#define BTN_SUIVANT_X_MAX 832
+#define BTN_SUIVANT_X_MIN 457
 
-/*placement texture du fond*/
-#define FOND_X
-#define FOND_Y
+#define BTN_SUIVANT_Y_MAX 702
+#define BTN_SUIVANT_Y_MIN 627
 
-/*placement texture de la piece de monnaie*/
-#define PIECE_X
-#define PIECE_Y
-
-/*placement texture de la centaine*/
-#define CENT_X
-#define CENT_Y
-
-/*placement texture de la dizaine*/
-#define DIZ_X
-#define DIZ_Y
-
-/*placement texture de l'unite*/
-#define UNIT_X
-#define UNIT_y
 
 /*----------------------------------------*/
-/*FIN ARGENT
+/*ZONE BOUTON SAUVEGARDER/QUITTER
 /*----------------------------------------*/
 
+#define BTN_SAVE_X_MIN 208
+#define BTN_SAVE_X_MAX 524
+#define BTN_SAVE_Y_MIN 614
+#define BTN_SAVE_Y_MAX 701
 
 
+/*----------------------------------------*/
+/*ZONE BOUTON COMMENCER NOUVELLE JOURNEE
+/*----------------------------------------*/
 
+#define BTN_RESTART_X_MIN 799
+#define BTN_RESTART_X_MAX 1123
+#define BTN_RESTART_Y_MIN 614
+#define BTN_RESTART_Y_MAX 701
 
 
 
 //-----------------------Toutes les constantes des emplacement des cases sur lesquels ils faut cliquer pour les actions----------------------------
 
-//-----------------------------------------Les emplacements pour quitter les menus------------------------------------------------
-
-#define EMPLACEMENT_QUITTE_MENU_ACTION_X_MIN 0//A remplir
-#define EMPLACEMENT_QUITTE_MENU_ACTION_X_MAX 0//A remplir
-#define EMPLACEMENT_QUITTE_MENU_ACTION_Y_MIN 0//A remplir
-#define EMPLACEMENT_QUITTE_MENU_ACTION_Y_MAX 0//A remplir
-
-#define EMPLACEMENT_QUITTE_SDP_X_MIN 0//A remplir
-#define EMPLACEMENT_QUITTE_SDP_X_MAX 0//A remplir
-#define EMPLACEMENT_QUITTE_SDP_Y_MIN 0//A remplir
-#define EMPLACEMENT_QUITTE_SDP_Y_MAX 0//A remplir
 
 //--------------------------------------------Les emplacement des 4 cases pour équiper--------------------------------------------
-#define EMPLACEMENT_EQUIPE_1_X_MIN 0//A remplir
-#define EMPLACEMENT_EQUIPE_1_X_MAX 0//A remplir
-#define EMPLACEMENT_EQUIPE_1_Y_MIN 0//A remplir
-#define EMPLACEMENT_EQUIPE_1_Y_MAX 0//A remplir
+#define EMPLACEMENT_EQUIPE_1_X_MIN 481//A remplir
+#define EMPLACEMENT_EQUIPE_1_X_MAX 531//A remplir
+#define EMPLACEMENT_EQUIPE_1_Y_MIN 471//A remplir
+#define EMPLACEMENT_EQUIPE_1_Y_MAX 521//A remplir
 
-#define EMPLACEMENT_EQUIPE_2_X_MIN 0//A remplir
-#define EMPLACEMENT_EQUIPE_2_X_MAX 0//A remplir
-#define EMPLACEMENT_EQUIPE_2_Y_MIN 0//A remplir
-#define EMPLACEMENT_EQUIPE_2_Y_MAX 0//A remplir
+#define EMPLACEMENT_EQUIPE_2_X_MIN 558//A remplir
+#define EMPLACEMENT_EQUIPE_2_X_MAX 608//A remplir
+#define EMPLACEMENT_EQUIPE_2_Y_MIN 471//A remplir
+#define EMPLACEMENT_EQUIPE_2_Y_MAX 521//A remplir
 
-#define EMPLACEMENT_EQUIPE_3_X_MIN 0//A remplir
-#define EMPLACEMENT_EQUIPE_3_X_MAX 0//A remplir
-#define EMPLACEMENT_EQUIPE_3_Y_MIN 0//A remplir
-#define EMPLACEMENT_EQUIPE_3_Y_MAX 0//A remplir
+#define EMPLACEMENT_EQUIPE_3_X_MIN 635//A remplir
+#define EMPLACEMENT_EQUIPE_3_X_MAX 685//A remplir
+#define EMPLACEMENT_EQUIPE_3_Y_MIN 471//A remplir
+#define EMPLACEMENT_EQUIPE_3_Y_MAX 521//A remplir
 
-#define EMPLACEMENT_EQUIPE_4_X_MIN 0//A remplir
-#define EMPLACEMENT_EQUIPE_4_X_MAX 0//A remplir
-#define EMPLACEMENT_EQUIPE_4_Y_MIN 0//A remplir
-#define EMPLACEMENT_EQUIPE_4_Y_MAX 0//A remplir
+#define EMPLACEMENT_EQUIPE_4_X_MIN 712//A remplir
+#define EMPLACEMENT_EQUIPE_4_X_MAX 762//A remplir
+#define EMPLACEMENT_EQUIPE_4_Y_MIN 471//A remplir
+#define EMPLACEMENT_EQUIPE_4_Y_MAX 521//A remplir
 
 //-----------------------------Les emplacement des actions une fois le menu pour équiper/acheter ouvert--------------------------
 
@@ -276,6 +274,17 @@
 #define EMPLACEMENT_ACTION_3_Y_MIN 0//A remplir
 #define EMPLACEMENT_ACTION_3_Y_MAX 0//A remplir
 
+#define EMPLACEMENT_ICONE_1_X 481
+#define EMPLACEMENT_ICONE_1_Y 471
+
+#define EMPLACEMENT_ICONE_2_X 558
+#define EMPLACEMENT_ICONE_2_Y 471
+
+#define EMPLACEMENT_ICONE_3_X 635
+#define EMPLACEMENT_ICONE_3_Y 471
+
+#define EMPLACEMENT_ICONE_4_X 712
+#define EMPLACEMENT_ICONE_4_Y 471
 //Va falloir en rajouter plus tard, parce que y en a que 4
 
 //------------------------------------------------Fin constante emplacement-------------------------------------------------------
