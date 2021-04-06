@@ -31,14 +31,8 @@ int timer_get_ticks(Timer_t * Timer){
     if( Timer->start == true ){
 
         //Si le timer est en pause
-        if( Timer->paused == true ){
-
-            //On retourne le nombre de ticks quand le timer a été mis en pause
-            return SDL_GetTicks() - Timer->tick_pause;
-
-        }
-        else{
-
+        if( Timer->paused == false ){
+            
             //On retourne le temps courant moins le temps quand il a démarré
             return SDL_GetTicks() - Timer->tick_debut;
 

@@ -2,6 +2,7 @@
 #include "timer.h"
 #include "lancement_jeu.h"
 #include "tuto.h"
+#include "action.h"
 
 int main (int argc, char ** argv)
 {
@@ -18,7 +19,8 @@ int main (int argc, char ** argv)
 
 	Timer_t *temps_jeu;
 	temps_jeu = timer_init();
-
+	init_tab_action(action_equipe);
+	init_tab_action(liste_action); //Initialisation de la liste des actions
 	SDL_bool program_launched = SDL_TRUE;
 
 
@@ -54,7 +56,7 @@ int main (int argc, char ** argv)
 						SDL_DestroyTexture(texture_menu);
 						SDL_DestroyTexture(texture_btn_tuto);
 
-						lancement(renderer, window, temps_jeu, argent);
+						lancement(renderer, window, temps_jeu, 1);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.bmp" , renderer, window, HAUTEUR , LARGEUR);

@@ -2,10 +2,48 @@
 #include "timer.h"
 #include "barre.h"
 #include "lancement_jeu.h"
+#include "self.h"
+#include "salle_prof.h"
 
-
-void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
+void *fonc_pthread_timer_cb(void *parametre)
 {
+	fonc_pthread_timer(parametre);
+}
+
+
+void fonc_pthread_timer(param_t *parametre)
+{
+	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 1000);
+	printf("je fini\n");
+	changement_salle(parametre);
+	pthread_exit(NULL);
+}
+
+
+
+
+void changement_salle(param_t *parametre)
+{
+	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
+	if((parametre->id_salle) == 1)	
+		lancement_self(parametre);
+	else
+		lancement_salle_prof(parametre);
+}
+
+
+
+
+void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int id_salle)
+{
+	pthread_t thread_minuteur;
+
+	param_t *parametre = malloc(sizeof(param_t));
+	parametre->temps_jeu = temps_jeu;
+	parametre->id_salle = id_salle;
+	parametre->window = window;
+	parametre->renderer = renderer;
+
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
 
@@ -27,7 +65,6 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 	barre_sonore=malloc(sizeof(SDL_Rect));
 
 	int status_menu = -1;
-	int indice_salle = 0;
 
 	/*variables de test*/
 	int *achat = malloc(sizeof(int));
@@ -50,7 +87,8 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 	SDL_RenderPresent(renderer);
 
 	temps_jeu->debut(temps_jeu);
-	
+
+	pthread_create(&thread_minuteur, NULL, fonc_pthread_timer_cb, parametre);
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
@@ -61,25 +99,12 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 
 		while(SDL_PollEvent(&event))
 		{
-
-			/*if(temps_jeu->get_ticks(temps_jeu) >= 10000 && indice_salle == 0)
-			{
-				indice_salle = 1;
-				if(indice_salle == 1)
-				{
-					SDL_RenderClear(renderer);
-
-					ajout_texture(texture_self, "images/self.png", renderer, window, HAUTEUR, LARGEUR);
-
-				}
-			}*/
-
 			switch (event.type)
 			{
 				case SDL_KEYUP:
 					switch(event.key.keysym.sym){
 						case SDLK_a:
-							if(((*barre_depression).h>(-250))&&status_menu == -1)
+							if(((*barre_depression).h>(-250))&&status_menu == -1) 
 							{
 								score++;
 								/*mise a jour de la barre sonore + remise en place de la texture associé*/

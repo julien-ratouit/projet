@@ -1,4 +1,5 @@
 #include "commun.h"
+#include "save.h"
 
 //Sauvegarde la partie a la fin de la journée
 void sauvegarde(int money, int jour,int nb_action, int action_achete[], int action_equipe[]){
@@ -77,7 +78,7 @@ int charger(int * money, int * jour, int * nb_action, int action_achete[], int a
     fclose(save);
 }
 //Test
-int main(){
+/*int main(){
 
     int jour;
     int money;
@@ -104,4 +105,4 @@ int main(){
     }
     printf("\n");
     return 0;
-}
+}*/

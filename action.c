@@ -1,5 +1,7 @@
 #include "commun.h"
 #include "action.h"
+#include "texture_sdp.h"
+#include "lancement_jeu.h"
 
 //Constantes renvoyer quand on clique sur les emplacement d'équipement respectifs
 #define EQUIP_1 -1
@@ -10,9 +12,43 @@
 #define QUITTE_MENU -5
 #define QUITTE_SDP -6
 
+void affiche_barre_action(param_t *parametre){
+
+	
+    ajout_texture_non_centre(background_menu_action,"images/barre_action.png", parametre->renderer, parametre->window, 420, 450);
+
+	if(action_equipe[0] != NULL)
+    	ajout_texture_non_centre(action_barre_n1, (action_equipe[0]->img_action_rond), parametre->renderer,parametre->window, 481, 471);
+    if(action_equipe[1] != NULL)
+		ajout_texture_non_centre(action_barre_n2, (action_equipe[1]->img_action_rond), parametre->renderer, parametre->window, 558, 471);
+    if(action_equipe[2] != NULL)
+		ajout_texture_non_centre(action_barre_n3, (action_equipe[2]->img_action_rond), parametre->renderer, parametre->window, 635, 471);
+    if(action_equipe[3] != NULL)
+		ajout_texture_non_centre(action_barre_n4, (action_equipe[3]->img_action_rond), parametre->renderer, parametre->window, 712, 471);
+    SDL_RenderPresent(parametre->renderer);
+
+}
+
+void affiche_menu_action(param_t *parametre){
+
+	ajout_texture_non_centre(background_menu_action,"images/background_menu_action.png", parametre->renderer, parametre->window,420 , 50);
+
+	if(action_equipe[0] != NULL)
+    	ajout_texture_non_centre(action_barre_n1, (action_equipe[0]->img_action_rect), parametre->renderer,parametre->window, 480, 80);
+    if(action_equipe[1] != NULL)
+		ajout_texture_non_centre(action_barre_n2, (action_equipe[1]->img_action_rect), parametre->renderer, parametre->window, 480, 155);
+    if(action_equipe[2] != NULL)
+		ajout_texture_non_centre(action_barre_n3, (action_equipe[2]->img_action_rect), parametre->renderer, parametre->window,480, 225);
+    if(action_equipe[3] != NULL)
+		ajout_texture_non_centre(action_barre_n4, (action_equipe[3]->img_action_rect), parametre->renderer, parametre->window, 480, 300);
+    SDL_RenderPresent(parametre->renderer);
+
+
+}
+
 //Initialise les informations d'une action
-//En static pour ne pas l'utiliser dans le main 
-extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int))
+//En static pour ne pas l'utiliser dans le main
+extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), const char * lien_img_rect, const char * lien_img_rond)
 {
 	action_t *action = malloc(sizeof(action_t));
 	action->id = id;
@@ -21,6 +57,8 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int))
 	action->equipe = 0;
 	action->cd = cd;
 	action->action_realise = fonction;
+	action->img_action_rond = lien_img_rond;
+	action->img_action_rect = lien_img_rect;
 
 	return action;
 }
@@ -28,10 +66,10 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int))
 //seul fonction à utiliser, elle initialise un tableau avec toute les actions qu'on a creer.
 extern void init_tab_action(action_t * tab[])
 {
-	tab[0] = init_action(0, 100, 1,fonc_action_1);
-	tab[1] = init_action(1, 100, 2,fonc_action_2);
-	tab[2] = init_action(2, 100, 3,fonc_action_3);
-	tab[3] = init_action(3, 100, 4,fonc_action_4); 
+	tab[0] = init_action(0, 100, 1,fonc_action_1, "images/action_barre_n1.png", "images/action_n1.png");
+	tab[1] = init_action(1, 100, 2,fonc_action_2, "images/action_barre_n2.png", "images/action_n2.png");
+	tab[2] = init_action(2, 100, 3,fonc_action_3, "images/action_barre_n3.png", "images/action_n3.png");
+	tab[3] = init_action(3, 100, 4,fonc_action_4, "images/action_barre_n3.png", "images/action_n3.png");
 }
 
 
@@ -48,7 +86,7 @@ extern void init_tab_action(action_t * tab[])
 extern int clic_choix_sdp(){
 
 	SDL_Event event;
-	
+
 	switch(event.type)
 	{
 			case SDL_MOUSEBUTTONDOWN:
@@ -120,10 +158,9 @@ extern int achat_action(action_t *action, int *argent)
 
 //Ajoutez un bouton Equiper pour lancer la fonction
 //Equipe une action si elle est acheté et si elle n'est pas déjà équipé
-extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[]){ 
-	
-	//affiche_action();//A FAIRE MON P'TIT CHARLES :DDDDD 
+extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
 
+	affiche_menu_action(parametre);
 	int id;
 	id = clic_choix_sdp();
 
@@ -131,10 +168,10 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 		//Si on clique sur la croix, on quitte
 		case QUITTE_MENU: return QUITTE_MENU;
 		//Si on clique sur un autre emplacement relance la fonction equipe_action avec la nouvelle place
-		case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action); break;
-		case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action); break;
-		case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action); break;
-		case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action); break;
+		case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre); break;
+		case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre); break;
+		case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre); break;
+		case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre); break;
 		default : break;
 	}
 
@@ -167,21 +204,21 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 	//Si sur ce que l'on clique n'est pas acheté, ça veut dire qu'on veut l'acheter :D
 	else if(achat_action(tab_action[id], argent )){
 
-		return equipe_action(place,argent, tab_equipe, tab_action);//Si on achète je relance la procédure d'équipationnagization :D 
+		return equipe_action(place,argent, tab_equipe, tab_action,parametre);//Si on achète je relance la procédure d'équipationnagization :D
 
 	}
-	else return  equipe_action(place,argent, tab_equipe, tab_action); //Si y a rien de tout ça c'est que le joueur a dû missclick où cliquer n'importe où, alors je recommence la procédure
+	else return  equipe_action(place,argent, tab_equipe, tab_action,parametre); //Si y a rien de tout ça c'est que le joueur a dû missclick où cliquer n'importe où, alors je recommence la procédure
 
 }
 
 //------------------------------Fonction principale des actions--------------------------------
 //Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions
-extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[]){
+extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
 
 	int test_sortie = 0;
 	int choix;
 
-	//affichage_menu_action(); //A FAIIIIIIIIIIIIIIIIRE
+	affiche_barre_action(parametre);
 
 	while(test_sortie != QUITTE_MENU){//Test_sortie vaut vrai quand on clique sur la croix
 
@@ -191,16 +228,16 @@ extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_a
 			//Si on clique sur la croix, on sort.
 			case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
 			//Si on choisis une case d'équipement, ça renvoie la fonction equipe_action a la bonne place.
-			case EQUIP_4 : test_sortie = equipe_action(3, argent, tab_equipe, tab_action); break;
-			case EQUIP_3 : test_sortie = equipe_action(2, argent, tab_equipe, tab_action); break;
-			case EQUIP_2 : test_sortie = equipe_action(1, argent, tab_equipe, tab_action); break;
-			case EQUIP_1 : test_sortie = equipe_action(0, argent, tab_equipe, tab_action); break;
+			case EQUIP_4 : test_sortie = equipe_action(3, argent, tab_equipe, tab_action, parametre); break;
+			case EQUIP_3 : test_sortie = equipe_action(2, argent, tab_equipe, tab_action, parametre); break;
+			case EQUIP_2 : test_sortie = equipe_action(1, argent, tab_equipe, tab_action, parametre); break;
+			case EQUIP_1 : test_sortie = equipe_action(0, argent, tab_equipe, tab_action, parametre); break;
 			//Si on renvoie autre chose on s'en occupe pas
 			default : test_sortie = 0; break;
 		}
 
 	}
-	
+
 	//fermer_menu_action();//A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
 
 }
@@ -240,12 +277,12 @@ void fonc_action_4 (int jour)
 /*----------------------------------------------------------*/
 
 //PHASE DE TEST du boss
-/* Je suis une merde ça fonctionne pas si j'ai pas d'interface XDD 
+/* Je suis une merde ça fonctionne pas si j'ai pas d'interface XDD
 int main(){
-	
+
 	action_t test[4];
 	int argent = 100;
 	init_tab_action(test);
-	
+
 
 }*/
