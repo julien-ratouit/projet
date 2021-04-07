@@ -16,16 +16,22 @@ void *fonc_pthread_timer_cb(void *parametre)
 void fonc_pthread_timer(param_t *parametre)
 {
 	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 1000);
-	printf("je fini\n");
 	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
-	if((parametre->id_salle) == 1)	
+	
+	if((parametre->id_salle) == 1)
+	{
+		
 		lancement_self(parametre);
+		pthread_exit(NULL);
+	}	
 	else
 	{
 		lancement_salle_prof(parametre);
 		printf("tu viens de sauvegarder et quitter.\n");
+		pthread_exit(NULL);
 	}
-	pthread_exit(NULL);
+
+	
 }
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -87,7 +93,9 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 
 	temps_jeu->debut(temps_jeu);
 
-	pthread_create(&thread_minuteur, NULL, fonc_pthread_timer_cb, parametre);
+	if(pthread_create(&thread_minuteur, NULL, fonc_pthread_timer_cb, parametre) == 1)
+		printf("whouhouuu\n");
+
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;

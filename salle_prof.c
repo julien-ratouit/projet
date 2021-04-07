@@ -1,8 +1,6 @@
 #include "commun.h"
 #include "lancement_jeu.h"
 #include "salle_prof.h"
-#include "action.h"
-
 
 void aff_texture_sp(param_t *parametre, SDL_Texture *texture_prof)
 {
@@ -13,8 +11,10 @@ void aff_texture_sp(param_t *parametre, SDL_Texture *texture_prof)
 	affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
 }
 
+
 void lancement_salle_prof(param_t *parametre)
 {
+
 	(parametre->argent) += 5;
 
 	SDL_Texture *texture_prof = NULL;
@@ -105,9 +105,12 @@ void lancement_salle_prof(param_t *parametre)
               		(event.button.x > 670 && event.button.x < 805)&&(event.button.y > 270 && event.button.y < 345)||
               		(event.button.x > 915 && event.button.x < 1050)&&(event.button.y > 270 && event.button.y < 345))){
 
+				  		int argent = (parametre->argent);
 				  		
 						menu_action(&argent, action_equipe, liste_action, parametre);
 			  		}
+					break;
+
 					break;
 				default: 
 					break;

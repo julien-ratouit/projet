@@ -11,14 +11,11 @@
 #include "fonction.h"
 #include "coords.h"
 #include "timer.h"
+#include "argent.h"
 #include "action.h"
 
-int argent;
 action_t * liste_action[10];
 action_t * action_acheter[10];
 action_t * action_equipe[4];
-
-
-
 
 #endif
