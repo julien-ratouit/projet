@@ -1,18 +1,35 @@
+/**
+* \file action.c
+* \brief Ce programme permet de gerer les actions possibles lors de la partie.
+* \details on utilise ce programme quand le joueur se trouve dans la salle des profs mais également en jeu pour permettre d'agire en fonction de l'action utilisé.
+* \author Guillaume Vallet
+*/
+
 #include "commun.h"
-#include "action.h"
 #include "texture_sdp.h"
-#include "lancement_jeu.h"
+
 
 //Constantes renvoyer quand on clique sur les emplacement d'équipement respectifs
 #define EQUIP_1 -1
 #define EQUIP_2 -2
 #define EQUIP_3 -3
 #define EQUIP_4 -4
-//-------------------------------------------------------------------------------
+
 #define QUITTE_MENU -5
 #define QUITTE_SDP -6
 
-void affiche_barre_action(param_t *parametre){
+
+
+/**
+* \brief Affiche la barre contenant les actions
+* 
+* \details On commence par afficher le fond de la barre et ensuite on affiche les actions en fonction de leur état, si elles sont acheté ou non. 
+* \param action_equipe[] action_equipe est le tableau contenant l'ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.
+* \return La fonction ne return aucune valeurs, elle ne fait que de l'affichage
+*  
+*/
+void affiche_barre_action(param_t *parametre)
+{
 
 	
     ajout_texture_non_centre(background_menu_action,"images/barre_action.png", parametre->renderer, parametre->window, 420, 450);
@@ -29,6 +46,17 @@ void affiche_barre_action(param_t *parametre){
 
 }
 
+
+/**
+* \brief Affiche le menu des actions
+* 
+* \details On commence par afficher le fond du tableau contenant toutes les actions achetés pour ensuite les achiffer sous forme de liste, à ne pas confondre avec 
+* \a affiche_barre_action car ici on affiche sous forme de liste alors que dans \a affiche_barre_action on affiche sous forme d'icone. 
+* \param action_equipe[] action_equipe est le tableau contenant l'ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.
+*
+* \return La fonction ne return aucune valeurs, elle ne fait que de l'affichage
+*  
+*/
 void affiche_menu_action(param_t *parametre){
 
 	ajout_texture_non_centre(background_menu_action,"images/background_menu_action.png", parametre->renderer, parametre->window,420 , 50);
@@ -46,8 +74,14 @@ void affiche_menu_action(param_t *parametre){
 
 }
 
-//Initialise les informations d'une action
-//En static pour ne pas l'utiliser dans le main
+/**
+* \brief Initialise les informations d'une action
+* 
+* \details ici, on va initialiser les informations pour chaque action en \a static pour ne pas qu'elle se retrouve modifer dans la fonction main. 
+*
+* \return on return un \action_t qui est notre action initialisé.
+*  
+*/
 extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), const char * lien_img_rect, const char * lien_img_rond)
 {
 	action_t *action = malloc(sizeof(action_t));
@@ -63,7 +97,16 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), con
 	return action;
 }
 
-//seul fonction à utiliser, elle initialise un tableau avec toute les actions qu'on a creer.
+
+/**
+* \brief Initialise un tableau d'action
+* 
+* \details ici, on va initialiser un tableau d'action, chaque case correspond à une action initialisé par la fonction \a init_action , elle est la
+* seul fonction a utiliser dans le code, elle s'occupe d'initialiser les actions avec les paramètres que le programmeur aura choisi.
+*
+* \return on return rien car on modifie un pointeur sur un tableau.
+*  
+*/
 extern void init_tab_action(action_t * tab[])
 {
 	tab[0] = init_action(0, 100, 1,fonc_action_1, "images/action_barre_n1.png", "images/action_n1.png");
@@ -82,7 +125,14 @@ extern void init_tab_action(action_t * tab[])
 
 //-------------------------------------------------------
 
-
+/**
+* \brief Attend un clic du joueur
+* 
+* \details ici, la fonction va attendre un clic du joueur, 
+*
+* \return on return rien car on modifie un pointeur sur un tableau.
+*  
+*/
 extern int clic_choix_sdp(){
 
 	SDL_Event event;

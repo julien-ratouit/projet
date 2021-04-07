@@ -1,5 +1,5 @@
 #include "commun.h"
-#include "lancement_jeu.h"
+#include "jeu_apremidi.h"
 #include "self.h"
 
 
@@ -98,7 +98,10 @@ void lancement_self(param_t *parametre)
 
 					if((event.button.x > BTN_SUIVANT_X_MIN && event.button.x < BTN_SUIVANT_X_MAX)&&(event.button.y > BTN_SUIVANT_Y_MIN && event.button.y < BTN_SUIVANT_Y_MAX) && statut_mess == 0 && statut_info == 0)
 					{
-						lancement((parametre->renderer), (parametre->window), (parametre->temps_jeu), 2, (parametre->argent));
+						SDL_DestroyTexture(texture_self);
+						SDL_DestroyTexture(texture_mess);
+						SDL_DestroyTexture(texture_menu_info);
+						lancement_apremidi((parametre->renderer), (parametre->window), (parametre->temps_jeu), (parametre->argent));
 					}
 					break;
 			}
