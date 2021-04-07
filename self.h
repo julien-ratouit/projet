@@ -3,7 +3,7 @@
 
 
 
-extern void textures(param_t *parametre, SDL_Texture *texture_self);
+extern void aff_texture_self(param_t *parametre, SDL_Texture *texture_self);
 extern void lancement_self(param_t *parametre);
 
 #endif

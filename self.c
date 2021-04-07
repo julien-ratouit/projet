@@ -1,10 +1,10 @@
 #include "commun.h"
-#include "lancement_jeu.h"
+#include "jeu_apremidi.h"
 #include "self.h"
 
 
 
-void textures(param_t *parametre, SDL_Texture *texture_self)
+void aff_texture_self(param_t *parametre, SDL_Texture *texture_self)
 {
 	ajout_texture(texture_self ,"images/self.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 	ajout_texture_non_centre(texture_self , "images/btn_info.png", (parametre->renderer), (parametre->window), OPTION_HAUTEUR, OPTION_LARGEUR);
@@ -31,7 +31,7 @@ void lancement_self(param_t *parametre)
 	SDL_Texture *texture_menu_info = NULL;
 
 	
-	textures(parametre, texture_self);
+	aff_texture_self(parametre, texture_self);
 	affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
 	ajout_texture(texture_mess, "images/felicitation.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 
@@ -60,7 +60,7 @@ void lancement_self(param_t *parametre)
 						statut_mess = 0;
 						
 						SDL_RenderClear((parametre->renderer));
-						textures(parametre, texture_self);
+						aff_texture_self(parametre, texture_self);
 						affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
 
 						SDL_RenderPresent((parametre->renderer));
@@ -75,7 +75,7 @@ void lancement_self(param_t *parametre)
 						statut_info = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
 
 						SDL_RenderClear((parametre->renderer));
-						textures(parametre, texture_self);
+						aff_texture_self(parametre, texture_self);
 						affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
 						ajout_texture(texture_menu_info ,"images/info.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 						SDL_RenderPresent((parametre->renderer));
@@ -89,7 +89,7 @@ void lancement_self(param_t *parametre)
 						statut_info = 0;
 
 						SDL_RenderClear((parametre->renderer));
-						textures(parametre, texture_self);
+						aff_texture_self(parametre, texture_self);
 						affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
 
 						SDL_RenderPresent((parametre->renderer));
@@ -98,7 +98,10 @@ void lancement_self(param_t *parametre)
 
 					if((event.button.x > BTN_SUIVANT_X_MIN && event.button.x < BTN_SUIVANT_X_MAX)&&(event.button.y > BTN_SUIVANT_Y_MIN && event.button.y < BTN_SUIVANT_Y_MAX) && statut_mess == 0 && statut_info == 0)
 					{
-						lancement((parametre->renderer), (parametre->window), (parametre->temps_jeu), 2, (parametre->argent));
+						SDL_DestroyTexture(texture_self);
+						SDL_DestroyTexture(texture_mess);
+						SDL_DestroyTexture(texture_menu_info);
+						lancement_apremidi((parametre->renderer), (parametre->window), (parametre->temps_jeu), (parametre->argent));
 					}
 					break;
 			}

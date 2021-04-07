@@ -1,9 +1,8 @@
 #include "commun.h"
-#include "lancement_jeu.h"
+#include "jeu_matin.h"
 #include "salle_prof.h"
 
-
-void textures_sp(param_t *parametre, SDL_Texture *texture_prof)
+void aff_texture_sp(param_t *parametre, SDL_Texture *texture_prof)
 {
 	ajout_texture(texture_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 	ajout_texture(texture_prof, "images/btn_restart.png", (parametre->renderer), (parametre->window), HAUTEUR*1.8 , LARGEUR*1.5);
@@ -24,7 +23,7 @@ void lancement_salle_prof(param_t *parametre)
 
 	SDL_RenderClear((parametre->renderer));
 
-	textures_sp(parametre, texture_prof);
+	aff_texture_sp(parametre, texture_prof);
 	ajout_texture(texture_mess, "images/felicitation.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 
 	SDL_RenderPresent((parametre->renderer));
@@ -52,7 +51,7 @@ void lancement_salle_prof(param_t *parametre)
 						
 						SDL_RenderClear((parametre->renderer));
 
-						textures_sp(parametre, texture_prof);
+						aff_texture_sp(parametre, texture_prof);
 
 						SDL_RenderPresent((parametre->renderer));
 					}
@@ -64,7 +63,7 @@ void lancement_salle_prof(param_t *parametre)
 						statut_info = 1;
 						SDL_RenderClear((parametre->renderer));
 
-						textures_sp(parametre, texture_prof);
+						aff_texture_sp(parametre, texture_prof);
 						ajout_texture(texture_menu_info ,"images/info2.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 
 						SDL_RenderPresent((parametre->renderer));
@@ -79,18 +78,32 @@ void lancement_salle_prof(param_t *parametre)
 
 						SDL_RenderClear((parametre->renderer));
 
-						textures_sp(parametre, texture_prof);
+						aff_texture_sp(parametre, texture_prof);
 
 						SDL_RenderPresent((parametre->renderer));
 
 					}
+
+					if(((event.button.x > 210 && event.button.x < 345)&&(event.button.y > 270 && event.button.y < 345)||
+              		(event.button.x > 435 && event.button.x < 570)&&(event.button.y > 270 && event.button.y < 345)||
+              		(event.button.x > 670 && event.button.x < 805)&&(event.button.y > 270 && event.button.y < 345)||
+              		(event.button.x > 915 && event.button.x < 1050)&&(event.button.y > 270 && event.button.y < 345))){
+
+				  		int argent = (parametre->argent);
+				  		
+						menu_action(&argent, action_equipe, liste_action, parametre);
+			  		}
 
 					if((event.button.x > BTN_RESTART_X_MIN && event.button.x < BTN_RESTART_X_MAX)&&(event.button.y > BTN_RESTART_Y_MIN && event.button.y < BTN_RESTART_Y_MAX) && statut_mess == 0)
 					{
 						//on clique sur bouton pour commencer une nouvelle journee
 
 						printf("tu as clique sur le bouton restart\n");
-						lancement((parametre->renderer), (parametre->window), (parametre->temps_jeu), 1, (parametre->argent));
+
+						SDL_DestroyTexture(texture_prof);
+						SDL_DestroyTexture(texture_mess);
+						SDL_DestroyTexture(texture_menu_info);
+						lancement_matin((parametre->renderer), (parametre->window), (parametre->temps_jeu), (parametre->argent));
 					}
 
 					if((event.button.x > BTN_SAVE_X_MIN && event.button.x < BTN_SAVE_X_MAX)&&(event.button.y > BTN_SAVE_Y_MIN && event.button.y < BTN_SAVE_Y_MAX) && statut_mess == 0)
@@ -100,8 +113,8 @@ void lancement_salle_prof(param_t *parametre)
 						printf("tu as clique sur le bouton save\n");
 						program_launched = SDL_FALSE;
 					}
-
 					break;
+					
 				default: 
 					break;
 			}

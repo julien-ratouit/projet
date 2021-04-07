@@ -230,6 +230,17 @@
 
 //-----------------------Toutes les constantes des emplacement des cases sur lesquels ils faut cliquer pour les actions----------------------------
 
+//-----------------------------------------Les emplacements pour quitter les menus------------------------------------------------
+
+#define EMPLACEMENT_QUITTE_MENU_ACTION_X_MIN 0//A remplir
+#define EMPLACEMENT_QUITTE_MENU_ACTION_X_MAX 0//A remplir
+#define EMPLACEMENT_QUITTE_MENU_ACTION_Y_MIN 0//A remplir
+#define EMPLACEMENT_QUITTE_MENU_ACTION_Y_MAX 0//A remplir
+
+#define EMPLACEMENT_QUITTE_SDP_X_MIN 0//A remplir
+#define EMPLACEMENT_QUITTE_SDP_X_MAX 0//A remplir
+#define EMPLACEMENT_QUITTE_SDP_Y_MIN 0//A remplir
+#define EMPLACEMENT_QUITTE_SDP_Y_MAX 0//A remplir
 
 //--------------------------------------------Les emplacement des 4 cases pour équiper--------------------------------------------
 #define EMPLACEMENT_EQUIPE_1_X_MIN 481//A remplir
@@ -285,8 +296,16 @@
 
 #define EMPLACEMENT_ICONE_4_X 712
 #define EMPLACEMENT_ICONE_4_Y 471
+
 //Va falloir en rajouter plus tard, parce que y en a que 4
 
 //------------------------------------------------Fin constante emplacement-------------------------------------------------------
 
 #endif
+
+
+
+
+
+
+
