@@ -1,6 +1,26 @@
+/**
+* \file argent.c
+* \brief Ce programme permet de gerer l'affichage de la somme d'argent.
+* \details On utilise ce programme pour afficher la somme d'argent du joueur en temps réel à des moments précis du jeu, 
+* notamment le self et la salle des profs.
+* \author Quenault Maxime
+*/
+
 #include "commun.h"
 #include "argent.h"
 
+/**
+* \brief Affiche la somme d'argent 
+* 
+* \details On récupère la somme d'argent du joueurs en paramètre, ensuite on calcule le nombre de centaine, dizaine et d'unité a l'aide de calcule modulaire.
+* une fois toutes ces données récupérés on affiche la bonne texture en fonction du nombre de centaine, dizaine et d'unité. L'emplacement est toujours le même
+* quelques soit la pièce (self/salle prof), on utilise donc des variables globale pour positionner les textures.
+*  
+* \param argent_total est une variable tampon que l'on peut se permetre de modifier dans le programme.
+* \param unite est le nombre d'unite de la somme d'argent du joueur.
+* \param dizaine est le nombre de dizaine de la somme d'argent du joueur.
+* \param centaine est le nombre de centaine de la somme d'argent du joueur.
+*/
 void affiche_argent(SDL_Window *window, SDL_Renderer *renderer, int argent)
 {
 	int argent_total = argent;
@@ -10,7 +30,6 @@ void affiche_argent(SDL_Window *window, SDL_Renderer *renderer, int argent)
 	int unite;
 	int centaine;
 
-	//je calcule la quantité d'unite, de dizaine et de centaine en fonction de l'argent donné en paramettre
 	centaine = argent_total / 100;
 	argent_total -= centaine * 100;
 	
@@ -22,7 +41,6 @@ void affiche_argent(SDL_Window *window, SDL_Renderer *renderer, int argent)
 	else
 		unite = argent_total % 100;
 
-	//je creer les textures necessaire pour l'affichage de notre moula
 	SDL_Texture *texture_centaine = NULL;
 	SDL_Texture *texture_dizaine = NULL; 
 	SDL_Texture *texture_unite = NULL; 
@@ -33,7 +51,6 @@ void affiche_argent(SDL_Window *window, SDL_Renderer *renderer, int argent)
 	ajout_texture_non_centre(texture_fond , "images/chiffres/fond_piece.png", renderer, window,FOND_X, FOND_Y);
 	ajout_texture_non_centre(texture_piece , "images/chiffres/piece.png", renderer, window,PIECE_X, PIECE_Y);
 
-	//j'affiche la bonne image en fonction du montant
 	switch(centaine)
 	{
 		case 0:

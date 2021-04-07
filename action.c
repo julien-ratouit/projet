@@ -1,8 +1,8 @@
 /**
 * \file action.c
 * \brief Ce programme permet de gerer les actions possibles lors de la partie.
-* \details on utilise ce programme quand le joueur se trouve dans la salle des profs mais également en jeu pour permettre d'agire en fonction de l'action utilisé.
-* \author Guillaume Vallet
+* \details On utilise ce programme quand le joueur se trouve dans la salle des profs mais également en jeu pour permettre d'agir en fonction de l'action utilisé.
+* \author Vallet Guillaume
 */
 
 #include "commun.h"
@@ -24,7 +24,7 @@
 * \brief Affiche la barre contenant les actions
 * 
 * \details On commence par afficher le fond de la barre et ensuite on affiche les actions en fonction de leur état, si elles sont acheté ou non. 
-* \param action_equipe[] action_equipe est le tableau contenant l'ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.
+* \param action_equipe est le tableau contenant l'ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.
 * \return La fonction ne return aucune valeurs, elle ne fait que de l'affichage
 *  
 */
@@ -77,9 +77,9 @@ void affiche_menu_action(param_t *parametre){
 /**
 * \brief Initialise les informations d'une action
 * 
-* \details ici, on va initialiser les informations pour chaque action en \a static pour ne pas qu'elle se retrouve modifer dans la fonction main. 
+* \details Ici, on va initialiser les informations pour chaque action en \a static pour ne pas qu'elle se retrouve modifer dans la fonction main. 
 *
-* \return on return un \action_t qui est notre action initialisé.
+* \return On return un \a action_t qui est notre action initialisé.
 *  
 */
 extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), const char * lien_img_rect, const char * lien_img_rond)
@@ -101,10 +101,10 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), con
 /**
 * \brief Initialise un tableau d'action
 * 
-* \details ici, on va initialiser un tableau d'action, chaque case correspond à une action initialisé par la fonction \a init_action , elle est la
+* \details Ici, on va initialiser un tableau d'action, chaque case correspond à une action initialisé par la fonction \a init_action , elle est la
 * seul fonction a utiliser dans le code, elle s'occupe d'initialiser les actions avec les paramètres que le programmeur aura choisi.
 *
-* \return on return rien car on modifie un pointeur sur un tableau.
+* \return On return aucune valeur car on modifie un pointeur sur un tableau.
 *  
 */
 extern void init_tab_action(action_t * tab[])
@@ -115,22 +115,14 @@ extern void init_tab_action(action_t * tab[])
 	tab[3] = init_action(3, 100, 4,fonc_action_4, "images/action_barre_n3.png", "images/action_n3.png");
 }
 
-
-//Pour la fonction clic_choix()--------------------------
-
-//Attends de voir sur quelle action on clique
-//Si on clique le bouton pour quitter le menu, renvoie QUITTE_MENU
-//Si on clique sur une action, renvoie l'id de l'action (allant de 0 a ...)
-//Si on clique sur un emplacement d'équipement, renvoie la place en valeur négatif (allant de -1 a -4)
-
-//-------------------------------------------------------
-
 /**
 * \brief Attend un clic du joueur
 * 
-* \details ici, la fonction va attendre un clic du joueur, 
+* \details Ici, la fonction va attendre un clic du joueur, elle va permettre de modifier l'emplacement des actions achetés par le joueur. Quand le joueur
+*  clic sur une action alors la fonction renvoie l'id de l'action allant de 0 à 4 (sa position dans le tableau)
+*  ou alors, si le joueur clic sur un emplacement alors la fonction renvoie le numéros de l'emplacement en valeur negative allant de -1 à -4.
 *
-* \return on return rien car on modifie un pointeur sur un tableau.
+* \return On return soit le numero de l'emplacement, l'id de l'action ou une valeur indiquant que l'on quitte le menu.
 *  
 */
 extern int clic_choix_sdp(){
@@ -193,7 +185,15 @@ extern int clic_choix_sdp(){
 }
 
 
-//Modifie le statut d'une action si elle est acheter, retourne faux si on n'a pas assez d'argent.
+/**
+* \brief Modifie le statut d'une action
+* 
+* \details Si le joueur clic sur une action la fonction se lance et regarde la somme d'argent du joueur. Si la somme en question est assez grande alors l'action change de statut est
+* devient acheté, or, si la somme n'est pas assez grande rien ne se passe.
+*
+* \return On return un \a int qui défini si oui ou non l'action à changé de statut.
+*  
+*/
 extern int achat_action(action_t *action, int *argent)
 {
 	if((*argent) >= action->prix)
@@ -208,6 +208,14 @@ extern int achat_action(action_t *action, int *argent)
 
 //Ajoutez un bouton Equiper pour lancer la fonction
 //Equipe une action si elle est acheté et si elle n'est pas déjà équipé
+/**
+* \brief Equipe une action
+* 
+* \details à remplir
+*
+* \return à remplir
+*  
+*/
 extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
 
 	affiche_menu_action(parametre);
@@ -261,8 +269,13 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 
 }
 
-//------------------------------Fonction principale des actions--------------------------------
-//Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions
+
+/**
+* \brief Fonction principale des actions
+* 
+* \details Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions
+*  
+*/
 extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
 
 	int test_sortie = 0;

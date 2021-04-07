@@ -1,26 +1,29 @@
 #ifndef _ACTION_H_
 #define _ACTION_H_
 
-
+/**
+* \struct action_t Permet de définir l'ensemble des élément que contient une action
+* sont id, sont prix, sont couldown, sont statut (acheté ou pas), sa place dans la barre
+* des actions, ses images correspondantes et pour finir un pointeur sur une fonction qui permet d'agir sur le jeu.
+*/
 typedef struct action_s
 {
-	//Identifiant dans le tableau des actions
 	int id;
-	//Prix a l'achat
 	int prix;
-	//Temps avant la prochaine réutilisation en seconde
 	int cd;
-	//Savoir si l'action est acheté ou pas
 	bool statut;
 	int equipe;
 
 	const char *img_action_rond;
 	const char *img_action_rect;
-	//Fonction qui va être utilisé dans le jeu
 	void (*action_realise)(int); 
 }
 action_t;
 
+/**
+* \struct param_t Permet de définir l'ensemble des variables que l'on utilise dans plusieurs programmes
+* nottament les threads qui prennent qu'un seul parametre, ici ils prennent une structure de plusieurs parametre. Nous avons notamment la fenêtre et le rendu qui en font partie.
+*/
 typedef struct
 {
 	Timer_t *temps_jeu;

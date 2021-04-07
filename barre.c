@@ -1,3 +1,11 @@
+/**
+* \file barre.c
+* \brief Ce programme permet de gerer la barre sonor et de depression.
+* \details On utilise ce programme pour modifier la valeur des deux barres, mais aussi pour les initialiser.
+* \author Renoit Charles
+*/
+
+
 #include "commun.h"
 #include "timer.h"
 #include "barre.h"
