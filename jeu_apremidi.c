@@ -1,3 +1,12 @@
+/**
+* \file jeu_apremidi.c
+* \brief Cette ensemble de fonction agit sur le cours de l'après-midi.
+* \details On utilise cet ensemble de fonction lorsque le joueur commence le cour de l'après midi, elle permet d'envoyer le joueur
+* au moment voulut dans la salle des profs.
+* \author Quenault Maxime, Renoit Charles
+*/
+
+
 #include "commun.h"
 #include "jeu_apremidi.h"
 #include "timer.h"
@@ -5,13 +14,25 @@
 #include "salle_prof.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////
+/**
+* \brief Fonction de callback 
+* 
+* \details Cette fonction à pour seul but d'appeler une autre fonction. Cela à pour but d'evité les warnings lors de l'execution du programme.
+*  
+*/
 void *fonc_pthread_timer2_cb(void *parametre)
 {
 	fonc_pthread_timer2(parametre);
 }
 
 
+/**
+* \brief Fonction du pthread n°2 
+* 
+* \details Cette fonction va s'executer en même temps que la fonction \a lancement_apremidi , sont but est de comparé le temps passé en jeu
+* avec le temps limite accordé par le developpeur. Si le temps arrive à sont terme alors la fonction \a lancement_salle_prof est lancé, le joueur se retrouve donc dans la salle des profs.
+*  
+*/
 void fonc_pthread_timer2(param_t *parametre)
 {
 	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 1000);
@@ -19,11 +40,14 @@ void fonc_pthread_timer2(param_t *parametre)
 	lancement_salle_prof(parametre);
 	pthread_exit(NULL);
 }
-//////////////////////////////////////////////////////////////////////////////////
 
 
 
-
+/**
+* \brief Fonction qui s'occupe du cours de l'après-midi.
+* 
+* \details 
+*/
 void lancement_apremidi(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {
 	pthread_t thread_minuteur;
@@ -58,13 +82,10 @@ void lancement_apremidi(SDL_Renderer *renderer, SDL_Window *window, Timer_t * te
 
 	int status_menu = -1;
 
-	/*variables de test*/
 	int *achat = malloc(sizeof(int));
 	(*achat) = 4;
 	int score = 0;
 	int test;
-	
-	/*-----------------*/
 
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , renderer, window, HAUTEUR , LARGEUR);
 	aff_action(achat, renderer, window, texture_action1, texture_action2, texture_action3, texture_action4);
@@ -83,7 +104,6 @@ void lancement_apremidi(SDL_Renderer *renderer, SDL_Window *window, Timer_t * te
 	pthread_create(&thread_minuteur, NULL, fonc_pthread_timer2_cb, parametre);
 
 
-	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
 	while(program_launched)
 	{
