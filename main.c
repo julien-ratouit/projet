@@ -1,8 +1,26 @@
+/**
+* \file main.c
+* \brief fonction principal du programme.
+* \details c'est dans cette fonction que l'on initialise la SDL très utile pour notre projet, on initialise aussi la fenêtre et le rendu pour le reste de notre programme.
+* \author Quenault Maxime, Ratouit Charles
+*/
+
+
 #include "commun.h"
 #include "jeu_matin.h"
 #include "tuto.h"
 
 
+/**
+* \brief fonction main.
+*
+* \details Dans cette fonction le joueur à trois choix, soit commencer une nouvelle partie, soit reprendre sont anciènne sauvegarde si il y en a une, et pour finir il peut ausi
+* acceder à une page "tuto" qui presente les specificité du jeu et donne des tips pour bien jouer.
+* 
+* \param temps_jeu est le timer de notre partie, on l'utilise dans le cours du matin et de l'après-midi.
+* \param program_lauched est de type \a SDL_bool et permet de maintenir le programme en route, si jamais il passe à false alors on quitte le programme.
+*  
+*/
 int main (int argc, char ** argv)
 {
 	system("cls");

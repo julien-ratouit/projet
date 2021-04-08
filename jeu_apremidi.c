@@ -17,7 +17,7 @@
 /**
 * \brief Fonction de callback 
 * 
-* \details Cette fonction à pour seul but d'appeler une autre fonction. Cela à pour but d'evité les warnings lors de l'execution du programme.
+* \details Cette fonction à pour seul but d'appeler une autre fonction. Cela permet d'evité les warnings lors de l'execution du programme.
 *  
 */
 void *fonc_pthread_timer2_cb(void *parametre)
@@ -46,7 +46,13 @@ void fonc_pthread_timer2(param_t *parametre)
 /**
 * \brief Fonction qui s'occupe du cours de l'après-midi.
 * 
-* \details 
+* \details Lorsque cette fonction est lancé, un thread est lancé au même moment, ce dernier execute la fonction \a fonc_pthread_timer2. Le but de la fonction est de rendre le jeu 
+* jouable, nous avons donc l'ajout de toute les textures necessaire au bon déroulement du jeu. Le switch est là pour regarder le clic du joueur, à partir de là le joueur à
+* plusieurs possibilité, mettre en pause le jeu ou appuyer sur une action. Pendant ce temps nous avons la barre sonore qui augmente et la barre de depression qui augmente selon la
+* barre sonore.
+*
+* \param statut_menu est un valeur qui permet de savoir si oui ou non le menu pause est afficher à l'ecran, si c'est le cas alors le joueur peut cliquer sur reprendre ou quitter,
+* alors que si ce n'est pas le cas alors le joueur ne pourra pas y avoir accés.
 */
 void lancement_apremidi(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {

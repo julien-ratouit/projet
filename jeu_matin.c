@@ -1,3 +1,11 @@
+/**
+* \file jeu_matin.c
+* \brief Cette ensemble de fonction agit sur le cours du matin.
+* \details On utilise cet ensemble de fonction lorsque le joueur commence le cour du matin, elle permet d'envoyer le joueur
+* au moment voulut dans le self.
+* \author Quenault Maxime, Renoit Charles
+*/
+
 #include "commun.h"
 #include "jeu_matin.h"
 #include "timer.h"
@@ -5,24 +13,47 @@
 #include "self.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////
+
+/**
+* \brief Fonction de callback 
+* 
+* \details Cette fonction à pour seul but d'appeler une autre fonction. Cela permet d'evité les warnings lors de l'execution du programme.
+*  
+*/
 void *fonc_pthread_timer1_cb(void *parametre)
 {
 	fonc_pthread_timer1(parametre);
 }
 
 
+/**
+* \brief Fonction du pthread n°1 
+* 
+* \details Cette fonction va s'executer en même temps que la fonction \a lancement_matin , sont but est de comparé le temps passé en jeu
+* avec le temps limite accordé par le developpeur. Si le temps arrive à sont terme alors la fonction \a lancement_self est lancé, le joueur se retrouve donc dans le self.
+*  
+*/
 void fonc_pthread_timer1(param_t *parametre)
 {
 	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 1000);
 	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
 	lancement_self(parametre);
 }
-//////////////////////////////////////////////////////////////////////////////////
 
 
 
-
+/**
+* \brief Fonction qui s'occupe du cours du matin.
+* 
+* \details Lorsque cette fonction est lancé, un thread est lancé au même moment, ce dernier execute la fonction \a fonc_pthread_timer1. Le but de la fonction est de rendre le jeu 
+* jouable, nous avons donc l'ajout de toute les textures necessaire au bon déroulement du jeu. Le switch est là pour regarder le clic du joueur, à partir de là le joueur à
+* plusieurs possibilité, mettre en pause le jeu ou appuyer sur une action. Pendant ce temps nous avons la barre sonore qui augmente et la barre de depression qui augmente selon la
+* barre sonore.
+*
+* \param statut_menu est un valeur qui permet de savoir si oui ou non le menu pause est afficher à l'ecran, si c'est le cas alors le joueur peut cliquer sur reprendre ou quitter,
+* alors que si ce n'est pas le cas alors le joueur ne pourra pas y avoir accés.
+*
+*/
 void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {
 	pthread_t thread_minuteur;

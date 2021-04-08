@@ -1,9 +1,26 @@
+/**
+* \file self.c
+* \brief Ensemble de fonction qui gère le self.
+* \details c'est dans ces fonctions que l'on met en place les textures et les zones de cliques correspondante au self.
+* \author Quenault Maxime
+*/
+
+
 #include "commun.h"
 #include "jeu_apremidi.h"
 #include "self.h"
 
 
 
+/**
+* \brief fonction qui affiche des textures à l'ecran.
+*
+* \details Dans cette fonction nous affichons les textures qui sont toujours utile, à chaque fois que le joueur clique sur un menu (le menu info ou un plat par exemple)
+* il faut tout re-afficher, donc pour eviter la redondance dans le code on a opté pour ce système de fonction.
+* 
+* \param texture_self est une variable de type \a SDL_Texture, on l'utilise pour toute nos textures à afficher à l'ecran.
+*  
+*/
 void aff_texture_self(param_t *parametre, SDL_Texture *texture_self)
 {
 	ajout_texture(texture_self ,"images/self.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
@@ -20,7 +37,16 @@ void aff_texture_self(param_t *parametre, SDL_Texture *texture_self)
 }
 
 
-
+/**
+* \brief fonction qui gère le self.
+*
+* \details Dans cette fonction nous regardons ou est-ce que le joueur clique, si il clique sur un plat alors on ouvre un shop pour acheter le plat, au contraire si
+* il décide de lancer le cours de l'après-midi alors on appel la fonction \a lancement_apremidi.
+* 
+* \param statut_mess est une valeur de type \a int qui permet de savoir si oui ou non le message de début est ouvert ou pas, si oui alors sa valeur est 1 sinon 0.
+* \param statut_info est une valeur de type \a int qui permet de savoir si oui ou non le message d'information est ouvert ou pas, si oui alors sa valeur est de 1 sinon 0.
+*  
+*/
 void lancement_self(param_t *parametre)
 {
 
