@@ -17,8 +17,6 @@ int gameOver(SDL_Renderer *renderer, SDL_Window *window){
 			{
 
 				case SDL_MOUSEBUTTONDOWN:
-					//printf("x : %i & y : %i\n", event.button.x, event.button.y);
-					/*je vais realiser plusieurs destroy et creation à la suite, c'est pour eviter l'acumulation des textures*/
 					if((event.button.x > BOUTONN_LOAD_SAVE_X_MAX && event.button.x < BOUTONN_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTONN_LOAD_SAVE_Y_MAX && event.button.y < BOUTONN_LOAD_SAVE_X_MIN))
 					{
 						return 1;//defaite = 1 et on retourne a l'ecran d'aceuille
@@ -102,7 +100,7 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 
 		//mise a jour des barres atomatic
 		printf("debut barre:\n");
-		agit = nb_jour + 2;
+		agit = nb_jour + 15;
 		temps = rand()%(200-20+1)+20;
 		SDL_Delay(temps);
 		printf("temps:%d\n", temps);
@@ -128,6 +126,10 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 				defaite = gameOver(renderer, window);
 				//si defaite = 0 charger last sauvegarde
 				//sinon go ecran d'aceuille
+				if (defaite = 0)
+				{
+					charger(argent, jour, )
+				}
 			}	
 		/////////////////////////	
 		//test
