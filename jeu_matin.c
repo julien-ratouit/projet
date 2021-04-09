@@ -39,8 +39,38 @@ void fonc_pthread_timer1(param_t *parametre)
 	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
 	lancement_self(parametre);
 }
+/**
+* a doxigéner
+*
+*/
+int gameOver(SDL_Renderer *renderer, SDL_Window *window){
+	SDL_Texture *texture_game_over = NULL;
+	ajout_texture(texture_classe ,"images/game_over.png" , renderer, window, HAUTEUR , LARGEUR);
+	SDL_Event event;
+	while(SDL_PollEvent(&event))
+		{
+			
 
+			switch (event.type)
+			{
 
+				case SDL_MOUSEBUTTONDOWN:
+					if((event.button.x > BOUTONN_LOAD_SAVE_X_MAX && event.button.x < BOUTONN_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTONN_LOAD_SAVE_Y_MAX && event.button.y < BOUTONN_LOAD_SAVE_X_MIN))
+					{
+						return 1;//defaite = 1 et on retourne a l'ecran d'aceuille
+					}
+					if((event.button.x > BOUTONN_FIN_X_MAX && event.button.x < BOUTONN_FIN_X_MIN)&&(event.button.y > BOUTONN_FIN_Y_MAX && event.button.y < BOUTONN_FIN_X_MIN))
+					{
+						return 0;//defaite = 0 et on charge la derniere sauvegarde
+					};
+					break;
+
+				default:
+					break;
+
+			}
+		}
+}
 
 /**
 * \brief Fonction qui s'occupe du cours du matin.
@@ -56,6 +86,14 @@ void fonc_pthread_timer1(param_t *parametre)
 */
 void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {
+	//variables pour les barres
+	int cpt1 = 0;
+	int defaite = 0; //si defaite = 1 c'est perdu
+	int nb_jour = 0;
+	int agit = 0;
+	int temps;
+	///////////////////////////
+
 	pthread_t thread_minuteur;
 
 	printf("bienvenue dans le cours du matin\n");
@@ -91,7 +129,6 @@ void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps
 	/*variables de test*/
 	int *achat = malloc(sizeof(int));
 	(*achat) = 4;
-	int score = 0;
 	int test;
 	
 	/*-----------------*/
@@ -117,6 +154,52 @@ void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps
 	SDL_bool program_launched = SDL_TRUE;
 	while(program_launched)
 	{
+
+
+
+
+
+		//mise a jour des barres atomatic
+		printf("debut barre:\n");
+		agit = nb_jour + 15;
+		temps = rand()%(200-20+1)+20;
+		SDL_Delay(temps);
+		printf("temps:%d\n", temps);
+		if(((*barre_depression).h>(-250))&&status_menu == -1)
+			{
+				/*mise a jour de la barre sonore + remise en place de la texture associé*/
+				update_barre_sonore(renderer, barre_sonore, agit);
+				SDL_DestroyTexture(texture_barre_son);
+				ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
+
+				/*mise a jour de la barre de depression + remise en place de la texture associé*/
+				update_barre_depression(renderer, barre_depression, barre_sonore, agit);
+				SDL_DestroyTexture(texture_barre_depression);
+				ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+				SDL_RenderPresent(renderer);
+			}
+		///////////////////////////////////
+
+		//detection de la defaite
+		if ((*barre_depression).h<=(-247))
+			{
+				defaite = gameOver(renderer, window);
+				//si defaite = 0 charger last sauvegarde
+				//sinon go ecran d'aceuille
+				/*if (defaite = 0)
+				{
+					charger(argent, jour, )
+				}*/
+			}	
+		/////////////////////////	
+		//test
+		printf("nb boucles: %d\n",cpt1);
+		cpt1++;
+		//////
+
+
+
 
 		SDL_Event event;//Créer un évènement
 
