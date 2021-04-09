@@ -18,11 +18,18 @@
 /**
 * \brief Fonction qui s'occupe du cours de l'après-midi.
 * 
-* \details 
+* \details Le but de la fonction est de rendre le jeu 
+* jouable, nous avons donc l'ajout de toute les textures necessaire au bon déroulement du jeu. Le switch est là pour regarder le clic du joueur, à partir de là le joueur à
+* plusieurs possibilité, mettre en pause le jeu ou appuyer sur une action. Pendant ce temps nous avons la barre sonore qui augmente et la barre de depression qui augmente selon la
+* barre sonore.
+*
+* \param statut_menu est un valeur qui permet de savoir si oui ou non le menu pause est afficher à l'ecran, si c'est le cas alors le joueur peut cliquer sur reprendre ou quitter,
+* alors que si ce n'est pas le cas alors le joueur ne pourra pas y avoir accés.
+*
 */
 void lancement_apremidi(param_t * parametre)
 {
-	pthread_t thread_minuteur;
+
 	printf("bienvenue dans le cours de l'apres-midi\n");
 
 	SDL_Texture *texture_classe = NULL;
@@ -47,10 +54,7 @@ void lancement_apremidi(param_t * parametre)
 
 	int status_menu = -1;
 
-	int *achat = malloc(sizeof(int));
-	(*achat) = 4;
 	int score = 0;
-	int test;
 
 	
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);

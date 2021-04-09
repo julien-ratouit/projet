@@ -1,3 +1,11 @@
+/**
+* \file jeu_matin.c
+* \brief Cette ensemble de fonction agit sur le cours du matin.
+* \details On utilise cet ensemble de fonction lorsque le joueur commence le cour du matin, elle permet d'envoyer le joueur
+* au moment voulut dans la salle des profs.
+* \author Quenault Maxime, Renoit Charles
+*/
+
 #include "commun.h"
 #include "jeu_matin.h"
 #include "timer.h"
@@ -8,7 +16,7 @@
 /**
 * \brief Fonction qui s'occupe du cours du matin.
 * 
-* \details Lorsque cette fonction est lancé, un thread est lancé au même moment, ce dernier execute la fonction \a fonc_pthread_timer1. Le but de la fonction est de rendre le jeu 
+* \details Le but de la fonction est de rendre le jeu 
 * jouable, nous avons donc l'ajout de toute les textures necessaire au bon déroulement du jeu. Le switch est là pour regarder le clic du joueur, à partir de là le joueur à
 * plusieurs possibilité, mettre en pause le jeu ou appuyer sur une action. Pendant ce temps nous avons la barre sonore qui augmente et la barre de depression qui augmente selon la
 * barre sonore.
@@ -19,7 +27,7 @@
 */
 void lancement_matin(param_t * parametre)
 {
-	pthread_t thread_minuteur;
+
 
 	printf("bienvenue dans le cours du matin\n");
 
@@ -45,13 +53,8 @@ void lancement_matin(param_t * parametre)
 
 	int status_menu = -1;
 
-	/*variables de test*/
-	int *achat = malloc(sizeof(int));
-	(*achat) = 4;
 	int score = 0;
-	int test;
 	
-	/*-----------------*/
 
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 	aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
