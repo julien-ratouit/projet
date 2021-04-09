@@ -1,0 +1,33 @@
+\hypertarget{barre_8c}{}\doxysection{Référence du fichier barre.\+c}
+\label{barre_8c}\index{barre.c@{barre.c}}
+
+
+Ce programme permet de gerer la barre sonor et de depression.  
+
+
+{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}barre.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{barre_8c_acea64ce8afe6e445cb5bbbd0b2c21e7e}\label{barre_8c_acea64ce8afe6e445cb5bbbd0b2c21e7e}} 
+void {\bfseries init\+\_\+barre\+\_\+sonore} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre)
+\item 
+\mbox{\Hypertarget{barre_8c_ae32faae418698747f723dc1cfc593315}\label{barre_8c_ae32faae418698747f723dc1cfc593315}} 
+void {\bfseries init\+\_\+barre\+\_\+depression} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre)
+\item 
+\mbox{\Hypertarget{barre_8c_a56fee8c57964cd56bf1b8cba3ca63967}\label{barre_8c_a56fee8c57964cd56bf1b8cba3ca63967}} 
+void {\bfseries update\+\_\+barre\+\_\+sonore} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre, int score)
+\item 
+\mbox{\Hypertarget{barre_8c_a5eff07ae75bf72be8dd6649e058013a6}\label{barre_8c_a5eff07ae75bf72be8dd6649e058013a6}} 
+void {\bfseries update\+\_\+barre\+\_\+depression} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre\+\_\+depression, SDL\+\_\+\+Rect $\ast$barre\+\_\+sonore, int score)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce programme permet de gerer la barre sonor et de depression. 
+
+On utilise ce programme pour modifier la valeur des deux barres, mais aussi pour les initialiser. \begin{DoxyAuthor}{Auteur}
+Renoit Charles 
+\end{DoxyAuthor}

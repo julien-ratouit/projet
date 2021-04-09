@@ -1,18 +1,52 @@
+/**
+* \file fonction.c
+* \brief Ce programme rassemble quelques fonctions.
+* \details On utilise ce programme pour définir des fonctions utile dans tout le programme.
+* \author Vallet Guillaume, Quenault Maxime, Renoit Charles
+*/
+
+
 #include "commun.h"
 
 
-extern void SDL_ExitWithError(const char *message){ // Quitte le programme si ERREUR
+/**
+* \brief Quitte le programme en cas d'erreur
+* 
+* \details Cette fonction à pour but de quiter la SDL en affichant le message donner en parametre,
+* on l'utilise pour gerer les erreures lors de la création d'une fenêtre ou d'un rendu notamment.
+*  
+*/
+extern void SDL_ExitWithError(const char *message)
+{ 
   SDL_Log("ERREUR : %s > %s\n",message, SDL_GetError());
   SDL_Quit();
   exit(EXIT_FAILURE);
 }
 
-extern void SDL_ExitImageWithError(const char *message, void * renderer, void * window){// Quitte le programme si ERREUR dans le rendu de l'image
+
+/**
+* \brief Quitte le programme en cas d'erreur dans le rendu de l'image
+* 
+* \details Cette fonction à pour but de quiter la SDL en affichant le message donner en parametre,
+* on l'utilise pour gerer les erreures lors de la création d'une texture. On prend bien soins de detrure le rendu et la fenêtre (existant obligatoirement car present en paramêtre),
+* pour ensuite quitter la SDL en appelant la fonction \a SDL_ExitWithError
+*  
+*/
+extern void SDL_ExitImageWithError(const char *message, void * renderer, void * window)
+{
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   SDL_ExitWithError(message);
 }
 
+
+/**
+* \brief ajoute une texture à l'ecran.
+* 
+* \details Cette fonction réalise toute les étapes nécéssaire à la création d'une texture. Sa particularité est qu'elle ajoute une texture de façon
+* centré par rapport aux coordonnée donnée en paramètre. Très souvant on lui donne la hauteur et la largeur de la fenêtre pour centrer une texture à l'ecran.
+*  
+*/
 extern void ajout_texture(SDL_Texture *texture ,const char * lien_img , SDL_Renderer *renderer, SDL_Window *window, int hauteur, int largeur){
   SDL_Surface *image = NULL;
   image = IMG_Load(lien_img);
@@ -37,6 +71,14 @@ extern void ajout_texture(SDL_Texture *texture ,const char * lien_img , SDL_Rend
       SDL_ExitImageWithError("Impossible d'afficher la texture", renderer, window);
 }
 
+
+/**
+* \brief ajoute une texture à l'ecran.
+* 
+* \details Cette fonction réalise toute les étapes nécéssaire à la création d'une texture. Sa particularité est qu'elle ajoute une texture de façon
+* non centré. les valeurs x et y représente donc sont point de départ pour l'affichage.
+*  
+*/
 extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img , SDL_Renderer *renderer, SDL_Window *window, int x, int y){
   SDL_Surface *image = NULL;
   image = IMG_Load(lien_img);
@@ -61,6 +103,12 @@ extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img
       SDL_ExitImageWithError("Impossible d'afficher la texture", renderer, window);
 }
 
+/**
+* \brief affiche les actions sur l'ecran de jeu.
+* 
+* \details Cette fonction affiche les actions, achetés par le joueur, en jeu. Elle agit seulement dans la salle de classe.
+*  
+*/
 void aff_action(int *achat,  SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture_achat1, SDL_Texture *texture_achat2, SDL_Texture *texture_achat3, SDL_Texture *texture_achat4)
 {
   
@@ -76,6 +124,12 @@ void aff_action(int *achat,  SDL_Renderer *renderer, SDL_Window *window, SDL_Tex
 }
 
 
+/**
+* \brief à définir
+* 
+* \details à définir
+*  
+*/
 extern int press_action(SDL_Renderer *renderer, int num_action){
   int i = -50;
   printf("Vous avez appuyer sur l'action %i\n",num_action);

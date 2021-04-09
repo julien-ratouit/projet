@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Survive Student: Référence du fichier action.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Survive Student
+   </div>
+   <div id="projectbrief">Projet de fin d&#39;année en deuxième année de fac d&#39;informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier action.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Ce programme permet de gerer les actions possibles lors de la partie.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;commun.h&quot;</code><br />
+<code>#include &quot;texture_sdp.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:af2c6fe436cc665fcfa139caabcbc51f0"><td class="memItemLeft" align="right" valign="top"><a id="af2c6fe436cc665fcfa139caabcbc51f0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EQUIP_1</b>&#160;&#160;&#160;-1</td></tr>
+<tr class="separator:af2c6fe436cc665fcfa139caabcbc51f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af332fc708e4510410122eda1ecc932de"><td class="memItemLeft" align="right" valign="top"><a id="af332fc708e4510410122eda1ecc932de"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EQUIP_2</b>&#160;&#160;&#160;-2</td></tr>
+<tr class="separator:af332fc708e4510410122eda1ecc932de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9d3a860f91946a2a948656af756987d"><td class="memItemLeft" align="right" valign="top"><a id="ae9d3a860f91946a2a948656af756987d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EQUIP_3</b>&#160;&#160;&#160;-3</td></tr>
+<tr class="separator:ae9d3a860f91946a2a948656af756987d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60c1fe52b7a311b9c61b320cb65e7b08"><td class="memItemLeft" align="right" valign="top"><a id="a60c1fe52b7a311b9c61b320cb65e7b08"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EQUIP_4</b>&#160;&#160;&#160;-4</td></tr>
+<tr class="separator:a60c1fe52b7a311b9c61b320cb65e7b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af42bb2198dcf293d947348f98d410aaa"><td class="memItemLeft" align="right" valign="top"><a id="af42bb2198dcf293d947348f98d410aaa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>QUITTE_MENU</b>&#160;&#160;&#160;-5</td></tr>
+<tr class="separator:af42bb2198dcf293d947348f98d410aaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94c58988147d7835206f2e5ea4e004c8"><td class="memItemLeft" align="right" valign="top"><a id="a94c58988147d7835206f2e5ea4e004c8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>QUITTE_SDP</b>&#160;&#160;&#160;-6</td></tr>
+<tr class="separator:a94c58988147d7835206f2e5ea4e004c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a55f5b5abd046d56ede5104c175703137"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="action_8c.html#a55f5b5abd046d56ede5104c175703137">affiche_barre_action</a> (<a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
+<tr class="memdesc:a55f5b5abd046d56ede5104c175703137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la barre contenant les actions.  <a href="action_8c.html#a55f5b5abd046d56ede5104c175703137">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a55f5b5abd046d56ede5104c175703137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33035beb077886b92848a817e9d9a462"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="action_8c.html#a33035beb077886b92848a817e9d9a462">affiche_menu_action</a> (<a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
+<tr class="memdesc:a33035beb077886b92848a817e9d9a462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le menu des actions.  <a href="action_8c.html#a33035beb077886b92848a817e9d9a462">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a33035beb077886b92848a817e9d9a462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a988c4693604b8de8c059d66b907c667e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="action_8c.html#a988c4693604b8de8c059d66b907c667e">init_action</a> (int id, int prix, int cd, void(*fonction)(int), const char *lien_img_rect, const char *lien_img_rond)</td></tr>
+<tr class="memdesc:a988c4693604b8de8c059d66b907c667e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les informations d'une action.  <a href="action_8c.html#a988c4693604b8de8c059d66b907c667e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a988c4693604b8de8c059d66b907c667e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fffaec588d3c774a87de28874b16164"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="action_8c.html#a4fffaec588d3c774a87de28874b16164">init_tab_action</a> (<a class="el" href="structaction__t.html">action_t</a> *tab[])</td></tr>
+<tr class="memdesc:a4fffaec588d3c774a87de28874b16164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un tableau d'action.  <a href="action_8c.html#a4fffaec588d3c774a87de28874b16164">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4fffaec588d3c774a87de28874b16164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18ebe4fff4d6489829a028c7d3453b16"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="action_8c.html#a18ebe4fff4d6489829a028c7d3453b16">clic_choix_sdp</a> ()</td></tr>
+<tr class="memdesc:a18ebe4fff4d6489829a028c7d3453b16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attend un clic du joueur.  <a href="action_8c.html#a18ebe4fff4d6489829a028c7d3453b16">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a18ebe4fff4d6489829a028c7d3453b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a6810fc16bbe576854ad58cfba1782e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="action_8c.html#a0a6810fc16bbe576854ad58cfba1782e">achat_action</a> (<a class="el" href="structaction__t.html">action_t</a> *action, int *argent)</td></tr>
+<tr class="memdesc:a0a6810fc16bbe576854ad58cfba1782e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le statut d'une action.  <a href="action_8c.html#a0a6810fc16bbe576854ad58cfba1782e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0a6810fc16bbe576854ad58cfba1782e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43587462fc34f5e07c37ebf7c72618e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="action_8c.html#ae43587462fc34f5e07c37ebf7c72618e">equipe_action</a> (int place, int *argent, <a class="el" href="structaction__t.html">action_t</a> *tab_equipe[4], <a class="el" href="structaction__t.html">action_t</a> *tab_action[], <a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
+<tr class="memdesc:ae43587462fc34f5e07c37ebf7c72618e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equipe une action.  <a href="action_8c.html#ae43587462fc34f5e07c37ebf7c72618e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae43587462fc34f5e07c37ebf7c72618e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245ff95c6a3a42e0f00372cdafabde72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="action_8c.html#a245ff95c6a3a42e0f00372cdafabde72">menu_action</a> (int *argent, <a class="el" href="structaction__t.html">action_t</a> *tab_equipe[4], <a class="el" href="structaction__t.html">action_t</a> *tab_action[], <a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
+<tr class="memdesc:a245ff95c6a3a42e0f00372cdafabde72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction principale des actions.  <a href="action_8c.html#a245ff95c6a3a42e0f00372cdafabde72">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a245ff95c6a3a42e0f00372cdafabde72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99bb2462f2184ea2da9e751690e13898"><td class="memItemLeft" align="right" valign="top"><a id="a99bb2462f2184ea2da9e751690e13898"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fonc_action_1</b> (int jour)</td></tr>
+<tr class="separator:a99bb2462f2184ea2da9e751690e13898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a570a35567063a7a66c4298f240dd21"><td class="memItemLeft" align="right" valign="top"><a id="a8a570a35567063a7a66c4298f240dd21"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fonc_action_2</b> (int jour)</td></tr>
+<tr class="separator:a8a570a35567063a7a66c4298f240dd21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d59e17983e74567b7a725e566a88840"><td class="memItemLeft" align="right" valign="top"><a id="a9d59e17983e74567b7a725e566a88840"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fonc_action_3</b> (int jour)</td></tr>
+<tr class="separator:a9d59e17983e74567b7a725e566a88840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a333d4f6d90abb819d39752ff82cb79f3"><td class="memItemLeft" align="right" valign="top"><a id="a333d4f6d90abb819d39752ff82cb79f3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fonc_action_4</b> (int jour)</td></tr>
+<tr class="separator:a333d4f6d90abb819d39752ff82cb79f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Ce programme permet de gerer les actions possibles lors de la partie. </p>
+<p>On utilise ce programme quand le joueur se trouve dans la salle des profs mais également en jeu pour permettre d'agir en fonction de l'action utilisé. </p><dl class="section author"><dt>Auteur</dt><dd>Vallet Guillaume </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a0a6810fc16bbe576854ad58cfba1782e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a6810fc16bbe576854ad58cfba1782e">&#9670;&nbsp;</a></span>achat_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int achat_action </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
+          <td class="paramname"><em>action</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>argent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifie le statut d'une action. </p>
+<p>Si le joueur clic sur une action la fonction se lance et regarde la somme d'argent du joueur. Si la somme en question est assez grande alors l'action change de statut est devient acheté, or, si la somme n'est pas assez grande rien ne se passe.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>On return un <em>int</em> qui défini si oui ou non l'action à changé de statut. </dd></dl>
+
+</div>
+</div>
+<a id="a55f5b5abd046d56ede5104c175703137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55f5b5abd046d56ede5104c175703137">&#9670;&nbsp;</a></span>affiche_barre_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affiche_barre_action </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structparam__t.html">param_t</a> *&#160;</td>
+          <td class="paramname"><em>parametre</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la barre contenant les actions. </p>
+<p>On commence par afficher le fond de la barre et ensuite on affiche les actions en fonction de leur état, si elles sont acheté ou non. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action_equipe</td><td>est le tableau contenant l'ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La fonction ne return aucune valeurs, elle ne fait que de l'affichage </dd></dl>
+
+</div>
+</div>
+<a id="a33035beb077886b92848a817e9d9a462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33035beb077886b92848a817e9d9a462">&#9670;&nbsp;</a></span>affiche_menu_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affiche_menu_action </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structparam__t.html">param_t</a> *&#160;</td>
+          <td class="paramname"><em>parametre</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le menu des actions. </p>
+<p>On commence par afficher le fond du tableau contenant toutes les actions achetés pour ensuite les achiffer sous forme de liste, à ne pas confondre avec <em>affiche_barre_action</em> car ici on affiche sous forme de liste alors que dans <em>affiche_barre_action</em> on affiche sous forme d'icone. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action_equipe[]</td><td>action_equipe est le tableau contenant l'ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La fonction ne return aucune valeurs, elle ne fait que de l'affichage </dd></dl>
+
+</div>
+</div>
+<a id="a18ebe4fff4d6489829a028c7d3453b16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18ebe4fff4d6489829a028c7d3453b16">&#9670;&nbsp;</a></span>clic_choix_sdp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int clic_choix_sdp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attend un clic du joueur. </p>
+<p>Ici, la fonction va attendre un clic du joueur, elle va permettre de modifier l'emplacement des actions achetés par le joueur. Quand le joueur clic sur une action alors la fonction renvoie l'id de l'action allant de 0 à 4 (sa position dans le tableau) ou alors, si le joueur clic sur un emplacement alors la fonction renvoie le numéros de l'emplacement en valeur negative allant de -1 à -4.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>On return soit le numero de l'emplacement, l'id de l'action ou une valeur indiquant que l'on quitte le menu. </dd></dl>
+
+</div>
+</div>
+<a id="ae43587462fc34f5e07c37ebf7c72618e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43587462fc34f5e07c37ebf7c72618e">&#9670;&nbsp;</a></span>equipe_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int equipe_action </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>place</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>argent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
+          <td class="paramname"><em>tab_equipe</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
+          <td class="paramname"><em>tab_action</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structparam__t.html">param_t</a> *&#160;</td>
+          <td class="paramname"><em>parametre</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Equipe une action. </p>
+<p>à remplir</p>
+<dl class="section return"><dt>Renvoie</dt><dd>à remplir </dd></dl>
+
+</div>
+</div>
+<a id="a988c4693604b8de8c059d66b907c667e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a988c4693604b8de8c059d66b907c667e">&#9670;&nbsp;</a></span>init_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structaction__t.html">action_t</a>* init_action </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(int)&#160;</td>
+          <td class="paramname"><em>fonction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>lien_img_rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>lien_img_rond</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les informations d'une action. </p>
+<p>Ici, on va initialiser les informations pour chaque action en <em>static</em> pour ne pas qu'elle se retrouve modifer dans la fonction main.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>On return un <em><a class="el" href="structaction__t.html" title="définir l&#39;ensemble des élément que contient une action sont id, sont prix, sont couldown,...">action_t</a></em> qui est notre action initialisé. </dd></dl>
+
+</div>
+</div>
+<a id="a4fffaec588d3c774a87de28874b16164"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fffaec588d3c774a87de28874b16164">&#9670;&nbsp;</a></span>init_tab_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_tab_action </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
+          <td class="paramname"><em>tab</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise un tableau d'action. </p>
+<p>Ici, on va initialiser un tableau d'action, chaque case correspond à une action initialisé par la fonction <em>init_action</em> , elle est la seul fonction a utiliser dans le code, elle s'occupe d'initialiser les actions avec les paramètres que le programmeur aura choisi.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>On return aucune valeur car on modifie un pointeur sur un tableau. </dd></dl>
+
+</div>
+</div>
+<a id="a245ff95c6a3a42e0f00372cdafabde72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a245ff95c6a3a42e0f00372cdafabde72">&#9670;&nbsp;</a></span>menu_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_action </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>argent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
+          <td class="paramname"><em>tab_equipe</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
+          <td class="paramname"><em>tab_action</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structparam__t.html">param_t</a> *&#160;</td>
+          <td class="paramname"><em>parametre</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction principale des actions. </p>
+<p>Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

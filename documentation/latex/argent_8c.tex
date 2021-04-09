@@ -1,0 +1,48 @@
+\hypertarget{argent_8c}{}\doxysection{Référence du fichier argent.\+c}
+\label{argent_8c}\index{argent.c@{argent.c}}
+
+
+Ce programme permet de gerer l\textquotesingle{}affichage de la somme d\textquotesingle{}argent.  
+
+
+{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}argent.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{argent_8c_a8f764c6d8c8bc4da27507315e5f4809b}{affiche\+\_\+argent}} (SDL\+\_\+\+Window $\ast$window, SDL\+\_\+\+Renderer $\ast$renderer, int argent)
+\begin{DoxyCompactList}\small\item\em Affiche la somme d\textquotesingle{}argent. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce programme permet de gerer l\textquotesingle{}affichage de la somme d\textquotesingle{}argent. 
+
+On utilise ce programme pour afficher la somme d\textquotesingle{}argent du joueur en temps réel à des moments précis du jeu, notamment le self et la salle des profs. \begin{DoxyAuthor}{Auteur}
+Quenault Maxime 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{argent_8c_a8f764c6d8c8bc4da27507315e5f4809b}\label{argent_8c_a8f764c6d8c8bc4da27507315e5f4809b}} 
+\index{argent.c@{argent.c}!affiche\_argent@{affiche\_argent}}
+\index{affiche\_argent@{affiche\_argent}!argent.c@{argent.c}}
+\doxysubsubsection{\texorpdfstring{affiche\_argent()}{affiche\_argent()}}
+{\footnotesize\ttfamily void affiche\+\_\+argent (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{argent }\end{DoxyParamCaption})}
+
+
+
+Affiche la somme d\textquotesingle{}argent. 
+
+On récupère la somme d\textquotesingle{}argent du joueurs en paramètre, ensuite on calcule le nombre de centaine, dizaine et d\textquotesingle{}unité a l\textquotesingle{}aide de calcule modulaire. une fois toutes ces données récupérés on affiche la bonne texture en fonction du nombre de centaine, dizaine et d\textquotesingle{}unité. L\textquotesingle{}emplacement est toujours le même quelques soit la pièce (self/salle prof), on utilise donc des variables globale pour positionner les textures.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em argent\+\_\+total} & est une variable tampon que l\textquotesingle{}on peut se permetre de modifier dans le programme. \\
+\hline
+{\em unite} & est le nombre d\textquotesingle{}unite de la somme d\textquotesingle{}argent du joueur. \\
+\hline
+{\em dizaine} & est le nombre de dizaine de la somme d\textquotesingle{}argent du joueur. \\
+\hline
+{\em centaine} & est le nombre de centaine de la somme d\textquotesingle{}argent du joueur. \\
+\hline
+\end{DoxyParams}

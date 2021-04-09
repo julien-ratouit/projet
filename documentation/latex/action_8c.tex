@@ -1,0 +1,194 @@
+\hypertarget{action_8c}{}\doxysection{Référence du fichier action.\+c}
+\label{action_8c}\index{action.c@{action.c}}
+
+
+Ce programme permet de gerer les actions possibles lors de la partie.  
+
+
+{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}texture\+\_\+sdp.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{action_8c_af2c6fe436cc665fcfa139caabcbc51f0}\label{action_8c_af2c6fe436cc665fcfa139caabcbc51f0}} 
+\#define {\bfseries EQUIP\+\_\+1}~-\/1
+\item 
+\mbox{\Hypertarget{action_8c_af332fc708e4510410122eda1ecc932de}\label{action_8c_af332fc708e4510410122eda1ecc932de}} 
+\#define {\bfseries EQUIP\+\_\+2}~-\/2
+\item 
+\mbox{\Hypertarget{action_8c_ae9d3a860f91946a2a948656af756987d}\label{action_8c_ae9d3a860f91946a2a948656af756987d}} 
+\#define {\bfseries EQUIP\+\_\+3}~-\/3
+\item 
+\mbox{\Hypertarget{action_8c_a60c1fe52b7a311b9c61b320cb65e7b08}\label{action_8c_a60c1fe52b7a311b9c61b320cb65e7b08}} 
+\#define {\bfseries EQUIP\+\_\+4}~-\/4
+\item 
+\mbox{\Hypertarget{action_8c_af42bb2198dcf293d947348f98d410aaa}\label{action_8c_af42bb2198dcf293d947348f98d410aaa}} 
+\#define {\bfseries QUITTE\+\_\+\+MENU}~-\/5
+\item 
+\mbox{\Hypertarget{action_8c_a94c58988147d7835206f2e5ea4e004c8}\label{action_8c_a94c58988147d7835206f2e5ea4e004c8}} 
+\#define {\bfseries QUITTE\+\_\+\+SDP}~-\/6
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{action_8c_a55f5b5abd046d56ede5104c175703137}{affiche\+\_\+barre\+\_\+action}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+\begin{DoxyCompactList}\small\item\em Affiche la barre contenant les actions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{action_8c_a33035beb077886b92848a817e9d9a462}{affiche\+\_\+menu\+\_\+action}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+\begin{DoxyCompactList}\small\item\em Affiche le menu des actions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$ \mbox{\hyperlink{action_8c_a988c4693604b8de8c059d66b907c667e}{init\+\_\+action}} (int id, int prix, int cd, void($\ast$fonction)(int), const char $\ast$lien\+\_\+img\+\_\+rect, const char $\ast$lien\+\_\+img\+\_\+rond)
+\begin{DoxyCompactList}\small\item\em Initialise les informations d\textquotesingle{}une action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{action_8c_a4fffaec588d3c774a87de28874b16164}{init\+\_\+tab\+\_\+action}} (\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise un tableau d\textquotesingle{}action. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{action_8c_a18ebe4fff4d6489829a028c7d3453b16}{clic\+\_\+choix\+\_\+sdp}} ()
+\begin{DoxyCompactList}\small\item\em Attend un clic du joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{action_8c_a0a6810fc16bbe576854ad58cfba1782e}{achat\+\_\+action}} (\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$action, int $\ast$argent)
+\begin{DoxyCompactList}\small\item\em Modifie le statut d\textquotesingle{}une action. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{action_8c_ae43587462fc34f5e07c37ebf7c72618e}{equipe\+\_\+action}} (int place, int $\ast$argent, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+\begin{DoxyCompactList}\small\item\em Equipe une action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{action_8c_a245ff95c6a3a42e0f00372cdafabde72}{menu\+\_\+action}} (int $\ast$argent, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+\begin{DoxyCompactList}\small\item\em Fonction principale des actions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{action_8c_a99bb2462f2184ea2da9e751690e13898}\label{action_8c_a99bb2462f2184ea2da9e751690e13898}} 
+void {\bfseries fonc\+\_\+action\+\_\+1} (int jour)
+\item 
+\mbox{\Hypertarget{action_8c_a8a570a35567063a7a66c4298f240dd21}\label{action_8c_a8a570a35567063a7a66c4298f240dd21}} 
+void {\bfseries fonc\+\_\+action\+\_\+2} (int jour)
+\item 
+\mbox{\Hypertarget{action_8c_a9d59e17983e74567b7a725e566a88840}\label{action_8c_a9d59e17983e74567b7a725e566a88840}} 
+void {\bfseries fonc\+\_\+action\+\_\+3} (int jour)
+\item 
+\mbox{\Hypertarget{action_8c_a333d4f6d90abb819d39752ff82cb79f3}\label{action_8c_a333d4f6d90abb819d39752ff82cb79f3}} 
+void {\bfseries fonc\+\_\+action\+\_\+4} (int jour)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce programme permet de gerer les actions possibles lors de la partie. 
+
+On utilise ce programme quand le joueur se trouve dans la salle des profs mais également en jeu pour permettre d\textquotesingle{}agir en fonction de l\textquotesingle{}action utilisé. \begin{DoxyAuthor}{Auteur}
+Vallet Guillaume 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{action_8c_a0a6810fc16bbe576854ad58cfba1782e}\label{action_8c_a0a6810fc16bbe576854ad58cfba1782e}} 
+\index{action.c@{action.c}!achat\_action@{achat\_action}}
+\index{achat\_action@{achat\_action}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{achat\_action()}{achat\_action()}}
+{\footnotesize\ttfamily int achat\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{action,  }\item[{int $\ast$}]{argent }\end{DoxyParamCaption})}
+
+
+
+Modifie le statut d\textquotesingle{}une action. 
+
+Si le joueur clic sur une action la fonction se lance et regarde la somme d\textquotesingle{}argent du joueur. Si la somme en question est assez grande alors l\textquotesingle{}action change de statut est devient acheté, or, si la somme n\textquotesingle{}est pas assez grande rien ne se passe.
+
+\begin{DoxyReturn}{Renvoie}
+On return un {\itshape int} qui défini si oui ou non l\textquotesingle{}action à changé de statut. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{action_8c_a55f5b5abd046d56ede5104c175703137}\label{action_8c_a55f5b5abd046d56ede5104c175703137}} 
+\index{action.c@{action.c}!affiche\_barre\_action@{affiche\_barre\_action}}
+\index{affiche\_barre\_action@{affiche\_barre\_action}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{affiche\_barre\_action()}{affiche\_barre\_action()}}
+{\footnotesize\ttfamily void affiche\+\_\+barre\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+
+
+
+Affiche la barre contenant les actions. 
+
+On commence par afficher le fond de la barre et ensuite on affiche les actions en fonction de leur état, si elles sont acheté ou non. 
+\begin{DoxyParams}{Paramètres}
+{\em action\+\_\+equipe} & est le tableau contenant l\textquotesingle{}ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La fonction ne return aucune valeurs, elle ne fait que de l\textquotesingle{}affichage 
+\end{DoxyReturn}
+\mbox{\Hypertarget{action_8c_a33035beb077886b92848a817e9d9a462}\label{action_8c_a33035beb077886b92848a817e9d9a462}} 
+\index{action.c@{action.c}!affiche\_menu\_action@{affiche\_menu\_action}}
+\index{affiche\_menu\_action@{affiche\_menu\_action}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{affiche\_menu\_action()}{affiche\_menu\_action()}}
+{\footnotesize\ttfamily void affiche\+\_\+menu\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+
+
+
+Affiche le menu des actions. 
+
+On commence par afficher le fond du tableau contenant toutes les actions achetés pour ensuite les achiffer sous forme de liste, à ne pas confondre avec {\itshape affiche\+\_\+barre\+\_\+action} car ici on affiche sous forme de liste alors que dans {\itshape affiche\+\_\+barre\+\_\+action} on affiche sous forme d\textquotesingle{}icone. 
+\begin{DoxyParams}{Paramètres}
+{\em action\+\_\+equipe\mbox{[}$\,$\mbox{]}} & action\+\_\+equipe est le tableau contenant l\textquotesingle{}ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La fonction ne return aucune valeurs, elle ne fait que de l\textquotesingle{}affichage 
+\end{DoxyReturn}
+\mbox{\Hypertarget{action_8c_a18ebe4fff4d6489829a028c7d3453b16}\label{action_8c_a18ebe4fff4d6489829a028c7d3453b16}} 
+\index{action.c@{action.c}!clic\_choix\_sdp@{clic\_choix\_sdp}}
+\index{clic\_choix\_sdp@{clic\_choix\_sdp}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{clic\_choix\_sdp()}{clic\_choix\_sdp()}}
+{\footnotesize\ttfamily int clic\+\_\+choix\+\_\+sdp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Attend un clic du joueur. 
+
+Ici, la fonction va attendre un clic du joueur, elle va permettre de modifier l\textquotesingle{}emplacement des actions achetés par le joueur. Quand le joueur clic sur une action alors la fonction renvoie l\textquotesingle{}id de l\textquotesingle{}action allant de 0 à 4 (sa position dans le tableau) ou alors, si le joueur clic sur un emplacement alors la fonction renvoie le numéros de l\textquotesingle{}emplacement en valeur negative allant de -\/1 à -\/4.
+
+\begin{DoxyReturn}{Renvoie}
+On return soit le numero de l\textquotesingle{}emplacement, l\textquotesingle{}id de l\textquotesingle{}action ou une valeur indiquant que l\textquotesingle{}on quitte le menu. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{action_8c_ae43587462fc34f5e07c37ebf7c72618e}\label{action_8c_ae43587462fc34f5e07c37ebf7c72618e}} 
+\index{action.c@{action.c}!equipe\_action@{equipe\_action}}
+\index{equipe\_action@{equipe\_action}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{equipe\_action()}{equipe\_action()}}
+{\footnotesize\ttfamily int equipe\+\_\+action (\begin{DoxyParamCaption}\item[{int}]{place,  }\item[{int $\ast$}]{argent,  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+equipe\mbox{[}4\mbox{]},  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+action\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+
+
+
+Equipe une action. 
+
+à remplir
+
+\begin{DoxyReturn}{Renvoie}
+à remplir 
+\end{DoxyReturn}
+\mbox{\Hypertarget{action_8c_a988c4693604b8de8c059d66b907c667e}\label{action_8c_a988c4693604b8de8c059d66b907c667e}} 
+\index{action.c@{action.c}!init\_action@{init\_action}}
+\index{init\_action@{init\_action}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{init\_action()}{init\_action()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structaction__t}{action\+\_\+t}}$\ast$ init\+\_\+action (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{prix,  }\item[{int}]{cd,  }\item[{void($\ast$)(int)}]{fonction,  }\item[{const char $\ast$}]{lien\+\_\+img\+\_\+rect,  }\item[{const char $\ast$}]{lien\+\_\+img\+\_\+rond }\end{DoxyParamCaption})}
+
+
+
+Initialise les informations d\textquotesingle{}une action. 
+
+Ici, on va initialiser les informations pour chaque action en {\itshape static} pour ne pas qu\textquotesingle{}elle se retrouve modifer dans la fonction main.
+
+\begin{DoxyReturn}{Renvoie}
+On return un {\itshape \mbox{\hyperlink{structaction__t}{action\+\_\+t}}} qui est notre action initialisé. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{action_8c_a4fffaec588d3c774a87de28874b16164}\label{action_8c_a4fffaec588d3c774a87de28874b16164}} 
+\index{action.c@{action.c}!init\_tab\_action@{init\_tab\_action}}
+\index{init\_tab\_action@{init\_tab\_action}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{init\_tab\_action()}{init\_tab\_action()}}
+{\footnotesize\ttfamily void init\+\_\+tab\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise un tableau d\textquotesingle{}action. 
+
+Ici, on va initialiser un tableau d\textquotesingle{}action, chaque case correspond à une action initialisé par la fonction {\itshape init\+\_\+action} , elle est la seul fonction a utiliser dans le code, elle s\textquotesingle{}occupe d\textquotesingle{}initialiser les actions avec les paramètres que le programmeur aura choisi.
+
+\begin{DoxyReturn}{Renvoie}
+On return aucune valeur car on modifie un pointeur sur un tableau. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{action_8c_a245ff95c6a3a42e0f00372cdafabde72}\label{action_8c_a245ff95c6a3a42e0f00372cdafabde72}} 
+\index{action.c@{action.c}!menu\_action@{menu\_action}}
+\index{menu\_action@{menu\_action}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{menu\_action()}{menu\_action()}}
+{\footnotesize\ttfamily void menu\+\_\+action (\begin{DoxyParamCaption}\item[{int $\ast$}]{argent,  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+equipe\mbox{[}4\mbox{]},  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+action\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+
+
+
+Fonction principale des actions. 
+
+Lance l\textquotesingle{}affichage du menu et gère les différentes fonctions d\textquotesingle{}achat et d\textquotesingle{}équipage des actions 

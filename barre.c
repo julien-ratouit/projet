@@ -1,8 +1,25 @@
+/**
+* \file barre.c
+* \brief Ce programme permet de gerer la barre sonor et de depression.
+* \details On utilise ce programme pour modifier la valeur des deux barres, mais aussi pour les initialiser.
+* \author Renoit Charles
+*/
+
+
 #include "commun.h"
 #include "timer.h"
 #include "barre.h"
 
-//Initialisation de la barre sonore
+/**
+* \brief Initialise la barre sonore
+* 
+* \details Cette fonction va afficher un rectangle vide à l'ecran, on aura seulement 5px de couleur à l'initialisation.
+*  
+* \param (*barre).x est le point de coordonnée de départ pour les x.
+* \param (*barre).y est le point de coordonnée de départ pour les y.
+* \param (*barre).w est la largeur du rectangle coloré.
+* \param (*barre).h est la hauteur du rectangle coloré.
+*/
 extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre){
 
   (*barre).x = 251;
@@ -20,7 +37,17 @@ extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre){
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
 }
-//Initialisation de la barre de depression
+
+/**
+* \brief Initialise la barre de depression
+* 
+* \details Cette fonction va afficher un rectangle vide à l'ecran, on aura seulement 5px de couleur à l'initialisation.
+*  
+* \param (*barre).x est le point de coordonnée de départ pour les x.
+* \param (*barre).y est le point de coordonnée de départ pour les y.
+* \param (*barre).w est la largeur du rectangle coloré.
+* \param (*barre).h est la hauteur du rectangle coloré.
+*/
 extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre){
 
   (*barre).x = 1066;
@@ -38,7 +65,15 @@ extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre){
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
 
 }
-//Mise à jour de la barre sonore
+
+/**
+* \brief Modifie la barre sonore
+* 
+* \details Cette fonction va augmenter la hauteur du rectangle coloré en prenant comme paramètre un score qui agit sur la valeur d'augmentation.
+*  
+* \param tempo
+* \param score
+*/
 extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int score){
   int tempo = 0;
   //printf("Score de la barre sonore : %i et score : %i\n", (*barre).h, score);
@@ -89,7 +124,16 @@ extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int sco
   }
   printf("%i\n",(*barre).h);
 }
-//Mise à jour de la barre de depression
+
+
+/**
+* \brief Modifie la barre de depression
+* 
+* \details Cette fonction va augmenter la hauteur du rectangle coloré en prenant comme paramètre un score qui agit sur la valeur d'augmentation.
+*  
+* \param tempo
+* \param score
+*/
 extern void update_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre_depression, SDL_Rect *barre_sonore, int score){
 
   //printf("Score de la barre de depression : %i et score : %i\n", (*barre_depression).h, score);
