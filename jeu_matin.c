@@ -45,7 +45,7 @@ void fonc_pthread_timer1(param_t *parametre)
 */
 int gameOver(SDL_Renderer *renderer, SDL_Window *window){
 	SDL_Texture *texture_game_over = NULL;
-	ajout_texture(texture_classe ,"images/game_over.png" , renderer, window, HAUTEUR , LARGEUR);
+	ajout_texture(texture_game_over ,"images/game_over.png" , renderer, window, HAUTEUR , LARGEUR);
 	SDL_Event event;
 	while(SDL_PollEvent(&event))
 		{
@@ -55,11 +55,11 @@ int gameOver(SDL_Renderer *renderer, SDL_Window *window){
 			{
 
 				case SDL_MOUSEBUTTONDOWN:
-					if((event.button.x > BOUTONN_LOAD_SAVE_X_MAX && event.button.x < BOUTONN_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTONN_LOAD_SAVE_Y_MAX && event.button.y < BOUTONN_LOAD_SAVE_X_MIN))
+					if((event.button.x > BOUTON_LOAD_SAVE_X_MAX && event.button.x < BOUTON_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTON_LOAD_SAVE_Y_MAX && event.button.y < BOUTON_LOAD_SAVE_X_MIN))
 					{
 						return 1;//defaite = 1 et on retourne a l'ecran d'aceuille
 					}
-					if((event.button.x > BOUTONN_FIN_X_MAX && event.button.x < BOUTONN_FIN_X_MIN)&&(event.button.y > BOUTONN_FIN_Y_MAX && event.button.y < BOUTONN_FIN_X_MIN))
+					if((event.button.x > BOUTON_FIN_X_MAX && event.button.x < BOUTON_FIN_X_MIN)&&(event.button.y > BOUTON_FIN_Y_MAX && event.button.y < BOUTON_FIN_X_MIN))
 					{
 						return 0;//defaite = 0 et on charge la derniere sauvegarde
 					};
@@ -207,32 +207,6 @@ void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps
 		{
 			switch (event.type)
 			{
-				case SDL_KEYUP:
-					switch(event.key.keysym.sym){
-						case SDLK_a:
-							if(((*barre_depression).h>(-250))&&status_menu == -1) 
-							{
-								score++;
-								/*mise a jour de la barre sonore + remise en place de la texture associé*/
-								update_barre_sonore(renderer, barre_sonore, score);
-								SDL_DestroyTexture(texture_barre_son);
-								ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
-
-								/*mise a jour de la barre de depression + remise en place de la texture associé*/
-								update_barre_depression(renderer, barre_depression, barre_sonore, score);
-								SDL_DestroyTexture(texture_barre_depression);
-								ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
-
-								SDL_RenderPresent(renderer);
-								continue;
-							}
-							else
-								break;
-
-						default:
-							continue;
-					}
-
 				case SDL_MOUSEBUTTONDOWN:
 					printf("tu es toujours dans la fonction jeu_matin\n");
 					/*je vais realiser plusieurs destroy et creation à la suite, c'est pour eviter l'acumulation des textures*/
