@@ -73,7 +73,7 @@ void lancement_self(param_t *parametre)
 
 		SDL_Event event;//Créer un évènement
 
-		while(SDL_PollEvent(&event))
+		while(SDL_PollEvent(&event) && program_launched)
 		{
 
 			switch (event.type)
@@ -127,7 +127,7 @@ void lancement_self(param_t *parametre)
 						SDL_DestroyTexture(texture_self);
 						SDL_DestroyTexture(texture_mess);
 						SDL_DestroyTexture(texture_menu_info);
-						lancement_apremidi((parametre->renderer), (parametre->window), (parametre->temps_jeu), (parametre->argent));
+						program_launched = SDL_FALSE;
 					}
 					break;
 			}

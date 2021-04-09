@@ -1,0 +1,95 @@
+\hypertarget{fonction_8c}{}\doxysection{Référence du fichier fonction.\+c}
+\label{fonction_8c}\index{fonction.c@{fonction.c}}
+
+
+Ce programme rassemble quelques fonctions.  
+
+
+{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fonction_8c_abed124ab111ee095d48f08e2a3ea4446}{SDL\+\_\+\+Exit\+With\+Error}} (const char $\ast$message)
+\begin{DoxyCompactList}\small\item\em Quitte le programme en cas d\textquotesingle{}erreur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonction_8c_a1680cec827fb8102616c94cc9b1eabdf}{SDL\+\_\+\+Exit\+Image\+With\+Error}} (const char $\ast$message, void $\ast$renderer, void $\ast$window)
+\begin{DoxyCompactList}\small\item\em Quitte le programme en cas d\textquotesingle{}erreur dans le rendu de l\textquotesingle{}image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonction_8c_aea438a54219c31fc820cdaffa0cf811f}{ajout\+\_\+texture}} (SDL\+\_\+\+Texture $\ast$texture, const char $\ast$lien\+\_\+img, SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window, int hauteur, int largeur)
+\begin{DoxyCompactList}\small\item\em ajoute une texture à l\textquotesingle{}ecran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonction_8c_ab0dd0bd262e07ff19e971a9553d07fc8}{ajout\+\_\+texture\+\_\+non\+\_\+centre}} (SDL\+\_\+\+Texture $\ast$texture, const char $\ast$lien\+\_\+img, SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window, int x, int y)
+\begin{DoxyCompactList}\small\item\em ajoute une texture à l\textquotesingle{}ecran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonction_8c_a9833c7f8b48b9fe37bed6741dcc8283f}{aff\+\_\+action}} (int $\ast$achat, SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat1, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat2, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat3, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat4)
+\begin{DoxyCompactList}\small\item\em affiche les actions sur l\textquotesingle{}ecran de jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonction_8c_a5f85b8c9cb46bc892a2c8a94e93a6c15}{press\+\_\+action}} (SDL\+\_\+\+Renderer $\ast$renderer, int num\+\_\+action)
+\begin{DoxyCompactList}\small\item\em à définir. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce programme rassemble quelques fonctions. 
+
+On utilise ce programme pour définir des fonctions utile dans tout le programme. \begin{DoxyAuthor}{Auteur}
+Vallet Guillaume, Quenault Maxime, Renoit Charles 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{fonction_8c_a9833c7f8b48b9fe37bed6741dcc8283f}\label{fonction_8c_a9833c7f8b48b9fe37bed6741dcc8283f}} 
+\index{fonction.c@{fonction.c}!aff\_action@{aff\_action}}
+\index{aff\_action@{aff\_action}!fonction.c@{fonction.c}}
+\doxysubsubsection{\texorpdfstring{aff\_action()}{aff\_action()}}
+{\footnotesize\ttfamily void aff\+\_\+action (\begin{DoxyParamCaption}\item[{int $\ast$}]{achat,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat1,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat2,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat3,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat4 }\end{DoxyParamCaption})}
+
+
+
+affiche les actions sur l\textquotesingle{}ecran de jeu. 
+
+Cette fonction affiche les actions, achetés par le joueur, en jeu. Elle agit seulement dans la salle de classe. \mbox{\Hypertarget{fonction_8c_aea438a54219c31fc820cdaffa0cf811f}\label{fonction_8c_aea438a54219c31fc820cdaffa0cf811f}} 
+\index{fonction.c@{fonction.c}!ajout\_texture@{ajout\_texture}}
+\index{ajout\_texture@{ajout\_texture}!fonction.c@{fonction.c}}
+\doxysubsubsection{\texorpdfstring{ajout\_texture()}{ajout\_texture()}}
+{\footnotesize\ttfamily void ajout\+\_\+texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Texture $\ast$}]{texture,  }\item[{const char $\ast$}]{lien\+\_\+img,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{int}]{hauteur,  }\item[{int}]{largeur }\end{DoxyParamCaption})}
+
+
+
+ajoute une texture à l\textquotesingle{}ecran. 
+
+Cette fonction réalise toute les étapes nécéssaire à la création d\textquotesingle{}une texture. Sa particularité est qu\textquotesingle{}elle ajoute une texture de façon centré par rapport aux coordonnée donnée en paramètre. Très souvant on lui donne la hauteur et la largeur de la fenêtre pour centrer une texture à l\textquotesingle{}ecran. \mbox{\Hypertarget{fonction_8c_ab0dd0bd262e07ff19e971a9553d07fc8}\label{fonction_8c_ab0dd0bd262e07ff19e971a9553d07fc8}} 
+\index{fonction.c@{fonction.c}!ajout\_texture\_non\_centre@{ajout\_texture\_non\_centre}}
+\index{ajout\_texture\_non\_centre@{ajout\_texture\_non\_centre}!fonction.c@{fonction.c}}
+\doxysubsubsection{\texorpdfstring{ajout\_texture\_non\_centre()}{ajout\_texture\_non\_centre()}}
+{\footnotesize\ttfamily void ajout\+\_\+texture\+\_\+non\+\_\+centre (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Texture $\ast$}]{texture,  }\item[{const char $\ast$}]{lien\+\_\+img,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+ajoute une texture à l\textquotesingle{}ecran. 
+
+Cette fonction réalise toute les étapes nécéssaire à la création d\textquotesingle{}une texture. Sa particularité est qu\textquotesingle{}elle ajoute une texture de façon non centré. les valeurs x et y représente donc sont point de départ pour l\textquotesingle{}affichage. \mbox{\Hypertarget{fonction_8c_a5f85b8c9cb46bc892a2c8a94e93a6c15}\label{fonction_8c_a5f85b8c9cb46bc892a2c8a94e93a6c15}} 
+\index{fonction.c@{fonction.c}!press\_action@{press\_action}}
+\index{press\_action@{press\_action}!fonction.c@{fonction.c}}
+\doxysubsubsection{\texorpdfstring{press\_action()}{press\_action()}}
+{\footnotesize\ttfamily int press\+\_\+action (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{num\+\_\+action }\end{DoxyParamCaption})}
+
+
+
+à définir. 
+
+à définir \mbox{\Hypertarget{fonction_8c_a1680cec827fb8102616c94cc9b1eabdf}\label{fonction_8c_a1680cec827fb8102616c94cc9b1eabdf}} 
+\index{fonction.c@{fonction.c}!SDL\_ExitImageWithError@{SDL\_ExitImageWithError}}
+\index{SDL\_ExitImageWithError@{SDL\_ExitImageWithError}!fonction.c@{fonction.c}}
+\doxysubsubsection{\texorpdfstring{SDL\_ExitImageWithError()}{SDL\_ExitImageWithError()}}
+{\footnotesize\ttfamily void SDL\+\_\+\+Exit\+Image\+With\+Error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message,  }\item[{void $\ast$}]{renderer,  }\item[{void $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Quitte le programme en cas d\textquotesingle{}erreur dans le rendu de l\textquotesingle{}image. 
+
+Cette fonction à pour but de quiter la SDL en affichant le message donner en parametre, on l\textquotesingle{}utilise pour gerer les erreures lors de la création d\textquotesingle{}une texture. On prend bien soins de detrure le rendu et la fenêtre (existant obligatoirement car present en paramêtre), pour ensuite quitter la SDL en appelant la fonction {\itshape SDL\+\_\+\+Exit\+With\+Error} \mbox{\Hypertarget{fonction_8c_abed124ab111ee095d48f08e2a3ea4446}\label{fonction_8c_abed124ab111ee095d48f08e2a3ea4446}} 
+\index{fonction.c@{fonction.c}!SDL\_ExitWithError@{SDL\_ExitWithError}}
+\index{SDL\_ExitWithError@{SDL\_ExitWithError}!fonction.c@{fonction.c}}
+\doxysubsubsection{\texorpdfstring{SDL\_ExitWithError()}{SDL\_ExitWithError()}}
+{\footnotesize\ttfamily void SDL\+\_\+\+Exit\+With\+Error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Quitte le programme en cas d\textquotesingle{}erreur. 
+
+Cette fonction à pour but de quiter la SDL en affichant le message donner en parametre, on l\textquotesingle{}utilise pour gerer les erreures lors de la création d\textquotesingle{}une fenêtre ou d\textquotesingle{}un rendu notamment. 
