@@ -31,6 +31,8 @@ typedef struct param_s
 	SDL_Rect *depression;
 	SDL_Renderer *renderer;
 	SDL_Window *window;
+	SDL_bool perdu;
+	SDL_bool quitte;
 }
 param_t;
 
