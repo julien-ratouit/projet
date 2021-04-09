@@ -109,8 +109,9 @@ void lancement_salle_prof(param_t *parametre)
 					if((event.button.x > BTN_SAVE_X_MIN && event.button.x < BTN_SAVE_X_MAX)&&(event.button.y > BTN_SAVE_Y_MIN && event.button.y < BTN_SAVE_Y_MAX) && statut_mess == 0)
 					{
 						//on clique pour sauvegarder et quitter
-
+						
 						printf("tu as clique sur le bouton save\n");
+						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
 					}
 					break;

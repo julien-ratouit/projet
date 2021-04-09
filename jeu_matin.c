@@ -138,6 +138,7 @@ void lancement_matin(param_t * parametre)
 					{
 						(parametre->temps_jeu)->stop(parametre->temps_jeu); 
 						/*si on clique sur le bouton 'quitter le jeu'*/ 
+						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
 					}
 

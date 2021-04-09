@@ -59,14 +59,13 @@ int main (int argc, char ** argv)
 	ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
 	ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
-	int quitte = 0;
-	int perdu = 0;
-
 	param_t * parametre = malloc(sizeof(param_t));
 	parametre->temps_jeu = temps_jeu;
 	parametre->argent = argent;
 	parametre->window = window;
 	parametre->renderer = renderer;
+	parametre->quitte = SDL_FALSE;
+	parametre->perdu = SDL_FALSE;
 
 	SDL_RenderPresent(renderer);
 	while(program_launched)
@@ -85,15 +84,15 @@ int main (int argc, char ** argv)
 						SDL_DestroyTexture(texture_menu);
 						SDL_DestroyTexture(texture_btn_tuto);
 
-						while(!quitte && !perdu){
+						while(!(parametre->quitte) && !(parametre->perdu)){
 
-							if(!quitte && !perdu)
+							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_matin(parametre);
-							if(!quitte && !perdu)
+							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_self(parametre);
-							if(!quitte && !perdu)
+							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_apremidi(parametre);
-							if(!quitte && !perdu)
+							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_salle_prof(parametre);
 
 						}
@@ -103,6 +102,8 @@ int main (int argc, char ** argv)
 						ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
 						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
+
+						parametre->quitte = SDL_FALSE;
 
 						SDL_RenderPresent(renderer);
 					}
