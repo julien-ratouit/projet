@@ -64,7 +64,7 @@ void lancement_salle_prof(param_t *parametre)
 
 		SDL_Event event;
 
-		while(SDL_PollEvent(&event))
+		while(SDL_PollEvent(&event) && program_launched)
 		{
 
 			switch (event.type)
@@ -129,7 +129,7 @@ void lancement_salle_prof(param_t *parametre)
 						SDL_DestroyTexture(texture_prof);
 						SDL_DestroyTexture(texture_mess);
 						SDL_DestroyTexture(texture_menu_info);
-						lancement_matin((parametre->renderer), (parametre->window), (parametre->temps_jeu), (parametre->argent));
+						program_launched = SDL_FALSE;
 					}
 
 					if((event.button.x > BTN_SAVE_X_MIN && event.button.x < BTN_SAVE_X_MAX)&&(event.button.y > BTN_SAVE_Y_MIN && event.button.y < BTN_SAVE_Y_MAX) && statut_mess == 0)

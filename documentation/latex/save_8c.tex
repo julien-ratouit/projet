@@ -1,0 +1,48 @@
+\hypertarget{save_8c}{}\doxysection{Référence du fichier save.\+c}
+\label{save_8c}\index{save.c@{save.c}}
+
+
+Ensemble de fonction qui s\textquotesingle{}occupe de la sauvegarde d\textquotesingle{}une partie.  
+
+
+{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}save.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{save_8c_aaf0f2dc8f7dd4c0bc2051ba9cb7101f7}{sauvegarde}} (int money, int jour, int nb\+\_\+action, int action\+\_\+achete\mbox{[}$\,$\mbox{]}, int action\+\_\+equipe\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui sauvegarde la progression du joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{save_8c_a06e7f9a9745168acdb6c9eb4eeb0489d}{charger}} (int $\ast$money, int $\ast$jour, int $\ast$nb\+\_\+action, int action\+\_\+achete\mbox{[}$\,$\mbox{]}, int action\+\_\+equipe\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui charge une anciènne sauvegarde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ensemble de fonction qui s\textquotesingle{}occupe de la sauvegarde d\textquotesingle{}une partie. 
+
+c\textquotesingle{}est dans ces fonctions que l\textquotesingle{}on met en place la sauvegarde mais aussi le chargement d\textquotesingle{}une partie. \begin{DoxyAuthor}{Auteur}
+Vallet Guillaume 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{save_8c_a06e7f9a9745168acdb6c9eb4eeb0489d}\label{save_8c_a06e7f9a9745168acdb6c9eb4eeb0489d}} 
+\index{save.c@{save.c}!charger@{charger}}
+\index{charger@{charger}!save.c@{save.c}}
+\doxysubsubsection{\texorpdfstring{charger()}{charger()}}
+{\footnotesize\ttfamily int charger (\begin{DoxyParamCaption}\item[{int $\ast$}]{money,  }\item[{int $\ast$}]{jour,  }\item[{int $\ast$}]{nb\+\_\+action,  }\item[{int}]{action\+\_\+achete\mbox{[}$\,$\mbox{]},  }\item[{int}]{action\+\_\+equipe\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui charge une anciènne sauvegarde. 
+
+Dans cette fonction on charge plusieurs information à partir d\textquotesingle{}un fichier texte. On charge l\textquotesingle{}argent du joueur, le n° du jour qu\textquotesingle{}il vient de finir, le nombre d\textquotesingle{}action achetées et des actions qui sont achetées et ensuite on charge leur emplacement dans la barre des actions. \mbox{\Hypertarget{save_8c_aaf0f2dc8f7dd4c0bc2051ba9cb7101f7}\label{save_8c_aaf0f2dc8f7dd4c0bc2051ba9cb7101f7}} 
+\index{save.c@{save.c}!sauvegarde@{sauvegarde}}
+\index{sauvegarde@{sauvegarde}!save.c@{save.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarde()}{sauvegarde()}}
+{\footnotesize\ttfamily void sauvegarde (\begin{DoxyParamCaption}\item[{int}]{money,  }\item[{int}]{jour,  }\item[{int}]{nb\+\_\+action,  }\item[{int}]{action\+\_\+achete\mbox{[}$\,$\mbox{]},  }\item[{int}]{action\+\_\+equipe\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui sauvegarde la progression du joueur. 
+
+Dans cette fonction on sauvegarde plusieurs information dans un fichier texte. On sauvegarde l\textquotesingle{}argent du joueur, le n° du jour qu\textquotesingle{}il vient de finir, le nombre d\textquotesingle{}action achetées et des actions qui sont achetées et ensuite on sauvegarde leur emplacement dans la barre des actions. 

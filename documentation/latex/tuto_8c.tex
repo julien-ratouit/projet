@@ -1,0 +1,42 @@
+\hypertarget{tuto_8c}{}\doxysection{Référence du fichier tuto.\+c}
+\label{tuto_8c}\index{tuto.c@{tuto.c}}
+
+
+Ensemble de fonction qui gère la page du tuto.  
+
+
+{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tuto.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tuto_8c_a109dd1071061bcfd923fdf84408d88e2}{tuto}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window)
+\begin{DoxyCompactList}\small\item\em fonction qui gère le tuto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ensemble de fonction qui gère la page du tuto. 
+
+c\textquotesingle{}est dans cette fonction que l\textquotesingle{}on gère l\textquotesingle{}affichage et les zones de cliques liées à la page du tuto. \begin{DoxyAuthor}{Auteur}
+Ratouit Julien 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{tuto_8c_a109dd1071061bcfd923fdf84408d88e2}\label{tuto_8c_a109dd1071061bcfd923fdf84408d88e2}} 
+\index{tuto.c@{tuto.c}!tuto@{tuto}}
+\index{tuto@{tuto}!tuto.c@{tuto.c}}
+\doxysubsubsection{\texorpdfstring{tuto()}{tuto()}}
+{\footnotesize\ttfamily void tuto (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Window $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+fonction qui gère le tuto. 
+
+Dans cette fonction nous affichonsles textures liées a la page tuto de notre jeu, le joueur à la possibilité de quitter le tuto en cliquant sur la croix en haute à gauche, il peut aussi naviguer entre les pages avec un bouton next et pred. Une fois arrivé à la dernière page le bouton nexte se transforme en bouton pour quitter le tuto.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em page} & est un entier de type {\itshape int} qui nous permet de savoir sur qu\textquotesingle{}elle page du tuto on se trouve. \\
+\hline
+\end{DoxyParams}
