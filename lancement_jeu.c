@@ -5,42 +5,47 @@
 #include "barre.h"
 #include "lancement_jeu.h"
 
-////////////////////////////////////
-void func_barre(param_barre_t *barre_param){
+int gameOver(SDL_Renderer *renderer, SDL_Window *window){
+	SDL_Texture *texture_game_over = NULL;
+	ajout_texture(texture_classe ,"images/game_over.png" , renderer, window, HAUTEUR , LARGEUR);
+	SDL_Event event;
+	while(SDL_PollEvent(&event))
+		{
+			
 
-	int nb_jour = 3;
-	int agit = 2;
-	printf("bou2\n");
-	/*marche pas-------------------------------
-	int temps;
-	temps = rand()%(2000-200+1)+200;
-	SDL_Delay(temps);
-	printf("temps:%d\n", temps);*/
-	SDL_Delay(500);
-	if((*barre_param->barre_depression).h>(-250))
-	{
+			switch (event.type)
+			{
 
-		//mise a jour de la barre sonore + remise en place de la texture associé
-		update_barre_sonore(barre_param->rendu, barre_param->barre_sonore, agit);
-		SDL_DestroyTexture(barre_param->texture_barre_son_pthread);
-		ajout_texture_non_centre(barre_param->texture_barre_son_pthread, "images/barre_son_depression.png", barre_param->rendu, barre_param->fenetre, BARRE_SON_X, BARRE_SON_Y);
+				case SDL_MOUSEBUTTONDOWN:
+					//printf("x : %i & y : %i\n", event.button.x, event.button.y);
+					/*je vais realiser plusieurs destroy et creation à la suite, c'est pour eviter l'acumulation des textures*/
+					if((event.button.x > BOUTONN_LOAD_SAVE_X_MAX && event.button.x < BOUTONN_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTONN_LOAD_SAVE_Y_MAX && event.button.y < BOUTONN_LOAD_SAVE_X_MIN))
+					{
+						return 1;//defaite = 1 et on retourne a l'ecran d'aceuille
+					}
+					if((event.button.x > BOUTONN_FIN_X_MAX && event.button.x < BOUTONN_FIN_X_MIN)&&(event.button.y > BOUTONN_FIN_Y_MAX && event.button.y < BOUTONN_FIN_X_MIN))
+					{
+						return 0;//defaite = 0 et on charge la derniere sauvegarde
+					};
+					break;
 
-		//mise a jour de la barre de depression + remise en place de la texture associé
-		update_barre_depression(barre_param->rendu, barre_param->barre_depression, barre_param->barre_sonore, agit);
-		SDL_DestroyTexture(barre_param->texture_barre_depression_pthread);
-		ajout_texture_non_centre(barre_param->texture_barre_depression_pthread, "images/barre_son_depression.png", barre_param->rendu, barre_param->fenetre, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+				default:
+					break;
 
-		SDL_RenderPresent(barre_param->rendu);
-	}
-	pthread_exit(NULL);
-}
-//////////////////////////////////////
-void *func_barre_cb(void* params){
-	func_barre(params);
+			}
+		}
 }
 
 void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
 {
+	//variables pour les barres
+	int cpt1 = 0;
+	int defaite = 0; //si defaite = 1 c'est perdu
+	int nb_jour = 0;
+	int agit = 0;
+	int temps;
+	///////////////////////////
+
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
 
@@ -71,7 +76,6 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 	/*variables de test*/
 	int *achat = malloc(sizeof(int));
 	(*achat) = 4;
-	int score = 0;
 	int test;
 	
 	/*-----------------*/
@@ -89,30 +93,50 @@ void lancement(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, 
 	SDL_RenderPresent(renderer);
 
 	temps_jeu->debut(temps_jeu);
-    //----------PTHREAD----------------------------------------------------
-	barre_param->barre_depression = barre_depression;
-	barre_param->barre_sonore = barre_sonore;
 
-	barre_param->texture_barre_son_pthread = texture_barre_son;
-	barre_param->texture_barre_depression_pthread = texture_barre_depression;
-	
-	pthread_t b_sonnor;
-
-	pthread_create(&b_sonnor, NULL, func_barre_cb, barre_param);
-	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
-	while(program_launched)
+	while(program_launched && defaite != 1)
 	{
 
-		SDL_Event event;//Créer un évènement
-		pthread_join(b_sonnor, NULL);
-		if (status_menu != 1)
-		{
-			pthread_create(&b_sonnor, NULL, func_barre_cb, barre_param);
-		}
-	
+		SDL_Event event;
+
+		//mise a jour des barres atomatic
+		printf("debut barre:\n");
+		agit = nb_jour + 2;
+		temps = rand()%(200-20+1)+20;
+		SDL_Delay(temps);
+		printf("temps:%d\n", temps);
+		if(((*barre_depression).h>(-250))&&status_menu == -1)
+			{
+				/*mise a jour de la barre sonore + remise en place de la texture associé*/
+				update_barre_sonore(renderer, barre_sonore, agit);
+				SDL_DestroyTexture(texture_barre_son);
+				ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
+
+				/*mise a jour de la barre de depression + remise en place de la texture associé*/
+				update_barre_depression(renderer, barre_depression, barre_sonore, agit);
+				SDL_DestroyTexture(texture_barre_depression);
+				ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+				SDL_RenderPresent(renderer);
+			}
+		///////////////////////////////////
+
+		//detection de la defaite
+		if ((*barre_depression).h<=(-247))
+			{
+				defaite = gameOver(renderer, window);
+				//si defaite = 0 charger last sauvegarde
+				//sinon go ecran d'aceuille
+			}	
+		/////////////////////////	
+		//test
+		printf("nb boucles: %d\n",cpt1);
+		cpt1++;
+		//////
 		while(SDL_PollEvent(&event))
 		{
+			
 
 			switch (event.type)
 			{
