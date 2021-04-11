@@ -84,20 +84,20 @@
 
 /*Zone bouton 'charger derniere sauvegarde'*/
 /*----------------------------------------*/
-#define BOUTON_LOAD_SAVE_X_MAX 790
-#define BOUTON_LOAD_SAVE_X_MIN 490
+#define BOUTON_LOAD_SAVE_X_MAX 441
+#define BOUTON_LOAD_SAVE_X_MIN 532 
 
-#define BOUTON_LOAD_SAVE_Y_MAX 510
-#define BOUTON_LOAD_SAVE_Y_MIN 424
+#define BOUTON_LOAD_SAVE_Y_MAX 410
+#define BOUTON_LOAD_SAVE_Y_MIN 442
 /*----------------------------------------*/
 
 /*Zone bouton 'quitter'*/
 /*----------------------------------------*/
-#define BOUTON_FIN_X_MAX 790
-#define BOUTON_FIN_X_MIN 490
+#define BOUTON_FIN_X_MAX 714
+#define BOUTON_FIN_X_MIN 806
 
-#define BOUTON_FIN_Y_MAX 510
-#define BOUTON_FIN_Y_MIN 424
+#define BOUTON_FIN_Y_MAX 410
+#define BOUTON_FIN_Y_MIN 442
 /*----------------------------------------*/
 
 /*-----------------------------------------------------------------------------------*/

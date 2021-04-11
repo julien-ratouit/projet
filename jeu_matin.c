@@ -35,7 +35,7 @@ void *fonc_pthread_timer1_cb(void *parametre)
 */
 void fonc_pthread_timer1(param_t *parametre)
 {
-	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 1000);
+	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 10000);
 	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
 	lancement_self(parametre);
 }
