@@ -12,39 +12,13 @@
 #include "barre.h"
 #include "self.h"
 
-
-/**
-* \brief Fonction de callback 
-* 
-* \details Cette fonction à pour seul but d'appeler une autre fonction. Cela permet d'evité les warnings lors de l'execution du programme.
-*  
-*/
-void *fonc_pthread_timer1_cb(void *parametre)
-{
-	fonc_pthread_timer1(parametre);
-}
-
-
-/**
-* \brief Fonction du pthread n°1 
-* 
-* \details Cette fonction va s'executer en même temps que la fonction \a lancement_matin , sont but est de comparé le temps passé en jeu
-* avec le temps limite accordé par le developpeur. Si le temps arrive à sont terme alors la fonction \a lancement_self est lancé, le joueur se retrouve donc dans le self.
-*  
-*/
-void fonc_pthread_timer1(param_t *parametre)
-{
-	while((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) <= 10000);
-	(parametre->temps_jeu)->stop(parametre->temps_jeu);	
-	lancement_self(parametre);
-}
 /**
 * a doxigéner
 *
 */
-int gameOver(SDL_Renderer *renderer, SDL_Window *window){
+void gameOver(param_t * parametre){
 	SDL_Texture *texture_game_over = NULL;
-	ajout_texture(texture_game_over ,"images/game_over.png" , renderer, window, HAUTEUR , LARGEUR);
+	ajout_texture(texture_game_over ,"images/game_over.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 	SDL_Event event;
 	while(SDL_PollEvent(&event))
 		{
@@ -56,11 +30,11 @@ int gameOver(SDL_Renderer *renderer, SDL_Window *window){
 				case SDL_MOUSEBUTTONDOWN:
 					if((event.button.x > BOUTON_LOAD_SAVE_X_MAX && event.button.x < BOUTON_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTON_LOAD_SAVE_Y_MAX && event.button.y < BOUTON_LOAD_SAVE_X_MIN))
 					{
-						return 1;//defaite = 1 et on retourne a l'ecran d'aceuille
+						parametre->perdu = SDL_TRUE;//defaite = 1 et on retourne a l'ecran d'aceuille
 					}
 					if((event.button.x > BOUTON_FIN_X_MAX && event.button.x < BOUTON_FIN_X_MIN)&&(event.button.y > BOUTON_FIN_Y_MAX && event.button.y < BOUTON_FIN_X_MIN))
 					{
-						return 0;//defaite = 0 et on charge la derniere sauvegarde
+						parametre->perdu = SDL_FALSE;//defaite = 0 et on charge la derniere sauvegarde
 					};
 					break;
 
@@ -144,7 +118,7 @@ void lancement_matin(param_t * parametre)
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
-	while(program_launched)
+	while(program_launched && parametre->perdu != SDL_TRUE)
 	{
 
 
@@ -153,30 +127,29 @@ void lancement_matin(param_t * parametre)
 
 		//mise a jour des barres atomatic
 		printf("debut barre:\n");
-		agit = nb_jour + 15;
-		temps = rand()%(200-20+1)+20;
-		SDL_Delay(temps);
+		agit = nb_jour + 1;
 		printf("temps:%d\n", temps);
-		if(((*barre_depression).h>(-250))&&status_menu == -1)
+		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
 			{
+				temps = rand()%(181)+20;
 				/*mise a jour de la barre sonore + remise en place de la texture associé*/
-				update_barre_sonore(renderer, barre_sonore, agit);
+				update_barre_sonore(parametre->renderer, barre_sonore, agit);
 				SDL_DestroyTexture(texture_barre_son);
-				ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
+				ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 
 				/*mise a jour de la barre de depression + remise en place de la texture associé*/
-				update_barre_depression(renderer, barre_depression, barre_sonore, agit);
+				update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
 				SDL_DestroyTexture(texture_barre_depression);
-				ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+				ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
-				SDL_RenderPresent(renderer);
+				SDL_RenderPresent(parametre->renderer);
 			}
 		///////////////////////////////////
 
 		//detection de la defaite
 		if ((*barre_depression).h<=(-247))
 			{
-				defaite = gameOver(renderer, window);
+				gameOver(parametre);
 				//si defaite = 0 charger last sauvegarde
 				//sinon go ecran d'aceuille
 				/*if (defaite = 0)
@@ -273,7 +246,7 @@ void lancement_matin(param_t * parametre)
 					break;
 
 				default:
-					if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 1000) program_launched = SDL_FALSE;
+					if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 10000) program_launched = SDL_FALSE;
 					break;
 
 			}

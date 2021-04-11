@@ -104,6 +104,7 @@ int main (int argc, char ** argv)
 						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 						parametre->quitte = SDL_FALSE;
+						parametre->perdu = SDL_FALSE;
 
 						SDL_RenderPresent(renderer);
 					}
