@@ -13,7 +13,6 @@
 #include "self.h"
 
 
-
 /**
 * \brief Fonction de callback 
 * 
@@ -84,7 +83,8 @@ int gameOver(SDL_Renderer *renderer, SDL_Window *window){
 * alors que si ce n'est pas le cas alors le joueur ne pourra pas y avoir accés.
 *
 */
-void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps_jeu, int argent)
+
+void lancement_matin(param_t * parametre)
 {
 	//variables pour les barres
 	int cpt1 = 0;
@@ -97,12 +97,6 @@ void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps
 	pthread_t thread_minuteur;
 
 	printf("bienvenue dans le cours du matin\n");
-	param_t *parametre = malloc(sizeof(param_t));
-
-	parametre->temps_jeu = temps_jeu;
-	parametre->argent = argent;
-	parametre->window = window;
-	parametre->renderer = renderer;
 
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
@@ -133,21 +127,19 @@ void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps
 	
 	/*-----------------*/
 
-	ajout_texture(texture_classe ,"images/salle_de_classe.png" , renderer, window, HAUTEUR , LARGEUR);
-	aff_action(achat, renderer, window, texture_action1, texture_action2, texture_action3, texture_action4);
-	ajout_texture_non_centre(texture_btn_option , "images/option.png", renderer, window, OPTION_HAUTEUR, OPTION_LARGEUR);
+	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+	aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+	ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 
-	init_barre_depression(renderer, barre_depression);
-	init_barre_sonore(renderer, barre_sonore);
+	init_barre_depression(parametre->renderer, barre_depression);
+	init_barre_sonore(parametre->renderer, barre_sonore);
 
-	ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
-	ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+	ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+	ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
-	SDL_RenderPresent(renderer);
+	SDL_RenderPresent(parametre->renderer);
 
-	temps_jeu->debut(temps_jeu);
-
-	pthread_create(&thread_minuteur, NULL, fonc_pthread_timer1_cb, parametre);
+	(parametre->temps_jeu)->debut(parametre->temps_jeu);
 
 
 	/*----------------------------------------------------------------------*/
@@ -203,7 +195,7 @@ void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps
 
 		SDL_Event event;//Créer un évènement
 
-		while(SDL_PollEvent(&event))
+		while(SDL_PollEvent(&event) && program_launched)
 		{
 			switch (event.type)
 			{
@@ -213,73 +205,75 @@ void lancement_matin(SDL_Renderer *renderer, SDL_Window *window, Timer_t * temps
 					if((event.button.x > 70 && event.button.x < 134)&&(event.button.y > 530 && event.button.y < 594)&&status_menu == -1)
 					{
 						/*si on clique sur le bouton 1*/
-						update_barre_sonore(renderer, barre_sonore, press_action(renderer, 1));
+						update_barre_sonore(parametre->renderer, barre_sonore, press_action(parametre->renderer, 1));
 
 						SDL_DestroyTexture(texture_barre_son);
-						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
+						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 
 						SDL_DestroyTexture(texture_barre_depression);
-						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
-						SDL_RenderPresent(renderer);
+						SDL_RenderPresent(parametre->renderer);
 					}
 
 					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN))
 					{
-						temps_jeu->pause(temps_jeu);
+						(parametre->temps_jeu)->pause(parametre->temps_jeu);
 						/*si on clique sur le menu*/
 						status_menu = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
 
 						SDL_DestroyTexture(texture_menu_option);
-						ajout_texture(texture_menu_option ,"images/menu_pause.png" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_menu_option ,"images/menu_pause.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 
-						SDL_RenderPresent(renderer);
+						SDL_RenderPresent(parametre->renderer);
 					}
 
 					if((event.button.x < QUIT_X_MAX && event.button.x > QUIT_X_MIN)&&(event.button.y < QUIT_Y_MAX && event.button.y > QUIT_Y_MIN)&&status_menu == 1)
 					{
-						temps_jeu->stop(temps_jeu); 
+						(parametre->temps_jeu)->stop(parametre->temps_jeu); 
 						/*si on clique sur le bouton 'quitter le jeu'*/ 
+						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
 					}
 
 					if((event.button.x < REPRENDRE_X_MAX && event.button.x > REPRENDRE_X_MIN)&&(event.button.y < REPRENDRE_Y_MAX && event.button.y > REPRENDRE_Y_MIN)&&status_menu == 1)
 					{
 
-						temps_jeu->unpause(temps_jeu);
+						(parametre->temps_jeu)->unpause(parametre->temps_jeu);
 						/*si on clique sur le bouton 'reprendre le jeu'*/
-						printf("%d ms\n", temps_jeu->get_ticks(temps_jeu));
+						printf("%d ms\n", parametre->temps_jeu->get_ticks(parametre->temps_jeu));
 
 						status_menu = -1;
 
 						SDL_DestroyTexture(texture_menu_option);
 
 						SDL_DestroyTexture(texture_classe);
-						ajout_texture(texture_classe ,"images/salle_de_classe.png" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 						
 						SDL_DestroyTexture(texture_action1);
 						SDL_DestroyTexture(texture_action2);
 						SDL_DestroyTexture(texture_action3);
 						SDL_DestroyTexture(texture_action4);
-						aff_action(achat, renderer, window, texture_action1, texture_action2, texture_action3, texture_action4);
+						aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 
 						SDL_DestroyTexture(texture_btn_option);
-						ajout_texture_non_centre(texture_btn_option , "images/option.png", renderer, window, OPTION_HAUTEUR, OPTION_LARGEUR);
+						ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 
-						update_barre_sonore(renderer, barre_sonore, 0);
-						update_barre_depression(renderer, barre_depression, barre_sonore, 0);
+						update_barre_sonore(parametre->renderer, barre_sonore, 0);
+						update_barre_depression(parametre->renderer, barre_depression, barre_sonore, 0);
 
 						SDL_DestroyTexture(texture_barre_son);
-						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", renderer, window, BARRE_SON_X, BARRE_SON_Y);
+						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 
 						SDL_DestroyTexture(texture_barre_depression);
-						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", renderer, window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
-						SDL_RenderPresent(renderer);
+						SDL_RenderPresent(parametre->renderer);
 					};
 					break;
 
 				default:
+					if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 1000) program_launched = SDL_FALSE;
 					break;
 
 			}

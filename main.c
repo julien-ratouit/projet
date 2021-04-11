@@ -5,12 +5,15 @@
 * \author Quenault Maxime, Ratouit Charles
 */
 
-
 #include "commun.h"
 #include "jeu_matin.h"
+#include "jeu_apremidi.h"
 #include "tuto.h"
-
-
+#include "timer.h"
+#include "barre.h"
+#include "self.h"
+#include "salle_prof.h"
+#include "action.h"
 /**
 * \brief fonction main.
 *
@@ -21,6 +24,7 @@
 * \param program_lauched est de type \a SDL_bool et permet de maintenir le programme en route, si jamais il passe à false alors on quitte le programme.
 *  
 */
+
 int main (int argc, char ** argv)
 {
 	system("cls");
@@ -55,6 +59,13 @@ int main (int argc, char ** argv)
 	ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
 	ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
+	param_t * parametre = malloc(sizeof(param_t));
+	parametre->temps_jeu = temps_jeu;
+	parametre->argent = argent;
+	parametre->window = window;
+	parametre->renderer = renderer;
+	parametre->quitte = SDL_FALSE;
+	parametre->perdu = SDL_FALSE;
 
 	SDL_RenderPresent(renderer);
 	while(program_launched)
@@ -69,18 +80,30 @@ int main (int argc, char ** argv)
 					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
-						//si on appuie sur le bouton jouer
-
 						SDL_DestroyTexture(texture_btn_jouer);
 						SDL_DestroyTexture(texture_menu);
 						SDL_DestroyTexture(texture_btn_tuto);
 
-						lancement_matin(renderer, window, temps_jeu, argent);
+						while(!(parametre->quitte) && !(parametre->perdu)){
+
+							if(!(parametre->quitte) && !(parametre->perdu))
+								lancement_matin(parametre);
+							if(!(parametre->quitte) && !(parametre->perdu))
+								lancement_self(parametre);
+							if(!(parametre->quitte) && !(parametre->perdu))
+								lancement_apremidi(parametre);
+							if(!(parametre->quitte) && !(parametre->perdu))
+								lancement_salle_prof(parametre);
+
+						}
+						//si on appuie sur le bouton jouer				
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
 						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
+
+						parametre->quitte = SDL_FALSE;
 
 						SDL_RenderPresent(renderer);
 					}
