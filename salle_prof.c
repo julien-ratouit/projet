@@ -117,7 +117,8 @@ void lancement_salle_prof(param_t *parametre)
 
 				  		int argent = (parametre->argent);
 				  		
-						menu_action(&argent, action_equipe, liste_action, parametre);
+						if(menu_action(&argent, action_equipe, liste_action, parametre))
+							program_launched = SDL_FALSE;
 			  		}
 
 					if((event.button.x > BTN_RESTART_X_MIN && event.button.x < BTN_RESTART_X_MAX)&&(event.button.y > BTN_RESTART_Y_MIN && event.button.y < BTN_RESTART_Y_MAX) && statut_mess == 0)

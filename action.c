@@ -42,8 +42,9 @@ void affiche_barre_action(param_t *parametre)
 		ajout_texture_non_centre(action_barre_n3, (action_equipe[2]->img_action_rond), parametre->renderer, parametre->window, 635, 471);
     if(action_equipe[3] != NULL)
 		ajout_texture_non_centre(action_barre_n4, (action_equipe[3]->img_action_rond), parametre->renderer, parametre->window, 712, 471);
+	
     SDL_RenderPresent(parametre->renderer);
-
+	
 }
 
 
@@ -60,16 +61,29 @@ void affiche_barre_action(param_t *parametre)
 void affiche_menu_action(param_t *parametre){
 
 	ajout_texture_non_centre(background_menu_action,"images/background_menu_action.png", parametre->renderer, parametre->window,420 , 50);
-
-	if(action_equipe[0] != NULL)
+	//printf("Ca crash ?");
+	if(action_equipe[0] != NULL){
+		//printf("Invisible 0 :)))");
     	ajout_texture_non_centre(action_barre_n1, (action_equipe[0]->img_action_rect), parametre->renderer,parametre->window, 480, 80);
-    if(action_equipe[1] != NULL)
+	}
+    if(action_equipe[1] != NULL){
+		//printf("Invisible 1 :)))");
 		ajout_texture_non_centre(action_barre_n2, (action_equipe[1]->img_action_rect), parametre->renderer, parametre->window, 480, 155);
-    if(action_equipe[2] != NULL)
+	}
+		
+    if(action_equipe[2] != NULL){
+		//printf("Invisible 2 :)))");
 		ajout_texture_non_centre(action_barre_n3, (action_equipe[2]->img_action_rect), parametre->renderer, parametre->window,480, 225);
-    if(action_equipe[3] != NULL)
+	}
+		
+    if(action_equipe[3] != NULL){
+		//printf("Invisible 3 :)))");
 		ajout_texture_non_centre(action_barre_n4, (action_equipe[3]->img_action_rect), parametre->renderer, parametre->window, 480, 300);
+	}
+
+	//printf("Ca passe presque :'(\n");
     SDL_RenderPresent(parametre->renderer);
+	//printf("C'est passé ! :D\n");
 
 
 }
@@ -109,10 +123,10 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), con
 */
 extern void init_tab_action(action_t * tab[])
 {
-	tab[0] = init_action(0, 100, 1,fonc_action_1, "images/action_barre_n1.png", "images/action_n1.png");
-	tab[1] = init_action(1, 100, 2,fonc_action_2, "images/action_barre_n2.png", "images/action_n2.png");
-	tab[2] = init_action(2, 100, 3,fonc_action_3, "images/action_barre_n3.png", "images/action_n3.png");
-	tab[3] = init_action(3, 100, 4,fonc_action_4, "images/action_barre_n3.png", "images/action_n3.png");
+	tab[0] = init_action(0, 1 , 1,fonc_action_1, "images/action_barre_n1.png", "images/action_n1.png");
+	tab[1] = init_action(1, 1 , 2,fonc_action_2, "images/action_barre_n2.png", "images/action_n2.png");
+	tab[2] = init_action(2, 1 , 3,fonc_action_3, "images/action_barre_n3.png", "images/action_n3.png");
+	tab[3] = init_action(3, 1 , 4,fonc_action_4, "images/action_barre_n3.png", "images/action_n3.png");
 }
 
 /**
@@ -129,58 +143,61 @@ extern int clic_choix_sdp(){
 
 	SDL_Event event;
 
-	switch(event.type)
-	{
-			case SDL_MOUSEBUTTONDOWN:
-			//Si on clique sur la croix //Salle des profs
-			if((event.button.x < EMPLACEMENT_QUITTE_MENU_ACTION_X_MAX && event.button.x > EMPLACEMENT_QUITTE_MENU_ACTION_X_MIN) && (event.button.y < EMPLACEMENT_QUITTE_MENU_ACTION_Y_MAX && event.button.y > EMPLACEMENT_QUITTE_MENU_ACTION_Y_MIN)){
+	while(SDL_PollEvent(&event)){
 
-				return QUITTE_MENU;
+		switch(event.type)
+		{
+				case SDL_MOUSEBUTTONDOWN:
+				//Si on clique sur la croix //Salle des profs
+				if((event.button.x < BTN_RESTART_X_MAX && event.button.x > BTN_RESTART_X_MIN) && (event.button.y < BTN_RESTART_Y_MAX && event.button.y > BTN_RESTART_Y_MIN)){
 
-			}
-			//Si on clique sur les emplacement d'équipement
-			if((event.button.x < EMPLACEMENT_EQUIPE_1_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_1_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_1_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_1_Y_MIN)){
+					return QUITTE_SDP;
 
-				return EQUIP_1;
+				}
+				//Si on clique sur les emplacement d'équipement
+				if((event.button.x < EMPLACEMENT_EQUIPE_1_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_1_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_1_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_1_Y_MIN)){
+					printf("je clique sur equip1\n");
+					return EQUIP_1;
 
-			}
-			if((event.button.x < EMPLACEMENT_EQUIPE_2_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_2_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_2_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_2_Y_MIN)){
+				}
+				if((event.button.x < EMPLACEMENT_EQUIPE_2_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_2_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_2_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_2_Y_MIN)){
+					printf("je clique sur equip2\n");
+					return EQUIP_2;
 
-				return EQUIP_2;
+				}
+				if((event.button.x < EMPLACEMENT_EQUIPE_3_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_3_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_3_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_3_Y_MIN)){
+					printf("je clique sur equip3\n");
+					return EQUIP_3;
 
-			}
-			if((event.button.x < EMPLACEMENT_EQUIPE_3_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_3_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_3_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_3_Y_MIN)){
+				}
+				if((event.button.x < EMPLACEMENT_EQUIPE_4_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_4_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_4_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_4_Y_MIN)){
+					printf("je clique sur equip4\n");
+					return EQUIP_4;
 
-				return EQUIP_3;
+				}
+				//Si on clique sur les actions
+				if((event.button.x < EMPLACEMENT_ACTION_0_X_MAX && event.button.x > EMPLACEMENT_ACTION_0_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_0_Y_MAX && event.button.y > EMPLACEMENT_ACTION_0_Y_MIN)){
 
-			}
-			if((event.button.x < EMPLACEMENT_EQUIPE_4_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_4_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_4_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_4_Y_MIN)){
+					return 0;
 
-				return EQUIP_4;
+				}
+				if((event.button.x < EMPLACEMENT_ACTION_1_X_MAX && event.button.x > EMPLACEMENT_ACTION_1_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_1_Y_MAX && event.button.y > EMPLACEMENT_ACTION_1_Y_MIN)){
 
-			}
-			//Si on clique sur les actions
-			if((event.button.x < EMPLACEMENT_ACTION_0_X_MAX && event.button.x > EMPLACEMENT_ACTION_0_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_0_Y_MAX && event.button.y > EMPLACEMENT_ACTION_0_Y_MIN)){
+					return 1;
 
-				return 0;
+				}
+				if((event.button.x < EMPLACEMENT_ACTION_2_X_MAX && event.button.x > EMPLACEMENT_ACTION_2_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_2_Y_MAX && event.button.y > EMPLACEMENT_ACTION_2_Y_MIN)){
 
-			}
-			if((event.button.x < EMPLACEMENT_ACTION_1_X_MAX && event.button.x > EMPLACEMENT_ACTION_1_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_1_Y_MAX && event.button.y > EMPLACEMENT_ACTION_1_Y_MIN)){
+					return 2;
 
-				return 1;
+				}
+				if((event.button.x < EMPLACEMENT_ACTION_3_X_MAX && event.button.x > EMPLACEMENT_ACTION_3_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_3_Y_MAX && event.button.y > EMPLACEMENT_ACTION_3_Y_MIN)){
 
-			}
-			if((event.button.x < EMPLACEMENT_ACTION_2_X_MAX && event.button.x > EMPLACEMENT_ACTION_2_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_2_Y_MAX && event.button.y > EMPLACEMENT_ACTION_2_Y_MIN)){
+					return 3;
 
-				return 2;
-
-			}
-			if((event.button.x < EMPLACEMENT_ACTION_3_X_MAX && event.button.x > EMPLACEMENT_ACTION_3_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_3_Y_MAX && event.button.y > EMPLACEMENT_ACTION_3_Y_MIN)){
-
-				return 3;
-
-			}
-			break;
+				}
+				break;
+		}
 	}
 }
 
@@ -224,7 +241,7 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 
 	switch(id){
 		//Si on clique sur la croix, on quitte
-		case QUITTE_MENU: return QUITTE_MENU;
+		case QUITTE_SDP: return QUITTE_SDP;
 		//Si on clique sur un autre emplacement relance la fonction equipe_action avec la nouvelle place
 		case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre); break;
 		case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre); break;
@@ -258,6 +275,11 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 			tab_equipe[place]->equipe = place + 1;
 
 		}
+
+		SDL_RenderClear(parametre->renderer);
+		affiche_barre_action(parametre);
+		affiche_menu_action(parametre);
+
 	}
 	//Si sur ce que l'on clique n'est pas acheté, ça veut dire qu'on veut l'acheter :D
 	else if(achat_action(tab_action[id], argent )){
@@ -276,20 +298,21 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 * \details Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions
 *  
 */
-extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
+extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
 
 	int test_sortie = 0;
 	int choix;
 
 	affiche_barre_action(parametre);
-
-	while(test_sortie != QUITTE_MENU){//Test_sortie vaut vrai quand on clique sur la croix
+	while(test_sortie != QUITTE_MENU && test_sortie != QUITTE_SDP){//Test_sortie vaut vrai quand on clique sur la croix
 
 		choix = clic_choix_sdp();
+		
 		switch(choix){
 
 			//Si on clique sur la croix, on sort.
-			case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
+			//case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
+			case QUITTE_SDP : test_sortie = QUITTE_SDP; break;
 			//Si on choisis une case d'équipement, ça renvoie la fonction equipe_action a la bonne place.
 			case EQUIP_4 : test_sortie = equipe_action(3, argent, tab_equipe, tab_action, parametre); break;
 			case EQUIP_3 : test_sortie = equipe_action(2, argent, tab_equipe, tab_action, parametre); break;
@@ -300,6 +323,9 @@ extern void menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_a
 		}
 
 	}
+
+	if(test_sortie == QUITTE_SDP) return 1;
+	else return 0;
 
 	//fermer_menu_action();//A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
 

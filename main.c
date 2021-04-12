@@ -67,6 +67,8 @@ int main (int argc, char ** argv)
 	parametre->quitte = SDL_FALSE;
 	parametre->perdu = SDL_FALSE;
 
+	init_tab_action(action_equipe);
+	init_tab_action(liste_action);
 	SDL_RenderPresent(renderer);
 	while(program_launched)
 	{
