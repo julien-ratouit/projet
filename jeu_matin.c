@@ -11,12 +11,13 @@
 #include "timer.h"
 #include "barre.h"
 #include "self.h"
+#include <time.h>
 
 /**
 * a doxigéner
 *
 */
-void gameOver(param_t * parametre){
+void gameOver_matin(param_t * parametre){
 	SDL_Texture *texture_game_over = NULL;
 	ajout_texture(texture_game_over ,"images/game_over.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 	SDL_Event event;
@@ -34,6 +35,7 @@ void gameOver(param_t * parametre){
 					}
 					if((event.button.x > BOUTON_FIN_X_MAX && event.button.x < BOUTON_FIN_X_MIN)&&(event.button.y > BOUTON_FIN_Y_MAX && event.button.y < BOUTON_FIN_X_MIN))
 					{
+
 						parametre->perdu = SDL_FALSE;//defaite = 0 et on charge la derniere sauvegarde
 					};
 					break;
@@ -65,7 +67,8 @@ void lancement_matin(param_t * parametre)
 	int defaite = 0; //si defaite = 1 c'est perdu
 	int nb_jour = 0;
 	int agit = 0;
-	int temps;
+	int temps = 30;
+	srand(time(NULL));
 	///////////////////////////
 
 	pthread_t thread_minuteur;
@@ -114,7 +117,7 @@ void lancement_matin(param_t * parametre)
 	SDL_RenderPresent(parametre->renderer);
 
 	(parametre->temps_jeu)->debut(parametre->temps_jeu);
-
+	printf("barre_depression: %d, status_menu: %d, temps et cpt: %d - %d\n", (*barre_depression).h, status_menu, temps, cpt1);
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
@@ -126,11 +129,14 @@ void lancement_matin(param_t * parametre)
 
 
 		//mise a jour des barres atomatic
-		printf("debut barre:\n");
-		agit = nb_jour + 1;
-		printf("temps:%d\n", temps);
+		//printf("debut barre:\n");
+		agit = nb_jour + 30;
+		SDL_Delay(1);
+		//printf("temps:%d\n", temps);
+		
 		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
 			{
+				printf("text barres\n");
 				temps = rand()%(181)+20;
 				/*mise a jour de la barre sonore + remise en place de la texture associé*/
 				update_barre_sonore(parametre->renderer, barre_sonore, agit);
@@ -149,19 +155,22 @@ void lancement_matin(param_t * parametre)
 		//detection de la defaite
 		if ((*barre_depression).h<=(-247))
 			{
-				gameOver(parametre);
+				(parametre->temps_jeu)->stop(parametre->temps_jeu);
+				gameOver_matin(parametre);
+
 				//si defaite = 0 charger last sauvegarde
 				//sinon go ecran d'aceuille
-				/*if (defaite = 0)
+				/*if (parametre->perdu == SDL_False)
 				{
 					charger(argent, jour, )
 				}*/
 			}	
 		/////////////////////////	
 		//test
-		printf("nb boucles: %d\n",cpt1);
+		//printf("nb boucles: %d\n",cpt1);
 		cpt1++;
 		//////
+		if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 10000) program_launched = SDL_FALSE;
 
 
 
@@ -246,10 +255,9 @@ void lancement_matin(param_t * parametre)
 					break;
 
 				default:
-					if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 10000) program_launched = SDL_FALSE;
 					break;
 
-			}
+			}		
 		}
 	}
 	printf("tu quitte le cour du matin\n");
@@ -258,6 +266,8 @@ void lancement_matin(param_t * parametre)
 	SDL_DestroyTexture(texture_action2);
 	SDL_DestroyTexture(texture_action1);
 	free(barre_sonore);
+	barre_sonore = NULL;
 	free(barre_depression);
+	barre_depression = NULL;
 	SDL_DestroyTexture(texture_classe);
 }
