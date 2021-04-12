@@ -6,6 +6,7 @@
 */
 
 #include "commun.h"
+#include "salle_prof.h"
 #include "texture_sdp.h"
 
 
@@ -30,8 +31,8 @@
 */
 void affiche_barre_action(param_t *parametre)
 {
-
-	
+	SDL_Texture *texture_prof = NULL;
+	aff_texture_sp(parametre, texture_prof);
     ajout_texture_non_centre(background_menu_action,"images/barre_action.png", parametre->renderer, parametre->window, 420, 450);
 
 	if(action_equipe[0] != NULL)
@@ -60,6 +61,7 @@ void affiche_barre_action(param_t *parametre)
 */
 void affiche_menu_action(param_t *parametre){
 
+	ajout_texture_non_centre(croix_rouge, "images/bouton_croix_rouge.png", parametre->renderer, parametre->window, 781, 64);
 	ajout_texture_non_centre(background_menu_action,"images/background_menu_action.png", parametre->renderer, parametre->window,420 , 50);
 	//printf("Ca crash ?");
 	if(action_equipe[0] != NULL){
@@ -148,30 +150,31 @@ extern int clic_choix_sdp(){
 		switch(event.type)
 		{
 				case SDL_MOUSEBUTTONDOWN:
+				printf("x : %i & y : %i\n", event.button.x, event.button.y);
 				//Si on clique sur la croix //Salle des profs
-				if((event.button.x < BTN_RESTART_X_MAX && event.button.x > BTN_RESTART_X_MIN) && (event.button.y < BTN_RESTART_Y_MAX && event.button.y > BTN_RESTART_Y_MIN)){
+				if((event.button.x < 831 && event.button.x > 785) && (event.button.y < 109 && event.button.y > 67)){
 
-					return QUITTE_SDP;
+					return QUITTE_MENU;
 
 				}
 				//Si on clique sur les emplacement d'équipement
 				if((event.button.x < EMPLACEMENT_EQUIPE_1_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_1_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_1_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_1_Y_MIN)){
-					printf("je clique sur equip1\n");
+					
 					return EQUIP_1;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_2_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_2_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_2_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_2_Y_MIN)){
-					printf("je clique sur equip2\n");
+					
 					return EQUIP_2;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_3_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_3_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_3_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_3_Y_MIN)){
-					printf("je clique sur equip3\n");
+					
 					return EQUIP_3;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_4_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_4_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_4_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_4_Y_MIN)){
-					printf("je clique sur equip4\n");
+					
 					return EQUIP_4;
 
 				}
@@ -318,14 +321,17 @@ extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_ac
 			case EQUIP_3 : test_sortie = equipe_action(2, argent, tab_equipe, tab_action, parametre); break;
 			case EQUIP_2 : test_sortie = equipe_action(1, argent, tab_equipe, tab_action, parametre); break;
 			case EQUIP_1 : test_sortie = equipe_action(0, argent, tab_equipe, tab_action, parametre); break;
+			case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
 			//Si on renvoie autre chose on s'en occupe pas
 			default : test_sortie = 0; break;
 		}
 
 	}
 
-	if(test_sortie == QUITTE_SDP) return 1;
-	else return 0;
+	if(test_sortie == QUITTE_SDP) 
+		return 1;
+	if(test_sortie == QUITTE_MENU)
+		return -1;
 
 	//fermer_menu_action();//A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
 

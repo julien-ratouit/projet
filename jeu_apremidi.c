@@ -180,10 +180,11 @@ void lancement_apremidi(param_t * parametre)
 					break;
 
 				default:
-					if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 1000) program_launched = SDL_FALSE;
 					break;
 
 			}
+			if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 1000) 
+				program_launched = SDL_FALSE;
 		}
 	}
 	printf("tu quitte le cour de l'aprem\n");
