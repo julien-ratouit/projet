@@ -1,0 +1,64 @@
+\hypertarget{salle__prof_8c}{}\doxysection{Référence du fichier salle\+\_\+prof.\+c}
+\label{salle__prof_8c}\index{salle\_prof.c@{salle\_prof.c}}
+
+
+Ensemble de fonction qui gère la salle des profs.  
+
+
+{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}jeu\+\_\+matin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}salle\+\_\+prof.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{salle__prof_8c_a7d4a73e42112826ed11571c36d7a3571}{aff\+\_\+texture\+\_\+sp}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre, SDL\+\_\+\+Texture $\ast$texture\+\_\+prof)
+\begin{DoxyCompactList}\small\item\em fonction qui affiche des textures à l\textquotesingle{}ecran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{salle__prof_8c_a950c307ee51bc243a6ccb4112c0d6164}{lancement\+\_\+salle\+\_\+prof}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+\begin{DoxyCompactList}\small\item\em fonction qui gère la salle des profs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ensemble de fonction qui gère la salle des profs. 
+
+c\textquotesingle{}est dans ces fonctions que l\textquotesingle{}on met en place les textures et les zones de cliques correspondante à la salle des profs. \begin{DoxyAuthor}{Auteur}
+Quenault Maxime 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{salle__prof_8c_a7d4a73e42112826ed11571c36d7a3571}\label{salle__prof_8c_a7d4a73e42112826ed11571c36d7a3571}} 
+\index{salle\_prof.c@{salle\_prof.c}!aff\_texture\_sp@{aff\_texture\_sp}}
+\index{aff\_texture\_sp@{aff\_texture\_sp}!salle\_prof.c@{salle\_prof.c}}
+\doxysubsubsection{\texorpdfstring{aff\_texture\_sp()}{aff\_texture\_sp()}}
+{\footnotesize\ttfamily void aff\+\_\+texture\+\_\+sp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+prof }\end{DoxyParamCaption})}
+
+
+
+fonction qui affiche des textures à l\textquotesingle{}ecran. 
+
+Dans cette fonction nous affichons les textures qui sont toujours utile, à chaque fois que le joueur clique sur un menu (le menu info ou le menu des actions par exemple) il faut tout re-\/afficher, donc pour eviter la redondance dans le code on a opté pour ce système de fonction.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em texture\+\_\+prof} & est une variable de type {\itshape SDL\+\_\+\+Texture}, on l\textquotesingle{}utilise pour toute nos textures à afficher à l\textquotesingle{}ecran. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{salle__prof_8c_a950c307ee51bc243a6ccb4112c0d6164}\label{salle__prof_8c_a950c307ee51bc243a6ccb4112c0d6164}} 
+\index{salle\_prof.c@{salle\_prof.c}!lancement\_salle\_prof@{lancement\_salle\_prof}}
+\index{lancement\_salle\_prof@{lancement\_salle\_prof}!salle\_prof.c@{salle\_prof.c}}
+\doxysubsubsection{\texorpdfstring{lancement\_salle\_prof()}{lancement\_salle\_prof()}}
+{\footnotesize\ttfamily void lancement\+\_\+salle\+\_\+prof (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+
+
+
+fonction qui gère la salle des profs. 
+
+Dans cette fonction nous regardons ou est-\/ce que le joueur clique, si il clique sur un ordinateur alors on ouvre lance la fonction {\itshape menu\+\_\+action}, au contraire si il décide de lancer une nouvelle journée alors on relance le programme et pour finir si il décide de sauvegarder alors on sauvegarde et on revient à la page principal.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em statut\+\_\+mess} & est une valeur de type {\itshape int} qui permet de savoir si oui ou non le message de début est ouvert ou pas, si oui alors sa valeur est 1 sinon 0. \\
+\hline
+{\em statut\+\_\+info} & est une valeur de type {\itshape int} qui permet de savoir si oui ou non le message d\textquotesingle{}information est ouvert ou pas, si oui alors sa valeur est de 1 sinon 0. \\
+\hline
+\end{DoxyParams}

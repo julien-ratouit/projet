@@ -1,0 +1,45 @@
+\hypertarget{main_8c}{}\doxysection{Référence du fichier main.\+c}
+\label{main_8c}\index{main.c@{main.c}}
+
+
+fonction principal du programme.  
+
+
+{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}jeu\+\_\+matin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tuto.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em fonction main. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fonction principal du programme. 
+
+c\textquotesingle{}est dans cette fonction que l\textquotesingle{}on initialise la SDL très utile pour notre projet, on initialise aussi la fenêtre et le rendu pour le reste de notre programme. \begin{DoxyAuthor}{Auteur}
+Quenault Maxime, Ratouit Charles 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+fonction main. 
+
+Dans cette fonction le joueur à trois choix, soit commencer une nouvelle partie, soit reprendre sont anciènne sauvegarde si il y en a une, et pour finir il peut ausi acceder à une page \char`\"{}tuto\char`\"{} qui presente les specificité du jeu et donne des tips pour bien jouer.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em temps\+\_\+jeu} & est le timer de notre partie, on l\textquotesingle{}utilise dans le cours du matin et de l\textquotesingle{}après-\/midi. \\
+\hline
+{\em program\+\_\+lauched} & est de type {\itshape SDL\+\_\+bool} et permet de maintenir le programme en route, si jamais il passe à false alors on quitte le programme. \\
+\hline
+\end{DoxyParams}
