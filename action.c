@@ -177,23 +177,23 @@ extern int clic_choix_sdp(){
 				}
 				//Si on clique sur les actions
 				if((event.button.x < EMPLACEMENT_ACTION_0_X_MAX && event.button.x > EMPLACEMENT_ACTION_0_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_0_Y_MAX && event.button.y > EMPLACEMENT_ACTION_0_Y_MIN)){
-
-					return 0;
+					printf("Je suis une merde");
+					return 1;
 
 				}
 				if((event.button.x < EMPLACEMENT_ACTION_1_X_MAX && event.button.x > EMPLACEMENT_ACTION_1_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_1_Y_MAX && event.button.y > EMPLACEMENT_ACTION_1_Y_MIN)){
 
-					return 1;
+					return 2;
 
 				}
 				if((event.button.x < EMPLACEMENT_ACTION_2_X_MAX && event.button.x > EMPLACEMENT_ACTION_2_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_2_Y_MAX && event.button.y > EMPLACEMENT_ACTION_2_Y_MIN)){
 
-					return 2;
+					return 3;
 
 				}
 				if((event.button.x < EMPLACEMENT_ACTION_3_X_MAX && event.button.x > EMPLACEMENT_ACTION_3_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_3_Y_MAX && event.button.y > EMPLACEMENT_ACTION_3_Y_MIN)){
 
-					return 3;
+					return 4;
 
 				}
 				break;
@@ -236,19 +236,30 @@ extern int achat_action(action_t *action, int *argent)
 extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
 
 	affiche_menu_action(parametre);
-	int id;
-	id = clic_choix_sdp();
+	int id = 0;
+	
+	printf("Coucou action %d\n", place);
 
-	switch(id){
-		//Si on clique sur la croix, on quitte
-		case QUITTE_SDP: return QUITTE_SDP;
-		//Si on clique sur un autre emplacement relance la fonction equipe_action avec la nouvelle place
-		case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre); break;
-		case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre); break;
-		case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre); break;
-		case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre); break;
-		default : break;
+	while(!id){
+
+		id = clic_choix_sdp();
+		switch(id){
+			//Si on clique sur la croix, on quitte
+			case QUITTE_SDP: return QUITTE_SDP;
+			//Si on clique sur un autre emplacement relance la fonction equipe_action avec la nouvelle place
+			case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre); break;
+			case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre); break;
+			case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre); break;
+			case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre); break;
+			default : break;
+		}
+
 	}
+
+	printf("On sort !\n");
+
+	id--; //Car clic_choix renvoie 0 quand il n'a pas de clic, donc je décale tout mes indices d'actions de 1 et je les remets bien ici
+
 
 	//Sinon on fait soit un échange si l'action est déjà équipé, sinon ça l'équipe simplement (En écrasant l'action déjà placé)
 	if(tab_action[id]->statut){
@@ -308,7 +319,7 @@ extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_ac
 	while(test_sortie != QUITTE_MENU && test_sortie != QUITTE_SDP){//Test_sortie vaut vrai quand on clique sur la croix
 
 		choix = clic_choix_sdp();
-		printf("Choix = %d\n", choix);
+		//printf("Choix = %d\n", choix);
 		
 		switch(choix){
 
