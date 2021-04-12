@@ -7,8 +7,8 @@
 
 /**
 * \brief Fonction qui s'occupe du cours du matin.
-* 
-* \details Lorsque cette fonction est lancé, un thread est lancé au même moment, ce dernier execute la fonction \a fonc_pthread_timer1. Le but de la fonction est de rendre le jeu 
+*
+* \details Lorsque cette fonction est lancé, un thread est lancé au même moment, ce dernier execute la fonction \a fonc_pthread_timer1. Le but de la fonction est de rendre le jeu
 * jouable, nous avons donc l'ajout de toute les textures necessaire au bon déroulement du jeu. Le switch est là pour regarder le clic du joueur, à partir de là le joueur à
 * plusieurs possibilité, mettre en pause le jeu ou appuyer sur une action. Pendant ce temps nous avons la barre sonore qui augmente et la barre de depression qui augmente selon la
 * barre sonore.
@@ -50,7 +50,7 @@ void lancement_matin(param_t * parametre)
 	(*achat) = 4;
 	int score = 0;
 	int test;
-	
+
 	/*-----------------*/
 
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
@@ -82,7 +82,7 @@ void lancement_matin(param_t * parametre)
 				case SDL_KEYUP:
 					switch(event.key.keysym.sym){
 						case SDLK_a:
-							if(((*barre_depression).h>(-250))&&status_menu == -1) 
+							if(((*barre_depression).h>(-248))&&status_menu == -1)
 							{
 								score++;
 								/*mise a jour de la barre sonore + remise en place de la texture associé*/
@@ -112,7 +112,6 @@ void lancement_matin(param_t * parametre)
 					{
 						/*si on clique sur le bouton 1*/
 						update_barre_sonore(parametre->renderer, barre_sonore, press_action(parametre->renderer, 1));
-
 						SDL_DestroyTexture(texture_barre_son);
 						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 
@@ -136,8 +135,8 @@ void lancement_matin(param_t * parametre)
 
 					if((event.button.x < QUIT_X_MAX && event.button.x > QUIT_X_MIN)&&(event.button.y < QUIT_Y_MAX && event.button.y > QUIT_Y_MIN)&&status_menu == 1)
 					{
-						(parametre->temps_jeu)->stop(parametre->temps_jeu); 
-						/*si on clique sur le bouton 'quitter le jeu'*/ 
+						(parametre->temps_jeu)->stop(parametre->temps_jeu);
+						/*si on clique sur le bouton 'quitter le jeu'*/
 						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
 					}
@@ -155,7 +154,7 @@ void lancement_matin(param_t * parametre)
 
 						SDL_DestroyTexture(texture_classe);
 						ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-						
+
 						SDL_DestroyTexture(texture_action1);
 						SDL_DestroyTexture(texture_action2);
 						SDL_DestroyTexture(texture_action3);
@@ -179,7 +178,7 @@ void lancement_matin(param_t * parametre)
 					break;
 
 				default:
-					if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 1000) program_launched = SDL_FALSE;
+					if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 100000) program_launched = SDL_FALSE;
 					break;
 
 			}
