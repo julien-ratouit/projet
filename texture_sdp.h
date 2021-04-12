@@ -10,6 +10,7 @@
 #include "include/SDL_image.h"
 #include "include/SDL_ttf.h"
 #include "action.h"
+
 SDL_Texture *background_menu_action = NULL;
 SDL_Texture *action_n1 = NULL;
 SDL_Texture *action_n2 = NULL;
@@ -19,5 +20,6 @@ SDL_Texture *action_barre_n1 = NULL;
 SDL_Texture *action_barre_n2 = NULL;
 SDL_Texture *action_barre_n3 = NULL;
 SDL_Texture *action_barre_n4 = NULL;
+SDL_Texture *croix_rouge = NULL;
 
 #endif

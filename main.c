@@ -46,7 +46,7 @@ int main (int argc, char ** argv)
 
 
 	int status_tuto = -1;
-	int argent = 0;
+	int argent = 200;
 
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 		SDL_ExitWithError("Initialisation SDL");
@@ -62,11 +62,14 @@ int main (int argc, char ** argv)
 	param_t * parametre = malloc(sizeof(param_t));
 	parametre->temps_jeu = temps_jeu;
 	parametre->argent = argent;
+	parametre->val_depression = -5;
 	parametre->window = window;
 	parametre->renderer = renderer;
 	parametre->quitte = SDL_FALSE;
 	parametre->perdu = SDL_FALSE;
 
+	init_tab_action(action_equipe);
+	init_tab_action(liste_action);
 	SDL_RenderPresent(renderer);
 	while(program_launched)
 	{
@@ -80,11 +83,14 @@ int main (int argc, char ** argv)
 					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
+						//si on appuie sur le bouton jouer
+						
 						SDL_DestroyTexture(texture_btn_jouer);
 						SDL_DestroyTexture(texture_menu);
 						SDL_DestroyTexture(texture_btn_tuto);
 
-						while(!(parametre->quitte) && !(parametre->perdu)){
+						while(!(parametre->quitte) && !(parametre->perdu))
+						{
 
 							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_matin(parametre);
@@ -96,7 +102,7 @@ int main (int argc, char ** argv)
 								lancement_salle_prof(parametre);
 
 						}
-						//si on appuie sur le bouton jouer				
+										
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 						ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
@@ -104,6 +110,7 @@ int main (int argc, char ** argv)
 						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 						parametre->quitte = SDL_FALSE;
+						parametre->perdu = SDL_FALSE;
 
 						SDL_RenderPresent(renderer);
 					}

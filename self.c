@@ -49,29 +49,32 @@ void aff_texture_self(param_t *parametre, SDL_Texture *texture_self)
 */
 void lancement_self(param_t *parametre)
 {
-
 	SDL_RenderClear((parametre->renderer));
 
 	SDL_Texture *texture_self = NULL;
 	SDL_Texture *texture_mess = NULL;
 	SDL_Texture *texture_menu_info = NULL;
+	SDL_Texture *texture_background_plat = NULL;
 
 	
 	aff_texture_self(parametre, texture_self);
 	affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
+	affiche_depression((parametre->window), (parametre->renderer), (parametre->val_depression));
 	ajout_texture(texture_mess, "images/felicitation.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 
 	SDL_RenderPresent((parametre->renderer));
 
 	int statut_mess = 1;
 	int statut_info = 0;
+	int statut_plat = 0;
+	int num_plat = 0;
 
 	SDL_bool program_launched = SDL_TRUE;
 
 	while(program_launched)
 	{
 
-		SDL_Event event;//Créer un évènement
+		SDL_Event event;
 
 		while(SDL_PollEvent(&event) && program_launched)
 		{
@@ -88,6 +91,7 @@ void lancement_self(param_t *parametre)
 						SDL_RenderClear((parametre->renderer));
 						aff_texture_self(parametre, texture_self);
 						affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
+						affiche_depression((parametre->window), (parametre->renderer), (parametre->val_depression));
 
 						SDL_RenderPresent((parametre->renderer));
 
@@ -95,19 +99,158 @@ void lancement_self(param_t *parametre)
 					}
 
 
-					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN) && statut_mess == 0)
+					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN) && statut_mess == 0 && statut_plat == 0)
 					{
 						/*si on clique sur le bouton info*/
 						statut_info = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
 
 						SDL_RenderClear((parametre->renderer));
+
 						aff_texture_self(parametre, texture_self);
 						affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
+						affiche_depression((parametre->window), (parametre->renderer), (parametre->val_depression));
+
 						ajout_texture(texture_menu_info ,"images/info.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
 						SDL_RenderPresent((parametre->renderer));
 
 						SDL_RenderPresent((parametre->renderer));
 					}
+					/*PLATS*/
+					/*---------------------------------------------*/
+					if((event.button.x > PLAT1_X_MIN && event.button.x < PLAT1_X_MAX)&&(event.button.y > PLAT1_Y_MIN && event.button.y < PLAT1_Y_MAX) && statut_mess == 0 && statut_info == 0 && statut_plat == 0)
+					{
+						statut_plat = 1;
+						num_plat = 1;
+						ajout_texture(texture_background_plat, "images/plats/fond_achat_plat1.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+						SDL_RenderPresent((parametre->renderer));
+					}
+
+					if((event.button.x > PLAT2_X_MIN && event.button.x < PLAT2_X_MAX)&&(event.button.y > PLAT2_Y_MIN && event.button.y < PLAT2_Y_MAX) && statut_mess == 0 && statut_info == 0 && statut_plat == 0)
+					{
+						statut_plat = 1;
+						num_plat = 2;
+						ajout_texture(texture_background_plat, "images/plats/fond_achat_plat2.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+						SDL_RenderPresent((parametre->renderer));
+					}
+
+					if((event.button.x > PLAT3_X_MIN && event.button.x < PLAT3_X_MAX)&&(event.button.y > PLAT3_Y_MIN && event.button.y < PLAT3_Y_MAX) && statut_mess == 0 && statut_info == 0 && statut_plat == 0)
+					{
+						statut_plat = 1;
+						num_plat = 3;
+						ajout_texture(texture_background_plat, "images/plats/fond_achat_plat3.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+						SDL_RenderPresent((parametre->renderer));
+					}
+
+					if((event.button.x > PLAT4_X_MIN && event.button.x < PLAT4_X_MAX)&&(event.button.y > PLAT4_Y_MIN && event.button.y < PLAT4_Y_MAX) && statut_mess == 0 && statut_info == 0 && statut_plat == 0)
+					{
+						statut_plat = 1;
+						num_plat = 4;
+						ajout_texture(texture_background_plat, "images/plats/fond_achat_plat4.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+						SDL_RenderPresent((parametre->renderer));
+					}
+
+					if((event.button.x > PLAT5_X_MIN && event.button.x < PLAT5_X_MAX)&&(event.button.y > PLAT5_Y_MIN && event.button.y < PLAT5_Y_MAX) && statut_mess == 0 && statut_info == 0 && statut_plat == 0)
+					{
+						statut_plat = 1;
+						num_plat = 5;
+						ajout_texture(texture_background_plat, "images/plats/fond_achat_plat5.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+						SDL_RenderPresent((parametre->renderer));
+					}
+
+					if((event.button.x > PLAT6_X_MIN && event.button.x < PLAT6_X_MAX)&&(event.button.y > PLAT6_Y_MIN && event.button.y < PLAT6_Y_MAX) && statut_mess == 0 && statut_info == 0 && statut_plat == 0)
+					{
+						statut_plat = 1;
+						num_plat = 6;
+						ajout_texture(texture_background_plat, "images/plats/fond_achat_plat6.png", (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
+						SDL_RenderPresent((parametre->renderer));
+					}
+
+					if((event.button.x > 949 && event.button.x < 991)&&(event.button.y > 111 && event.button.y < 153) && statut_mess == 0 && statut_info == 0 && statut_plat == 1)
+					{
+						statut_plat = 0;
+
+						SDL_RenderClear((parametre->renderer));
+
+						aff_texture_self(parametre, texture_self);
+						affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
+						affiche_depression((parametre->window), (parametre->renderer), (parametre->val_depression));
+
+						SDL_RenderPresent((parametre->renderer));
+					}
+
+					if((event.button.x > 501 && event.button.x < 777)&&(event.button.y > 517 && event.button.y < 617) && statut_mess == 0 && statut_info == 0 && statut_plat == 1)
+					{
+						//si on clique sur le bouton acheter
+						//cela change les donnée en fonction du plats que l'on achète.
+						switch(num_plat)
+						{
+							case 1 : 
+								if( ( parametre->argent ) >= 2 )
+								{
+									parametre->argent -= 2;
+									parametre->val_depression += 12; //ici, on augmente la valeur de depression, (242*5)/100 = 12 avec 242 la hauteur de la barre à 100% et 5 le taux de pourcentage que l'on veut enlever.
+									if( ( parametre->val_depression ) > -5 ) //ici on verifie de ne pas avoir de barre de depression dans le negatif, on la remet à -5 si elle est inferieur à -5.
+										parametre->val_depression = -5;
+								}
+								break;
+							case 2 :
+								if( ( parametre->argent ) >= 5 )
+								{
+									parametre->argent -= 5;
+									parametre->val_depression += 24;
+									if( ( parametre->val_depression ) > -5 )
+										parametre->val_depression = -5;
+								}
+								break;
+							case 3 :
+								if( ( parametre->argent ) >= 13 )
+								{
+									parametre->argent -= 13;
+									parametre->val_depression += 36;
+									if( ( parametre->val_depression ) > -5 )
+										parametre->val_depression = -5;
+								}
+								break;
+							case 4 :
+								if( ( parametre->argent ) >= 15 )
+								{
+									parametre->argent -= 15;
+									parametre->val_depression += 43;
+									if( ( parametre->val_depression ) > -5 )
+										parametre->val_depression = -5;
+								}
+								break;
+							case 5 :
+							if( ( parametre->argent ) >= 20 )
+								{
+									parametre->argent -= 20;
+									parametre->val_depression += 55;
+									if( ( parametre->val_depression ) > -5 )
+										parametre->val_depression = -5;
+								}
+								break;
+							case 6 :
+								if( ( parametre->argent ) >= 25 )
+								{
+									parametre->argent -= 25;
+									parametre->val_depression += 72;
+									if( ( parametre->val_depression ) > -5 )
+										parametre->val_depression = -5;
+								}
+								break;
+						}
+						statut_plat = 0;
+
+						SDL_RenderClear((parametre->renderer));
+
+						aff_texture_self(parametre, texture_self);
+						affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
+						affiche_depression((parametre->window), (parametre->renderer), (parametre->val_depression));
+
+						SDL_RenderPresent((parametre->renderer));
+
+					}
+					/*---------------------------------------------*/
 
 					if((event.button.x < COMPRIS_X_MAX && event.button.x > COMPRIS_X_MIN)&&(event.button.y < COMPRIS_Y_MAX && event.button.y > COMPRIS_Y_MIN) && statut_info == 1)
 					{
@@ -117,12 +260,13 @@ void lancement_self(param_t *parametre)
 						SDL_RenderClear((parametre->renderer));
 						aff_texture_self(parametre, texture_self);
 						affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
+						affiche_depression((parametre->window), (parametre->renderer), (parametre->val_depression));
 
 						SDL_RenderPresent((parametre->renderer));
 					}
 
 
-					if((event.button.x > BTN_SUIVANT_X_MIN && event.button.x < BTN_SUIVANT_X_MAX)&&(event.button.y > BTN_SUIVANT_Y_MIN && event.button.y < BTN_SUIVANT_Y_MAX) && statut_mess == 0 && statut_info == 0)
+					if((event.button.x > BTN_SUIVANT_X_MIN && event.button.x < BTN_SUIVANT_X_MAX)&&(event.button.y > BTN_SUIVANT_Y_MIN && event.button.y < BTN_SUIVANT_Y_MAX) && statut_mess == 0 && statut_info == 0 && statut_plat == 0)
 					{
 						SDL_DestroyTexture(texture_self);
 						SDL_DestroyTexture(texture_mess);

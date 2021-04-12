@@ -56,6 +56,7 @@ void lancement_salle_prof(param_t *parametre)
 
 	int statut_mess = 1;
 	int statut_info = 0;
+	int statut_menu_act = 0;
 
 	SDL_bool program_launched = SDL_TRUE;
 
@@ -70,7 +71,7 @@ void lancement_salle_prof(param_t *parametre)
 			switch (event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
-					//printf("x : %i & y : %i\n", event.button.x, event.button.y);
+					printf("x : %i & y : %i\n", event.button.x, event.button.y);
 					if((event.button.x > 535 && event.button.x < 747)&&(event.button.y > 367 && event.button.y < 413) && statut_mess == 1)
 					{
 						statut_mess = 0;
@@ -82,7 +83,7 @@ void lancement_salle_prof(param_t *parametre)
 						SDL_RenderPresent((parametre->renderer));
 					}
 
-					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN) && statut_mess == 0)
+					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN) && statut_mess == 0 && statut_menu_act == 0)
 					{
 						//si on clique sur le bouton info
 
@@ -113,14 +114,31 @@ void lancement_salle_prof(param_t *parametre)
 					if(((event.button.x > 210 && event.button.x < 345)&&(event.button.y > 270 && event.button.y < 345)||
               		(event.button.x > 435 && event.button.x < 570)&&(event.button.y > 270 && event.button.y < 345)||
               		(event.button.x > 670 && event.button.x < 805)&&(event.button.y > 270 && event.button.y < 345)||
-              		(event.button.x > 915 && event.button.x < 1050)&&(event.button.y > 270 && event.button.y < 345))){
+              		(event.button.x > 915 && event.button.x < 1050)&&(event.button.y > 270 && event.button.y < 345))
+					 && statut_mess == 0 && statut_menu_act == 0 && statut_info == 0){
 
+						statut_menu_act = 1;
 				  		int argent = (parametre->argent);
-				  		
-						menu_action(&argent, action_equipe, liste_action, parametre);
+				  		int val_sortie = menu_action(&argent, action_equipe, liste_action, parametre);
+						switch(val_sortie)
+						{
+							case 1 : 
+								program_launched = SDL_FALSE;
+								break;
+							case -1 : 
+								SDL_RenderClear((parametre->renderer));
+
+								aff_texture_sp(parametre, texture_prof);
+
+								SDL_RenderPresent((parametre->renderer));
+
+								statut_menu_act = 0;
+
+								break;
+						}
 			  		}
 
-					if((event.button.x > BTN_RESTART_X_MIN && event.button.x < BTN_RESTART_X_MAX)&&(event.button.y > BTN_RESTART_Y_MIN && event.button.y < BTN_RESTART_Y_MAX) && statut_mess == 0)
+					if((event.button.x > BTN_RESTART_X_MIN && event.button.x < BTN_RESTART_X_MAX)&&(event.button.y > BTN_RESTART_Y_MIN && event.button.y < BTN_RESTART_Y_MAX) && statut_mess == 0 && statut_menu_act == 0)
 					{
 						//on clique sur bouton pour commencer une nouvelle journee
 
@@ -132,7 +150,7 @@ void lancement_salle_prof(param_t *parametre)
 						program_launched = SDL_FALSE;
 					}
 
-					if((event.button.x > BTN_SAVE_X_MIN && event.button.x < BTN_SAVE_X_MAX)&&(event.button.y > BTN_SAVE_Y_MIN && event.button.y < BTN_SAVE_Y_MAX) && statut_mess == 0)
+					if((event.button.x > BTN_SAVE_X_MIN && event.button.x < BTN_SAVE_X_MAX)&&(event.button.y > BTN_SAVE_Y_MIN && event.button.y < BTN_SAVE_Y_MAX) && statut_mess == 0 && statut_menu_act == 0)
 					{
 						//on clique pour sauvegarder et quitter
 						
