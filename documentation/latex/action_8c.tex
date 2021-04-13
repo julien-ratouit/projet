@@ -6,6 +6,7 @@ Ce programme permet de gerer les actions possibles lors de la partie.
 
 
 {\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}salle\+\_\+prof.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}texture\+\_\+sdp.\+h\char`\"{}}\newline
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
@@ -45,7 +46,7 @@ int \mbox{\hyperlink{action_8c_a0a6810fc16bbe576854ad58cfba1782e}{achat\+\_\+act
 \begin{DoxyCompactList}\small\item\em Modifie le statut d\textquotesingle{}une action. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{action_8c_ae43587462fc34f5e07c37ebf7c72618e}{equipe\+\_\+action}} (int place, int $\ast$argent, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
 \begin{DoxyCompactList}\small\item\em Equipe une action. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{action_8c_a245ff95c6a3a42e0f00372cdafabde72}{menu\+\_\+action}} (int $\ast$argent, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+int \mbox{\hyperlink{action_8c_a365f43be02a22f2c9dcf874fdbf084a4}{menu\+\_\+action}} (int $\ast$argent, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
 \begin{DoxyCompactList}\small\item\em Fonction principale des actions. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{action_8c_a99bb2462f2184ea2da9e751690e13898}\label{action_8c_a99bb2462f2184ea2da9e751690e13898}} 
 void {\bfseries fonc\+\_\+action\+\_\+1} (int jour)
@@ -181,11 +182,11 @@ Ici, on va initialiser un tableau d\textquotesingle{}action, chaque case corresp
 \begin{DoxyReturn}{Renvoie}
 On return aucune valeur car on modifie un pointeur sur un tableau. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{action_8c_a245ff95c6a3a42e0f00372cdafabde72}\label{action_8c_a245ff95c6a3a42e0f00372cdafabde72}} 
+\mbox{\Hypertarget{action_8c_a365f43be02a22f2c9dcf874fdbf084a4}\label{action_8c_a365f43be02a22f2c9dcf874fdbf084a4}} 
 \index{action.c@{action.c}!menu\_action@{menu\_action}}
 \index{menu\_action@{menu\_action}!action.c@{action.c}}
 \doxysubsubsection{\texorpdfstring{menu\_action()}{menu\_action()}}
-{\footnotesize\ttfamily void menu\+\_\+action (\begin{DoxyParamCaption}\item[{int $\ast$}]{argent,  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+equipe\mbox{[}4\mbox{]},  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+action\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int menu\+\_\+action (\begin{DoxyParamCaption}\item[{int $\ast$}]{argent,  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+equipe\mbox{[}4\mbox{]},  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+action\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
 
 
 

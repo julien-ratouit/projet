@@ -76,115 +76,24 @@ $(function() {
 <code>#include &quot;timer.h&quot;</code><br />
 <code>#include &quot;barre.h&quot;</code><br />
 <code>#include &quot;salle_prof.h&quot;</code><br />
+<code>#include &quot;action.h&quot;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a16d66686f15bd8859eee22e1505df0aa"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__apremidi_8c.html#a16d66686f15bd8859eee22e1505df0aa">fonc_pthread_timer2_cb</a> (void *parametre)</td></tr>
-<tr class="memdesc:a16d66686f15bd8859eee22e1505df0aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de callback.  <a href="jeu__apremidi_8c.html#a16d66686f15bd8859eee22e1505df0aa">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a16d66686f15bd8859eee22e1505df0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae11c84639427bd856cb4645428ce87e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__apremidi_8c.html#ae11c84639427bd856cb4645428ce87e7">fonc_pthread_timer2</a> (<a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
-<tr class="memdesc:ae11c84639427bd856cb4645428ce87e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction du pthread n°2.  <a href="jeu__apremidi_8c.html#ae11c84639427bd856cb4645428ce87e7">Plus de détails...</a><br /></td></tr>
-<tr class="separator:ae11c84639427bd856cb4645428ce87e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d2a65ccf0d8eb8cac3c390462e28238"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__apremidi_8c.html#a5d2a65ccf0d8eb8cac3c390462e28238">lancement_apremidi</a> (SDL_Renderer *renderer, SDL_Window *window, <a class="el" href="struct_timer__s.html">Timer_t</a> *temps_jeu, int argent)</td></tr>
-<tr class="memdesc:a5d2a65ccf0d8eb8cac3c390462e28238"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui s'occupe du cours de l'après-midi.  <a href="jeu__apremidi_8c.html#a5d2a65ccf0d8eb8cac3c390462e28238">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a5d2a65ccf0d8eb8cac3c390462e28238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab57354e9af729df168c3ec42c3f979a6"><td class="memItemLeft" align="right" valign="top"><a id="ab57354e9af729df168c3ec42c3f979a6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__apremidi_8c.html#ab57354e9af729df168c3ec42c3f979a6">gameOver_aprem</a> (<a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
+<tr class="memdesc:ab57354e9af729df168c3ec42c3f979a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">a doxigéner <br /></td></tr>
+<tr class="separator:ab57354e9af729df168c3ec42c3f979a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23cd51ffcd1140129de906736c080420"><td class="memItemLeft" align="right" valign="top"><a id="a23cd51ffcd1140129de906736c080420"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__apremidi_8c.html#a23cd51ffcd1140129de906736c080420">lancement_apremidi</a> (<a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
+<tr class="memdesc:a23cd51ffcd1140129de906736c080420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui s'occupe du cours de l'après-midi. <br /></td></tr>
+<tr class="separator:a23cd51ffcd1140129de906736c080420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Cette ensemble de fonction agit sur le cours de l'après-midi. </p>
 <p>On utilise cet ensemble de fonction lorsque le joueur commence le cour de l'après midi, elle permet d'envoyer le joueur au moment voulut dans la salle des profs. </p><dl class="section author"><dt>Auteur</dt><dd>Quenault Maxime, Renoit Charles </dd></dl>
-</div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="ae11c84639427bd856cb4645428ce87e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae11c84639427bd856cb4645428ce87e7">&#9670;&nbsp;</a></span>fonc_pthread_timer2()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void fonc_pthread_timer2 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structparam__t.html">param_t</a> *&#160;</td>
-          <td class="paramname"><em>parametre</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction du pthread n°2. </p>
-<p>Cette fonction va s'executer en même temps que la fonction <em>lancement_apremidi</em> , sont but est de comparé le temps passé en jeu avec le temps limite accordé par le developpeur. Si le temps arrive à sont terme alors la fonction <em>lancement_salle_prof</em> est lancé, le joueur se retrouve donc dans la salle des profs. </p>
-
-</div>
-</div>
-<a id="a16d66686f15bd8859eee22e1505df0aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16d66686f15bd8859eee22e1505df0aa">&#9670;&nbsp;</a></span>fonc_pthread_timer2_cb()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* fonc_pthread_timer2_cb </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>parametre</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction de callback. </p>
-<p>Cette fonction à pour seul but d'appeler une autre fonction. Cela permet d'evité les warnings lors de l'execution du programme. </p>
-
-</div>
-</div>
-<a id="a5d2a65ccf0d8eb8cac3c390462e28238"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d2a65ccf0d8eb8cac3c390462e28238">&#9670;&nbsp;</a></span>lancement_apremidi()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lancement_apremidi </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SDL_Window *&#160;</td>
-          <td class="paramname"><em>window</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_timer__s.html">Timer_t</a> *&#160;</td>
-          <td class="paramname"><em>temps_jeu</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argent</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction qui s'occupe du cours de l'après-midi. </p>
-<p>Lorsque cette fonction est lancé, un thread est lancé au même moment, ce dernier execute la fonction <em>fonc_pthread_timer2</em>. Le but de la fonction est de rendre le jeu jouable, nous avons donc l'ajout de toute les textures necessaire au bon déroulement du jeu. Le switch est là pour regarder le clic du joueur, à partir de là le joueur à plusieurs possibilité, mettre en pause le jeu ou appuyer sur une action. Pendant ce temps nous avons la barre sonore qui augmente et la barre de depression qui augmente selon la barre sonore.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">statut_menu</td><td>est un valeur qui permet de savoir si oui ou non le menu pause est afficher à l'ecran, si c'est le cas alors le joueur peut cliquer sur reprendre ou quitter, alors que si ce n'est pas le cas alors le joueur ne pourra pas y avoir accés. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

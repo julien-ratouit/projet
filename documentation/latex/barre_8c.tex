@@ -11,18 +11,14 @@ Ce programme permet de gerer la barre sonor et de depression.
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{barre_8c_acea64ce8afe6e445cb5bbbd0b2c21e7e}\label{barre_8c_acea64ce8afe6e445cb5bbbd0b2c21e7e}} 
-void {\bfseries init\+\_\+barre\+\_\+sonore} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre)
-\item 
-\mbox{\Hypertarget{barre_8c_ae32faae418698747f723dc1cfc593315}\label{barre_8c_ae32faae418698747f723dc1cfc593315}} 
-void {\bfseries init\+\_\+barre\+\_\+depression} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre)
-\item 
-\mbox{\Hypertarget{barre_8c_a56fee8c57964cd56bf1b8cba3ca63967}\label{barre_8c_a56fee8c57964cd56bf1b8cba3ca63967}} 
-void {\bfseries update\+\_\+barre\+\_\+sonore} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre, int score)
-\item 
-\mbox{\Hypertarget{barre_8c_a5eff07ae75bf72be8dd6649e058013a6}\label{barre_8c_a5eff07ae75bf72be8dd6649e058013a6}} 
-void {\bfseries update\+\_\+barre\+\_\+depression} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre\+\_\+depression, SDL\+\_\+\+Rect $\ast$barre\+\_\+sonore, int score)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{barre_8c_acea64ce8afe6e445cb5bbbd0b2c21e7e}{init\+\_\+barre\+\_\+sonore}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre)
+\begin{DoxyCompactList}\small\item\em Initialise la barre sonore. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{barre_8c_ad9fc052f4449f5f6d38e1ee64dd11e82}{init\+\_\+barre\+\_\+depression}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre, int val)
+\begin{DoxyCompactList}\small\item\em Initialise la barre de depression. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{barre_8c_a56fee8c57964cd56bf1b8cba3ca63967}{update\+\_\+barre\+\_\+sonore}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre, int score)
+\begin{DoxyCompactList}\small\item\em Modifie la barre sonore. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{barre_8c_a5eff07ae75bf72be8dd6649e058013a6}{update\+\_\+barre\+\_\+depression}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect $\ast$barre\+\_\+depression, SDL\+\_\+\+Rect $\ast$barre\+\_\+sonore, int score)
+\begin{DoxyCompactList}\small\item\em Modifie la barre de depression. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
@@ -31,3 +27,90 @@ Ce programme permet de gerer la barre sonor et de depression.
 On utilise ce programme pour modifier la valeur des deux barres, mais aussi pour les initialiser. \begin{DoxyAuthor}{Auteur}
 Renoit Charles 
 \end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{barre_8c_ad9fc052f4449f5f6d38e1ee64dd11e82}\label{barre_8c_ad9fc052f4449f5f6d38e1ee64dd11e82}} 
+\index{barre.c@{barre.c}!init\_barre\_depression@{init\_barre\_depression}}
+\index{init\_barre\_depression@{init\_barre\_depression}!barre.c@{barre.c}}
+\doxysubsubsection{\texorpdfstring{init\_barre\_depression()}{init\_barre\_depression()}}
+{\footnotesize\ttfamily void init\+\_\+barre\+\_\+depression (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Initialise la barre de depression. 
+
+Cette fonction va afficher un rectangle vide à l\textquotesingle{}ecran, on aura seulement 5px de couleur à l\textquotesingle{}initialisation.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ($\ast$barre).\+x} & est le point de coordonnée de départ pour les x. \\
+\hline
+{\em ($\ast$barre).\+y} & est le point de coordonnée de départ pour les y. \\
+\hline
+{\em ($\ast$barre).\+w} & est la largeur du rectangle coloré. \\
+\hline
+{\em ($\ast$barre).\+h} & est la hauteur du rectangle coloré. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{barre_8c_acea64ce8afe6e445cb5bbbd0b2c21e7e}\label{barre_8c_acea64ce8afe6e445cb5bbbd0b2c21e7e}} 
+\index{barre.c@{barre.c}!init\_barre\_sonore@{init\_barre\_sonore}}
+\index{init\_barre\_sonore@{init\_barre\_sonore}!barre.c@{barre.c}}
+\doxysubsubsection{\texorpdfstring{init\_barre\_sonore()}{init\_barre\_sonore()}}
+{\footnotesize\ttfamily void init\+\_\+barre\+\_\+sonore (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre }\end{DoxyParamCaption})}
+
+
+
+Initialise la barre sonore. 
+
+Cette fonction va afficher un rectangle vide à l\textquotesingle{}ecran, on aura seulement 5px de couleur à l\textquotesingle{}initialisation.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ($\ast$barre).\+x} & est le point de coordonnée de départ pour les x. \\
+\hline
+{\em ($\ast$barre).\+y} & est le point de coordonnée de départ pour les y. \\
+\hline
+{\em ($\ast$barre).\+w} & est la largeur du rectangle coloré. \\
+\hline
+{\em ($\ast$barre).\+h} & est la hauteur du rectangle coloré. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{barre_8c_a5eff07ae75bf72be8dd6649e058013a6}\label{barre_8c_a5eff07ae75bf72be8dd6649e058013a6}} 
+\index{barre.c@{barre.c}!update\_barre\_depression@{update\_barre\_depression}}
+\index{update\_barre\_depression@{update\_barre\_depression}!barre.c@{barre.c}}
+\doxysubsubsection{\texorpdfstring{update\_barre\_depression()}{update\_barre\_depression()}}
+{\footnotesize\ttfamily void update\+\_\+barre\+\_\+depression (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+depression,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+sonore,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Modifie la barre de depression. 
+
+Cette fonction va augmenter la hauteur du rectangle coloré en prenant comme paramètre un score qui agit sur la valeur d\textquotesingle{}augmentation.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tempo} & \\
+\hline
+{\em score} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{barre_8c_a56fee8c57964cd56bf1b8cba3ca63967}\label{barre_8c_a56fee8c57964cd56bf1b8cba3ca63967}} 
+\index{barre.c@{barre.c}!update\_barre\_sonore@{update\_barre\_sonore}}
+\index{update\_barre\_sonore@{update\_barre\_sonore}!barre.c@{barre.c}}
+\doxysubsubsection{\texorpdfstring{update\_barre\_sonore()}{update\_barre\_sonore()}}
+{\footnotesize\ttfamily void update\+\_\+barre\+\_\+sonore (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Modifie la barre sonore. 
+
+Cette fonction va augmenter la hauteur du rectangle coloré en prenant comme paramètre un score qui agit sur la valeur d\textquotesingle{}augmentation.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tempo} & \\
+\hline
+{\em score} & \\
+\hline
+\end{DoxyParams}

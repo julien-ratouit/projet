@@ -10,14 +10,14 @@ Cette ensemble de fonction agit sur le cours du matin.
 {\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}barre.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}self.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void $\ast$ \mbox{\hyperlink{jeu__matin_8c_a4ca9558eb54c60cd4029e39596a896b5}{fonc\+\_\+pthread\+\_\+timer1\+\_\+cb}} (void $\ast$parametre)
-\begin{DoxyCompactList}\small\item\em Fonction de callback. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{jeu__matin_8c_abbb8de54aa616e41b7eb79e94f50b14d}{fonc\+\_\+pthread\+\_\+timer1}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
-\begin{DoxyCompactList}\small\item\em Fonction du pthread n°1. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{jeu__matin_8c_a82f5bcfca2cebb24013689250303b10e}{lancement\+\_\+matin}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window, \mbox{\hyperlink{struct_timer__s}{Timer\+\_\+t}} $\ast$temps\+\_\+jeu, int argent)
+\mbox{\Hypertarget{jeu__matin_8c_afdc196e67a403380aafdd11a34012872}\label{jeu__matin_8c_afdc196e67a403380aafdd11a34012872}} 
+void \mbox{\hyperlink{jeu__matin_8c_afdc196e67a403380aafdd11a34012872}{game\+Over\+\_\+matin}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+\begin{DoxyCompactList}\small\item\em a doxigéner \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jeu__matin_8c_a1846112a5c9c35393a5603c9617330c8}{lancement\+\_\+matin}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
 \begin{DoxyCompactList}\small\item\em Fonction qui s\textquotesingle{}occupe du cours du matin. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -30,31 +30,11 @@ Quenault Maxime, Renoit Charles
 
 
 \doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{jeu__matin_8c_abbb8de54aa616e41b7eb79e94f50b14d}\label{jeu__matin_8c_abbb8de54aa616e41b7eb79e94f50b14d}} 
-\index{jeu\_matin.c@{jeu\_matin.c}!fonc\_pthread\_timer1@{fonc\_pthread\_timer1}}
-\index{fonc\_pthread\_timer1@{fonc\_pthread\_timer1}!jeu\_matin.c@{jeu\_matin.c}}
-\doxysubsubsection{\texorpdfstring{fonc\_pthread\_timer1()}{fonc\_pthread\_timer1()}}
-{\footnotesize\ttfamily void fonc\+\_\+pthread\+\_\+timer1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
-
-
-
-Fonction du pthread n°1. 
-
-Cette fonction va s\textquotesingle{}executer en même temps que la fonction {\itshape lancement\+\_\+matin} , sont but est de comparé le temps passé en jeu avec le temps limite accordé par le developpeur. Si le temps arrive à sont terme alors la fonction {\itshape lancement\+\_\+self} est lancé, le joueur se retrouve donc dans le self. \mbox{\Hypertarget{jeu__matin_8c_a4ca9558eb54c60cd4029e39596a896b5}\label{jeu__matin_8c_a4ca9558eb54c60cd4029e39596a896b5}} 
-\index{jeu\_matin.c@{jeu\_matin.c}!fonc\_pthread\_timer1\_cb@{fonc\_pthread\_timer1\_cb}}
-\index{fonc\_pthread\_timer1\_cb@{fonc\_pthread\_timer1\_cb}!jeu\_matin.c@{jeu\_matin.c}}
-\doxysubsubsection{\texorpdfstring{fonc\_pthread\_timer1\_cb()}{fonc\_pthread\_timer1\_cb()}}
-{\footnotesize\ttfamily void$\ast$ fonc\+\_\+pthread\+\_\+timer1\+\_\+cb (\begin{DoxyParamCaption}\item[{void $\ast$}]{parametre }\end{DoxyParamCaption})}
-
-
-
-Fonction de callback. 
-
-Cette fonction à pour seul but d\textquotesingle{}appeler une autre fonction. Cela permet d\textquotesingle{}evité les warnings lors de l\textquotesingle{}execution du programme. \mbox{\Hypertarget{jeu__matin_8c_a82f5bcfca2cebb24013689250303b10e}\label{jeu__matin_8c_a82f5bcfca2cebb24013689250303b10e}} 
+\mbox{\Hypertarget{jeu__matin_8c_a1846112a5c9c35393a5603c9617330c8}\label{jeu__matin_8c_a1846112a5c9c35393a5603c9617330c8}} 
 \index{jeu\_matin.c@{jeu\_matin.c}!lancement\_matin@{lancement\_matin}}
 \index{lancement\_matin@{lancement\_matin}!jeu\_matin.c@{jeu\_matin.c}}
 \doxysubsubsection{\texorpdfstring{lancement\_matin()}{lancement\_matin()}}
-{\footnotesize\ttfamily void lancement\+\_\+matin (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{\mbox{\hyperlink{struct_timer__s}{Timer\+\_\+t}} $\ast$}]{temps\+\_\+jeu,  }\item[{int}]{argent }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void lancement\+\_\+matin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
 
 
 
