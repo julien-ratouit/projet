@@ -66,21 +66,21 @@ void affiche_menu_action(param_t *parametre){
 	//printf("Ca crash ?");
 	if(action_equipe[0] != NULL){
 		//printf("Invisible 0 :)))");
-    	ajout_texture_non_centre(action_barre_n1, (action_equipe[0]->img_action_rect), parametre->renderer,parametre->window, 480, 80);
+    	ajout_texture_non_centre(action_barre_n1, (liste_action[0]->img_action_rect), parametre->renderer,parametre->window, 480, 80);
 	}
     if(action_equipe[1] != NULL){
 		//printf("Invisible 1 :)))");
-		ajout_texture_non_centre(action_barre_n2, (action_equipe[1]->img_action_rect), parametre->renderer, parametre->window, 480, 155);
+		ajout_texture_non_centre(action_barre_n2, (liste_action[1]->img_action_rect), parametre->renderer, parametre->window, 480, 155);
 	}
 		
     if(action_equipe[2] != NULL){
 		//printf("Invisible 2 :)))");
-		ajout_texture_non_centre(action_barre_n3, (action_equipe[2]->img_action_rect), parametre->renderer, parametre->window,480, 225);
+		ajout_texture_non_centre(action_barre_n3, (liste_action[2]->img_action_rect), parametre->renderer, parametre->window,480, 225);
 	}
 		
     if(action_equipe[3] != NULL){
 		//printf("Invisible 3 :)))");
-		ajout_texture_non_centre(action_barre_n4, (action_equipe[3]->img_action_rect), parametre->renderer, parametre->window, 480, 300);
+		ajout_texture_non_centre(action_barre_n4, (liste_action[3]->img_action_rect), parametre->renderer, parametre->window, 480, 300);
 	}
 
 	//printf("Ca passe presque :'(\n");
@@ -159,44 +159,40 @@ extern int clic_choix_sdp(){
 				}
 				//Si on clique sur les emplacement d'équipement
 				if((event.button.x < EMPLACEMENT_EQUIPE_1_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_1_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_1_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_1_Y_MIN)){
-					
+					printf("je clique sur equip1\n");
 					return EQUIP_1;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_2_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_2_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_2_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_2_Y_MIN)){
-					
+					printf("je clique sur equip2\n");
 					return EQUIP_2;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_3_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_3_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_3_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_3_Y_MIN)){
-					
+					printf("je clique sur equip3\n");
 					return EQUIP_3;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_4_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_4_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_4_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_4_Y_MIN)){
-					
+					printf("je clique sur equip4\n");
 					return EQUIP_4;
 
 				}
 				//Si on clique sur les actions
 				if((event.button.x < EMPLACEMENT_ACTION_0_X_MAX && event.button.x > EMPLACEMENT_ACTION_0_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_0_Y_MAX && event.button.y > EMPLACEMENT_ACTION_0_Y_MIN)){
-
-					return 0;
-
-				}
-				if((event.button.x < EMPLACEMENT_ACTION_1_X_MAX && event.button.x > EMPLACEMENT_ACTION_1_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_1_Y_MAX && event.button.y > EMPLACEMENT_ACTION_1_Y_MIN)){
-
 					return 1;
 
 				}
-				if((event.button.x < EMPLACEMENT_ACTION_2_X_MAX && event.button.x > EMPLACEMENT_ACTION_2_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_2_Y_MAX && event.button.y > EMPLACEMENT_ACTION_2_Y_MIN)){
-
+				if((event.button.x < EMPLACEMENT_ACTION_1_X_MAX && event.button.x > EMPLACEMENT_ACTION_1_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_1_Y_MAX && event.button.y > EMPLACEMENT_ACTION_1_Y_MIN)){
 					return 2;
 
 				}
-				if((event.button.x < EMPLACEMENT_ACTION_3_X_MAX && event.button.x > EMPLACEMENT_ACTION_3_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_3_Y_MAX && event.button.y > EMPLACEMENT_ACTION_3_Y_MIN)){
-
+				if((event.button.x < EMPLACEMENT_ACTION_2_X_MAX && event.button.x > EMPLACEMENT_ACTION_2_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_2_Y_MAX && event.button.y > EMPLACEMENT_ACTION_2_Y_MIN)){
 					return 3;
+
+				}
+				if((event.button.x < EMPLACEMENT_ACTION_3_X_MAX && event.button.x > EMPLACEMENT_ACTION_3_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_3_Y_MAX && event.button.y > EMPLACEMENT_ACTION_3_Y_MIN)){		
+					return 4;
 
 				}
 				break;
@@ -216,10 +212,11 @@ extern int clic_choix_sdp(){
 */
 extern int achat_action(action_t *action, int argent)
 {
-	if(argent >= action->prix)
+	printf("Tu achètes :D\nPlus que %d argent\n\n",argent);
+	if((argent) >= action->prix)
 	{
 		action->statut = true;
-		argent -= action->prix;
+		(argent) -= action->prix;
 		return argent;
 	}
 	else
@@ -236,22 +233,28 @@ extern int achat_action(action_t *action, int argent)
 * \return à remplir
 *  
 */
-extern int equipe_action(int place, int argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
+extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
 
 	affiche_menu_action(parametre);
-	int id;
-	id = clic_choix_sdp();
+	int id = 0;
+	
+	printf("Coucou action %d\n", place);
 
-	switch(id){
-		//Si on clique sur la croix, on quitte
-		case QUITTE_SDP: return QUITTE_SDP;
-		//Si on clique sur un autre emplacement relance la fonction equipe_action avec la nouvelle place
-		case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre, texture_prof); break;
-		case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre, texture_prof); break;
-		case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre, texture_prof); break;
-		case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre, texture_prof); break;
-		case QUITTE_MENU : return QUITTE_MENU; break;
-		default : break;
+	while(!id){
+
+		id = clic_choix_sdp();
+		switch(id){
+			//Si on clique sur la croix, on quitte
+			case QUITTE_SDP: return QUITTE_SDP;
+			//Si on clique sur un autre emplacement relance la fonction equipe_action avec la nouvelle place
+			case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre,texture_prof); break;
+			case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre,texture_prof); break;
+			case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre,texture_prof); break;
+			case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre,texture_prof); break;
+			case QUITTE_MENU : return QUITTE_MENU; break;
+			default : break;
+		}
+
 	}
 
 	//printf("On sort !\n");

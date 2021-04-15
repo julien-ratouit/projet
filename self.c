@@ -209,6 +209,7 @@ void lancement_self(param_t *parametre)
 									parametre->val_depression += 36;
 									if( ( parametre->val_depression ) > -5 )
 										parametre->val_depression = -5;
+									
 								}
 								break;
 							case 4 :

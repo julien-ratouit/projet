@@ -111,7 +111,7 @@ void lancement_apremidi(param_t * parametre)
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
-	while(program_launched)
+	while(program_launched && parametre->perdu == SDL_FALSE)
 	{
 
 
@@ -120,7 +120,7 @@ void lancement_apremidi(param_t * parametre)
 
 		//mise a jour des barres atomatic
 		//printf("debut barre:\n");
-		agit = nb_jour + 3;
+		agit = nb_jour + 15;
 		SDL_Delay(1);
 		//printf("temps:%d\n", temps);
 		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
