@@ -12,6 +12,7 @@
 #include "coords.h"
 #include "timer.h"
 #include "argent.h"
+#include "depression.h"
 #include "action.h"
 
 action_t * liste_action[10];

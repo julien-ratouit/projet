@@ -48,12 +48,12 @@ extern void init_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre){
 * \param (*barre).w est la largeur du rectangle coloré.
 * \param (*barre).h est la hauteur du rectangle coloré.
 */
-extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre){
+extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre, int val){
 
   (*barre).x = 1066;
   (*barre).y = 264;
   (*barre).w = 48;
-  (*barre).h = -5;
+  (*barre).h = val;
 
   if(SDL_SetRenderDrawColor(renderer, 240, 130, 5, SDL_ALPHA_OPAQUE) != 0)
     SDL_ExitWithError("Impossible de changer la couleur du rendu");
@@ -122,7 +122,6 @@ extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int sco
     }
     (*barre).y = 264;
   }
-  printf("%i\n",(*barre).h);
 }
 
 

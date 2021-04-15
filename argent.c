@@ -48,7 +48,7 @@ void affiche_argent(SDL_Window *window, SDL_Renderer *renderer, int argent)
 	SDL_Texture *texture_fond = NULL;
 	SDL_Texture *texture_piece = NULL;
 
-	ajout_texture_non_centre(texture_fond , "images/chiffres/fond_piece.png", renderer, window,FOND_X, FOND_Y);
+	ajout_texture_non_centre(texture_fond , "images/chiffres/fond_chiffres.png", renderer, window,FOND_X, FOND_Y);
 	ajout_texture_non_centre(texture_piece , "images/chiffres/piece.png", renderer, window,PIECE_X, PIECE_Y);
 
 	switch(centaine)

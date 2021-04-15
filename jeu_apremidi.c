@@ -66,7 +66,6 @@ void lancement_apremidi(param_t * parametre)
 	srand(time(NULL));
 	///////////////////////////
 
-	pthread_t thread_minuteur;
 	printf("bienvenue dans le cours de l'apres-midi\n");
 
 	SDL_Texture *texture_classe = NULL;
@@ -96,12 +95,11 @@ void lancement_apremidi(param_t * parametre)
 	int score = 0;
 	int test;
 
-	printf("inittextureok\n");
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-	printf("inittextureok2\n");
-	aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+	aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 	ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
-	init_barre_depression(parametre->renderer, barre_depression);
+
+	init_barre_depression(parametre->renderer, barre_depression, parametre->val_depression);
 	init_barre_sonore(parametre->renderer, barre_sonore);
 
 	ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
@@ -110,9 +108,6 @@ void lancement_apremidi(param_t * parametre)
 	SDL_RenderPresent(parametre->renderer);
 
 	(parametre->temps_jeu)->debut(parametre->temps_jeu);
-
-
-	printf("debut boucle\n");
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
@@ -125,12 +120,11 @@ void lancement_apremidi(param_t * parametre)
 
 		//mise a jour des barres atomatic
 		//printf("debut barre:\n");
-		agit = nb_jour + 30;
+		agit = nb_jour + 3;
 		SDL_Delay(1);
 		//printf("temps:%d\n", temps);
 		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
 			{
-				printf("text barres\n");
 				temps = rand()%(181)+20;
 				/*mise a jour de la barre sonore + remise en place de la texture associé*/
 				update_barre_sonore(parametre->renderer, barre_sonore, agit);
@@ -176,7 +170,6 @@ void lancement_apremidi(param_t * parametre)
 			{
 
 				case SDL_MOUSEBUTTONDOWN:
-					printf("tu es toujours dans la fonction jeu_matin\n");
 					/*je vais realiser plusieurs destroy et creation à la suite, c'est pour eviter l'acumulation des textures*/
 					if((event.button.x > 70 && event.button.x < 134)&&(event.button.y > 530 && event.button.y < 594)&&status_menu == -1)
 					{
@@ -230,7 +223,7 @@ void lancement_apremidi(param_t * parametre)
 						SDL_DestroyTexture(texture_action2);
 						SDL_DestroyTexture(texture_action3);
 						SDL_DestroyTexture(texture_action4);
-						aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+						aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 
 						SDL_DestroyTexture(texture_btn_option);
 						ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
@@ -252,8 +245,6 @@ void lancement_apremidi(param_t * parametre)
 					break;
 
 			}
-			if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 1000) 
-				program_launched = SDL_FALSE;
 		}
 	}
 	printf("tu quitte le cour de l'aprem\n");

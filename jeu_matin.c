@@ -71,8 +71,6 @@ void lancement_matin(param_t * parametre)
 	srand(time(NULL));
 	///////////////////////////
 
-	pthread_t thread_minuteur;
-
 	printf("bienvenue dans le cours du matin\n");
 
 	SDL_Texture *texture_classe = NULL;
@@ -105,10 +103,10 @@ void lancement_matin(param_t * parametre)
 	/*-----------------*/
 
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-	aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+	aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 	ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 
-	init_barre_depression(parametre->renderer, barre_depression);
+	init_barre_depression(parametre->renderer, barre_depression, -5);
 	init_barre_sonore(parametre->renderer, barre_sonore);
 
 	ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
@@ -117,7 +115,6 @@ void lancement_matin(param_t * parametre)
 	SDL_RenderPresent(parametre->renderer);
 
 	(parametre->temps_jeu)->debut(parametre->temps_jeu);
-	printf("barre_depression: %d, status_menu: %d, temps et cpt: %d - %d\n", (*barre_depression).h, status_menu, temps, cpt1);
 
 	/*----------------------------------------------------------------------*/
 	SDL_bool program_launched = SDL_TRUE;
@@ -130,19 +127,18 @@ void lancement_matin(param_t * parametre)
 
 		//mise a jour des barres atomatic
 		//printf("debut barre:\n");
-		agit = nb_jour + 30;
+		agit = nb_jour + 15;
 		SDL_Delay(1);
 		//printf("temps:%d\n", temps);
 		
 		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
 			{
-				printf("text barres\n");
 				temps = rand()%(181)+20;
 				/*mise a jour de la barre sonore + remise en place de la texture associé*/
 				update_barre_sonore(parametre->renderer, barre_sonore, agit);
 				SDL_DestroyTexture(texture_barre_son);
 				ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
-
+				
 				/*mise a jour de la barre de depression + remise en place de la texture associé*/
 				update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
 				SDL_DestroyTexture(texture_barre_depression);
@@ -170,7 +166,8 @@ void lancement_matin(param_t * parametre)
 		//printf("nb boucles: %d\n",cpt1);
 		cpt1++;
 		//////
-		if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 10000) program_launched = SDL_FALSE;
+		if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 10000) 
+			program_launched = SDL_FALSE;
 
 
 
@@ -182,7 +179,6 @@ void lancement_matin(param_t * parametre)
 			switch (event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
-					printf("tu es toujours dans la fonction jeu_matin\n");
 					/*je vais realiser plusieurs destroy et creation à la suite, c'est pour eviter l'acumulation des textures*/
 					if((event.button.x > 70 && event.button.x < 134)&&(event.button.y > 530 && event.button.y < 594)&&status_menu == -1)
 					{
@@ -223,7 +219,7 @@ void lancement_matin(param_t * parametre)
 
 						(parametre->temps_jeu)->unpause(parametre->temps_jeu);
 						/*si on clique sur le bouton 'reprendre le jeu'*/
-						printf("%d ms\n", parametre->temps_jeu->get_ticks(parametre->temps_jeu));
+						//printf("%d ms\n", parametre->temps_jeu->get_ticks(parametre->temps_jeu));
 
 						status_menu = -1;
 
@@ -236,7 +232,7 @@ void lancement_matin(param_t * parametre)
 						SDL_DestroyTexture(texture_action2);
 						SDL_DestroyTexture(texture_action3);
 						SDL_DestroyTexture(texture_action4);
-						aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+						aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 
 						SDL_DestroyTexture(texture_btn_option);
 						ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
@@ -260,6 +256,7 @@ void lancement_matin(param_t * parametre)
 			}		
 		}
 	}
+	parametre->val_depression = (*barre_depression).h;
 	printf("tu quitte le cour du matin\n");
 	SDL_DestroyTexture(texture_action4);
 	SDL_DestroyTexture(texture_action3);
