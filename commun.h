@@ -13,7 +13,9 @@
 #include "timer.h"
 #include "argent.h"
 #include "depression.h"
+#include "nombre_jour.h"
 #include "action.h"
+
 
 action_t * liste_action[10];
 action_t * action_acheter[10];

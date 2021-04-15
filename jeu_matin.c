@@ -65,7 +65,6 @@ void lancement_matin(param_t * parametre)
 	//variables pour les barres
 	int cpt1 = 0;
 	int defaite = 0; //si defaite = 1 c'est perdu
-	int nb_jour = 0;
 	int agit = 0;
 	int temps = 30;
 	srand(time(NULL));
@@ -87,6 +86,8 @@ void lancement_matin(param_t * parametre)
 	SDL_Texture *texture_action3 = NULL;//action 3
 	SDL_Texture *texture_action4 = NULL;//action 4
 
+	SDL_Texture *texture_backgrnd_jour = NULL;
+
 	SDL_Rect *barre_depression;
 	barre_depression=malloc(sizeof(SDL_Rect));
 
@@ -95,16 +96,11 @@ void lancement_matin(param_t * parametre)
 
 	int status_menu = -1;
 
-	/*variables de test*/
-	int *achat = malloc(sizeof(int));
-	(*achat) = 4;
-	int test;
-	
-	/*-----------------*/
-
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 	aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 	ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+	
+	affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
 
 	init_barre_depression(parametre->renderer, barre_depression, -5);
 	init_barre_sonore(parametre->renderer, barre_sonore);
@@ -127,7 +123,7 @@ void lancement_matin(param_t * parametre)
 
 		//mise a jour des barres atomatic
 		//printf("debut barre:\n");
-		agit = nb_jour + 15;
+		agit = parametre->nb_jour + 15;
 		SDL_Delay(1);
 		//printf("temps:%d\n", temps);
 		
@@ -179,6 +175,7 @@ void lancement_matin(param_t * parametre)
 			switch (event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
+					printf("x : %i & y : %i\n", event.button.x, event.button.y);
 					/*je vais realiser plusieurs destroy et creation à la suite, c'est pour eviter l'acumulation des textures*/
 					if((event.button.x > 70 && event.button.x < 134)&&(event.button.y > 530 && event.button.y < 594)&&status_menu == -1)
 					{
@@ -223,27 +220,22 @@ void lancement_matin(param_t * parametre)
 
 						status_menu = -1;
 
-						SDL_DestroyTexture(texture_menu_option);
+						SDL_RenderClear(parametre->renderer);
 
-						SDL_DestroyTexture(texture_classe);
-						ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 						
-						SDL_DestroyTexture(texture_action1);
-						SDL_DestroyTexture(texture_action2);
-						SDL_DestroyTexture(texture_action3);
-						SDL_DestroyTexture(texture_action4);
+						ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+						affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+						
+						
 						aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 
-						SDL_DestroyTexture(texture_btn_option);
 						ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 
 						update_barre_sonore(parametre->renderer, barre_sonore, 0);
 						update_barre_depression(parametre->renderer, barre_depression, barre_sonore, 0);
 
-						SDL_DestroyTexture(texture_barre_son);
+						
 						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
-
-						SDL_DestroyTexture(texture_barre_depression);
 						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
 
 						SDL_RenderPresent(parametre->renderer);

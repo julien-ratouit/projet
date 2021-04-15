@@ -26,6 +26,20 @@
 
 
 
+/*ZONE BOUTON REPRENDRE*/
+
+#define BTN_REP_X_MAX 790
+#define BTN_REP_X_MIN 490
+
+#define BTN_REP_Y_MAX 510
+#define BTN_REP_Y_MIN 424
+
+
+
+
+
+
+
 
 
 
@@ -44,11 +58,11 @@
 
 /*Zone bouton 'tuto'*/
 /*----------------------------------------*/
-#define BOUTON_TUTO_X_MAX 790
-#define BOUTON_TUTO_X_MIN 490
+#define BOUTON_TUTO_X_MAX 786
+#define BOUTON_TUTO_X_MIN 494
 
-#define BOUTON_TUTO_Y_MAX 510
-#define BOUTON_TUTO_Y_MIN 424
+#define BOUTON_TUTO_Y_MAX 619
+#define BOUTON_TUTO_Y_MIN 539
 /*----------------------------------------*/
 
 /*Zone bouton 'next'*/

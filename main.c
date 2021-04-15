@@ -34,9 +34,7 @@ int main (int argc, char ** argv)
 	SDL_Surface *image = NULL;
 
 	SDL_Texture *texture_menu = NULL;
-	SDL_Texture *texture_btn_jouer = NULL;
-	SDL_Texture *texture_btn_option = NULL;
-	SDL_Texture *texture_btn_tuto = NULL;
+	SDL_Texture *texture_bouton = NULL;
 	SDL_Texture *texture_logo = NULL;
 
 	Timer_t *temps_jeu;
@@ -55,13 +53,15 @@ int main (int argc, char ** argv)
     	SDL_ExitWithError("Impossible de créer la fenêtre et le rendu");
 
 	ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-	ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
-	ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+	ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+	ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+	ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
 	ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 	param_t * parametre = malloc(sizeof(param_t));
 	parametre->temps_jeu = temps_jeu;
 	parametre->argent = argent;
+	parametre->nb_jour = 1;
 	parametre->val_depression = -5;
 	parametre->window = window;
 	parametre->renderer = renderer;
@@ -84,14 +84,15 @@ int main (int argc, char ** argv)
 			switch(event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
+
+
+
 					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
 						//si on appuie sur le bouton jouer
 						
-						SDL_DestroyTexture(texture_btn_jouer);
-						SDL_DestroyTexture(texture_menu);
-						SDL_DestroyTexture(texture_btn_tuto);
+						SDL_RenderClear(renderer);
 
 						while(!(parametre->quitte) && !(parametre->perdu))
 						{
@@ -104,13 +105,15 @@ int main (int argc, char ** argv)
 								lancement_apremidi(parametre);
 							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_salle_prof(parametre);
+							parametre->nb_jour += 1;
 
 						}
 										
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+						ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+						ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
 						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 						parametre->quitte = SDL_FALSE;
@@ -118,6 +121,14 @@ int main (int argc, char ** argv)
 
 						SDL_RenderPresent(renderer);
 					}
+
+					if((event.button.x < BTN_REP_X_MAX && event.button.x > BTN_REP_X_MIN)&&(event.button.y < BTN_REP_Y_MAX && event.button.y > BTN_REP_Y_MIN) && status_tuto == -1)
+					{
+						
+
+					}
+
+
 					if ((event.button.x < BOUTON_TUTO_X_MAX && event.button.x > BOUTON_TUTO_X_MIN)&&(event.button.y < BOUTON_TUTO_Y_MAX && event.button.y > BOUTON_TUTO_Y_MIN))
 					{
 						//si on appuie sur le bouton tuto
@@ -127,8 +138,9 @@ int main (int argc, char ** argv)
 						SDL_RenderClear(renderer);
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_btn_jouer ,"images/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_btn_tuto ,"images/tuto.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+						ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+						ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+						ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
 						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 					
 						SDL_RenderPresent(renderer);
@@ -143,8 +155,7 @@ int main (int argc, char ** argv)
 			}
 		}
 	}
-	SDL_DestroyTexture(texture_btn_jouer);
-	SDL_DestroyTexture(texture_btn_tuto);
+	SDL_DestroyTexture(texture_bouton);
 	SDL_DestroyTexture(texture_menu);
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);

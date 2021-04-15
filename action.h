@@ -28,6 +28,7 @@ typedef struct param_s
 {
 	Timer_t *temps_jeu;
 	int argent;
+	int nb_jour;
 	int val_depression;
 	SDL_Rect *depression;
 	SDL_Renderer *renderer;
@@ -36,6 +37,7 @@ typedef struct param_s
 	SDL_bool quitte;
 }
 param_t;
+
 
 
 extern void affiche_barre_action(param_t *parametre);
