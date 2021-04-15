@@ -156,22 +156,22 @@ extern int clic_choix_sdp(){
 				}
 				//Si on clique sur les emplacement d'équipement
 				if((event.button.x < EMPLACEMENT_EQUIPE_1_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_1_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_1_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_1_Y_MIN)){
-
+					printf("je clique sur equip1\n");
 					return EQUIP_1;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_2_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_2_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_2_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_2_Y_MIN)){
-
+					printf("je clique sur equip2\n");
 					return EQUIP_2;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_3_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_3_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_3_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_3_Y_MIN)){
-
+					printf("je clique sur equip3\n");
 					return EQUIP_3;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_4_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_4_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_4_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_4_Y_MIN)){
-
+					printf("je clique sur equip4\n");
 					return EQUIP_4;
 
 				}
@@ -315,7 +315,6 @@ extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_ac
 	int choix;
 
 	affiche_barre_action(parametre);
-	printf("Paul\n");
 	while(test_sortie != QUITTE_MENU && test_sortie != QUITTE_SDP){//Test_sortie vaut vrai quand on clique sur la croix
 
 		choix = clic_choix_sdp();
