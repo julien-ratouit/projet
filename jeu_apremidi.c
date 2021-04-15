@@ -66,7 +66,6 @@ void lancement_apremidi(param_t * parametre)
 	srand(time(NULL));
 	///////////////////////////
 
-	pthread_t thread_minuteur;
 	printf("bienvenue dans le cours de l'apres-midi\n");
 
 	SDL_Texture *texture_classe = NULL;
@@ -97,7 +96,7 @@ void lancement_apremidi(param_t * parametre)
 	int test;
 
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-	aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+	aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 	ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 
 	init_barre_depression(parametre->renderer, barre_depression, parametre->val_depression);
@@ -224,7 +223,7 @@ void lancement_apremidi(param_t * parametre)
 						SDL_DestroyTexture(texture_action2);
 						SDL_DestroyTexture(texture_action3);
 						SDL_DestroyTexture(texture_action4);
-						aff_action(achat, parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+						aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
 
 						SDL_DestroyTexture(texture_btn_option);
 						ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
@@ -246,8 +245,6 @@ void lancement_apremidi(param_t * parametre)
 					break;
 
 			}
-			if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 1000) 
-				program_launched = SDL_FALSE;
 		}
 	}
 	printf("tu quitte le cour de l'aprem\n");

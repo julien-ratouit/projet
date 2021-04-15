@@ -71,46 +71,11 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="self_8c.html#a619cdaca3e2d4bfd40ee15502fb6b70e">aff_texture_self</a>(<a class="code" href="structparam__t.html">param_t</a> *parametre, SDL_Texture *texture_self);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="self_8c.html#acf20793f7929ccc688d78a17430bb227">lancement_self</a>(<a class="code" href="structparam__t.html">param_t</a> *parametre);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> aff_texture_self(<a class="code" href="structparam__t.html">param_t</a> *parametre, SDL_Texture *texture_self);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> lancement_self(<a class="code" href="structparam__t.html">param_t</a> *parametre);</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/*ZONE PLATS*/</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/*-------------------*/</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define PLAT1_X_MIN 312</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define PLAT1_X_MAX 358</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define PLAT1_Y_MIN 369</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define PLAT1_Y_MAX 399</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define PLAT2_X_MIN 426</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define PLAT2_X_MAX 471</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define PLAT2_Y_MIN 374</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define PLAT2_Y_MAX 401</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define PLAT3_X_MIN 539</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define PLAT3_X_MAX 590</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define PLAT3_Y_MIN 372</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define PLAT3_Y_MAX 398</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define PLAT4_X_MIN 654</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define PLAT4_X_MAX 701</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define PLAT4_Y_MIN 370</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define PLAT4_Y_MAX 398</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define PLAT5_X_MIN 770</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define PLAT5_X_MAX 819</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define PLAT5_Y_MIN 374</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define PLAT5_Y_MAX 398</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define PLAT6_X_MIN 882</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define PLAT6_X_MAX 933</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define PLAT6_Y_MIN 373</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define PLAT6_Y_MAX 397</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*-------------------*/</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aself_8c_html_a619cdaca3e2d4bfd40ee15502fb6b70e"><div class="ttname"><a href="self_8c.html#a619cdaca3e2d4bfd40ee15502fb6b70e">aff_texture_self</a></div><div class="ttdeci">void aff_texture_self(param_t *parametre, SDL_Texture *texture_self)</div><div class="ttdoc">fonction qui affiche des textures à l'ecran.</div><div class="ttdef"><b>Definition:</b> self.c:24</div></div>
-<div class="ttc" id="aself_8c_html_acf20793f7929ccc688d78a17430bb227"><div class="ttname"><a href="self_8c.html#acf20793f7929ccc688d78a17430bb227">lancement_self</a></div><div class="ttdeci">void lancement_self(param_t *parametre)</div><div class="ttdoc">fonction qui gère le self.</div><div class="ttdef"><b>Definition:</b> self.c:50</div></div>
-<div class="ttc" id="astructparam__t_html"><div class="ttname"><a href="structparam__t.html">param_t</a></div><div class="ttdoc">définir l'ensemble des variables que l'on utilise dans plusieurs programmes nottament les threads qui...</div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructparam__t_html"><div class="ttname"><a href="structparam__t.html">param_t</a></div><div class="ttdoc">définir l'ensemble des variables que l'on utilise dans plusieurs programmes nottament les threads qui...</div><div class="ttdef"><b>Definition:</b> action.h:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

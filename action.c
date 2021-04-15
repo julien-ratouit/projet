@@ -214,16 +214,16 @@ extern int clic_choix_sdp(){
 * \return On return un \a int qui défini si oui ou non l'action à changé de statut.
 *  
 */
-extern int achat_action(action_t *action, int *argent)
+extern int achat_action(action_t *action, int argent)
 {
-	if((*argent) >= action->prix)
+	if(argent >= action->prix)
 	{
 		action->statut = true;
-		(*argent) -= action->prix;
-		return 1;
+		argent -= action->prix;
+		return argent;
 	}
 	else
-		return 0;
+		return argent;
 }
 
 //Ajoutez un bouton Equiper pour lancer la fonction
@@ -236,7 +236,7 @@ extern int achat_action(action_t *action, int *argent)
 * \return à remplir
 *  
 */
-extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
+extern int equipe_action(int place, int argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
 
 	affiche_menu_action(parametre);
 	int id;
@@ -246,21 +246,27 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 		//Si on clique sur la croix, on quitte
 		case QUITTE_SDP: return QUITTE_SDP;
 		//Si on clique sur un autre emplacement relance la fonction equipe_action avec la nouvelle place
-		case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre); break;
-		case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre); break;
-		case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre); break;
-		case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre); break;
+		case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre, texture_prof); break;
+		case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre, texture_prof); break;
+		case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre, texture_prof); break;
+		case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre, texture_prof); break;
+		case QUITTE_MENU : return QUITTE_MENU; break;
 		default : break;
 	}
 
+	//printf("On sort !\n");
+
+	id--; //Car clic_choix renvoie 0 quand il n'a pas de clic, donc je décale tout mes indices d'actions de 1 et je les remets bien ici
+
+
 	//Sinon on fait soit un échange si l'action est déjà équipé, sinon ça l'équipe simplement (En écrasant l'action déjà placé)
 	if(tab_action[id]->statut){
-
-		if(!tab_action[id]->equipe){//Le cas où il n'est pas déjà présent dans l'équipe
+		printf("Action %d déja acheté \n",id);
+		if(!(tab_action[id]->equipe)){//Le cas où il n'est pas déjà présent dans l'équipe
 
 			tab_equipe[place] = tab_action[id];
 			tab_equipe[place]->equipe = place + 1;
-			return 1;
+			
 
 		}
 		else{ //Le cas où il est déjà présent dans l'équipé, on le change juste de place
@@ -280,17 +286,22 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 		}
 
 		SDL_RenderClear(parametre->renderer);
+		aff_texture_sp(parametre,texture_prof);
 		affiche_barre_action(parametre);
 		affiche_menu_action(parametre);
-
+		return equipe_action(place,argent, tab_equipe, tab_action,parametre,texture_prof);
 	}
 	//Si sur ce que l'on clique n'est pas acheté, ça veut dire qu'on veut l'acheter :D
-	else if(achat_action(tab_action[id], argent )){
-
-		return equipe_action(place,argent, tab_equipe, tab_action,parametre);//Si on achète je relance la procédure d'équipationnagization :D
+	else{
+		parametre->argent = achat_action(tab_action[id], argent );
+		argent = parametre->argent;
+		SDL_RenderClear(parametre->renderer);
+		aff_texture_sp(parametre,texture_prof);
+		affiche_barre_action(parametre);
+		affiche_menu_action(parametre);
+		return equipe_action(place,argent, tab_equipe, tab_action,parametre,texture_prof);//Si on achète je relance la procédure d'équipationnagization :D
 
 	}
-	else return  equipe_action(place,argent, tab_equipe, tab_action,parametre); //Si y a rien de tout ça c'est que le joueur a dû missclick où cliquer n'importe où, alors je recommence la procédure
 
 }
 
@@ -301,7 +312,7 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 * \details Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions
 *  
 */
-extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
+extern int menu_action(action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
 
 	int test_sortie = 0;
 	int choix;
@@ -317,10 +328,10 @@ extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_ac
 			//case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
 			case QUITTE_SDP : test_sortie = QUITTE_SDP; break;
 			//Si on choisis une case d'équipement, ça renvoie la fonction equipe_action a la bonne place.
-			case EQUIP_4 : test_sortie = equipe_action(3, argent, tab_equipe, tab_action, parametre); break;
-			case EQUIP_3 : test_sortie = equipe_action(2, argent, tab_equipe, tab_action, parametre); break;
-			case EQUIP_2 : test_sortie = equipe_action(1, argent, tab_equipe, tab_action, parametre); break;
-			case EQUIP_1 : test_sortie = equipe_action(0, argent, tab_equipe, tab_action, parametre); break;
+			case EQUIP_4 : test_sortie = equipe_action(3, parametre->argent, tab_equipe, tab_action, parametre, texture_prof); break;
+			case EQUIP_3 : test_sortie = equipe_action(2, parametre->argent, tab_equipe, tab_action, parametre, texture_prof); break;
+			case EQUIP_2 : test_sortie = equipe_action(1, parametre->argent, tab_equipe, tab_action, parametre, texture_prof); break;
+			case EQUIP_1 : test_sortie = equipe_action(0, parametre->argent, tab_equipe, tab_action, parametre, texture_prof); break;
 			case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
 			//Si on renvoie autre chose on s'en occupe pas
 			default : test_sortie = 0; break;
@@ -332,8 +343,6 @@ extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_ac
 		return 1;
 	if(test_sortie == QUITTE_MENU)
 		return -1;
-
-	//fermer_menu_action();//A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
 
 }
 

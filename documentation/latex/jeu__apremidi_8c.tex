@@ -10,16 +10,14 @@ Cette ensemble de fonction agit sur le cours de l\textquotesingle{}après-\/midi
 {\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}barre.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}salle\+\_\+prof.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}action.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$time.\+h$>$}\newline
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{jeu__apremidi_8c_ab57354e9af729df168c3ec42c3f979a6}\label{jeu__apremidi_8c_ab57354e9af729df168c3ec42c3f979a6}} 
-void \mbox{\hyperlink{jeu__apremidi_8c_ab57354e9af729df168c3ec42c3f979a6}{game\+Over\+\_\+aprem}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
-\begin{DoxyCompactList}\small\item\em a doxigéner \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{jeu__apremidi_8c_a23cd51ffcd1140129de906736c080420}\label{jeu__apremidi_8c_a23cd51ffcd1140129de906736c080420}} 
-void \mbox{\hyperlink{jeu__apremidi_8c_a23cd51ffcd1140129de906736c080420}{lancement\+\_\+apremidi}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+void $\ast$ \mbox{\hyperlink{jeu__apremidi_8c_a16d66686f15bd8859eee22e1505df0aa}{fonc\+\_\+pthread\+\_\+timer2\+\_\+cb}} (void $\ast$parametre)
+\begin{DoxyCompactList}\small\item\em Fonction de callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jeu__apremidi_8c_ae11c84639427bd856cb4645428ce87e7}{fonc\+\_\+pthread\+\_\+timer2}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+\begin{DoxyCompactList}\small\item\em Fonction du pthread n°2. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jeu__apremidi_8c_a5d2a65ccf0d8eb8cac3c390462e28238}{lancement\+\_\+apremidi}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window, \mbox{\hyperlink{struct_timer__s}{Timer\+\_\+t}} $\ast$temps\+\_\+jeu, int argent)
 \begin{DoxyCompactList}\small\item\em Fonction qui s\textquotesingle{}occupe du cours de l\textquotesingle{}après-\/midi. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -29,3 +27,43 @@ Cette ensemble de fonction agit sur le cours de l\textquotesingle{}après-\/midi
 On utilise cet ensemble de fonction lorsque le joueur commence le cour de l\textquotesingle{}après midi, elle permet d\textquotesingle{}envoyer le joueur au moment voulut dans la salle des profs. \begin{DoxyAuthor}{Auteur}
 Quenault Maxime, Renoit Charles 
 \end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{jeu__apremidi_8c_ae11c84639427bd856cb4645428ce87e7}\label{jeu__apremidi_8c_ae11c84639427bd856cb4645428ce87e7}} 
+\index{jeu\_apremidi.c@{jeu\_apremidi.c}!fonc\_pthread\_timer2@{fonc\_pthread\_timer2}}
+\index{fonc\_pthread\_timer2@{fonc\_pthread\_timer2}!jeu\_apremidi.c@{jeu\_apremidi.c}}
+\doxysubsubsection{\texorpdfstring{fonc\_pthread\_timer2()}{fonc\_pthread\_timer2()}}
+{\footnotesize\ttfamily void fonc\+\_\+pthread\+\_\+timer2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+
+
+
+Fonction du pthread n°2. 
+
+Cette fonction va s\textquotesingle{}executer en même temps que la fonction {\itshape lancement\+\_\+apremidi} , sont but est de comparé le temps passé en jeu avec le temps limite accordé par le developpeur. Si le temps arrive à sont terme alors la fonction {\itshape lancement\+\_\+salle\+\_\+prof} est lancé, le joueur se retrouve donc dans la salle des profs. \mbox{\Hypertarget{jeu__apremidi_8c_a16d66686f15bd8859eee22e1505df0aa}\label{jeu__apremidi_8c_a16d66686f15bd8859eee22e1505df0aa}} 
+\index{jeu\_apremidi.c@{jeu\_apremidi.c}!fonc\_pthread\_timer2\_cb@{fonc\_pthread\_timer2\_cb}}
+\index{fonc\_pthread\_timer2\_cb@{fonc\_pthread\_timer2\_cb}!jeu\_apremidi.c@{jeu\_apremidi.c}}
+\doxysubsubsection{\texorpdfstring{fonc\_pthread\_timer2\_cb()}{fonc\_pthread\_timer2\_cb()}}
+{\footnotesize\ttfamily void$\ast$ fonc\+\_\+pthread\+\_\+timer2\+\_\+cb (\begin{DoxyParamCaption}\item[{void $\ast$}]{parametre }\end{DoxyParamCaption})}
+
+
+
+Fonction de callback. 
+
+Cette fonction à pour seul but d\textquotesingle{}appeler une autre fonction. Cela permet d\textquotesingle{}evité les warnings lors de l\textquotesingle{}execution du programme. \mbox{\Hypertarget{jeu__apremidi_8c_a5d2a65ccf0d8eb8cac3c390462e28238}\label{jeu__apremidi_8c_a5d2a65ccf0d8eb8cac3c390462e28238}} 
+\index{jeu\_apremidi.c@{jeu\_apremidi.c}!lancement\_apremidi@{lancement\_apremidi}}
+\index{lancement\_apremidi@{lancement\_apremidi}!jeu\_apremidi.c@{jeu\_apremidi.c}}
+\doxysubsubsection{\texorpdfstring{lancement\_apremidi()}{lancement\_apremidi()}}
+{\footnotesize\ttfamily void lancement\+\_\+apremidi (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{\mbox{\hyperlink{struct_timer__s}{Timer\+\_\+t}} $\ast$}]{temps\+\_\+jeu,  }\item[{int}]{argent }\end{DoxyParamCaption})}
+
+
+
+Fonction qui s\textquotesingle{}occupe du cours de l\textquotesingle{}après-\/midi. 
+
+Lorsque cette fonction est lancé, un thread est lancé au même moment, ce dernier execute la fonction {\itshape fonc\+\_\+pthread\+\_\+timer2}. Le but de la fonction est de rendre le jeu jouable, nous avons donc l\textquotesingle{}ajout de toute les textures necessaire au bon déroulement du jeu. Le switch est là pour regarder le clic du joueur, à partir de là le joueur à plusieurs possibilité, mettre en pause le jeu ou appuyer sur une action. Pendant ce temps nous avons la barre sonore qui augmente et la barre de depression qui augmente selon la barre sonore.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em statut\+\_\+menu} & est un valeur qui permet de savoir si oui ou non le menu pause est afficher à l\textquotesingle{}ecran, si c\textquotesingle{}est le cas alors le joueur peut cliquer sur reprendre ou quitter, alors que si ce n\textquotesingle{}est pas le cas alors le joueur ne pourra pas y avoir accés. \\
+\hline
+\end{DoxyParams}

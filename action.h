@@ -43,10 +43,12 @@ extern void affiche_menu_action(param_t *parametre);
 
 extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), const char * lien_img_rect, const char * lien_img_rond);
 extern void init_tab_action(action_t * tab[]);
-extern int achat_action(action_t *action, int *argent);
-extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[], param_t *parametre);
-extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[], param_t *parametre);
+extern int achat_action(action_t *action, int argent);
+extern int equipe_action(int place, int argent, action_t * tab_equipe[4], action_t * tab_action[], param_t *parametre, SDL_Texture *texture_prof);
+extern int menu_action(action_t * tab_equipe[4], action_t * tab_action[], param_t *parametre, SDL_Texture *texture_prof);
 extern int clic_choix_sdp();
+
+
 void fonc_action_1 (int jour);
 void fonc_action_2 (int jour);
 void fonc_action_3 (int jour);

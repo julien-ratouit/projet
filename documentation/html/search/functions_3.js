@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['gameover_5faprem_75',['gameOver_aprem',['../jeu__apremidi_8c.html#ab57354e9af729df168c3ec42c3f979a6',1,'jeu_apremidi.c']]],
-  ['gameover_5fmatin_76',['gameOver_matin',['../jeu__matin_8c.html#afdc196e67a403380aafdd11a34012872',1,'jeu_matin.c']]]
+  ['init_5faction_29',['init_action',['../action_8c.html#a988c4693604b8de8c059d66b907c667e',1,'action.c']]],
+  ['init_5ftab_5faction_30',['init_tab_action',['../action_8c.html#a4fffaec588d3c774a87de28874b16164',1,'action.c']]]
 ];

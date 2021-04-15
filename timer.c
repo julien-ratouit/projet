@@ -6,7 +6,8 @@
 
 //Démarre le timer 
 //Pour enlever la pause faire unpause
-void timer_debut(Timer_t * Timer){
+void timer_debut(Timer_t * Timer)
+{
 
     //On demarre le timer
     Timer->start = true;
@@ -17,7 +18,8 @@ void timer_debut(Timer_t * Timer){
 }
 
 //On stoppe définitivement le timer pour pouvoir le réutiliser plus tard
-void timer_stop(Timer_t * Timer){
+void timer_stop(Timer_t * Timer)
+{
 
     //On stoppe le timer
     Timer->start = false;
@@ -26,12 +28,15 @@ void timer_stop(Timer_t * Timer){
 
 }
 
-int timer_get_ticks(Timer_t * Timer){
+int timer_get_ticks(Timer_t * Timer)
+{
     //Si le timer est en marche
-    if( Timer->start == true ){
+    if( Timer->start == true )
+    {
 
         //Si le timer est en pause
-        if( Timer->paused == false ){
+        if( Timer->paused == false )
+        {
             
             //On retourne le temps courant moins le temps quand il a démarré
             return SDL_GetTicks() - Timer->tick_debut;
@@ -42,10 +47,12 @@ int timer_get_ticks(Timer_t * Timer){
     return 0;
 }
 
-void timer_pause(Timer_t * Timer){
+void timer_pause(Timer_t * Timer)
+{
 
     //Si le timer est en marche et pas encore en pause
-    if(( Timer->start == true ) && ( Timer->paused == false )){
+    if(( Timer->start == true ) && ( Timer->paused == false ))
+    {
 
         //On met en pause le timer
         Timer->paused = true;
@@ -56,10 +63,12 @@ void timer_pause(Timer_t * Timer){
     }
 }
 
-void timer_unpause(Timer_t * Timer){
+void timer_unpause(Timer_t * Timer)
+{
 
     //Si le timer est en pause
-    if( Timer->paused == true ){
+    if( Timer->paused == true )
+    {
         //on enlève la pause du timer
         Timer->paused = false;
  
@@ -72,21 +81,24 @@ void timer_unpause(Timer_t * Timer){
 }
 
 //Renvoie vrai si le timer a commencer 
-bool timer_is_started(Timer_t * Timer){
+bool timer_is_started(Timer_t * Timer)
+{
 
     return (Timer->start);
 
 }
 
 //Renvoie vrai si le timer est en pause
-bool timer_is_paused(Timer_t * Timer){
+bool timer_is_paused(Timer_t * Timer)
+{
 
     return (Timer->paused);
 
 }
 
 //Initialise le timer
-Timer_t * timer_init(){
+Timer_t * timer_init()
+{
 
     //Création de l'espace du timer    
 	Timer_t * Timer;
@@ -110,7 +122,8 @@ Timer_t * timer_init(){
 	return Timer;
 }
 /*
-int main(int arv, char *argc[]){
+int main(int arv, char *argc[])
+{
 
     SDL_Init(SDL_INIT_VIDEO);
 

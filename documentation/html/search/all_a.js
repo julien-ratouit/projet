@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['param_5fs_33',['param_s',['../structparam__s.html',1,'']]],
-  ['param_5ft_34',['param_t',['../structparam__t.html',1,'']]],
-  ['press_5faction_35',['press_action',['../fonction_8c.html#a5f85b8c9cb46bc892a2c8a94e93a6c15',1,'fonction.c']]]
+  ['salle_5fprof_2ec_37',['salle_prof.c',['../salle__prof_8c.html',1,'']]],
+  ['sauvegarde_38',['sauvegarde',['../save_8c.html#aaf0f2dc8f7dd4c0bc2051ba9cb7101f7',1,'save.c']]],
+  ['save_2ec_39',['save.c',['../save_8c.html',1,'']]],
+  ['sdl_5fexitimagewitherror_40',['SDL_ExitImageWithError',['../fonction_8c.html#a1680cec827fb8102616c94cc9b1eabdf',1,'fonction.c']]],
+  ['sdl_5fexitwitherror_41',['SDL_ExitWithError',['../fonction_8c.html#abed124ab111ee095d48f08e2a3ea4446',1,'fonction.c']]],
+  ['self_2ec_42',['self.c',['../self_8c.html',1,'']]]
 ];

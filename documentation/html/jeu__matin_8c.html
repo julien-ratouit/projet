@@ -76,24 +76,67 @@ $(function() {
 <code>#include &quot;timer.h&quot;</code><br />
 <code>#include &quot;barre.h&quot;</code><br />
 <code>#include &quot;self.h&quot;</code><br />
-<code>#include &lt;time.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:afdc196e67a403380aafdd11a34012872"><td class="memItemLeft" align="right" valign="top"><a id="afdc196e67a403380aafdd11a34012872"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__matin_8c.html#afdc196e67a403380aafdd11a34012872">gameOver_matin</a> (<a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
-<tr class="memdesc:afdc196e67a403380aafdd11a34012872"><td class="mdescLeft">&#160;</td><td class="mdescRight">a doxigéner <br /></td></tr>
-<tr class="separator:afdc196e67a403380aafdd11a34012872"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1846112a5c9c35393a5603c9617330c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__matin_8c.html#a1846112a5c9c35393a5603c9617330c8">lancement_matin</a> (<a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
-<tr class="memdesc:a1846112a5c9c35393a5603c9617330c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui s'occupe du cours du matin.  <a href="jeu__matin_8c.html#a1846112a5c9c35393a5603c9617330c8">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a1846112a5c9c35393a5603c9617330c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ca9558eb54c60cd4029e39596a896b5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__matin_8c.html#a4ca9558eb54c60cd4029e39596a896b5">fonc_pthread_timer1_cb</a> (void *parametre)</td></tr>
+<tr class="memdesc:a4ca9558eb54c60cd4029e39596a896b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de callback.  <a href="jeu__matin_8c.html#a4ca9558eb54c60cd4029e39596a896b5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4ca9558eb54c60cd4029e39596a896b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbb8de54aa616e41b7eb79e94f50b14d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__matin_8c.html#abbb8de54aa616e41b7eb79e94f50b14d">fonc_pthread_timer1</a> (<a class="el" href="structparam__t.html">param_t</a> *parametre)</td></tr>
+<tr class="memdesc:abbb8de54aa616e41b7eb79e94f50b14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction du pthread n°1.  <a href="jeu__matin_8c.html#abbb8de54aa616e41b7eb79e94f50b14d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abbb8de54aa616e41b7eb79e94f50b14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82f5bcfca2cebb24013689250303b10e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu__matin_8c.html#a82f5bcfca2cebb24013689250303b10e">lancement_matin</a> (SDL_Renderer *renderer, SDL_Window *window, <a class="el" href="struct_timer__s.html">Timer_t</a> *temps_jeu, int argent)</td></tr>
+<tr class="memdesc:a82f5bcfca2cebb24013689250303b10e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui s'occupe du cours du matin.  <a href="jeu__matin_8c.html#a82f5bcfca2cebb24013689250303b10e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a82f5bcfca2cebb24013689250303b10e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Cette ensemble de fonction agit sur le cours du matin. </p>
 <p>On utilise cet ensemble de fonction lorsque le joueur commence le cour du matin, elle permet d'envoyer le joueur au moment voulut dans le self. </p><dl class="section author"><dt>Auteur</dt><dd>Quenault Maxime, Renoit Charles </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="a1846112a5c9c35393a5603c9617330c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1846112a5c9c35393a5603c9617330c8">&#9670;&nbsp;</a></span>lancement_matin()</h2>
+<a id="abbb8de54aa616e41b7eb79e94f50b14d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbb8de54aa616e41b7eb79e94f50b14d">&#9670;&nbsp;</a></span>fonc_pthread_timer1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fonc_pthread_timer1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structparam__t.html">param_t</a> *&#160;</td>
+          <td class="paramname"><em>parametre</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction du pthread n°1. </p>
+<p>Cette fonction va s'executer en même temps que la fonction <em>lancement_matin</em> , sont but est de comparé le temps passé en jeu avec le temps limite accordé par le developpeur. Si le temps arrive à sont terme alors la fonction <em>lancement_self</em> est lancé, le joueur se retrouve donc dans le self. </p>
+
+</div>
+</div>
+<a id="a4ca9558eb54c60cd4029e39596a896b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ca9558eb54c60cd4029e39596a896b5">&#9670;&nbsp;</a></span>fonc_pthread_timer1_cb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* fonc_pthread_timer1_cb </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>parametre</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de callback. </p>
+<p>Cette fonction à pour seul but d'appeler une autre fonction. Cela permet d'evité les warnings lors de l'execution du programme. </p>
+
+</div>
+</div>
+<a id="a82f5bcfca2cebb24013689250303b10e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82f5bcfca2cebb24013689250303b10e">&#9670;&nbsp;</a></span>lancement_matin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -101,9 +144,31 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_
         <tr>
           <td class="memname">void lancement_matin </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structparam__t.html">param_t</a> *&#160;</td>
-          <td class="paramname"><em>parametre</em></td><td>)</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_timer__s.html">Timer_t</a> *&#160;</td>
+          <td class="paramname"><em>temps_jeu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

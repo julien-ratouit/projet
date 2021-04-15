@@ -119,7 +119,7 @@ void lancement_salle_prof(param_t *parametre)
 
 						statut_menu_act = 1;
 				  		int argent = (parametre->argent);
-				  		int val_sortie = menu_action(&argent, action_equipe, liste_action, parametre);
+				  		int val_sortie = menu_action(action_equipe, liste_action, parametre,texture_prof);
 						switch(val_sortie)
 						{
 							case 1 : 
