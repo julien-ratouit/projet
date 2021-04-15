@@ -148,6 +148,7 @@ extern int clic_choix_sdp(){
 		switch(event.type)
 		{
 				case SDL_MOUSEBUTTONDOWN:
+				printf("x : %i & y : %i\n", event.button.x, event.button.y);
 				//Si on clique sur la croix //Salle des profs
 				if((event.button.x < BTN_RESTART_X_MAX && event.button.x > BTN_RESTART_X_MIN) && (event.button.y < BTN_RESTART_Y_MAX && event.button.y > BTN_RESTART_Y_MIN)){
 
@@ -211,12 +212,12 @@ extern int clic_choix_sdp(){
 * \return On return un \a int qui défini si oui ou non l'action à changé de statut.
 *  
 */
-extern int achat_action(action_t *action, int *argent)
+extern int achat_action(action_t *action, int argent)
 {
-	if((*argent) >= action->prix)
+	if((argent) >= action->prix)
 	{
 		action->statut = true;
-		(*argent) -= action->prix;
+		(argent) -= action->prix;
 		return 1;
 	}
 	else
@@ -233,7 +234,7 @@ extern int achat_action(action_t *action, int *argent)
 * \return à remplir
 *  
 */
-extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
+extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
 
 	affiche_menu_action(parametre);
 	int id = 0;
@@ -309,7 +310,7 @@ extern int equipe_action(int place, int * argent, action_t * tab_equipe[4], acti
 * \details Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions
 *  
 */
-extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
+extern int menu_action( action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
 
 	int test_sortie = 0;
 	int choix;
@@ -326,10 +327,10 @@ extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_ac
 			//case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
 			case QUITTE_SDP : test_sortie = QUITTE_SDP; break;
 			//Si on choisis une case d'équipement, ça renvoie la fonction equipe_action a la bonne place.
-			case EQUIP_4 : test_sortie = equipe_action(3, argent, tab_equipe, tab_action, parametre); break;
-			case EQUIP_3 : test_sortie = equipe_action(2, argent, tab_equipe, tab_action, parametre); break;
-			case EQUIP_2 : test_sortie = equipe_action(1, argent, tab_equipe, tab_action, parametre); break;
-			case EQUIP_1 : test_sortie = equipe_action(0, argent, tab_equipe, tab_action, parametre); break;
+			case EQUIP_4 : test_sortie = equipe_action(3, parametre->argent , tab_equipe, tab_action, parametre); break;
+			case EQUIP_3 : test_sortie = equipe_action(2, parametre->argent , tab_equipe, tab_action, parametre); break;
+			case EQUIP_2 : test_sortie = equipe_action(1, parametre->argent , tab_equipe, tab_action, parametre); break;
+			case EQUIP_1 : test_sortie = equipe_action(0, parametre->argent , tab_equipe, tab_action, parametre); break;
 			//Si on renvoie autre chose on s'en occupe pas
 			default : test_sortie = 0; break;
 		}
@@ -339,7 +340,6 @@ extern int menu_action(int * argent, action_t * tab_equipe[4], action_t * tab_ac
 	if(test_sortie == QUITTE_SDP) return 1;
 	else return 0;
 
-	//fermer_menu_action();//A FAIIIIIIIIIIIIIIIIIRE AUSSI :D
 
 }
 
