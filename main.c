@@ -102,6 +102,7 @@ int main (int argc, char ** argv)
 								lancement_salle_prof(parametre);
 
 						}
+						//sauvegarde(parametre->argent, parametre->nb_jour, parametre-> ,parametre->,  )
 										
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);

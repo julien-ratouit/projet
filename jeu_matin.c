@@ -21,6 +21,7 @@ void gameOver_matin(param_t * parametre){
 	SDL_Texture *texture_game_over = NULL;
 	ajout_texture(texture_game_over ,"images/game_over.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 	SDL_Event event;
+	printf("bou\n");
 	while(SDL_PollEvent(&event))
 		{
 			
@@ -64,7 +65,6 @@ void lancement_matin(param_t * parametre)
 {
 	//variables pour les barres
 	int cpt1 = 0;
-	int defaite = 0; //si defaite = 1 c'est perdu
 	int nb_jour = 0;
 	int agit = 0;
 	int temps = 30;
