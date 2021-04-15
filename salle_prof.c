@@ -1,7 +1,24 @@
+/**
+* \file salle_prof.c
+* \brief Ensemble de fonction qui gère la salle des profs.
+* \details c'est dans ces fonctions que l'on met en place les textures et les zones de cliques correspondante à la salle des profs.
+* \author Quenault Maxime
+*/
+
 #include "commun.h"
 #include "jeu_matin.h"
 #include "salle_prof.h"
 
+
+/**
+* \brief fonction qui affiche des textures à l'ecran.
+*
+* \details Dans cette fonction nous affichons les textures qui sont toujours utile, à chaque fois que le joueur clique sur un menu (le menu info ou le menu des actions par exemple)
+* il faut tout re-afficher, donc pour eviter la redondance dans le code on a opté pour ce système de fonction.
+* 
+* \param texture_prof est une variable de type \a SDL_Texture, on l'utilise pour toute nos textures à afficher à l'ecran.
+*  
+*/
 void aff_texture_sp(param_t *parametre, SDL_Texture *texture_prof)
 {
 	ajout_texture(texture_prof ,"images/salle_prof.png" , (parametre->renderer), (parametre->window), HAUTEUR , LARGEUR);
@@ -11,7 +28,16 @@ void aff_texture_sp(param_t *parametre, SDL_Texture *texture_prof)
 	affiche_argent((parametre->window), (parametre->renderer), (parametre->argent));
 }
 
-
+/**
+* \brief fonction qui gère la salle des profs.
+*
+* \details Dans cette fonction nous regardons ou est-ce que le joueur clique, si il clique sur un ordinateur alors on ouvre lance la fonction \a menu_action, au contraire si
+* il décide de lancer une nouvelle journée alors on relance le programme et pour finir si il décide de sauvegarder alors on sauvegarde et on revient à la page principal.
+* 
+* \param statut_mess est une valeur de type \a int qui permet de savoir si oui ou non le message de début est ouvert ou pas, si oui alors sa valeur est 1 sinon 0.
+* \param statut_info est une valeur de type \a int qui permet de savoir si oui ou non le message d'information est ouvert ou pas, si oui alors sa valeur est de 1 sinon 0.
+*  
+*/
 void lancement_salle_prof(param_t *parametre)
 {
 
@@ -93,7 +119,7 @@ void lancement_salle_prof(param_t *parametre)
 
 						statut_menu_act = 1;
 				  		int argent = (parametre->argent);
-				  		int val_sortie = menu_action(&argent, action_equipe, liste_action, parametre);
+				  		int val_sortie = menu_action(action_equipe, liste_action, parametre,texture_prof);
 						switch(val_sortie)
 						{
 							case 1 : 

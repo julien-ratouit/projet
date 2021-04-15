@@ -1,8 +1,22 @@
+/**
+* \file save.c
+* \brief Ensemble de fonction qui s'occupe de la sauvegarde d'une partie.
+* \details c'est dans ces fonctions que l'on met en place la sauvegarde mais aussi le chargement d'une partie.
+* \author Vallet Guillaume
+*/
+
 #include "commun.h"
 #include "save.h"
 
-//Sauvegarde la partie a la fin de la journée
-void sauvegarde(int money, int jour,int nb_action, int action_achete[], int action_equipe[]){
+/**
+* \brief fonction qui sauvegarde la progression du joueur.
+*
+* \details Dans cette fonction on sauvegarde plusieurs information dans un fichier texte. On sauvegarde l'argent du joueur, le n° du jour qu'il vient de finir,
+* le nombre d'action achetées et des actions qui sont achetées et ensuite on sauvegarde leur emplacement dans la barre des actions.
+*  
+*/
+void sauvegarde(int money, int jour,int nb_action, int action_achete[], int action_equipe[])
+{
     
     FILE * save;
     int i = 0;
@@ -15,7 +29,8 @@ void sauvegarde(int money, int jour,int nb_action, int action_achete[], int acti
     fprintf(save,"%i ",nb_action);
     printf("C'est bon 3? \n");
     //Sauvegarde de toute les actions achetées
-    while(i < nb_action){
+    while(i < nb_action)
+    {
 
         fprintf(save,"%i ",action_achete[i]);
         i++;
@@ -26,7 +41,8 @@ void sauvegarde(int money, int jour,int nb_action, int action_achete[], int acti
 
     //Sauvegarde des 4 actions équipées (Si vide, écris -1)
     i = 0;
-    while(i < 4){
+    while(i < 4)
+    {
 
         fprintf(save,"%i ",action_equipe[i]);
         i++; 
@@ -37,15 +53,23 @@ void sauvegarde(int money, int jour,int nb_action, int action_achete[], int acti
     fclose(save);
 }
 
-//Charge les données de la partie précédente
-int charger(int * money, int * jour, int * nb_action, int action_achete[], int action_equipe[]){
+/**
+* \brief fonction qui charge une anciènne sauvegarde.
+*
+* \details Dans cette fonction on charge plusieurs information à partir d'un fichier texte. On charge l'argent du joueur, le n° du jour qu'il vient de finir,
+* le nombre d'action achetées et des actions qui sont achetées et ensuite on charge leur emplacement dans la barre des actions.
+*  
+*/
+int charger(int * money, int * jour, int * nb_action, int action_achete[], int action_equipe[])
+{
 
     FILE * save;
     int i = 0;
     //Billy le dieu :OOOOO
     int billy;
     //Ouvre le fichier en lecture, si il n'existe pas renvoie une erreur
-    if(save = fopen("save.txt","r")){
+    if(save = fopen("save.txt","r"))
+    {
 
         //Recupere la money, le jour, et le nombre d'action achetées
         fscanf(save,"%i",money);
@@ -53,7 +77,8 @@ int charger(int * money, int * jour, int * nb_action, int action_achete[], int a
         fscanf(save,"%i",nb_action);
 
         //Recupere les id des actions achetées
-       while(i < (*nb_action)){
+       while(i < (*nb_action))
+       {
            printf("i = %i\n",i);
             fscanf(save,"%i",&billy); //On prend l'adresse de billy pour mettre un truc dedans
             printf("%i\n",billy);

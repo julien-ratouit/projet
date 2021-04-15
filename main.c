@@ -46,7 +46,7 @@ int main (int argc, char ** argv)
 
 
 	int status_tuto = -1;
-	int argent = 0;
+	int argent = 200;
 
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 		SDL_ExitWithError("Initialisation SDL");
@@ -62,6 +62,7 @@ int main (int argc, char ** argv)
 	param_t * parametre = malloc(sizeof(param_t));
 	parametre->temps_jeu = temps_jeu;
 	parametre->argent = argent;
+	parametre->val_depression = -5;
 	parametre->window = window;
 	parametre->renderer = renderer;
 	parametre->quitte = SDL_FALSE;
@@ -69,6 +70,10 @@ int main (int argc, char ** argv)
 
 	init_tab_action(action_equipe);
 	init_tab_action(liste_action);
+	liste_action[0]->equipe = 1;
+	liste_action[1]->equipe = 2;
+	liste_action[2]->equipe = 3;
+	liste_action[3]->equipe = 4;
 	SDL_RenderPresent(renderer);
 	while(program_launched)
 	{
@@ -109,6 +114,7 @@ int main (int argc, char ** argv)
 						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 						parametre->quitte = SDL_FALSE;
+						parametre->perdu = SDL_FALSE;
 
 						SDL_RenderPresent(renderer);
 					}
