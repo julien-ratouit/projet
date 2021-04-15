@@ -7,7 +7,7 @@
 
 #include "commun.h"
 #include "texture_sdp.h"
-
+#include "salle_prof.h"
 
 //Constantes renvoyer quand on clique sur les emplacement d'équipement respectifs
 #define EQUIP_1 -1
@@ -64,21 +64,21 @@ void affiche_menu_action(param_t *parametre){
 	//printf("Ca crash ?");
 	if(action_equipe[0] != NULL){
 		//printf("Invisible 0 :)))");
-    	ajout_texture_non_centre(action_barre_n1, (action_equipe[0]->img_action_rect), parametre->renderer,parametre->window, 480, 80);
+    	ajout_texture_non_centre(action_barre_n1, (liste_action[0]->img_action_rect), parametre->renderer,parametre->window, 480, 80);
 	}
     if(action_equipe[1] != NULL){
 		//printf("Invisible 1 :)))");
-		ajout_texture_non_centre(action_barre_n2, (action_equipe[1]->img_action_rect), parametre->renderer, parametre->window, 480, 155);
+		ajout_texture_non_centre(action_barre_n2, (liste_action[1]->img_action_rect), parametre->renderer, parametre->window, 480, 155);
 	}
 		
     if(action_equipe[2] != NULL){
 		//printf("Invisible 2 :)))");
-		ajout_texture_non_centre(action_barre_n3, (action_equipe[2]->img_action_rect), parametre->renderer, parametre->window,480, 225);
+		ajout_texture_non_centre(action_barre_n3, (liste_action[2]->img_action_rect), parametre->renderer, parametre->window,480, 225);
 	}
 		
     if(action_equipe[3] != NULL){
 		//printf("Invisible 3 :)))");
-		ajout_texture_non_centre(action_barre_n4, (action_equipe[3]->img_action_rect), parametre->renderer, parametre->window, 480, 300);
+		ajout_texture_non_centre(action_barre_n4, (liste_action[3]->img_action_rect), parametre->renderer, parametre->window, 480, 300);
 	}
 
 	//printf("Ca passe presque :'(\n");
@@ -178,22 +178,18 @@ extern int clic_choix_sdp(){
 				}
 				//Si on clique sur les actions
 				if((event.button.x < EMPLACEMENT_ACTION_0_X_MAX && event.button.x > EMPLACEMENT_ACTION_0_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_0_Y_MAX && event.button.y > EMPLACEMENT_ACTION_0_Y_MIN)){
-					printf("Je suis une merde");
 					return 1;
 
 				}
 				if((event.button.x < EMPLACEMENT_ACTION_1_X_MAX && event.button.x > EMPLACEMENT_ACTION_1_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_1_Y_MAX && event.button.y > EMPLACEMENT_ACTION_1_Y_MIN)){
-
 					return 2;
 
 				}
 				if((event.button.x < EMPLACEMENT_ACTION_2_X_MAX && event.button.x > EMPLACEMENT_ACTION_2_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_2_Y_MAX && event.button.y > EMPLACEMENT_ACTION_2_Y_MIN)){
-
 					return 3;
 
 				}
-				if((event.button.x < EMPLACEMENT_ACTION_3_X_MAX && event.button.x > EMPLACEMENT_ACTION_3_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_3_Y_MAX && event.button.y > EMPLACEMENT_ACTION_3_Y_MIN)){
-
+				if((event.button.x < EMPLACEMENT_ACTION_3_X_MAX && event.button.x > EMPLACEMENT_ACTION_3_X_MIN) && (event.button.y < EMPLACEMENT_ACTION_3_Y_MAX && event.button.y > EMPLACEMENT_ACTION_3_Y_MIN)){		
 					return 4;
 
 				}
@@ -209,19 +205,20 @@ extern int clic_choix_sdp(){
 * \details Si le joueur clic sur une action la fonction se lance et regarde la somme d'argent du joueur. Si la somme en question est assez grande alors l'action change de statut est
 * devient acheté, or, si la somme n'est pas assez grande rien ne se passe.
 *
-* \return On return un \a int qui défini si oui ou non l'action à changé de statut.
+* \return On return un \a int qui l'argent qu'il reste.
 *  
 */
 extern int achat_action(action_t *action, int argent)
 {
+	printf("Tu achètes :D\nPlus que %d argent\n\n",argent);
 	if((argent) >= action->prix)
 	{
 		action->statut = true;
 		(argent) -= action->prix;
-		return 1;
+		return argent;
 	}
 	else
-		return 0;
+		return argent;
 }
 
 //Ajoutez un bouton Equiper pour lancer la fonction
@@ -229,12 +226,12 @@ extern int achat_action(action_t *action, int argent)
 /**
 * \brief Equipe une action
 * 
-* \details à remplir
+* \details Equipe une action a l'emplacement sélectionner si elle est acheté, sinon l'achete et relance le processus d'achat
 *
-* \return à remplir
+* \return Une valeur de sortie pour quitter la boucle de menu_action
 *  
 */
-extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
+extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
 
 	affiche_menu_action(parametre);
 	int id = 0;
@@ -248,28 +245,28 @@ extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], actio
 			//Si on clique sur la croix, on quitte
 			case QUITTE_SDP: return QUITTE_SDP;
 			//Si on clique sur un autre emplacement relance la fonction equipe_action avec la nouvelle place
-			case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre); break;
-			case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre); break;
-			case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre); break;
-			case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre); break;
+			case EQUIP_4 : return equipe_action(3, argent, tab_equipe, tab_action,parametre,texture_prof); break;
+			case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre,texture_prof); break;
+			case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre,texture_prof); break;
+			case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre,texture_prof); break;
 			default : break;
 		}
 
 	}
 
-	printf("On sort !\n");
+	//printf("On sort !\n");
 
 	id--; //Car clic_choix renvoie 0 quand il n'a pas de clic, donc je décale tout mes indices d'actions de 1 et je les remets bien ici
 
 
 	//Sinon on fait soit un échange si l'action est déjà équipé, sinon ça l'équipe simplement (En écrasant l'action déjà placé)
 	if(tab_action[id]->statut){
-
-		if(!tab_action[id]->equipe){//Le cas où il n'est pas déjà présent dans l'équipe
+		printf("Action %d déja acheté \n",id);
+		if(!(tab_action[id]->equipe)){//Le cas où il n'est pas déjà présent dans l'équipe
 
 			tab_equipe[place] = tab_action[id];
 			tab_equipe[place]->equipe = place + 1;
-			return 1;
+			
 
 		}
 		else{ //Le cas où il est déjà présent dans l'équipé, on le change juste de place
@@ -289,17 +286,22 @@ extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], actio
 		}
 
 		SDL_RenderClear(parametre->renderer);
+		aff_texture_sp(parametre,texture_prof);
 		affiche_barre_action(parametre);
 		affiche_menu_action(parametre);
-
+		return equipe_action(place,argent, tab_equipe, tab_action,parametre,texture_prof);
 	}
 	//Si sur ce que l'on clique n'est pas acheté, ça veut dire qu'on veut l'acheter :D
-	else if(achat_action(tab_action[id], argent )){
-
-		return equipe_action(place,argent, tab_equipe, tab_action,parametre);//Si on achète je relance la procédure d'équipationnagization :D
+	else{
+		parametre->argent = achat_action(tab_action[id], argent );
+		argent = parametre->argent;
+		SDL_RenderClear(parametre->renderer);
+		aff_texture_sp(parametre,texture_prof);
+		affiche_barre_action(parametre);
+		affiche_menu_action(parametre);
+		return equipe_action(place,argent, tab_equipe, tab_action,parametre,texture_prof);//Si on achète je relance la procédure d'équipationnagization :D
 
 	}
-	else return  equipe_action(place,argent, tab_equipe, tab_action,parametre); //Si y a rien de tout ça c'est que le joueur a dû missclick où cliquer n'importe où, alors je recommence la procédure
 
 }
 
@@ -310,7 +312,7 @@ extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], actio
 * \details Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions
 *  
 */
-extern int menu_action( action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre){
+extern int menu_action( action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
 
 	int test_sortie = 0;
 	int choix;
@@ -327,10 +329,10 @@ extern int menu_action( action_t * tab_equipe[4], action_t * tab_action[],param_
 			//case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
 			case QUITTE_SDP : test_sortie = QUITTE_SDP; break;
 			//Si on choisis une case d'équipement, ça renvoie la fonction equipe_action a la bonne place.
-			case EQUIP_4 : test_sortie = equipe_action(3, parametre->argent , tab_equipe, tab_action, parametre); break;
-			case EQUIP_3 : test_sortie = equipe_action(2, parametre->argent , tab_equipe, tab_action, parametre); break;
-			case EQUIP_2 : test_sortie = equipe_action(1, parametre->argent , tab_equipe, tab_action, parametre); break;
-			case EQUIP_1 : test_sortie = equipe_action(0, parametre->argent , tab_equipe, tab_action, parametre); break;
+			case EQUIP_4 : test_sortie = equipe_action(3, parametre->argent , tab_equipe, tab_action, parametre,texture_prof); break;
+			case EQUIP_3 : test_sortie = equipe_action(2, parametre->argent , tab_equipe, tab_action, parametre,texture_prof); break;
+			case EQUIP_2 : test_sortie = equipe_action(1, parametre->argent , tab_equipe, tab_action, parametre,texture_prof); break;
+			case EQUIP_1 : test_sortie = equipe_action(0, parametre->argent , tab_equipe, tab_action, parametre,texture_prof); break;
 			//Si on renvoie autre chose on s'en occupe pas
 			default : test_sortie = 0; break;
 		}

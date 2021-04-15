@@ -88,10 +88,8 @@ void lancement_salle_prof(param_t *parametre)
               		(event.button.x > 435 && event.button.x < 570)&&(event.button.y > 270 && event.button.y < 345)||
               		(event.button.x > 670 && event.button.x < 805)&&(event.button.y > 270 && event.button.y < 345)||
               		(event.button.x > 915 && event.button.x < 1050)&&(event.button.y > 270 && event.button.y < 345))){
-
-				  		int argent = (parametre->argent);
 				  		
-						if(menu_action(&argent, action_equipe, liste_action, parametre))
+						if(menu_action( action_equipe, liste_action, parametre,texture_prof))
 							program_launched = SDL_FALSE;
 			  		}
 
