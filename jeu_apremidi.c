@@ -141,7 +141,7 @@ void lancement_apremidi(param_t * parametre)
 			program_launched = SDL_FALSE;
 
 
-		if (decompte > 0 && nombre_decompte == 10)
+		if (decompte > (TEMPS_COUR-10000) && nombre_decompte == 10)
 		{
 			nombre_decompte--;
 			ajout_texture_non_centre(texture_centaine , "images/chiffres/1.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
@@ -149,7 +149,7 @@ void lancement_apremidi(param_t * parametre)
 			SDL_RenderPresent(parametre->renderer);	
 			printf("bou2\n");
 		}	
-		if (decompte > 1000 && nombre_decompte == 9)
+		if (decompte > (TEMPS_COUR-9000) && nombre_decompte == 9)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
@@ -165,7 +165,7 @@ void lancement_apremidi(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);	
 		}
-		if (decompte > 2000 && nombre_decompte == 8)
+		if (decompte > (TEMPS_COUR-8000) && nombre_decompte == 8)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
@@ -180,7 +180,7 @@ void lancement_apremidi(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);	
 		}
-		if (decompte > 3000 && nombre_decompte == 7)
+		if (decompte > (TEMPS_COUR-7000) && nombre_decompte == 7)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
@@ -195,7 +195,7 @@ void lancement_apremidi(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);	
 		}
-		if (decompte > 4000 && nombre_decompte == 6)
+		if (decompte > (TEMPS_COUR-6000) && nombre_decompte == 6)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
@@ -210,7 +210,7 @@ void lancement_apremidi(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);	
 		}
-		if (decompte > 5000 && nombre_decompte == 5)
+		if (decompte > (TEMPS_COUR-5000) && nombre_decompte == 5)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
@@ -225,7 +225,7 @@ void lancement_apremidi(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);	
 		}
-		if (decompte > 6000 && nombre_decompte == 4)
+		if (decompte > (TEMPS_COUR-4000) && nombre_decompte == 4)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
@@ -240,7 +240,7 @@ void lancement_apremidi(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);	
 		}
-		if (decompte > 7000 && nombre_decompte == 3)
+		if (decompte > (TEMPS_COUR-3000) && nombre_decompte == 3)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
@@ -255,7 +255,7 @@ void lancement_apremidi(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);
 		}
-		if (decompte > 8000 && nombre_decompte == 2)
+		if (decompte > (TEMPS_COUR-2000) && nombre_decompte == 2)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
@@ -270,7 +270,7 @@ void lancement_apremidi(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);	
 		}
-		if (decompte > 9000 && nombre_decompte == 1)
+		if (decompte > (TEMPS_COUR-1000) && nombre_decompte == 1)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
