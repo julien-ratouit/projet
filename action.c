@@ -6,6 +6,7 @@
 */
 
 #include "commun.h"
+#include "barre.h"
 #include "salle_prof.h"
 #include "texture_sdp.h"
 
@@ -98,7 +99,7 @@ void affiche_menu_action(param_t *parametre){
 * \return On return un \a action_t qui est notre action initialisé.
 *  
 */
-extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), const char * lien_img_rect, const char * lien_img_rond)
+extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *, SDL_Rect *, SDL_Rect *), const char * lien_img_rect, const char * lien_img_rond)
 {
 	action_t *action = malloc(sizeof(action_t));
 	action->id = id;
@@ -353,32 +354,24 @@ extern int menu_action(action_t * tab_equipe[4], action_t * tab_action[],param_t
 
 //fonctions d'action, leurs but est d'agire sur la barre d'agitation ou de depression en fonction de l'action choisi.
 /*----------------------------------------------------------*/
-void fonc_action_1 (int jour)
+void fonc_action_1 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
-	//à faire.
-	//diminue de quelques pourcent la barre d'agitation
-	printf("Test 1\n");
+	update_barre_sonore(parametre->renderer, barre_sonore, -20);
 }
 
-void fonc_action_2 (int jour)
+void fonc_action_2 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
-	//à faire.
-	//diminue encore plus la barre d'agitation
-	printf("Test 2\n");
+	update_barre_depression(parametre->renderer, barre_depression, barre_sonore, -20);
 }
 
-void fonc_action_3 (int jour)
+void fonc_action_3 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
-	//à faire.
-	//ralentit la progression de la barre d'agitation
-	printf("Test 3\n");
+	update_barre_sonore(parametre->renderer, barre_sonore, -40);
 }
 
-void fonc_action_4 (int jour)
+void fonc_action_4 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
-	//à faire.
-	//bloque la barre de depression pendant un temps donné
-	printf("Test 4\n");
+	update_barre_depression(parametre->renderer, barre_depression, barre_sonore, -40);
 }
 
 /*----------------------------------------------------------*/

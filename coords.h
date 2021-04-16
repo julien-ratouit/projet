@@ -127,25 +127,25 @@
 
 /*Zone des boutons 'actions'*/
 /*----------------------------------------*/
-#define ACTION1_X_MIN 38
-#define ACTION1_X_MAX 54
-#define ACTION1_Y_MIN 703
-#define ACTION1_Y_MAX 719
+#define ACTION1_X_MIN 74
+#define ACTION1_X_MAX 117
+#define ACTION1_Y_MIN 535
+#define ACTION1_Y_MAX 575
 
-#define ACTION2_X_MIN 163
-#define ACTION2_X_MAX 179
-#define ACTION2_Y_MIN 703
-#define ACTION2_Y_MAX 719
+#define ACTION2_X_MIN 156
+#define ACTION2_X_MAX 201
+#define ACTION2_Y_MIN 535
+#define ACTION2_Y_MAX 575
 
-#define ACTION3_X_MIN 72
-#define ACTION3_X_MAX 88
-#define ACTION3_Y_MIN 612
-#define ACTION3_Y_MAX 628
+#define ACTION3_X_MIN 47
+#define ACTION3_X_MAX 92
+#define ACTION3_Y_MIN 621
+#define ACTION3_Y_MAX 660
 
-#define ACTION4_X_MIN 192
-#define ACTION4_X_MAX 208
-#define ACTION4_Y_MIN 612
-#define ACTION4_Y_MAX 628
+#define ACTION4_X_MIN 134
+#define ACTION4_X_MAX 178
+#define ACTION4_Y_MIN 621
+#define ACTION4_Y_MAX 660
 /*----------------------------------------*/
 
 

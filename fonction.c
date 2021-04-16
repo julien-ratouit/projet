@@ -143,8 +143,6 @@ void aff_action(SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture
 */
 extern int press_action(SDL_Renderer *renderer, int num_action){
   int i = -50;
-  printf("Vous avez appuyer sur l'action %i\n",num_action);
-
   return i;
 }
 
