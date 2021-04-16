@@ -13,40 +13,8 @@
 #include "self.h"
 #include <time.h>
 
-/**
-* a doxigéner
-*
-*/
-void gameOver_matin(param_t * parametre){
-	SDL_Texture *texture_game_over = NULL;
-	ajout_texture(texture_game_over ,"images/game_over.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-	SDL_Event event;
-	printf("bou\n");
-	while(SDL_PollEvent(&event))
-		{
-			
-
-			switch (event.type)
-			{
-
-				case SDL_MOUSEBUTTONDOWN:
-					if((event.button.x > BOUTON_LOAD_SAVE_X_MAX && event.button.x < BOUTON_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTON_LOAD_SAVE_Y_MAX && event.button.y < BOUTON_LOAD_SAVE_X_MIN))
-					{
-						parametre->perdu = SDL_TRUE;//defaite = 1 et on retourne a l'ecran d'aceuille
-					}
-					if((event.button.x > BOUTON_FIN_X_MAX && event.button.x < BOUTON_FIN_X_MIN)&&(event.button.y > BOUTON_FIN_Y_MAX && event.button.y < BOUTON_FIN_X_MIN))
-					{
-
-						parametre->perdu = SDL_FALSE;//defaite = 0 et on charge la derniere sauvegarde
-					};
-					break;
-
-				default:
-					break;
-
-			}
-		}
-}
+#define VITESSE_BARRES 15
+#define TEMPS_COUR 10000
 
 /**
 * \brief Fonction qui s'occupe du cours du matin.
@@ -63,12 +31,14 @@ void gameOver_matin(param_t * parametre){
 
 void lancement_matin(param_t * parametre)
 {
+	
 	//variables pour les barres
 	int cpt1 = 0;
 	int nb_jour = 0;
 	int agit = 0;
 	int temps = 30;
 	srand(time(NULL));
+	bool gameOver_actif = false;
 	///////////////////////////
 
 	printf("bienvenue dans le cours du matin\n");
@@ -86,6 +56,8 @@ void lancement_matin(param_t * parametre)
 	SDL_Texture *texture_action2 = NULL;//action 2
 	SDL_Texture *texture_action3 = NULL;//action 3
 	SDL_Texture *texture_action4 = NULL;//action 4
+
+	SDL_Texture *texture_game_over = NULL;
 
 	SDL_Rect *barre_depression;
 	barre_depression=malloc(sizeof(SDL_Rect));
@@ -127,13 +99,14 @@ void lancement_matin(param_t * parametre)
 
 		//mise a jour des barres atomatic
 		//printf("debut barre:\n");
-		agit = nb_jour + 15;
+		agit = nb_jour + VITESSE_BARRES;
 		SDL_Delay(1);
 		//printf("temps:%d\n", temps);
 		
 		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
 			{
 				temps = rand()%(181)+20;
+				printf("bou2\n");
 				/*mise a jour de la barre sonore + remise en place de la texture associé*/
 				update_barre_sonore(parametre->renderer, barre_sonore, agit);
 				SDL_DestroyTexture(texture_barre_son);
@@ -149,24 +122,21 @@ void lancement_matin(param_t * parametre)
 		///////////////////////////////////
 
 		//detection de la defaite
-		if ((*barre_depression).h<=(-247))
+		if ((*barre_depression).h<=(-247) && status_menu == -1)
 			{
+				status_menu = 1;
+				gameOver_actif = true;
 				(parametre->temps_jeu)->stop(parametre->temps_jeu);
-				gameOver_matin(parametre);
-
-				//si defaite = 0 charger last sauvegarde
-				//sinon go ecran d'aceuille
-				/*if (parametre->perdu == SDL_False)
-				{
-					charger(argent, jour, )
-				}*/
-			}	
+				printf("verif2\n");
+				ajout_texture(texture_game_over ,"images/game_over.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+				SDL_RenderPresent(parametre->renderer);
+			}
 		/////////////////////////	
 		//test
 		//printf("nb boucles: %d\n",cpt1);
 		cpt1++;
 		//////
-		if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > 10000) 
+		if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > TEMPS_COUR) 
 			program_launched = SDL_FALSE;
 
 
@@ -179,6 +149,15 @@ void lancement_matin(param_t * parametre)
 			switch (event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
+					if((event.button.x > BOUTON_LOAD_SAVE_X_MAX && event.button.x < BOUTON_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTON_LOAD_SAVE_Y_MAX && event.button.y < BOUTON_LOAD_SAVE_X_MIN) && status_menu == 1 && gameOver_actif == true)
+					{
+						parametre->perdu = SDL_TRUE;//defaite = 1 et on retourne a l'ecran d'aceuille
+					}
+					if((event.button.x > BOUTON_FIN_X_MAX && event.button.x < BOUTON_FIN_X_MIN)&&(event.button.y > BOUTON_FIN_Y_MAX && event.button.y < BOUTON_FIN_X_MIN) && status_menu == 1 && gameOver_actif == true)
+					{
+
+						parametre->perdu = SDL_FALSE;//defaite = 0 et on charge la derniere sauvegarde
+					}
 					/*je vais realiser plusieurs destroy et creation à la suite, c'est pour eviter l'acumulation des textures*/
 					if((event.button.x > 70 && event.button.x < 134)&&(event.button.y > 530 && event.button.y < 594)&&status_menu == -1)
 					{
@@ -194,7 +173,7 @@ void lancement_matin(param_t * parametre)
 						SDL_RenderPresent(parametre->renderer);
 					}
 
-					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN))
+					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN) && gameOver_actif == false)
 					{
 						(parametre->temps_jeu)->pause(parametre->temps_jeu);
 						/*si on clique sur le menu*/
@@ -206,7 +185,7 @@ void lancement_matin(param_t * parametre)
 						SDL_RenderPresent(parametre->renderer);
 					}
 
-					if((event.button.x < QUIT_X_MAX && event.button.x > QUIT_X_MIN)&&(event.button.y < QUIT_Y_MAX && event.button.y > QUIT_Y_MIN)&&status_menu == 1)
+					if((event.button.x < QUIT_X_MAX && event.button.x > QUIT_X_MIN)&&(event.button.y < QUIT_Y_MAX && event.button.y > QUIT_Y_MIN)&&status_menu == 1 && gameOver_actif == false)
 					{
 						(parametre->temps_jeu)->stop(parametre->temps_jeu); 
 						/*si on clique sur le bouton 'quitter le jeu'*/ 
@@ -214,7 +193,7 @@ void lancement_matin(param_t * parametre)
 						program_launched = SDL_FALSE;
 					}
 
-					if((event.button.x < REPRENDRE_X_MAX && event.button.x > REPRENDRE_X_MIN)&&(event.button.y < REPRENDRE_Y_MAX && event.button.y > REPRENDRE_Y_MIN)&&status_menu == 1)
+					if((event.button.x < REPRENDRE_X_MAX && event.button.x > REPRENDRE_X_MIN)&&(event.button.y < REPRENDRE_Y_MAX && event.button.y > REPRENDRE_Y_MIN)&&status_menu == 1 && gameOver_actif == false)
 					{
 
 						(parametre->temps_jeu)->unpause(parametre->temps_jeu);
