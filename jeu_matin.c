@@ -145,6 +145,7 @@ void lancement_matin(param_t * parametre)
 		//////
 
 		decompte = (parametre->temps_jeu)->get_ticks(parametre->temps_jeu);
+		agit = 0;
 
 		if(decompte > TEMPS_COUR) 
 			program_launched = SDL_FALSE;
@@ -154,18 +155,22 @@ void lancement_matin(param_t * parametre)
 		{
 			nombre_decompte--;
 			ajout_texture_non_centre(texture_centaine , "images/chiffres/1.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
-			ajout_texture_non_centre(texture_dizaine , "images/chiffres/0.png", parametre->renderer, parametre->window, DIZ_X, DIZ_Y);
-			SDL_RenderPresent(parametre->renderer);	
-			printf("bou2\n");
+			ajout_texture_non_centre(texture_dizaine , "images/chiffres/0.png", parametre->renderer, parametre->window, DIZ_X, DIZ_Y);	
+
+			SDL_RenderPresent(parametre->renderer);		
 		}	
 		if (decompte > (TEMPS_COUR-9000) && nombre_decompte == 9)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
@@ -180,9 +185,13 @@ void lancement_matin(param_t * parametre)
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
@@ -196,9 +205,13 @@ void lancement_matin(param_t * parametre)
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
@@ -212,9 +225,13 @@ void lancement_matin(param_t * parametre)
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
@@ -228,9 +245,13 @@ void lancement_matin(param_t * parametre)
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
@@ -244,9 +265,13 @@ void lancement_matin(param_t * parametre)
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
@@ -260,9 +285,13 @@ void lancement_matin(param_t * parametre)
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
@@ -275,10 +304,15 @@ void lancement_matin(param_t * parametre)
 		{
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
+
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
@@ -292,9 +326,13 @@ void lancement_matin(param_t * parametre)
 			nombre_decompte--;
 			SDL_RenderClear((parametre->renderer));
 			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
-			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			
 			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 			affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+
+			update_barre_depression(parametre->renderer, barre_depression, barre_sonore, agit);
+			update_barre_sonore(parametre->renderer, barre_sonore, agit);
 
 			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
