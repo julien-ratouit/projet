@@ -133,6 +133,8 @@ void aff_action(SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture
       
   SDL_RenderPresent(renderer);
 }
+
+
 /**
 * \brief à définir
 * 

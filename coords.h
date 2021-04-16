@@ -26,6 +26,20 @@
 
 
 
+/*ZONE BOUTON REPRENDRE*/
+
+#define BTN_REP_X_MAX 790
+#define BTN_REP_X_MIN 490
+
+#define BTN_REP_Y_MAX 510
+#define BTN_REP_Y_MIN 424
+
+
+
+
+
+
+
 
 
 
@@ -44,11 +58,11 @@
 
 /*Zone bouton 'tuto'*/
 /*----------------------------------------*/
-#define BOUTON_TUTO_X_MAX 790
-#define BOUTON_TUTO_X_MIN 490
+#define BOUTON_TUTO_X_MAX 786
+#define BOUTON_TUTO_X_MIN 494
 
-#define BOUTON_TUTO_Y_MAX 510
-#define BOUTON_TUTO_Y_MIN 424
+#define BOUTON_TUTO_Y_MAX 619
+#define BOUTON_TUTO_Y_MIN 539
 /*----------------------------------------*/
 
 /*Zone bouton 'next'*/
@@ -296,25 +310,25 @@
 
 //-----------------------------Les emplacement des actions une fois le menu pour équiper/acheter ouvert--------------------------
 
-#define EMPLACEMENT_ACTION_0_X_MIN 0//A remplir
-#define EMPLACEMENT_ACTION_0_X_MAX 0//A remplir
-#define EMPLACEMENT_ACTION_0_Y_MIN 0//A remplir
-#define EMPLACEMENT_ACTION_0_Y_MAX 0//A remplir
+#define EMPLACEMENT_ACTION_0_X_MIN 485
+#define EMPLACEMENT_ACTION_0_X_MAX 756
+#define EMPLACEMENT_ACTION_0_Y_MIN 93//A remplir
+#define EMPLACEMENT_ACTION_0_Y_MAX 149//A remplir
 
-#define EMPLACEMENT_ACTION_1_X_MIN 0//A remplir
-#define EMPLACEMENT_ACTION_1_X_MAX 0//A remplir
-#define EMPLACEMENT_ACTION_1_Y_MIN 0//A remplir
-#define EMPLACEMENT_ACTION_1_Y_MAX 0//A remplir
+#define EMPLACEMENT_ACTION_1_X_MIN 485
+#define EMPLACEMENT_ACTION_1_X_MAX 756
+#define EMPLACEMENT_ACTION_1_Y_MIN 165//A remplir
+#define EMPLACEMENT_ACTION_1_Y_MAX 221//A remplir
 
-#define EMPLACEMENT_ACTION_2_X_MIN 0//A remplir
-#define EMPLACEMENT_ACTION_2_X_MAX 0//A remplir
-#define EMPLACEMENT_ACTION_2_Y_MIN 0//A remplir
-#define EMPLACEMENT_ACTION_2_Y_MAX 0//A remplir
+#define EMPLACEMENT_ACTION_2_X_MIN 485
+#define EMPLACEMENT_ACTION_2_X_MAX 756
+#define EMPLACEMENT_ACTION_2_Y_MIN 235//A remplir
+#define EMPLACEMENT_ACTION_2_Y_MAX 289//A remplir
 
-#define EMPLACEMENT_ACTION_3_X_MIN 0//A remplir
-#define EMPLACEMENT_ACTION_3_X_MAX 0//A remplir
-#define EMPLACEMENT_ACTION_3_Y_MIN 0//A remplir
-#define EMPLACEMENT_ACTION_3_Y_MAX 0//A remplir
+#define EMPLACEMENT_ACTION_3_X_MIN 485
+#define EMPLACEMENT_ACTION_3_X_MAX 756
+#define EMPLACEMENT_ACTION_3_Y_MIN 310//A remplir
+#define EMPLACEMENT_ACTION_3_Y_MAX 367//A remplir
 
 #define EMPLACEMENT_ICONE_1_X 481
 #define EMPLACEMENT_ICONE_1_Y 471

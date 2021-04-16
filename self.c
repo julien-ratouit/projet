@@ -69,6 +69,13 @@ void lancement_self(param_t *parametre)
 	int statut_plat = 0;
 	int num_plat = 0;
 
+	int achat_plat1 = 0;
+	int achat_plat2 = 0;
+	int achat_plat3 = 0;
+	int achat_plat4 = 0;
+	int achat_plat5 = 0;
+	int achat_plat6 = 0;
+
 	SDL_bool program_launched = SDL_TRUE;
 
 	while(program_launched)
@@ -86,7 +93,7 @@ void lancement_self(param_t *parametre)
 					if((event.button.x > 535 && event.button.x < 747)&&(event.button.y > 367 && event.button.y < 413) && statut_mess == 1)
 					{
 						/*on clique sur continuer*/
-						statut_mess = 0;
+						
 						
 						SDL_RenderClear((parametre->renderer));
 						aff_texture_self(parametre, texture_self);
@@ -94,6 +101,7 @@ void lancement_self(param_t *parametre)
 						affiche_depression((parametre->window), (parametre->renderer), (parametre->val_depression));
 
 						SDL_RenderPresent((parametre->renderer));
+						statut_mess = 0;
 
 						
 					}
@@ -167,6 +175,7 @@ void lancement_self(param_t *parametre)
 
 					if((event.button.x > 949 && event.button.x < 991)&&(event.button.y > 111 && event.button.y < 153) && statut_mess == 0 && statut_info == 0 && statut_plat == 1)
 					{
+						//si on clique sur la croix de la fenetre des plats
 						statut_plat = 0;
 
 						SDL_RenderClear((parametre->renderer));
@@ -185,57 +194,63 @@ void lancement_self(param_t *parametre)
 						switch(num_plat)
 						{
 							case 1 : 
-								if( ( parametre->argent ) >= 2 )
+								if( ( parametre->argent ) >= 2 && achat_plat1 == 0)
 								{
 									parametre->argent -= 2;
 									parametre->val_depression += 12; //ici, on augmente la valeur de depression, (242*5)/100 = 12 avec 242 la hauteur de la barre à 100% et 5 le taux de pourcentage que l'on veut enlever.
 									if( ( parametre->val_depression ) > -5 ) //ici on verifie de ne pas avoir de barre de depression dans le negatif, on la remet à -5 si elle est inferieur à -5.
 										parametre->val_depression = -5;
+									achat_plat1 = 1;
 								}
 								break;
 							case 2 :
-								if( ( parametre->argent ) >= 5 )
+								if( ( parametre->argent ) >= 5 && achat_plat2 == 0)
 								{
 									parametre->argent -= 5;
 									parametre->val_depression += 24;
 									if( ( parametre->val_depression ) > -5 )
 										parametre->val_depression = -5;
+									achat_plat2 = 1;
 								}
 								break;
 							case 3 :
-								if( ( parametre->argent ) >= 13 )
+								if( ( parametre->argent ) >= 13 && achat_plat3 == 0)
 								{
 									parametre->argent -= 13;
 									parametre->val_depression += 36;
 									if( ( parametre->val_depression ) > -5 )
 										parametre->val_depression = -5;
+									achat_plat3 = 1;
 								}
 								break;
 							case 4 :
-								if( ( parametre->argent ) >= 15 )
+								if( ( parametre->argent ) >= 15 && achat_plat4 == 0)
 								{
 									parametre->argent -= 15;
 									parametre->val_depression += 43;
 									if( ( parametre->val_depression ) > -5 )
 										parametre->val_depression = -5;
+									achat_plat4 = 1;
 								}
 								break;
 							case 5 :
-							if( ( parametre->argent ) >= 20 )
+							if( ( parametre->argent ) >= 20 && achat_plat5 == 0)
 								{
 									parametre->argent -= 20;
 									parametre->val_depression += 55;
 									if( ( parametre->val_depression ) > -5 )
 										parametre->val_depression = -5;
+									achat_plat5 = 1;
 								}
 								break;
 							case 6 :
-								if( ( parametre->argent ) >= 25 )
+								if( ( parametre->argent ) >= 25 && achat_plat6 == 0)
 								{
 									parametre->argent -= 25;
 									parametre->val_depression += 72;
 									if( ( parametre->val_depression ) > -5 )
 										parametre->val_depression = -5;
+									achat_plat6 = 1;
 								}
 								break;
 						}
