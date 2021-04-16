@@ -34,6 +34,9 @@ void lancement_apremidi(param_t * parametre)
 	int temps = 30;
 	srand(time(NULL));
 	bool gameOver_actif = false;
+
+	int decompte = 0;
+	int nombre_decompte = 10;
 	///////////////////////////
 
 	printf("bienvenue dans le cours de l'apres-midi\n");
@@ -51,6 +54,10 @@ void lancement_apremidi(param_t * parametre)
 	SDL_Texture *texture_action2 = NULL;//action 2
 	SDL_Texture *texture_action3 = NULL;//action 3
 	SDL_Texture *texture_action4 = NULL;//action 4
+
+	SDL_Texture *texture_centaine = NULL;
+	SDL_Texture *texture_dizaine = NULL; 
+	SDL_Texture *texture_unite = NULL; 	
 	
 	SDL_Texture *texture_game_over = NULL;
 
@@ -93,7 +100,6 @@ void lancement_apremidi(param_t * parametre)
 		//mise a jour des barres atomatic
 		//printf("debut barre:\n");
 		agit = nb_jour + VITESSE_BARRES;
-		SDL_Delay(1);
 		//printf("temps:%d\n", temps);
 		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
 			{
@@ -125,12 +131,160 @@ void lancement_apremidi(param_t * parametre)
 		/////////////////////////	
 		//test
 		//printf("nb boucles: %d\n",cpt1);
+		SDL_Delay(1);
 		cpt1++;
 		//////
-		if((parametre->temps_jeu)->get_ticks(parametre->temps_jeu) > TEMPS_COUR) program_launched = SDL_FALSE;
+
+		decompte = (parametre->temps_jeu)->get_ticks(parametre->temps_jeu);
+
+		if(decompte > TEMPS_COUR) 
+			program_launched = SDL_FALSE;
 
 
+		if (decompte > 0 && nombre_decompte == 10)
+		{
+			nombre_decompte--;
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/1.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+			ajout_texture_non_centre(texture_dizaine , "images/chiffres/0.png", parametre->renderer, parametre->window, DIZ_X, DIZ_Y);
+			SDL_RenderPresent(parametre->renderer);	
+			printf("bou2\n");
+		}	
+		if (decompte > 1000 && nombre_decompte == 9)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+			SDL_DestroyTexture(texture_centaine);
+			SDL_DestroyTexture(texture_dizaine);
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/9.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);	
+		}
+		if (decompte > 2000 && nombre_decompte == 8)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+		
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/8.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);	
+		}
+		if (decompte > 3000 && nombre_decompte == 7)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+		
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/7.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);	
+		}
+		if (decompte > 4000 && nombre_decompte == 6)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+		
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/6.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);	
+		}
+		if (decompte > 5000 && nombre_decompte == 5)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+	
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/5.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);	
+		}
+		if (decompte > 6000 && nombre_decompte == 4)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+	
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/4.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);	
+		}
+		if (decompte > 7000 && nombre_decompte == 3)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+		
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/3.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if (decompte > 8000 && nombre_decompte == 2)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+		
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/2.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);	
+		}
+		if (decompte > 9000 && nombre_decompte == 1)
+		{
+			nombre_decompte--;
+			SDL_RenderClear((parametre->renderer));
+			ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
+			aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
+			ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
+
+			ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+			ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+			ajout_texture_non_centre(texture_centaine , "images/chiffres/1.png", parametre->renderer, parametre->window, CENT_X, CENT_Y);
+
+			SDL_RenderPresent(parametre->renderer);	
+		}
 
 		SDL_Event event;//Créer un évènement
 

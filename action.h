@@ -30,7 +30,6 @@ typedef struct param_s
 	int argent;
 	int nb_jour;
 	int val_depression;
-	int nb_jour;
 	SDL_Rect *depression;
 	SDL_Renderer *renderer;
 	SDL_Window *window;
