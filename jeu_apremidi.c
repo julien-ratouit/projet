@@ -350,11 +350,54 @@ void lancement_apremidi(param_t * parametre)
 
 						parametre->perdu = SDL_FALSE;//defaite = 0 et on charge la derniere sauvegarde
 					}
-					/*je vais realiser plusieurs destroy et creation à la suite, c'est pour eviter l'acumulation des textures*/
-					if((event.button.x > 70 && event.button.x < 134)&&(event.button.y > 530 && event.button.y < 594)&&status_menu == -1)
+					
+					if((event.button.x > ACTION1_X_MIN && event.button.x < ACTION1_X_MAX)&&(event.button.y > ACTION1_Y_MIN && event.button.y < ACTION1_Y_MAX)&&status_menu == -1)
 					{
-						/*si on clique sur le bouton 1*/
-						update_barre_sonore(parametre->renderer, barre_sonore, press_action(parametre->renderer, 1));
+						/*si on clique sur l'action 1*/
+						action_equipe[0]->action_realise(parametre, barre_sonore, barre_depression);
+
+						SDL_DestroyTexture(texture_barre_son);
+						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+
+						SDL_DestroyTexture(texture_barre_depression);
+						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+						SDL_RenderPresent(parametre->renderer);
+					}
+
+					if((event.button.x > ACTION2_X_MIN && event.button.x < ACTION2_X_MAX)&&(event.button.y > ACTION2_Y_MIN && event.button.y < ACTION2_Y_MAX)&&status_menu == -1)
+					{
+						/*si on clique sur l'action 2*/
+						action_equipe[1]->action_realise(parametre, barre_sonore, barre_depression);	
+
+						SDL_DestroyTexture(texture_barre_son);
+						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+
+						SDL_DestroyTexture(texture_barre_depression);
+						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+						SDL_RenderPresent(parametre->renderer);
+					}
+
+
+					if((event.button.x > ACTION3_X_MIN && event.button.x < ACTION3_X_MAX)&&(event.button.y > ACTION3_Y_MIN && event.button.y < ACTION3_Y_MAX)&&status_menu == -1)
+					{
+						/*si on clique sur l'action 3*/
+						action_equipe[2]->action_realise(parametre, barre_sonore, barre_depression);
+
+						SDL_DestroyTexture(texture_barre_son);
+						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+
+						SDL_DestroyTexture(texture_barre_depression);
+						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+						SDL_RenderPresent(parametre->renderer);
+					}
+
+					if((event.button.x > ACTION4_X_MIN && event.button.x < ACTION4_X_MAX)&&(event.button.y > ACTION4_Y_MIN && event.button.y < ACTION4_Y_MAX)&&status_menu == -1)
+					{
+						/*si on clique sur l'action 4*/
+						action_equipe[3]->action_realise(parametre, barre_sonore, barre_depression);
 
 						SDL_DestroyTexture(texture_barre_son);
 						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
