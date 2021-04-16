@@ -50,7 +50,7 @@ extern void SDL_ExitImageWithError(const char *message, void * renderer, void * 
 extern void ajout_texture(SDL_Texture *texture ,const char * lien_img , SDL_Renderer *renderer, SDL_Window *window, int hauteur, int largeur){
   SDL_Surface *image = NULL;
   image = IMG_Load(lien_img);
-
+  printf("test_ajout_texture\n");
     if(image == NULL)
         SDL_ExitImageWithError("L'image n'as pas été récupéré", renderer, window);
 

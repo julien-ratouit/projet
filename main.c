@@ -108,6 +108,7 @@ int main (int argc, char ** argv)
 							parametre->nb_jour += 1;
 
 						}
+						//sauvegarde(parametre->argent, parametre->nb_jour, parametre-> ,parametre->,  )
 										
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
