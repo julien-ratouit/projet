@@ -113,23 +113,15 @@ void aff_action(SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture
 {
     if(action_equipe[0] != NULL)
       ajout_texture_non_centre(texture_achat1, (action_equipe[0]->img_action_rond), renderer,window, ACTION1_HAUTEUR,ACTION1_LARGEUR);
-    else
-      ajout_texture_non_centre(texture_achat1 ,"images/bouton_action.png" , renderer, window, ACTION1_HAUTEUR , ACTION1_LARGEUR);
 
     if(action_equipe[1] != NULL)
       ajout_texture_non_centre(texture_achat2, (action_equipe[1]->img_action_rond), renderer, window, ACTION2_HAUTEUR,  ACTION2_LARGEUR);
-    else
-      ajout_texture_non_centre(texture_achat2 ,"images/bouton_action.png" , renderer, window, ACTION2_HAUTEUR , ACTION2_LARGEUR);
 
     if(action_equipe[2] != NULL)
       ajout_texture_non_centre(texture_achat3, (action_equipe[2]->img_action_rond), renderer, window, ACTION3_HAUTEUR , ACTION3_LARGEUR);
-    else  
-      ajout_texture_non_centre(texture_achat3 ,"images/bouton_action.png" , renderer, window, ACTION3_HAUTEUR , ACTION3_LARGEUR);
     
     if(action_equipe[3] != NULL)
       ajout_texture_non_centre(texture_achat4, (action_equipe[3]->img_action_rond), renderer, window, ACTION4_HAUTEUR, ACTION4_LARGEUR);
-    else
-      ajout_texture_non_centre(texture_achat4 ,"images/bouton_action.png" , renderer, window, ACTION4_HAUTEUR , ACTION4_LARGEUR);
       
   SDL_RenderPresent(renderer);
 }

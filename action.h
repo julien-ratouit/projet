@@ -40,6 +40,7 @@ typedef struct action_s
 
 	const char *img_action_rond;
 	const char *img_action_rect;
+	const char *img_action_flou;
 	void (*action_realise)(param_t *, SDL_Rect *, SDL_Rect *); 
 }
 action_t;
@@ -51,7 +52,7 @@ action_t;
 extern void affiche_barre_action(param_t *parametre);
 extern void affiche_menu_action(param_t *parametre);
 
-extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *, SDL_Rect *, SDL_Rect *), const char * lien_img_rect, const char * lien_img_rond);
+extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *, SDL_Rect *, SDL_Rect *), const char * lien_img_rect, const char * lien_img_rond, const char * lien_img_flou);
 extern void init_tab_action(action_t * tab[]);
 extern int achat_action(action_t *action, int argent);
 extern int equipe_action(int place, int argent, action_t * tab_equipe[4], action_t * tab_action[], param_t *parametre, SDL_Texture *texture_prof);

@@ -99,7 +99,7 @@ void affiche_menu_action(param_t *parametre){
 * \return On return un \a action_t qui est notre action initialisé.
 *  
 */
-extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *, SDL_Rect *, SDL_Rect *), const char * lien_img_rect, const char * lien_img_rond)
+extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *, SDL_Rect *, SDL_Rect *), const char * lien_img_rect, const char * lien_img_rond, const char * lien_img_flou)
 {
 	action_t *action = malloc(sizeof(action_t));
 	action->id = id;
@@ -110,6 +110,7 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *
 	action->action_realise = fonction;
 	action->img_action_rond = lien_img_rond;
 	action->img_action_rect = lien_img_rect;
+	action->img_action_flou = lien_img_flou;
 
 	return action;
 }
@@ -126,10 +127,10 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *
 */
 extern void init_tab_action(action_t * tab[])
 {
-	tab[0] = init_action(0, 1 , 5000,fonc_action_1, "images/action_barre_n1.png", "images/action_n1.png");
-	tab[1] = init_action(1, 1 , 10000,fonc_action_2, "images/action_barre_n2.png", "images/action_n2.png");
-	tab[2] = init_action(2, 1 , 15000,fonc_action_3, "images/action_barre_n3.png", "images/action_n3.png");
-	tab[3] = init_action(3, 1 , 20000,fonc_action_4, "images/action_barre_n3.png", "images/action_n3.png");
+	tab[0] = init_action(0, 1 , 5000,fonc_action_1, "images/actions/action_barre_n1.png", "images/actions/action_n1.png", "images/actions/action_flou1.png");
+	tab[1] = init_action(1, 1 , 10000,fonc_action_2, "images/actions/action_barre_n2.png", "images/actions/action_n2.png", "images/actions/action_flou2.png");
+	tab[2] = init_action(2, 1 , 15000,fonc_action_3, "images/actions/action_barre_n3.png", "images/actions/action_n3.png", "images/actions/action_flou3.png");
+	tab[3] = init_action(3, 1 , 20000,fonc_action_4, "images/actions/action_barre_n4.png", "images/actions/action_n4.png", "images/actions/action_flou4.png");
 }
 
 /**

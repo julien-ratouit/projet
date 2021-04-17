@@ -58,6 +58,11 @@ void lancement_matin(param_t * parametre)
 	SDL_Texture *texture_action3 = NULL;//action 3
 	SDL_Texture *texture_action4 = NULL;//action 4
 
+	SDL_Texture *texture_cd_action1 = NULL;
+	SDL_Texture *texture_cd_action2 = NULL;
+	SDL_Texture *texture_cd_action3 = NULL;
+	SDL_Texture *texture_cd_action4 = NULL;
+
 	SDL_Texture *texture_centaine = NULL;
 	SDL_Texture *texture_dizaine = NULL; 
 	SDL_Texture *texture_unite = NULL; 
@@ -145,6 +150,64 @@ void lancement_matin(param_t * parametre)
 
 		if(decompte > TEMPS_COUR) 
 			program_launched = SDL_FALSE;
+
+
+
+
+		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) <= action_equipe[0]->cd )
+		{
+			ajout_texture_non_centre(texture_cd_action1, (action_equipe[0]->img_action_flou), parametre->renderer, parametre->window, ACTION1_HAUTEUR,ACTION1_LARGEUR);
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) > action_equipe[0]->cd )
+		{
+			SDL_DestroyTexture(texture_cd_action1);
+			SDL_RenderPresent(parametre->renderer);
+		}
+
+
+
+		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) <= action_equipe[1]->cd )
+		{
+			ajout_texture_non_centre(texture_cd_action2, (action_equipe[1]->img_action_flou), parametre->renderer, parametre->window, ACTION2_HAUTEUR,ACTION2_LARGEUR);
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) > action_equipe[1]->cd )
+		{
+			SDL_DestroyTexture(texture_cd_action2);
+			SDL_RenderPresent(parametre->renderer);
+		}
+
+
+
+		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) <= action_equipe[2]->cd )
+		{
+			ajout_texture_non_centre(texture_cd_action3, (action_equipe[2]->img_action_flou), parametre->renderer, parametre->window, ACTION3_HAUTEUR,ACTION3_LARGEUR);
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) > action_equipe[2]->cd )
+		{
+			SDL_DestroyTexture(texture_cd_action3);
+			SDL_RenderPresent(parametre->renderer);
+		}
+
+
+
+		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) <= action_equipe[3]->cd )
+		{
+			ajout_texture_non_centre(texture_cd_action4, (action_equipe[3]->img_action_flou), parametre->renderer, parametre->window, ACTION4_HAUTEUR,ACTION4_LARGEUR);
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) > action_equipe[3]->cd )
+		{
+			SDL_DestroyTexture(texture_cd_action4);
+			SDL_RenderPresent(parametre->renderer);
+		}
+
+
+
+
+
 
 
 		if (decompte > (TEMPS_COUR-10000) && nombre_decompte == 10)
@@ -337,6 +400,11 @@ void lancement_matin(param_t * parametre)
 
 			SDL_RenderPresent(parametre->renderer);	
 		}
+
+
+
+		
+
 
 
 
