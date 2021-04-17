@@ -8,6 +8,11 @@
 typedef struct param_s
 {
 	Timer_t *temps_jeu;
+	Timer_t *cd_action1;
+	Timer_t *cd_action2;
+	Timer_t *cd_action3;
+	Timer_t *cd_action4;
+
 	int argent;
 	int nb_jour;
 	int val_depression;

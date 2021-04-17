@@ -40,6 +40,16 @@ int main (int argc, char ** argv)
 	Timer_t *temps_jeu;
 	temps_jeu = timer_init();
 
+	Timer_t *cd_action1;
+	Timer_t *cd_action2;
+	Timer_t *cd_action3;
+	Timer_t *cd_action4;
+	
+	cd_action1 = timer_init();
+	cd_action2 = timer_init();
+	cd_action3 = timer_init();
+	cd_action4 = timer_init();
+
 	SDL_bool program_launched = SDL_TRUE;
 
 
@@ -60,6 +70,10 @@ int main (int argc, char ** argv)
 
 	param_t * parametre = malloc(sizeof(param_t));
 	parametre->temps_jeu = temps_jeu;
+	parametre->cd_action1 = cd_action1;
+	parametre->cd_action2 = cd_action2;
+	parametre->cd_action3 = cd_action3;
+	parametre->cd_action4 = cd_action4;
 	parametre->argent = argent;
 	parametre->nb_jour = 1;
 	parametre->val_depression = -5;

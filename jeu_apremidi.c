@@ -39,8 +39,6 @@ void lancement_apremidi(param_t * parametre)
 	int nombre_decompte = 10;
 	///////////////////////////
 
-	printf("bienvenue dans le cours de l'apres-midi\n");
-
 	SDL_Texture *texture_classe = NULL;
 	SDL_Texture *texture_self = NULL;
 
@@ -69,10 +67,10 @@ void lancement_apremidi(param_t * parametre)
 
 	int status_menu = -1;
 
-	int *achat = malloc(sizeof(int));
-	(*achat) = 4;
-	int score = 0;
-	int test;
+	(parametre->cd_action1)->debut(parametre->cd_action1);
+	(parametre->cd_action2)->debut(parametre->cd_action2);
+	(parametre->cd_action3)->debut(parametre->cd_action3);
+	(parametre->cd_action4)->debut(parametre->cd_action4);
 
 	ajout_texture(texture_classe ,"images/salle_de_classe.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 	aff_action(parametre->renderer, parametre->window, texture_action1, texture_action2, texture_action3, texture_action4);
@@ -353,59 +351,115 @@ void lancement_apremidi(param_t * parametre)
 					
 					if((event.button.x > ACTION1_X_MIN && event.button.x < ACTION1_X_MAX)&&(event.button.y > ACTION1_Y_MIN && event.button.y < ACTION1_Y_MAX)&&status_menu == -1)
 					{
-						/*si on clique sur l'action 1*/
-						action_equipe[0]->action_realise(parametre, barre_sonore, barre_depression);
+						//si on clique sur l'action 1, on vérifie que le couldown est terminé
+						if( (parametre->cd_action1)->get_ticks(parametre->cd_action1) > action_equipe[0]->cd )
+						{
+							(parametre->cd_action1)->stop(parametre->cd_action1);
+							(parametre->cd_action2)->stop(parametre->cd_action2);
+							(parametre->cd_action3)->stop(parametre->cd_action3);
+							(parametre->cd_action4)->stop(parametre->cd_action4);
 
-						SDL_DestroyTexture(texture_barre_son);
-						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 
-						SDL_DestroyTexture(texture_barre_depression);
-						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+							action_equipe[0]->action_realise(parametre, barre_sonore, barre_depression);
 
-						SDL_RenderPresent(parametre->renderer);
+							SDL_DestroyTexture(texture_barre_son);
+							ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+
+							SDL_DestroyTexture(texture_barre_depression);
+							ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+							SDL_RenderPresent(parametre->renderer);
+
+							(parametre->cd_action1)->debut(parametre->cd_action1);
+							(parametre->cd_action2)->debut(parametre->cd_action2);
+							(parametre->cd_action3)->debut(parametre->cd_action3);
+							(parametre->cd_action4)->debut(parametre->cd_action4);
+						}
 					}
 
 					if((event.button.x > ACTION2_X_MIN && event.button.x < ACTION2_X_MAX)&&(event.button.y > ACTION2_Y_MIN && event.button.y < ACTION2_Y_MAX)&&status_menu == -1)
 					{
 						/*si on clique sur l'action 2*/
-						action_equipe[1]->action_realise(parametre, barre_sonore, barre_depression);	
+						if( (parametre->cd_action2)->get_ticks(parametre->cd_action2) > action_equipe[1]->cd )
+						{
+							(parametre->cd_action1)->stop(parametre->cd_action1);
+							(parametre->cd_action2)->stop(parametre->cd_action2);
+							(parametre->cd_action3)->stop(parametre->cd_action3);
+							(parametre->cd_action4)->stop(parametre->cd_action4);
 
-						SDL_DestroyTexture(texture_barre_son);
-						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 
-						SDL_DestroyTexture(texture_barre_depression);
-						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+							action_equipe[1]->action_realise(parametre, barre_sonore, barre_depression);	
 
-						SDL_RenderPresent(parametre->renderer);
+							SDL_DestroyTexture(texture_barre_son);
+							ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+
+							SDL_DestroyTexture(texture_barre_depression);
+							ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+							SDL_RenderPresent(parametre->renderer);
+
+							(parametre->cd_action1)->debut(parametre->cd_action1);
+							(parametre->cd_action2)->debut(parametre->cd_action2);
+							(parametre->cd_action3)->debut(parametre->cd_action3);
+							(parametre->cd_action4)->debut(parametre->cd_action4);
+						}
 					}
 
 
 					if((event.button.x > ACTION3_X_MIN && event.button.x < ACTION3_X_MAX)&&(event.button.y > ACTION3_Y_MIN && event.button.y < ACTION3_Y_MAX)&&status_menu == -1)
 					{
 						/*si on clique sur l'action 3*/
-						action_equipe[2]->action_realise(parametre, barre_sonore, barre_depression);
+						if( (parametre->cd_action3)->get_ticks(parametre->cd_action3) > action_equipe[2]->cd )
+						{
+							(parametre->cd_action1)->stop(parametre->cd_action1);
+							(parametre->cd_action2)->stop(parametre->cd_action2);
+							(parametre->cd_action3)->stop(parametre->cd_action3);
+							(parametre->cd_action4)->stop(parametre->cd_action4);
 
-						SDL_DestroyTexture(texture_barre_son);
-						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 
-						SDL_DestroyTexture(texture_barre_depression);
-						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+							action_equipe[2]->action_realise(parametre, barre_sonore, barre_depression);
 
-						SDL_RenderPresent(parametre->renderer);
+							SDL_DestroyTexture(texture_barre_son);
+							ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+
+							SDL_DestroyTexture(texture_barre_depression);
+							ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+							SDL_RenderPresent(parametre->renderer);
+
+							(parametre->cd_action1)->debut(parametre->cd_action1);
+							(parametre->cd_action2)->debut(parametre->cd_action2);
+							(parametre->cd_action3)->debut(parametre->cd_action3);
+							(parametre->cd_action4)->debut(parametre->cd_action4);
+						}
 					}
 
 					if((event.button.x > ACTION4_X_MIN && event.button.x < ACTION4_X_MAX)&&(event.button.y > ACTION4_Y_MIN && event.button.y < ACTION4_Y_MAX)&&status_menu == -1)
 					{
 						/*si on clique sur l'action 4*/
-						action_equipe[3]->action_realise(parametre, barre_sonore, barre_depression);
+						if( (parametre->cd_action4)->get_ticks(parametre->cd_action4) > action_equipe[3]->cd )
+						{
+							(parametre->cd_action1)->stop(parametre->cd_action1);
+							(parametre->cd_action2)->stop(parametre->cd_action2);
+							(parametre->cd_action3)->stop(parametre->cd_action3);
+							(parametre->cd_action4)->stop(parametre->cd_action4);
 
-						SDL_DestroyTexture(texture_barre_son);
-						ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
 
-						SDL_DestroyTexture(texture_barre_depression);
-						ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+							action_equipe[3]->action_realise(parametre, barre_sonore, barre_depression);
 
-						SDL_RenderPresent(parametre->renderer);
+							SDL_DestroyTexture(texture_barre_son);
+							ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
+
+							SDL_DestroyTexture(texture_barre_depression);
+							ajout_texture_non_centre(texture_barre_depression, "images/barre_son_depression.png", parametre->renderer,parametre->window, BARRE_DEPRESSION_X, BARRE_DEPRESSION_Y);
+
+							SDL_RenderPresent(parametre->renderer);
+
+							(parametre->cd_action1)->debut(parametre->cd_action1);
+							(parametre->cd_action2)->debut(parametre->cd_action2);
+							(parametre->cd_action3)->debut(parametre->cd_action3);
+							(parametre->cd_action4)->debut(parametre->cd_action4);
+						}
 					}
 
 					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN) && gameOver_actif == false)
@@ -471,6 +525,10 @@ void lancement_apremidi(param_t * parametre)
 			}		
 		}
 	}
+	(parametre->cd_action1)->stop(parametre->cd_action1);
+	(parametre->cd_action2)->stop(parametre->cd_action2);
+	(parametre->cd_action3)->stop(parametre->cd_action3);
+	(parametre->cd_action4)->stop(parametre->cd_action4);
 	printf("tu quitte le cour de l'aprem\n");
 	SDL_DestroyTexture(texture_action4);
 	SDL_DestroyTexture(texture_action3);
