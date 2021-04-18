@@ -82,6 +82,7 @@ int main (int argc, char ** argv)
 	SDL_RenderPresent(renderer);
 	while(program_launched)
 	{
+
 		parametre->temps_jeu = temps_jeu;
 		parametre->cd_action1 = cd_action1;
 		parametre->cd_action2 = cd_action2;
@@ -127,7 +128,7 @@ int main (int argc, char ** argv)
 							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_self(parametre);
 							if(!(parametre->quitte) && !(parametre->perdu))
-								lancement_apremidi(parametre);
+								lancement_matin(parametre);
 							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_salle_prof(parametre);
 							parametre->nb_jour += 1;
@@ -166,7 +167,7 @@ int main (int argc, char ** argv)
 								if(!(parametre->quitte) && !(parametre->perdu))
 									lancement_self(parametre);
 								if(!(parametre->quitte) && !(parametre->perdu))
-									lancement_apremidi(parametre);
+									lancement_matin(parametre);
 								if(!(parametre->quitte) && !(parametre->perdu))
 									lancement_salle_prof(parametre);
 								parametre->nb_jour += 1;
