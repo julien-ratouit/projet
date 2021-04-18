@@ -1,6 +1,23 @@
+/**
+* \file tuto.c
+* \brief Ensemble de fonction qui gère la page du tuto.
+* \details c'est dans cette fonction que l'on gère l'affichage et les zones de cliques liées à la page du tuto.
+* \author Ratouit Julien
+*/
+
 #include "commun.h"
 #include "tuto.h"
 
+
+/**
+* \brief fonction qui gère le tuto.
+*
+* \details Dans cette fonction nous affichonsles textures liées a la page tuto de notre jeu, le joueur à la possibilité de quitter le tuto en cliquant sur la croix en haute à gauche,
+* il peut aussi naviguer entre les pages avec un bouton next et pred. Une fois arrivé à la dernière page le bouton nexte se transforme en bouton pour quitter le tuto.
+* 
+* \param page est un entier de type \a int qui nous permet de savoir sur qu'elle page du tuto on se trouve.
+*  
+*/
 void tuto(SDL_Renderer *renderer, SDL_Window *window)
 {
 	int page = 1; 
@@ -32,9 +49,8 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 							
 							page++;
 
-							SDL_RenderClear(renderer);
+							SDL_SetRenderTarget(renderer, NULL);// Dorénavent, on modifie à nouveau le renderer
 
-							ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 							switch(page)
 							{
 								case 1:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
@@ -51,9 +67,8 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 							
 							page--;
 
-							SDL_RenderClear(renderer);
+							SDL_SetRenderTarget(renderer, NULL);// Dorénavent, on modifie à nouveau le renderer
 
-							ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 							switch(page)
 							{
 								case 1:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;

@@ -6,8 +6,10 @@
 */
 
 #include "commun.h"
-#include "texture_sdp.h"
+#include "barre.h"
 #include "salle_prof.h"
+#include "texture_sdp.h"
+
 
 //Constantes renvoyer quand on clique sur les emplacement d'équipement respectifs
 #define EQUIP_1 -1
@@ -30,8 +32,8 @@
 */
 void affiche_barre_action(param_t *parametre)
 {
-
-	
+	SDL_Texture *texture_prof = NULL;
+	aff_texture_sp(parametre, texture_prof);
     ajout_texture_non_centre(background_menu_action,"images/barre_action.png", parametre->renderer, parametre->window, 420, 450);
 
 	if(action_equipe[0] != NULL)
@@ -60,6 +62,7 @@ void affiche_barre_action(param_t *parametre)
 */
 void affiche_menu_action(param_t *parametre){
 
+	ajout_texture_non_centre(croix_rouge, "images/bouton_croix_rouge.png", parametre->renderer, parametre->window, 781, 64);
 	ajout_texture_non_centre(background_menu_action,"images/background_menu_action.png", parametre->renderer, parametre->window,420 , 50);
 	//printf("Ca crash ?");
 	if(action_equipe[0] != NULL){
@@ -96,7 +99,7 @@ void affiche_menu_action(param_t *parametre){
 * \return On return un \a action_t qui est notre action initialisé.
 *  
 */
-extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), const char * lien_img_rect, const char * lien_img_rond)
+extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *, SDL_Rect *, SDL_Rect *), const char * lien_img_rect, const char * lien_img_rond, const char * lien_img_flou)
 {
 	action_t *action = malloc(sizeof(action_t));
 	action->id = id;
@@ -107,6 +110,7 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), con
 	action->action_realise = fonction;
 	action->img_action_rond = lien_img_rond;
 	action->img_action_rect = lien_img_rect;
+	action->img_action_flou = lien_img_flou;
 
 	return action;
 }
@@ -123,10 +127,10 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(int), con
 */
 extern void init_tab_action(action_t * tab[])
 {
-	tab[0] = init_action(0, 1 , 1,fonc_action_1, "images/action_barre_n1.png", "images/action_n1.png");
-	tab[1] = init_action(1, 1 , 2,fonc_action_2, "images/action_barre_n2.png", "images/action_n2.png");
-	tab[2] = init_action(2, 1 , 3,fonc_action_3, "images/action_barre_n3.png", "images/action_n3.png");
-	tab[3] = init_action(3, 1 , 4,fonc_action_4, "images/action_barre_n3.png", "images/action_n3.png");
+	tab[0] = init_action(0, 1 , 5000,fonc_action_1, "images/actions/action_barre_n1.png", "images/actions/action_n1.png", "images/actions/action_flou1.png");
+	tab[1] = init_action(1, 1 , 10000,fonc_action_2, "images/actions/action_barre_n2.png", "images/actions/action_n2.png", "images/actions/action_flou2.png");
+	tab[2] = init_action(2, 1 , 15000,fonc_action_3, "images/actions/action_barre_n3.png", "images/actions/action_n3.png", "images/actions/action_flou3.png");
+	tab[3] = init_action(3, 1 , 20000,fonc_action_4, "images/actions/action_barre_n4.png", "images/actions/action_n4.png", "images/actions/action_flou4.png");
 }
 
 /**
@@ -150,9 +154,9 @@ extern int clic_choix_sdp(){
 				case SDL_MOUSEBUTTONDOWN:
 				printf("x : %i & y : %i\n", event.button.x, event.button.y);
 				//Si on clique sur la croix //Salle des profs
-				if((event.button.x < BTN_RESTART_X_MAX && event.button.x > BTN_RESTART_X_MIN) && (event.button.y < BTN_RESTART_Y_MAX && event.button.y > BTN_RESTART_Y_MIN)){
+				if((event.button.x < 831 && event.button.x > 785) && (event.button.y < 109 && event.button.y > 67)){
 
-					return QUITTE_SDP;
+					return QUITTE_MENU;
 
 				}
 				//Si on clique sur les emplacement d'équipement
@@ -205,7 +209,7 @@ extern int clic_choix_sdp(){
 * \details Si le joueur clic sur une action la fonction se lance et regarde la somme d'argent du joueur. Si la somme en question est assez grande alors l'action change de statut est
 * devient acheté, or, si la somme n'est pas assez grande rien ne se passe.
 *
-* \return On return un \a int qui l'argent qu'il reste.
+* \return On return un \a int qui défini si oui ou non l'action à changé de statut.
 *  
 */
 extern int achat_action(action_t *action, int argent)
@@ -226,9 +230,9 @@ extern int achat_action(action_t *action, int argent)
 /**
 * \brief Equipe une action
 * 
-* \details Equipe une action a l'emplacement sélectionner si elle est acheté, sinon l'achete et relance le processus d'achat
+* \details à remplir
 *
-* \return Une valeur de sortie pour quitter la boucle de menu_action
+* \return à remplir
 *  
 */
 extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
@@ -249,6 +253,7 @@ extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], actio
 			case EQUIP_3 : return equipe_action(2, argent, tab_equipe, tab_action,parametre,texture_prof); break;
 			case EQUIP_2 : return equipe_action(1, argent, tab_equipe, tab_action,parametre,texture_prof); break;
 			case EQUIP_1 : return equipe_action(0, argent, tab_equipe, tab_action,parametre,texture_prof); break;
+			case QUITTE_MENU : return QUITTE_MENU; break;
 			default : break;
 		}
 
@@ -312,7 +317,7 @@ extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], actio
 * \details Lance l'affichage du menu et gère les différentes fonctions d'achat et d'équipage des actions
 *  
 */
-extern int menu_action( action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
+extern int menu_action(action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){
 
 	int test_sortie = 0;
 	int choix;
@@ -321,7 +326,6 @@ extern int menu_action( action_t * tab_equipe[4], action_t * tab_action[],param_
 	while(test_sortie != QUITTE_MENU && test_sortie != QUITTE_SDP){//Test_sortie vaut vrai quand on clique sur la croix
 
 		choix = clic_choix_sdp();
-		//printf("Choix = %d\n", choix);
 		
 		switch(choix){
 
@@ -329,19 +333,21 @@ extern int menu_action( action_t * tab_equipe[4], action_t * tab_action[],param_
 			//case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
 			case QUITTE_SDP : test_sortie = QUITTE_SDP; break;
 			//Si on choisis une case d'équipement, ça renvoie la fonction equipe_action a la bonne place.
-			case EQUIP_4 : test_sortie = equipe_action(3, parametre->argent , tab_equipe, tab_action, parametre,texture_prof); break;
-			case EQUIP_3 : test_sortie = equipe_action(2, parametre->argent , tab_equipe, tab_action, parametre,texture_prof); break;
-			case EQUIP_2 : test_sortie = equipe_action(1, parametre->argent , tab_equipe, tab_action, parametre,texture_prof); break;
-			case EQUIP_1 : test_sortie = equipe_action(0, parametre->argent , tab_equipe, tab_action, parametre,texture_prof); break;
+			case EQUIP_4 : test_sortie = equipe_action(3, parametre->argent, tab_equipe, tab_action, parametre, texture_prof); break;
+			case EQUIP_3 : test_sortie = equipe_action(2, parametre->argent, tab_equipe, tab_action, parametre, texture_prof); break;
+			case EQUIP_2 : test_sortie = equipe_action(1, parametre->argent, tab_equipe, tab_action, parametre, texture_prof); break;
+			case EQUIP_1 : test_sortie = equipe_action(0, parametre->argent, tab_equipe, tab_action, parametre, texture_prof); break;
+			case QUITTE_MENU : test_sortie = QUITTE_MENU; break;
 			//Si on renvoie autre chose on s'en occupe pas
 			default : test_sortie = 0; break;
 		}
 
 	}
 
-	if(test_sortie == QUITTE_SDP) return 1;
-	else return 0;
-
+	if(test_sortie == QUITTE_SDP) 
+		return 1;
+	if(test_sortie == QUITTE_MENU)
+		return -1;
 
 }
 
@@ -349,32 +355,24 @@ extern int menu_action( action_t * tab_equipe[4], action_t * tab_action[],param_
 
 //fonctions d'action, leurs but est d'agire sur la barre d'agitation ou de depression en fonction de l'action choisi.
 /*----------------------------------------------------------*/
-void fonc_action_1 (int jour)
+void fonc_action_1 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
-	//à faire.
-	//diminue de quelques pourcent la barre d'agitation
-	printf("Test 1\n");
+	update_barre_sonore(parametre->renderer, barre_sonore, -20);
 }
 
-void fonc_action_2 (int jour)
+void fonc_action_2 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
-	//à faire.
-	//diminue encore plus la barre d'agitation
-	printf("Test 2\n");
+	update_barre_depression(parametre->renderer, barre_depression, barre_sonore, -20);
 }
 
-void fonc_action_3 (int jour)
+void fonc_action_3 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
-	//à faire.
-	//ralentit la progression de la barre d'agitation
-	printf("Test 3\n");
+	update_barre_sonore(parametre->renderer, barre_sonore, -40);
 }
 
-void fonc_action_4 (int jour)
+void fonc_action_4 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
-	//à faire.
-	//bloque la barre de depression pendant un temps donné
-	printf("Test 4\n");
+	update_barre_depression(parametre->renderer, barre_depression, barre_sonore, -40);
 }
 
 /*----------------------------------------------------------*/

@@ -1,22 +1,14 @@
 #include "commun.h"
 #include "timer.h"
 
-/**
-* \file timer.c
-* \brief Ce fichier permet de répertorier toutes les actions qu'un timer peut faire.
-* \details On utilise ce programme pour calculer depuis combien de temps la partie ou une action est lancé.
-* \author Vallet Guillaume
-*/
 
 
-/**
-* \brief Démarre le timer
-* 
-* \details Initialise les valeurs du timer pour lancer. 
-* \param Le timer a lancer
-*  
-*/
-void timer_debut(Timer_t * Timer){
+
+//Démarre le timer 
+//Pour enlever la pause faire unpause
+void timer_debut(Timer_t * Timer)
+{
+
     //On demarre le timer
     Timer->start = true;
     //On enlève la pause du timer
@@ -25,14 +17,9 @@ void timer_debut(Timer_t * Timer){
     Timer->tick_debut = SDL_GetTicks();
 }
 
-/**
-* \brief Arrête définitivement le timer
-* 
-* \details Mets le timer en arrêt en mettant ses bool en false 
-* \param Le timer a stoppé
-*  
-*/
-void timer_stop(Timer_t * Timer){
+//On stoppe définitivement le timer pour pouvoir le réutiliser plus tard
+void timer_stop(Timer_t * Timer)
+{
 
     //On stoppe le timer
     Timer->start = false;
@@ -41,21 +28,15 @@ void timer_stop(Timer_t * Timer){
 
 }
 
-/**
-* \brief Donne le temps depuis lequel le timer a démarrer
-* 
-* \details Si le timer est en pause, ne donne rien.
-* \param Le timer a observer
-* \return Le temps depuis lequel le timer a commencé en entier
-*  
-*/
-
-int timer_get_ticks(Timer_t * Timer){
+int timer_get_ticks(Timer_t * Timer)
+{
     //Si le timer est en marche
-    if( Timer->start == true ){
+    if( Timer->start == true )
+    {
 
         //Si le timer est en pause
-        if( Timer->paused == false ){
+        if( Timer->paused == false )
+        {
             
             //On retourne le temps courant moins le temps quand il a démarré
             return SDL_GetTicks() - Timer->tick_debut;
@@ -66,18 +47,12 @@ int timer_get_ticks(Timer_t * Timer){
     return 0;
 }
 
-
-/**
-* \brief Mets le timer en pause
-* 
-* \details Initialise le tick_pause du timer au tick du lancement de la fonction pour savoir quand le timer a été mis en pause 
-* \param Le timer a pauser
-*  
-*/
-void timer_pause(Timer_t * Timer){
+void timer_pause(Timer_t * Timer)
+{
 
     //Si le timer est en marche et pas encore en pause
-    if(( Timer->start == true ) && ( Timer->paused == false )){
+    if(( Timer->start == true ) && ( Timer->paused == false ))
+    {
 
         //On met en pause le timer
         Timer->paused = true;
@@ -88,17 +63,12 @@ void timer_pause(Timer_t * Timer){
     }
 }
 
-/**
-* \brief Dépause le timer
-* 
-* \details Dépause le timer en enlevant l'état de pause et en remettant le tick_debut a une valeur qui permettent de redonner le même temps avant la pause 
-* \param Le timer a dépauser
-*  
-*/
-void timer_unpause(Timer_t * Timer){
+void timer_unpause(Timer_t * Timer)
+{
 
     //Si le timer est en pause
-    if( Timer->paused == true ){
+    if( Timer->paused == true )
+    {
         //on enlève la pause du timer
         Timer->paused = false;
  
@@ -110,43 +80,25 @@ void timer_unpause(Timer_t * Timer){
     }
 }
 
-/**
-* \brief Regarde si le timer a démarrer
-* 
-* \details Donne l'état du timer. 
-* \param Le timer a observer
-* \return Un booléen qui dit si le timer est lancer.
-*  
-*/
-bool timer_is_started(Timer_t * Timer){
+//Renvoie vrai si le timer a commencer 
+bool timer_is_started(Timer_t * Timer)
+{
 
     return (Timer->start);
 
 }
 
-/**
-* \brief Regarde si le timer est en pause
-* 
-* \details Donne l'état du timer. 
-* \param Le timer a observer
-* \return Un booléen qui dit si le timer est en pause.
-*  
-*/
-bool timer_is_paused(Timer_t * Timer){
+//Renvoie vrai si le timer est en pause
+bool timer_is_paused(Timer_t * Timer)
+{
 
     return (Timer->paused);
 
 }
 
-/**
-* \brief Initialise le timer
-* 
-* \details Fait un malloc et initialise tout les paramètres du timer pour qu'il soit opérationelle 
-* \param Aucun
-* \return Un pointeur sur timer_t pour pouvoir ensuite affecter ce pointeur a une variable de type timer_t *
-*  
-*/
-Timer_t * timer_init(){
+//Initialise le timer
+Timer_t * timer_init()
+{
 
     //Création de l'espace du timer    
 	Timer_t * Timer;
@@ -170,7 +122,8 @@ Timer_t * timer_init(){
 	return Timer;
 }
 /*
-int main(int arv, char *argc[]){
+int main(int arv, char *argc[])
+{
 
     SDL_Init(SDL_INIT_VIDEO);
 

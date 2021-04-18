@@ -26,6 +26,20 @@
 
 
 
+/*ZONE BOUTON REPRENDRE*/
+
+#define BTN_REP_X_MAX 790
+#define BTN_REP_X_MIN 490
+
+#define BTN_REP_Y_MAX 510
+#define BTN_REP_Y_MIN 424
+
+
+
+
+
+
+
 
 
 
@@ -44,11 +58,11 @@
 
 /*Zone bouton 'tuto'*/
 /*----------------------------------------*/
-#define BOUTON_TUTO_X_MAX 790
-#define BOUTON_TUTO_X_MIN 490
+#define BOUTON_TUTO_X_MAX 786
+#define BOUTON_TUTO_X_MIN 494
 
-#define BOUTON_TUTO_Y_MAX 510
-#define BOUTON_TUTO_Y_MIN 424
+#define BOUTON_TUTO_Y_MAX 619
+#define BOUTON_TUTO_Y_MIN 539
 /*----------------------------------------*/
 
 /*Zone bouton 'next'*/
@@ -78,29 +92,60 @@
 
 
 
+/*-----------------------------------------------------------------------------------*/
+/*GAME OVER
+/*------------------------------------------------------------------------------------*/
+
+/*Zone bouton 'charger derniere sauvegarde'*/
+/*----------------------------------------*/
+#define BOUTON_LOAD_SAVE_X_MAX 441
+#define BOUTON_LOAD_SAVE_X_MIN 532 
+
+#define BOUTON_LOAD_SAVE_Y_MAX 410
+#define BOUTON_LOAD_SAVE_Y_MIN 442
+/*----------------------------------------*/
+
+/*Zone bouton 'quitter'*/
+/*----------------------------------------*/
+#define BOUTON_FIN_X_MAX 714
+#define BOUTON_FIN_X_MIN 806
+
+#define BOUTON_FIN_Y_MAX 410
+#define BOUTON_FIN_Y_MIN 442
+/*----------------------------------------*/
+
+/*-----------------------------------------------------------------------------------*/
+/*FIN GAME OVER
+/*------------------------------------------------------------------------------------*/
+
+
+
+
+
+
 
 
 /*Zone des boutons 'actions'*/
 /*----------------------------------------*/
-#define ACTION1_X_MIN 38
-#define ACTION1_X_MAX 54
-#define ACTION1_Y_MIN 703
-#define ACTION1_Y_MAX 719
+#define ACTION1_X_MIN 74
+#define ACTION1_X_MAX 117
+#define ACTION1_Y_MIN 535
+#define ACTION1_Y_MAX 575
 
-#define ACTION2_X_MIN 163
-#define ACTION2_X_MAX 179
-#define ACTION2_Y_MIN 703
-#define ACTION2_Y_MAX 719
+#define ACTION2_X_MIN 156
+#define ACTION2_X_MAX 201
+#define ACTION2_Y_MIN 535
+#define ACTION2_Y_MAX 575
 
-#define ACTION3_X_MIN 72
-#define ACTION3_X_MAX 88
-#define ACTION3_Y_MIN 612
-#define ACTION3_Y_MAX 628
+#define ACTION3_X_MIN 47
+#define ACTION3_X_MAX 92
+#define ACTION3_Y_MIN 621
+#define ACTION3_Y_MAX 660
 
-#define ACTION4_X_MIN 192
-#define ACTION4_X_MAX 208
-#define ACTION4_Y_MIN 612
-#define ACTION4_Y_MAX 628
+#define ACTION4_X_MIN 134
+#define ACTION4_X_MAX 178
+#define ACTION4_Y_MIN 621
+#define ACTION4_Y_MAX 660
 /*----------------------------------------*/
 
 
