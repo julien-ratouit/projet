@@ -5,10 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <pthread.h>
-#include "include/SDL.h"
-#include "include/SDL_image.h"
-#include "include/SDL_ttf.h"
 #include "action.h"
 
 SDL_Texture *background_menu_action = NULL;

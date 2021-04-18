@@ -1,5 +1,5 @@
-#include "commun.h"
-#include "nombre_jour.h"
+#include "../include/commun.h"
+#include "../include/nombre_jour.h"
 
 
 void affiche_nb_jour(SDL_Window *window, SDL_Renderer *renderer, int nb_jour)

@@ -4,10 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <pthread.h>
-#include "include/SDL.h"
-#include "include/SDL_image.h"
-#include "include/SDL_ttf.h"
+#include "../include/SDL.h"
+#include "../include/SDL_image.h"
+#include "../include/SDL_ttf.h"
 #include "fonction.h"
 #include "coords.h"
 #include "timer.h"

@@ -5,8 +5,8 @@
 * \author Quenault Maxime
 */
 
-#include "commun.h"
-#include "depression.h"
+#include "../include/commun.h"
+#include "../include/depression.h"
 
 void affiche_depression(SDL_Window *window, SDL_Renderer *renderer, int val)
 {

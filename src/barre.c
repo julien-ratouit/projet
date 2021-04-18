@@ -6,9 +6,9 @@
 */
 
 
-#include "commun.h"
-#include "timer.h"
-#include "barre.h"
+#include "../include/commun.h"
+#include "../include/timer.h"
+#include "../include/barre.h"
 
 /**
 * \brief Initialise la barre sonore

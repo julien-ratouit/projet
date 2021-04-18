@@ -5,16 +5,15 @@
 * \author Quenault Maxime, Ratouit Charles
 */
 
-#include "commun.h"
-#include "jeu_matin.h"
-#include "jeu_apremidi.h"
-#include "tuto.h"
-#include "timer.h"
-#include "barre.h"
-#include "self.h"
-#include "salle_prof.h"
-#include "action.h"
-#include "save.h"
+#include "../include/commun.h"
+#include "../include/jeu_matin.h"
+#include "../include/tuto.h"
+#include "../include/timer.h"
+#include "../include/barre.h"
+#include "../include/self.h"
+#include "../include/salle_prof.h"
+#include "../include/action.h"
+#include "../include/save.h"
 /**
 * \brief fonction main.
 *
@@ -102,6 +101,7 @@ int main (int argc, char ** argv)
 		liste_action[1]->equipe = 2;
 		liste_action[2]->equipe = 3;
 		liste_action[3]->equipe = 4;
+		
 		SDL_Event event;
 
 		while(SDL_PollEvent(&event))

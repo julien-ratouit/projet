@@ -6,14 +6,14 @@
 * \author Quenault Maxime, Renoit Charles
 */
 
-#include "commun.h"
-#include "jeu_matin.h"
-#include "timer.h"
-#include "barre.h"
-#include "self.h"
+#include "../include/commun.h"
+#include "../include/jeu_matin.h"
+#include "../include/timer.h"
+#include "../include/barre.h"
+#include "../include/self.h"
 #include <time.h>
 
-#define VITESSE_BARRES 10
+#define VITESSE_BARRES 60
 #define TEMPS_COUR 15000
 
 /**
@@ -134,7 +134,6 @@ void lancement_matin(param_t * parametre)
 			status_menu = 1;
 			gameOver_actif = true;
 			(parametre->temps_jeu)->stop(parametre->temps_jeu);
-			printf("verif2\n");
 			ajout_texture(texture_game_over ,"images/game_over.png" , parametre->renderer, parametre->window, HAUTEUR , LARGEUR);
 			SDL_RenderPresent(parametre->renderer);
 		}
@@ -154,60 +153,7 @@ void lancement_matin(param_t * parametre)
 
 
 
-		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) <= action_equipe[0]->cd )
-		{
-			ajout_texture_non_centre(texture_cd_action1, (action_equipe[0]->img_action_flou), parametre->renderer, parametre->window, ACTION1_HAUTEUR,ACTION1_LARGEUR);
-			SDL_RenderPresent(parametre->renderer);
-		}
-		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) > action_equipe[0]->cd )
-		{
-			SDL_DestroyTexture(texture_cd_action1);
-			SDL_RenderPresent(parametre->renderer);
-		}
-
-
-
-		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) <= action_equipe[1]->cd )
-		{
-			ajout_texture_non_centre(texture_cd_action2, (action_equipe[1]->img_action_flou), parametre->renderer, parametre->window, ACTION2_HAUTEUR,ACTION2_LARGEUR);
-			SDL_RenderPresent(parametre->renderer);
-		}
-		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) > action_equipe[1]->cd )
-		{
-			SDL_DestroyTexture(texture_cd_action2);
-			SDL_RenderPresent(parametre->renderer);
-		}
-
-
-
-		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) <= action_equipe[2]->cd )
-		{
-			ajout_texture_non_centre(texture_cd_action3, (action_equipe[2]->img_action_flou), parametre->renderer, parametre->window, ACTION3_HAUTEUR,ACTION3_LARGEUR);
-			SDL_RenderPresent(parametre->renderer);
-		}
-		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) > action_equipe[2]->cd )
-		{
-			SDL_DestroyTexture(texture_cd_action3);
-			SDL_RenderPresent(parametre->renderer);
-		}
-
-
-
-		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) <= action_equipe[3]->cd )
-		{
-			ajout_texture_non_centre(texture_cd_action4, (action_equipe[3]->img_action_flou), parametre->renderer, parametre->window, ACTION4_HAUTEUR,ACTION4_LARGEUR);
-			SDL_RenderPresent(parametre->renderer);
-		}
-		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) > action_equipe[3]->cd )
-		{
-			SDL_DestroyTexture(texture_cd_action4);
-			SDL_RenderPresent(parametre->renderer);
-		}
-
-
-
-
-
+		
 
 
 		if (decompte > (TEMPS_COUR-10000) && nombre_decompte == 10)
@@ -403,6 +349,56 @@ void lancement_matin(param_t * parametre)
 
 
 
+
+		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) <= action_equipe[0]->cd )
+		{
+			ajout_texture_non_centre(texture_cd_action1, (action_equipe[0]->img_action_flou), parametre->renderer, parametre->window, ACTION1_HAUTEUR,ACTION1_LARGEUR);
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) > action_equipe[0]->cd )
+		{
+			SDL_DestroyTexture(texture_cd_action1);
+			SDL_RenderPresent(parametre->renderer);
+		}
+
+
+
+		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) <= action_equipe[1]->cd )
+		{
+			ajout_texture_non_centre(texture_cd_action2, (action_equipe[1]->img_action_flou), parametre->renderer, parametre->window, ACTION2_HAUTEUR,ACTION2_LARGEUR);
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) > action_equipe[1]->cd )
+		{
+			SDL_DestroyTexture(texture_cd_action2);
+			SDL_RenderPresent(parametre->renderer);
+		}
+
+
+
+		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) <= action_equipe[2]->cd )
+		{
+			ajout_texture_non_centre(texture_cd_action3, (action_equipe[2]->img_action_flou), parametre->renderer, parametre->window, ACTION3_HAUTEUR,ACTION3_LARGEUR);
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) > action_equipe[2]->cd )
+		{
+			SDL_DestroyTexture(texture_cd_action3);
+			SDL_RenderPresent(parametre->renderer);
+		}
+
+
+
+		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) <= action_equipe[3]->cd )
+		{
+			ajout_texture_non_centre(texture_cd_action4, (action_equipe[3]->img_action_flou), parametre->renderer, parametre->window, ACTION4_HAUTEUR,ACTION4_LARGEUR);
+			SDL_RenderPresent(parametre->renderer);
+		}
+		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) > action_equipe[3]->cd )
+		{
+			SDL_DestroyTexture(texture_cd_action4);
+			SDL_RenderPresent(parametre->renderer);
+		}
 		
 
 
@@ -415,12 +411,13 @@ void lancement_matin(param_t * parametre)
 			switch (event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
-					printf("x : %i & y : %i\n", event.button.x, event.button.y);
+					//printf("x : %i & y : %i\n", event.button.x, event.button.y);
 					if((event.button.x > BOUTON_LOAD_SAVE_X_MAX && event.button.x < BOUTON_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTON_LOAD_SAVE_Y_MAX && event.button.y < BOUTON_LOAD_SAVE_X_MIN) && status_menu == 1 && gameOver_actif == true)
 					{
 						parametre->perdu = SDL_FALSE;//defaite = 1 et on retourne a l'ecran d'aceuille
 						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
+						parametre->load = SDL_TRUE;
 					}
 					if((event.button.x > BOUTON_FIN_X_MAX && event.button.x < BOUTON_FIN_X_MIN)&&(event.button.y > BOUTON_FIN_Y_MAX && event.button.y < BOUTON_FIN_X_MIN) && status_menu == 1 && gameOver_actif == true)
 					{

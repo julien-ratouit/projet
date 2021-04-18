@@ -5,10 +5,10 @@
 * \author Quenault Maxime
 */
 
-#include "commun.h"
-#include "jeu_matin.h"
-#include "salle_prof.h"
-#include "save.h"
+#include "../include/commun.h"
+#include "../include/jeu_matin.h"
+#include "../include/salle_prof.h"
+#include "../include/save.h"
 
 /**
 * \brief fonction qui affiche des textures à l'ecran.

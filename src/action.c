@@ -5,10 +5,10 @@
 * \author Vallet Guillaume
 */
 
-#include "commun.h"
-#include "barre.h"
-#include "salle_prof.h"
-#include "texture_sdp.h"
+#include "../include/commun.h"
+#include "../include/barre.h"
+#include "../include/salle_prof.h"
+#include "../include/texture_sdp.h"
 
 
 //Constantes renvoyer quand on clique sur les emplacement d'équipement respectifs
@@ -152,7 +152,7 @@ extern int clic_choix_sdp(){
 		switch(event.type)
 		{
 				case SDL_MOUSEBUTTONDOWN:
-				printf("x : %i & y : %i\n", event.button.x, event.button.y);
+				//printf("x : %i & y : %i\n", event.button.x, event.button.y);
 				//Si on clique sur la croix //Salle des profs
 				if((event.button.x < 831 && event.button.x > 785) && (event.button.y < 109 && event.button.y > 67)){
 
@@ -161,22 +161,18 @@ extern int clic_choix_sdp(){
 				}
 				//Si on clique sur les emplacement d'équipement
 				if((event.button.x < EMPLACEMENT_EQUIPE_1_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_1_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_1_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_1_Y_MIN)){
-					printf("je clique sur equip1\n");
 					return EQUIP_1;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_2_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_2_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_2_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_2_Y_MIN)){
-					printf("je clique sur equip2\n");
 					return EQUIP_2;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_3_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_3_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_3_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_3_Y_MIN)){
-					printf("je clique sur equip3\n");
 					return EQUIP_3;
 
 				}
 				if((event.button.x < EMPLACEMENT_EQUIPE_4_X_MAX && event.button.x > EMPLACEMENT_EQUIPE_4_X_MIN) && (event.button.y < EMPLACEMENT_EQUIPE_4_Y_MAX && event.button.y > EMPLACEMENT_EQUIPE_4_Y_MIN)){
-					printf("je clique sur equip4\n");
 					return EQUIP_4;
 
 				}
@@ -214,7 +210,6 @@ extern int clic_choix_sdp(){
 */
 extern int achat_action(action_t *action, int argent)
 {
-	printf("Tu achètes :D\nPlus que %d argent\n\n",argent);
 	if((argent) >= action->prix)
 	{
 		action->statut = true;
@@ -239,8 +234,6 @@ extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], actio
 
 	affiche_menu_action(parametre);
 	int id = 0;
-	
-	printf("Coucou action %d\n", place);
 
 	while(!id){
 
@@ -266,7 +259,6 @@ extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], actio
 
 	//Sinon on fait soit un échange si l'action est déjà équipé, sinon ça l'équipe simplement (En écrasant l'action déjà placé)
 	if(tab_action[id]->statut){
-		printf("Action %d déja acheté \n",id);
 		if(!(tab_action[id]->equipe)){//Le cas où il n'est pas déjà présent dans l'équipe
 
 			tab_equipe[place] = tab_action[id];

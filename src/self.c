@@ -6,9 +6,9 @@
 */
 
 
-#include "commun.h"
-#include "jeu_apremidi.h"
-#include "self.h"
+#include "../include/commun.h"
+#include "../include/jeu_apremidi.h"
+#include "../include/self.h"
 
 
 

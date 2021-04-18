@@ -5,8 +5,8 @@
 * \author Ratouit Julien
 */
 
-#include "commun.h"
-#include "tuto.h"
+#include "../include/commun.h"
+#include "../include/tuto.h"
 
 
 /**

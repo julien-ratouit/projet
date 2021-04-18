@@ -5,8 +5,8 @@
 * \author Vallet Guillaume
 */
 
-#include "commun.h"
-#include "save.h"
+#include "../include/commun.h"
+#include "../include/save.h"
 
 /**
 * \brief fonction qui sauvegarde la progression du joueur.

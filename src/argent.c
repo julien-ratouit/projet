@@ -6,8 +6,8 @@
 * \author Quenault Maxime
 */
 
-#include "commun.h"
-#include "argent.h"
+#include "../include/commun.h"
+#include "../include/argent.h"
 
 /**
 * \brief Affiche la somme d'argent 

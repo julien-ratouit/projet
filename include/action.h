@@ -21,6 +21,7 @@ typedef struct param_s
 	SDL_Window *window;
 	SDL_bool perdu;
 	SDL_bool quitte;
+	SDL_bool load;
 }
 param_t;
 
