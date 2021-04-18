@@ -16,7 +16,7 @@
 #include <time.h>
 
 
-#define VITESSE_BARRES 3
+#define VITESSE_BARRES 10
 #define TEMPS_COUR 15000
 
 /**

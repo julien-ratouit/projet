@@ -13,7 +13,7 @@
 #include "self.h"
 #include <time.h>
 
-#define VITESSE_BARRES 3
+#define VITESSE_BARRES 10
 #define TEMPS_COUR 15000
 
 /**
@@ -418,12 +418,15 @@ void lancement_matin(param_t * parametre)
 					printf("x : %i & y : %i\n", event.button.x, event.button.y);
 					if((event.button.x > BOUTON_LOAD_SAVE_X_MAX && event.button.x < BOUTON_LOAD_SAVE_X_MIN)&&(event.button.y > BOUTON_LOAD_SAVE_Y_MAX && event.button.y < BOUTON_LOAD_SAVE_X_MIN) && status_menu == 1 && gameOver_actif == true)
 					{
-						parametre->perdu = SDL_TRUE;//defaite = 1 et on retourne a l'ecran d'aceuille
+						parametre->perdu = SDL_FALSE;//defaite = 1 et on retourne a l'ecran d'aceuille
+						parametre->quitte = SDL_TRUE;
+						program_launched = SDL_FALSE;
 					}
 					if((event.button.x > BOUTON_FIN_X_MAX && event.button.x < BOUTON_FIN_X_MIN)&&(event.button.y > BOUTON_FIN_Y_MAX && event.button.y < BOUTON_FIN_X_MIN) && status_menu == 1 && gameOver_actif == true)
 					{
 
-						parametre->perdu = SDL_FALSE;//defaite = 0 et on charge la derniere sauvegarde
+						parametre->perdu = SDL_TRUE;//defaite = 0 et on charge la derniere sauvegarde
+						program_launched = SDL_FALSE;
 					}
 			
 					if((event.button.x > ACTION1_X_MIN && event.button.x < ACTION1_X_MAX)&&(event.button.y > ACTION1_Y_MIN && event.button.y < ACTION1_Y_MAX)&&status_menu == -1)

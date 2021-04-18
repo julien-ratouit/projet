@@ -79,28 +79,29 @@ int main (int argc, char ** argv)
 	ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 	param_t * parametre = malloc(sizeof(param_t));
-	parametre->temps_jeu = temps_jeu;
-	parametre->cd_action1 = cd_action1;
-	parametre->cd_action2 = cd_action2;
-	parametre->cd_action3 = cd_action3;
-	parametre->cd_action4 = cd_action4;
-	parametre->argent = argent;
-	parametre->nb_jour = 1;
-	parametre->val_depression = -5;
-	parametre->window = window;
-	parametre->renderer = renderer;
-	parametre->quitte = SDL_FALSE;
-	parametre->perdu = SDL_FALSE;
-
-	init_tab_action(action_equipe);
-	init_tab_action(liste_action);
-	liste_action[0]->equipe = 1;
-	liste_action[1]->equipe = 2;
-	liste_action[2]->equipe = 3;
-	liste_action[3]->equipe = 4;
+	
 	SDL_RenderPresent(renderer);
 	while(program_launched)
 	{
+		parametre->temps_jeu = temps_jeu;
+		parametre->cd_action1 = cd_action1;
+		parametre->cd_action2 = cd_action2;
+		parametre->cd_action3 = cd_action3;
+		parametre->cd_action4 = cd_action4;
+		parametre->argent = argent;
+		parametre->nb_jour = 1;
+		parametre->val_depression = -5;
+		parametre->window = window;
+		parametre->renderer = renderer;
+		parametre->quitte = SDL_FALSE;
+		parametre->perdu = SDL_FALSE;
+
+		init_tab_action(action_equipe);
+		init_tab_action(liste_action);
+		liste_action[0]->equipe = 1;
+		liste_action[1]->equipe = 2;
+		liste_action[2]->equipe = 3;
+		liste_action[3]->equipe = 4;
 		SDL_Event event;
 
 		while(SDL_PollEvent(&event))
