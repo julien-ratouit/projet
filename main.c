@@ -14,6 +14,7 @@
 #include "self.h"
 #include "salle_prof.h"
 #include "action.h"
+#include "save.h"
 /**
 * \brief fonction main.
 *
@@ -28,6 +29,9 @@
 int main (int argc, char ** argv)
 {
 	system("cls");
+
+	FILE * charge;
+
 	SDL_Window *window = NULL;
 	SDL_Renderer *renderer = NULL;
 
@@ -64,7 +68,13 @@ int main (int argc, char ** argv)
 
 	ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
 	ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
-	ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+
+	if(charge = fopen("save.txt","r")){
+
+		ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+		fclose(charge);
+	}
+		
 	ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
 	ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
@@ -122,7 +132,11 @@ int main (int argc, char ** argv)
 							parametre->nb_jour += 1;
 
 						}
-						//sauvegarde(parametre->argent, parametre->nb_jour, parametre-> ,parametre->,  )
+						printf("%i\n",parametre->perdu);
+						if(parametre->perdu == SDL_TRUE){
+							if(remove("save.txt") == 0)
+								printf("Réussite !\n");
+						}
 										
 
 						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
@@ -139,8 +153,44 @@ int main (int argc, char ** argv)
 
 					if((event.button.x < BTN_REP_X_MAX && event.button.x > BTN_REP_X_MIN)&&(event.button.y < BTN_REP_Y_MAX && event.button.y > BTN_REP_Y_MIN) && status_tuto == -1)
 					{
-						
+						if(charger(&(parametre->argent),&(parametre->nb_jour),liste_action,action_equipe)){
 
+							SDL_RenderClear(renderer);
+
+							while(!(parametre->quitte) && !(parametre->perdu))
+							{
+
+								if(!(parametre->quitte) && !(parametre->perdu))
+									lancement_matin(parametre);
+								if(!(parametre->quitte) && !(parametre->perdu))
+									lancement_self(parametre);
+								if(!(parametre->quitte) && !(parametre->perdu))
+									lancement_apremidi(parametre);
+								if(!(parametre->quitte) && !(parametre->perdu))
+									lancement_salle_prof(parametre);
+								parametre->nb_jour += 1;
+
+							}
+							printf("%i\n",parametre->perdu);
+							if(parametre->perdu == SDL_FALSE){
+								if(remove("save.txt") == 0)
+									printf("Réussite !\n");
+							}
+							
+
+							ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
+							ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+							ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+							ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
+							ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
+
+							parametre->quitte = SDL_FALSE;
+							parametre->perdu = SDL_FALSE;
+
+							SDL_RenderPresent(renderer);
+
+
+						}	
 					}
 
 

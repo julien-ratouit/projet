@@ -15,40 +15,43 @@
 * le nombre d'action achetées et des actions qui sont achetées et ensuite on sauvegarde leur emplacement dans la barre des actions.
 *  
 */
-void sauvegarde(int money, int jour,int nb_action, int action_achete[], int action_equipe[])
+void sauvegarde(int money, int jour, action_t * liste_action[], action_t * action_equipe[])
 {
     
     FILE * save;
     int i = 0;
-    printf("C'est bon ? \n");
+
+    int nb_action = 0;
+    while(liste_action[i]){
+        if(liste_action[i]->statut)
+            nb_action++;
+        i++;
+    }
+    i = 0;
     //Sauvegarde de la money et du jour
     save = fopen("save.txt","w"); 
     fprintf(save,"%i\n%i\n",money,jour);
-    printf("C'est bon 2? \n");
     //Sauvegarde du nombre d'action achetées
     fprintf(save,"%i ",nb_action);
-    printf("C'est bon 3? \n");
     //Sauvegarde de toute les actions achetées
     while(i < nb_action)
     {
-
-        fprintf(save,"%i ",action_achete[i]);
+        if(liste_action[i]->statut == true)
+            fprintf(save,"%i ",liste_action[i]->id);
         i++;
 
     }
     fprintf(save,"\n");
-    printf("C'est bon le retour \n");
 
     //Sauvegarde des 4 actions équipées (Si vide, écris -1)
     i = 0;
     while(i < 4)
     {
 
-        fprintf(save,"%i ",action_equipe[i]);
+        fprintf(save,"%i ",action_equipe[i]->id);
         i++; 
 
     }
-    printf("C'est bon encore :'() \n");
     fprintf(save,"\n");
     fclose(save);
 }
@@ -60,43 +63,50 @@ void sauvegarde(int money, int jour,int nb_action, int action_achete[], int acti
 * le nombre d'action achetées et des actions qui sont achetées et ensuite on charge leur emplacement dans la barre des actions.
 *  
 */
-int charger(int * money, int * jour, int * nb_action, int action_achete[], int action_equipe[])
+int charger(int * money, int * jour,  action_t * liste_action[], action_t * action_equipe[])
 {
 
     FILE * save;
     int i = 0;
     //Billy le dieu :OOOOO
     int billy;
+    int nb_action;
     //Ouvre le fichier en lecture, si il n'existe pas renvoie une erreur
     if(save = fopen("save.txt","r"))
     {
 
         //Recupere la money, le jour, et le nombre d'action achetées
         fscanf(save,"%i",money);
-        fscanf(save,"%i",jour);
-        fscanf(save,"%i",nb_action);
+        if((*money) != -1){ 
 
-        //Recupere les id des actions achetées
-       while(i < (*nb_action))
-       {
-           printf("i = %i\n",i);
-            fscanf(save,"%i",&billy); //On prend l'adresse de billy pour mettre un truc dedans
-            printf("%i\n",billy);
-            action_achete[i]=billy; 
-            i++;
+            fscanf(save,"%i",jour);
+            fscanf(save,"%i",&nb_action);
+
+            //Recupere les id des actions achetées
+            while(i < nb_action){
+
+                fscanf(save,"%i",&billy); //On prend l'adresse de billy pour mettre un truc dedans
+                liste_action[billy]->statut = true; 
+                i++;
+            }
+            i = 0;
+
+            //Recupere les id des actions équipées
+            while(i < 4){
+
+                fscanf(save,"%i",&billy);
+                action_equipe[i]= liste_action[billy];
+                i++;
+            }
+
+            return 1;
         }
-        i = 0;
+        else{
 
-        //Recupere les id des actions équipées
-        while(i < 4){
+            *money = 0;
+            return 0;
 
-            fscanf(save,"%i",&billy);
-            printf("%i\n",billy);
-            action_equipe[i]= billy;
-            i++;
         }
-
-        return 1;
 
     }
     else return 0;

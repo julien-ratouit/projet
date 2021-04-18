@@ -8,7 +8,7 @@
 #include "commun.h"
 #include "jeu_matin.h"
 #include "salle_prof.h"
-
+#include "save.h"
 
 /**
 * \brief fonction qui affiche des textures à l'ecran.
@@ -148,6 +148,7 @@ void lancement_salle_prof(param_t *parametre)
 						SDL_DestroyTexture(texture_mess);
 						SDL_DestroyTexture(texture_menu_info);
 						program_launched = SDL_FALSE;
+						sauvegarde(parametre->argent, (parametre->nb_jour)+1, liste_action, action_equipe);
 					}
 
 					if((event.button.x > BTN_SAVE_X_MIN && event.button.x < BTN_SAVE_X_MAX)&&(event.button.y > BTN_SAVE_Y_MIN && event.button.y < BTN_SAVE_Y_MAX) && statut_mess == 0 && statut_menu_act == 0)
@@ -157,6 +158,7 @@ void lancement_salle_prof(param_t *parametre)
 						printf("tu as clique sur le bouton save\n");
 						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
+						sauvegarde(parametre->argent, (parametre->nb_jour)+1, liste_action, action_equipe);
 					}
 					break;
 					
