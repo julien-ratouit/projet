@@ -110,16 +110,16 @@ extern void ajout_texture_non_centre(SDL_Texture *texture ,const char * lien_img
 */
 void aff_action(SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture_achat1, SDL_Texture *texture_achat2, SDL_Texture *texture_achat3, SDL_Texture *texture_achat4)
 {
-    if(action_equipe[0] != NULL)
+    if(action_equipe[0]->statut == true)
       ajout_texture_non_centre(texture_achat1, (action_equipe[0]->img_action_rond), renderer,window, ACTION1_HAUTEUR,ACTION1_LARGEUR);
 
-    if(action_equipe[1] != NULL)
+    if(action_equipe[1]->statut == true)
       ajout_texture_non_centre(texture_achat2, (action_equipe[1]->img_action_rond), renderer, window, ACTION2_HAUTEUR,  ACTION2_LARGEUR);
 
-    if(action_equipe[2] != NULL)
+    if(action_equipe[2]->statut == true)
       ajout_texture_non_centre(texture_achat3, (action_equipe[2]->img_action_rond), renderer, window, ACTION3_HAUTEUR , ACTION3_LARGEUR);
     
-    if(action_equipe[3] != NULL)
+    if(action_equipe[3]->statut == true)
       ajout_texture_non_centre(texture_achat4, (action_equipe[3]->img_action_rond), renderer, window, ACTION4_HAUTEUR, ACTION4_LARGEUR);
       
   SDL_RenderPresent(renderer);
