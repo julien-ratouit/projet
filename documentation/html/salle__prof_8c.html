@@ -71,9 +71,10 @@ $(function() {
 
 <p>Ensemble de fonction qui gère la salle des profs.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;commun.h&quot;</code><br />
-<code>#include &quot;jeu_matin.h&quot;</code><br />
-<code>#include &quot;salle_prof.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;../include/commun.h&quot;</code><br />
+<code>#include &quot;../include/jeu_matin.h&quot;</code><br />
+<code>#include &quot;../include/salle_prof.h&quot;</code><br />
+<code>#include &quot;../include/save.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
@@ -142,7 +143,7 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>fonction qui gère la salle des profs. </p>
-<p>Dans cette fonction nous regardons ou est-ce que le joueur clique, si il clique sur un ordinateur alors on ouvre lance la fonction <em>menu_action</em>, au contraire si il décide de lancer une nouvelle journée alors on relance le programme et pour finir si il décide de sauvegarder alors on sauvegarde et on revient à la page principal.</p>
+<p>Dans cette fonction nous regardons ou est-ce que le joueur clique, si il clique sur un ordinateur alors on lance la fonction <em>menu_action</em>, au contraire si il décide de lancer une nouvelle journée alors on relance le programme et pour finir si il décide de sauvegarder alors on sauvegarde et on revient à la page principal.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">statut_mess</td><td>est une valeur de type <em>int</em> qui permet de savoir si oui ou non le message de début est ouvert ou pas, si oui alors sa valeur est 1 sinon 0. </td></tr>

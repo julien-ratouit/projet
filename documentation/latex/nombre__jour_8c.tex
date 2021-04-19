@@ -1,0 +1,40 @@
+\hypertarget{nombre__jour_8c}{}\doxysection{Référence du fichier nombre\+\_\+jour.\+c}
+\label{nombre__jour_8c}\index{nombre\_jour.c@{nombre\_jour.c}}
+
+
+Cette fonction permet de gerer l\textquotesingle{}affichage du numéros du jour.  
+
+
+{\ttfamily \#include \char`\"{}../include/commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/nombre\+\_\+jour.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{nombre__jour_8c_acee60aa5700f336f290ab26f85ae1fc4}{affiche\+\_\+nb\+\_\+jour}} (SDL\+\_\+\+Window $\ast$window, SDL\+\_\+\+Renderer $\ast$renderer, int nb\+\_\+jour)
+\begin{DoxyCompactList}\small\item\em Affiche le numéros du jour en jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Cette fonction permet de gerer l\textquotesingle{}affichage du numéros du jour. 
+
+On utilise cette fonction pour afficher le numeros du jour en temps réel dans le jeu. \begin{DoxyAuthor}{Auteur}
+Quenault Maxime 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{nombre__jour_8c_acee60aa5700f336f290ab26f85ae1fc4}\label{nombre__jour_8c_acee60aa5700f336f290ab26f85ae1fc4}} 
+\index{nombre\_jour.c@{nombre\_jour.c}!affiche\_nb\_jour@{affiche\_nb\_jour}}
+\index{affiche\_nb\_jour@{affiche\_nb\_jour}!nombre\_jour.c@{nombre\_jour.c}}
+\doxysubsubsection{\texorpdfstring{affiche\_nb\_jour()}{affiche\_nb\_jour()}}
+{\footnotesize\ttfamily void affiche\+\_\+nb\+\_\+jour (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{nb\+\_\+jour }\end{DoxyParamCaption})}
+
+
+
+Affiche le numéros du jour en jeu. 
+
+Dans un premier temps, on récupère le numéros du jour en paramètre. On considère que notre jeu ne permettera pas de dépasser les 99 jours, donc on calcule une dizaine et une unité seulement. C\textquotesingle{}est à ce moment là qu\textquotesingle{}on affiche à l\textquotesingle{}ecrans le bon chiffre à la bonne place (même procédé que dans \mbox{\hyperlink{argent_8c}{argent.\+c}}).
+
+\begin{DoxyReturn}{Renvoie}
+On return aucunes valeur, cette fonction ne fait que de l\textquotesingle{}affichage. 
+\end{DoxyReturn}

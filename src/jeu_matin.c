@@ -16,6 +16,7 @@
 #define TEMPS_COUR 15000
 
 /**
+* \fn void lancement_matin(param_t * parametre)
 * \brief Fonction qui s'occupe du cours du matin.
 * 
 * \details Lorsque cette fonction est lancé, plusieurs variables et textures sont créées. Le programme va egalement lancé 5 timer qui s'occuperont du déroulement du jeu. Une fois les timers
