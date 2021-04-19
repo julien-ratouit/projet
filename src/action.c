@@ -11,7 +11,10 @@
 #include "../include/texture_sdp.h"
 
 
-//Constantes renvoyer quand on clique sur les emplacement d'équipement respectifs
+/**
+* \param EQUIP_X sont des macros qui permettent de retourner une valeur lors d'un clique
+* \param QUITTE_X sont des macros qui permettent de retourner une valeur lors d'un clique
+*/
 #define EQUIP_1 -1
 #define EQUIP_2 -2
 #define EQUIP_3 -3
@@ -25,7 +28,7 @@
 /**
 * \brief Affiche la barre contenant les actions
 * 
-* \details On commence par afficher le fond de la barre et ensuite on affiche les actions en fonction de leur état, si elles sont acheté ou non. 
+* \details On commence par afficher le fond de la barre et ensuite on affiche les actions en fonction de leur état, si elles sont achetés ou non. 
 * \param action_equipe est le tableau contenant l'ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.
 * \return La fonction ne return aucune valeurs, elle ne fait que de l'affichage
 *  
@@ -55,7 +58,6 @@ void affiche_barre_action(param_t *parametre)
 * 
 * \details On commence par afficher le fond du tableau contenant toutes les actions achetés pour ensuite les achiffer sous forme de liste, à ne pas confondre avec 
 * \a affiche_barre_action car ici on affiche sous forme de liste alors que dans \a affiche_barre_action on affiche sous forme d'icone. 
-* \param action_equipe[] action_equipe est le tableau contenant l'ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.
 *
 * \return La fonction ne return aucune valeurs, elle ne fait que de l'affichage
 *  
@@ -95,6 +97,14 @@ void affiche_menu_action(param_t *parametre){
 * \brief Initialise les informations d'une action
 * 
 * \details Ici, on va initialiser les informations pour chaque action en \a static pour ne pas qu'elle se retrouve modifer dans la fonction main. 
+*
+* \param id correspond à sont emplacement dans le tableau des actions
+* \param prix est un entier qui represente sont prix
+* \param statut est un boolean qui permet de savoir si l'action est acheté ou non
+* \param equipe est un entier qui prend comme valeur sa place dans le tableau \a action_equipe
+* \param cd est un entier qui represente le temps d'attente entre chaque utilisation de l'action en jeu
+* \param action_realise est un pointeur sur fonction qui pointe sur une fonction qui agit sur le jeu (reduire la barre sonore par exemple)
+* \param img_action_X sont des liens pour récupérer les images approprié pour l'appropriés pour l'affichage
 *
 * \return On return un \a action_t qui est notre action initialisé.
 *  
@@ -137,7 +147,7 @@ extern void init_tab_action(action_t * tab[])
 * \brief Attend un clic du joueur
 * 
 * \details Ici, la fonction va attendre un clic du joueur, elle va permettre de modifier l'emplacement des actions achetés par le joueur. Quand le joueur
-*  clic sur une action alors la fonction renvoie l'id de l'action allant de 0 à 4 (sa position dans le tableau)
+*  clic sur une action alors la fonction renvoie l'id de l'action allant de 1 à 4 (sa position dans le tableau)
 *  ou alors, si le joueur clic sur un emplacement alors la fonction renvoie le numéros de l'emplacement en valeur negative allant de -1 à -4.
 *
 * \return On return soit le numero de l'emplacement, l'id de l'action ou une valeur indiquant que l'on quitte le menu.
@@ -205,7 +215,7 @@ extern int clic_choix_sdp(){
 * \details Si le joueur clic sur une action la fonction se lance et regarde la somme d'argent du joueur. Si la somme en question est assez grande alors l'action change de statut est
 * devient acheté, or, si la somme n'est pas assez grande rien ne se passe.
 *
-* \return On return un \a int qui défini si oui ou non l'action à changé de statut.
+* \return On return un \a int qui défini la somme d'argent restant au joueur.
 *  
 */
 extern int achat_action(action_t *action, int argent)
@@ -343,31 +353,53 @@ extern int menu_action(action_t * tab_equipe[4], action_t * tab_action[],param_t
 
 }
 
-
-
-//fonctions d'action, leurs but est d'agire sur la barre d'agitation ou de depression en fonction de l'action choisi.
-/*----------------------------------------------------------*/
+/**
+* \brief Fonction pointé par l'action 1
+* 
+* \details Cette fonction va reduire la barre sonore de 20 pixels une fois utilisé.
+*  
+*/
 void fonc_action_1 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
 	update_barre_sonore(parametre->renderer, barre_sonore, -20);
 }
 
+
+/**
+* \brief Fonction pointé par l'action 2
+* 
+* \details Cette fonction va reduire la barre de depression de 20 pixels une fois utilisé.
+*  
+*/
 void fonc_action_2 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
 	update_barre_depression(parametre->renderer, barre_depression, barre_sonore, -20);
 }
 
+
+/**
+* \brief Fonction pointé par l'action 3
+* 
+* \details Cette fonction va reduire la barre sonore de 40 pixels une fois utilisé.
+*  
+*/
 void fonc_action_3 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
 	update_barre_sonore(parametre->renderer, barre_sonore, -40);
 }
 
+
+/**
+* \brief Fonction pointé par l'action 4
+* 
+* \details Cette fonction va reduire la barre de depression de 40 pixels une fois utilisé.
+*  
+*/
 void fonc_action_4 (param_t *parametre, SDL_Rect *barre_sonore, SDL_Rect *barre_depression)
 {
 	update_barre_depression(parametre->renderer, barre_depression, barre_sonore, -40);
 }
 
-/*----------------------------------------------------------*/
 
 //PHASE DE TEST du boss
 /* Je suis une merde ça fonctionne pas si j'ai pas d'interface XDD

@@ -1,8 +1,7 @@
 /**
 * \file jeu_matin.c
-* \brief Cette ensemble de fonction agit sur le cours du matin.
-* \details On utilise cet ensemble de fonction lorsque le joueur commence le cour du matin, elle permet d'envoyer le joueur
-* au moment voulut dans le self.
+* \brief Cette fonction agit sur le cours du matin.
+* \details On utilise cette fonction lorsque le joueur commence le cours du matin ou le cours de l'après-midi.
 * \author Quenault Maxime, Renoit Charles
 */
 
@@ -19,13 +18,17 @@
 /**
 * \brief Fonction qui s'occupe du cours du matin.
 * 
-* \details Lorsque cette fonction est lancé, un thread est lancé au même moment, ce dernier execute la fonction \a fonc_pthread_timer1. Le but de la fonction est de rendre le jeu 
-* jouable, nous avons donc l'ajout de toute les textures necessaire au bon déroulement du jeu. Le switch est là pour regarder le clic du joueur, à partir de là le joueur à
-* plusieurs possibilité, mettre en pause le jeu ou appuyer sur une action. Pendant ce temps nous avons la barre sonore qui augmente et la barre de depression qui augmente selon la
-* barre sonore.
+* \details Lorsque cette fonction est lancé, plusieurs variables et textures sont créées. Le programme va egalement lancé 5 timer qui s'occuperont du déroulement du jeu. Une fois les timers
+* lancés on entre dans une boucle while qui s'arrêtera seulement si le joueur quitte la partie ou si il perd le jeu. C'est dans cette boucle que l'ont effectue une misa à jour aléatoire de la barre
+* sonore et de la barre de depression, une augmentation aléatoire qui utilise le numéros du jour pour que le jeu devienne de plus en plus dure. Nous avons ensuite une grande partie (ligne 157-346)
+* qui permet d'afficher les 10 dernières secondes au joueurs, cela lui permet d'avoir une petite idée du temps qu'il lui reste. Juste en dessous, nous avons un ensemble de if() qui permettent
+* de changer les texture des boutons d'actions ne fonction de la veleur des couldown (gerer par les timers cd_actionX). Une fois tout cela effectué, nous entrons dans une seconde boucle while
+* qui elle à pour objectif d'attendre un clique de la part du joueur et d'agire de la bonne manière. 
 *
 * \param statut_menu est un valeur qui permet de savoir si oui ou non le menu pause est afficher à l'ecran, si c'est le cas alors le joueur peut cliquer sur reprendre ou quitter,
-* alors que si ce n'est pas le cas alors le joueur ne pourra pas y avoir accés.
+* dans le cas contraire le joueur ne pourra pas y avoir accés.
+* \param cd_actionX sont des timers qui permettent de vérifier le couldown de chaque action. Si le timer 1 est inferieur au couldown de l'action 1 alors l'action enquestion est inutilisable.
+* \param temps_jeu est un timer qui permet de verifier le temps du jeu, si on le definit à 15 000 alors le joueur devra rester en jeu pendant 15s.
 *
 */
 

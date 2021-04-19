@@ -1,7 +1,7 @@
 /**
 * \file fonction.c
 * \brief Ce programme rassemble quelques fonctions.
-* \details On utilise ce programme pour définir des fonctions utile dans tout le programme.
+* \details On utilise ce fichier pour définir des fonctions utile dans tout le programme.
 * \author Vallet Guillaume, Quenault Maxime, Renoit Charles
 */
 
@@ -123,17 +123,5 @@ void aff_action(SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture
       ajout_texture_non_centre(texture_achat4, (action_equipe[3]->img_action_rond), renderer, window, ACTION4_HAUTEUR, ACTION4_LARGEUR);
       
   SDL_RenderPresent(renderer);
-}
-
-
-/**
-* \brief à définir
-* 
-* \details à définir
-*  
-*/
-extern int press_action(SDL_Renderer *renderer, int num_action){
-  int i = -50;
-  return i;
 }
 

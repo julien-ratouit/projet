@@ -31,7 +31,7 @@ void aff_texture_sp(param_t *parametre, SDL_Texture *texture_prof)
 /**
 * \brief fonction qui gère la salle des profs.
 *
-* \details Dans cette fonction nous regardons ou est-ce que le joueur clique, si il clique sur un ordinateur alors on ouvre lance la fonction \a menu_action, au contraire si
+* \details Dans cette fonction nous regardons ou est-ce que le joueur clique, si il clique sur un ordinateur alors on lance la fonction \a menu_action, au contraire si
 * il décide de lancer une nouvelle journée alors on relance le programme et pour finir si il décide de sauvegarder alors on sauvegarde et on revient à la page principal.
 * 
 * \param statut_mess est une valeur de type \a int qui permet de savoir si oui ou non le message de début est ouvert ou pas, si oui alors sa valeur est 1 sinon 0.

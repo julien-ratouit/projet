@@ -71,8 +71,7 @@ extern void init_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre, int v
 * 
 * \details Cette fonction va augmenter la hauteur du rectangle coloré en prenant comme paramètre un score qui agit sur la valeur d'augmentation.
 *  
-* \param tempo
-* \param score
+* \param score est un entier qui represente la hauteur d'evolution de la barre, si c'est une valeur negative alors la barre diminue et inversement.
 */
 extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int score){
   int tempo = 0;
@@ -130,8 +129,7 @@ extern void update_barre_sonore(SDL_Renderer *renderer, SDL_Rect *barre, int sco
 * 
 * \details Cette fonction va augmenter la hauteur du rectangle coloré en prenant comme paramètre un score qui agit sur la valeur d'augmentation.
 *  
-* \param tempo
-* \param score
+* \param score est un entier qui represente la hauteur d'evolution de la barre, si c'est une valeur negative alors la barre diminue et inversement.
 */
 extern void update_barre_depression(SDL_Renderer *renderer, SDL_Rect *barre_depression, SDL_Rect *barre_sonore, int score){
   int tempo = 0;

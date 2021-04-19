@@ -1,7 +1,24 @@
+/**
+* \file nombre_jour.c
+* \brief Cette fonction permet de gerer l'affichage du numéros du jour
+* \details On utilise cette fonction pour afficher le numeros du jour en temps réel dans le jeu.
+* \author Quenault Maxime
+*/
+
 #include "../include/commun.h"
 #include "../include/nombre_jour.h"
 
 
+
+/**
+* \brief Affiche le numéros du jour en jeu
+* 
+* \details Dans un premier temps, on récupère le numéros du jour en paramètre. On considère que notre jeu ne permettera pas de dépasser les 99 jours, donc on calcule une dizaine et une unité seulement.
+* C'est à ce moment là qu'on affiche à l'ecrans le bon chiffre à la bonne place (même procédé que dans argent.c).
+*
+* \return On return aucunes valeur, cette fonction ne fait que de l'affichage.
+*  
+*/
 void affiche_nb_jour(SDL_Window *window, SDL_Renderer *renderer, int nb_jour)
 {
 
