@@ -230,14 +230,12 @@ extern int achat_action(action_t *action, int argent)
 		return argent;
 }
 
-//Ajoutez un bouton Equiper pour lancer la fonction
-//Equipe une action si elle est acheté et si elle n'est pas déjà équipé
 /**
 * \brief Equipe une action
 * 
-* \details à remplir
+* \details Equipe une action a l'emplacement sélectionner si elle est acheté, sinon l'achete et relance le processus d'achat
 *
-* \return à remplir
+* \return Une valeur de sortie pour quitter la boucle de menu_action
 *  
 */
 extern int equipe_action(int place, int  argent, action_t * tab_equipe[4], action_t * tab_action[],param_t *parametre, SDL_Texture *texture_prof){

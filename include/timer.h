@@ -1,7 +1,11 @@
 #ifndef _TIMER_H_
 #define _TIMER_H_
 
-//Le Timer
+/**
+* \struct Timer_t Permet de définir l'ensemble des élément que contient un timer. Nous y trouvons
+* deux entier pour récupérer le tick du début et le tick de fin, ensuite deux varaible de type bool pour savoir si le timer est en route ou pas
+* et pour finir un ensemble de pointeur sur une fonction qui permet d'agir sur le timer.
+*/
 typedef struct Timer_s{
 
     //Initialise les variables-----------------------------------------
