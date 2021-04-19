@@ -12,8 +12,8 @@
 #include "../include/self.h"
 #include <time.h>
 
-#define VITESSE_BARRES 10
-#define TEMPS_COUR 10000
+#define VITESSE_BARRES 1
+#define TEMPS_COUR 30000
 
 /**
 * \fn void lancement_matin(param_t * parametre)
