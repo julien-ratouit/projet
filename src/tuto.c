@@ -26,7 +26,7 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 	SDL_Texture *texture_tuto = NULL;
 	SDL_bool program_launched = SDL_TRUE; 
 	
-	ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR);
+	ajout_texture(texture_tuto ,"images/tuto1-600-900.png" , renderer, window, HAUTEUR , LARGEUR);
 	SDL_RenderPresent(renderer);
 
 	while(program_launched)
@@ -53,9 +53,9 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 
 							switch(page)
 							{
-								case 1:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
-								case 2:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
-								case 3:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
+								case 1:ajout_texture(texture_tuto ,"images/tuto1-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
+								case 2:ajout_texture(texture_tuto ,"images/tuto2-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
+								case 3:ajout_texture(texture_tuto ,"images/tuto3-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
 								default: program_launched = SDL_FALSE;
 							}
 
@@ -71,9 +71,9 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 
 							switch(page)
 							{
-								case 1:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
-								case 2:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
-								case 3:ajout_texture(texture_tuto ,"images/tuto-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
+								case 1:ajout_texture(texture_tuto ,"images/tuto1-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
+								case 2:ajout_texture(texture_tuto ,"images/tuto2-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
+								case 3:ajout_texture(texture_tuto ,"images/tuto3-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
 								default: printf("ça a bugué\n"); break;
 							}
 
