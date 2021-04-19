@@ -41,7 +41,7 @@ void aff_texture_sp(param_t *parametre, SDL_Texture *texture_prof)
 void lancement_salle_prof(param_t *parametre)
 {
 
-	(parametre->argent) += 5;
+	(parametre->argent) = (parametre->argent) + 3 + (parametre->nb_jour);
 
 	SDL_Texture *texture_prof = NULL;
 	SDL_Texture *texture_mess = NULL;

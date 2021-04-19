@@ -57,7 +57,7 @@ int main (int argc, char ** argv)
 
 
 	int status_tuto = -1;
-	int argent = 200;
+	int argent = 5;
 
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 		SDL_ExitWithError("Initialisation SDL");
@@ -99,9 +99,9 @@ int main (int argc, char ** argv)
 		init_tab_action(action_equipe);
 		init_tab_action(liste_action);
 		liste_action[0]->equipe = 1;
-		liste_action[1]->equipe = 2;
-		liste_action[2]->equipe = 3;
-		liste_action[3]->equipe = 4;
+		liste_action[1]->equipe = 0;
+		liste_action[2]->equipe = 0;
+		liste_action[3]->equipe = 0;
 		
 		SDL_Event event;
 
@@ -155,6 +155,8 @@ int main (int argc, char ** argv)
 
 					if((event.button.x < BTN_REP_X_MAX && event.button.x > BTN_REP_X_MIN)&&(event.button.y < BTN_REP_Y_MAX && event.button.y > BTN_REP_Y_MIN) && status_tuto == -1)
 					{
+						//si on clique sur reprendre
+
 						if(charger(&(parametre->argent),&(parametre->nb_jour),liste_action,action_equipe)){
 
 							SDL_RenderClear(renderer);
