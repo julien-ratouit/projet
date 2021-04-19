@@ -1,0 +1,171 @@
+\hypertarget{timer_8c}{}\doxysection{Référence du fichier timer.\+c}
+\label{timer_8c}\index{timer.c@{timer.c}}
+
+
+Ce fichier permet de répertorier toutes les actions qu\textquotesingle{}un timer peut faire.  
+
+
+{\ttfamily \#include \char`\"{}../include/commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/timer.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{timer_8c_abec69bdfb8f334d21d94a24e541d7f57}{timer\+\_\+debut}} (\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$Timer)
+\begin{DoxyCompactList}\small\item\em Démarre le timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timer_8c_a69e9857a57531f13876a7b3bb2e80d07}{timer\+\_\+stop}} (\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$Timer)
+\begin{DoxyCompactList}\small\item\em Arrête définitivement le timer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{timer_8c_a964fd486ad795ff88fe3ac6696f1cb4b}{timer\+\_\+get\+\_\+ticks}} (\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$Timer)
+\begin{DoxyCompactList}\small\item\em Donne le temps depuis lequel le timer a démarrer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timer_8c_aef9558e13e490a24db58bd598ba10b35}{timer\+\_\+pause}} (\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$Timer)
+\begin{DoxyCompactList}\small\item\em Mets le timer en pause. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timer_8c_acf20364b8ce95a92aa171d412c2fd5b9}{timer\+\_\+unpause}} (\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$Timer)
+\begin{DoxyCompactList}\small\item\em Dépause le timer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{timer_8c_a0f76c6ea10a9b34867485fb41331f4a8}{timer\+\_\+is\+\_\+started}} (\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$Timer)
+\begin{DoxyCompactList}\small\item\em Regarde si le timer a démarrer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{timer_8c_ae444d7cf60fa914af500267e70b10b1c}{timer\+\_\+is\+\_\+paused}} (\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$Timer)
+\begin{DoxyCompactList}\small\item\em Regarde si le timer est en pause. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$ \mbox{\hyperlink{timer_8c_a7e16420faabcc40b9d1fdff7f5107518}{timer\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initialise le timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce fichier permet de répertorier toutes les actions qu\textquotesingle{}un timer peut faire. 
+
+On utilise ce programme pour calculer depuis combien de temps la partie ou une action est lancé. \begin{DoxyAuthor}{Auteur}
+Vallet Guillaume 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{timer_8c_abec69bdfb8f334d21d94a24e541d7f57}\label{timer_8c_abec69bdfb8f334d21d94a24e541d7f57}} 
+\index{timer.c@{timer.c}!timer\_debut@{timer\_debut}}
+\index{timer\_debut@{timer\_debut}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_debut()}{timer\_debut()}}
+{\footnotesize\ttfamily void timer\+\_\+debut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$}]{Timer }\end{DoxyParamCaption})}
+
+
+
+Démarre le timer. 
+
+Initialise les valeurs du timer pour lancer. 
+\begin{DoxyParams}{Paramètres}
+{\em Le} & timer a lancer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{timer_8c_a964fd486ad795ff88fe3ac6696f1cb4b}\label{timer_8c_a964fd486ad795ff88fe3ac6696f1cb4b}} 
+\index{timer.c@{timer.c}!timer\_get\_ticks@{timer\_get\_ticks}}
+\index{timer\_get\_ticks@{timer\_get\_ticks}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_ticks()}{timer\_get\_ticks()}}
+{\footnotesize\ttfamily int timer\+\_\+get\+\_\+ticks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$}]{Timer }\end{DoxyParamCaption})}
+
+
+
+Donne le temps depuis lequel le timer a démarrer. 
+
+Si le timer est en pause, ne donne rien. 
+\begin{DoxyParams}{Paramètres}
+{\em Le} & timer a observer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le temps depuis lequel le timer a commencé en entier 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timer_8c_a7e16420faabcc40b9d1fdff7f5107518}\label{timer_8c_a7e16420faabcc40b9d1fdff7f5107518}} 
+\index{timer.c@{timer.c}!timer\_init@{timer\_init}}
+\index{timer\_init@{timer\_init}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_init()}{timer\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}}$\ast$ timer\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise le timer. 
+
+Fait un malloc et initialise tout les paramètres du timer pour qu\textquotesingle{}il soit opérationelle 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur timer\+\_\+t pour pouvoir ensuite affecter ce pointeur a une variable de type timer\+\_\+t $\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timer_8c_ae444d7cf60fa914af500267e70b10b1c}\label{timer_8c_ae444d7cf60fa914af500267e70b10b1c}} 
+\index{timer.c@{timer.c}!timer\_is\_paused@{timer\_is\_paused}}
+\index{timer\_is\_paused@{timer\_is\_paused}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_is\_paused()}{timer\_is\_paused()}}
+{\footnotesize\ttfamily bool timer\+\_\+is\+\_\+paused (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$}]{Timer }\end{DoxyParamCaption})}
+
+
+
+Regarde si le timer est en pause. 
+
+Donne l\textquotesingle{}état du timer. 
+\begin{DoxyParams}{Paramètres}
+{\em Le} & timer a observer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un booléen qui dit si le timer est en pause. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timer_8c_a0f76c6ea10a9b34867485fb41331f4a8}\label{timer_8c_a0f76c6ea10a9b34867485fb41331f4a8}} 
+\index{timer.c@{timer.c}!timer\_is\_started@{timer\_is\_started}}
+\index{timer\_is\_started@{timer\_is\_started}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_is\_started()}{timer\_is\_started()}}
+{\footnotesize\ttfamily bool timer\+\_\+is\+\_\+started (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$}]{Timer }\end{DoxyParamCaption})}
+
+
+
+Regarde si le timer a démarrer. 
+
+Donne l\textquotesingle{}état du timer. 
+\begin{DoxyParams}{Paramètres}
+{\em Le} & timer a observer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un booléen qui dit si le timer est lancer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timer_8c_aef9558e13e490a24db58bd598ba10b35}\label{timer_8c_aef9558e13e490a24db58bd598ba10b35}} 
+\index{timer.c@{timer.c}!timer\_pause@{timer\_pause}}
+\index{timer\_pause@{timer\_pause}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_pause()}{timer\_pause()}}
+{\footnotesize\ttfamily void timer\+\_\+pause (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$}]{Timer }\end{DoxyParamCaption})}
+
+
+
+Mets le timer en pause. 
+
+Initialise le tick\+\_\+pause du timer au tick du lancement de la fonction pour savoir quand le timer a été mis en pause 
+\begin{DoxyParams}{Paramètres}
+{\em Le} & timer a pauser \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{timer_8c_a69e9857a57531f13876a7b3bb2e80d07}\label{timer_8c_a69e9857a57531f13876a7b3bb2e80d07}} 
+\index{timer.c@{timer.c}!timer\_stop@{timer\_stop}}
+\index{timer\_stop@{timer\_stop}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_stop()}{timer\_stop()}}
+{\footnotesize\ttfamily void timer\+\_\+stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$}]{Timer }\end{DoxyParamCaption})}
+
+
+
+Arrête définitivement le timer. 
+
+Mets le timer en arrêt en mettant ses bool en false 
+\begin{DoxyParams}{Paramètres}
+{\em Le} & timer a stoppé \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{timer_8c_acf20364b8ce95a92aa171d412c2fd5b9}\label{timer_8c_acf20364b8ce95a92aa171d412c2fd5b9}} 
+\index{timer.c@{timer.c}!timer\_unpause@{timer\_unpause}}
+\index{timer\_unpause@{timer\_unpause}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_unpause()}{timer\_unpause()}}
+{\footnotesize\ttfamily void timer\+\_\+unpause (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_timer__t}{Timer\+\_\+t}} $\ast$}]{Timer }\end{DoxyParamCaption})}
+
+
+
+Dépause le timer. 
+
+Dépause le timer en enlevant l\textquotesingle{}état de pause et en remettant le tick\+\_\+debut a une valeur qui permettent de redonner le même temps avant la pause 
+\begin{DoxyParams}{Paramètres}
+{\em Le} & timer a dépauser \\
+\hline
+\end{DoxyParams}

@@ -5,13 +5,14 @@
 Ce programme permet de gerer les actions possibles lors de la partie.  
 
 
-{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}texture\+\_\+sdp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/barre.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/salle\+\_\+prof.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/texture\+\_\+sdp.\+h\char`\"{}}\newline
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{action_8c_af2c6fe436cc665fcfa139caabcbc51f0}\label{action_8c_af2c6fe436cc665fcfa139caabcbc51f0}} 
-\#define {\bfseries EQUIP\+\_\+1}~-\/1
+\#define \mbox{\hyperlink{action_8c_af2c6fe436cc665fcfa139caabcbc51f0}{EQUIP\+\_\+1}}~-\/1
 \item 
 \mbox{\Hypertarget{action_8c_af332fc708e4510410122eda1ecc932de}\label{action_8c_af332fc708e4510410122eda1ecc932de}} 
 \#define {\bfseries EQUIP\+\_\+2}~-\/2
@@ -35,30 +36,26 @@ void \mbox{\hyperlink{action_8c_a55f5b5abd046d56ede5104c175703137}{affiche\+\_\+
 \begin{DoxyCompactList}\small\item\em Affiche la barre contenant les actions. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{action_8c_a33035beb077886b92848a817e9d9a462}{affiche\+\_\+menu\+\_\+action}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
 \begin{DoxyCompactList}\small\item\em Affiche le menu des actions. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$ \mbox{\hyperlink{action_8c_a988c4693604b8de8c059d66b907c667e}{init\+\_\+action}} (int id, int prix, int cd, void($\ast$fonction)(int), const char $\ast$lien\+\_\+img\+\_\+rect, const char $\ast$lien\+\_\+img\+\_\+rond)
+\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$ \mbox{\hyperlink{action_8c_a2c3f314017f680cf322ba6c996f8eec9}{init\+\_\+action}} (int id, int prix, int cd, void($\ast$fonction)(\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$, SDL\+\_\+\+Rect $\ast$, SDL\+\_\+\+Rect $\ast$), const char $\ast$lien\+\_\+img\+\_\+rect, const char $\ast$lien\+\_\+img\+\_\+rond, const char $\ast$lien\+\_\+img\+\_\+flou)
 \begin{DoxyCompactList}\small\item\em Initialise les informations d\textquotesingle{}une action. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{action_8c_a4fffaec588d3c774a87de28874b16164}{init\+\_\+tab\+\_\+action}} (\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Initialise un tableau d\textquotesingle{}action. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{action_8c_a18ebe4fff4d6489829a028c7d3453b16}{clic\+\_\+choix\+\_\+sdp}} ()
 \begin{DoxyCompactList}\small\item\em Attend un clic du joueur. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{action_8c_a0a6810fc16bbe576854ad58cfba1782e}{achat\+\_\+action}} (\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$action, int $\ast$argent)
+int \mbox{\hyperlink{action_8c_a5817d6f4e967e5a43c005c667029e326}{achat\+\_\+action}} (\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$action, int argent)
 \begin{DoxyCompactList}\small\item\em Modifie le statut d\textquotesingle{}une action. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{action_8c_ae43587462fc34f5e07c37ebf7c72618e}{equipe\+\_\+action}} (int place, int $\ast$argent, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+int \mbox{\hyperlink{action_8c_ab35fdf6580b3f66a61451f70e382519e}{equipe\+\_\+action}} (int place, int argent, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre, SDL\+\_\+\+Texture $\ast$texture\+\_\+prof)
 \begin{DoxyCompactList}\small\item\em Equipe une action. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{action_8c_a245ff95c6a3a42e0f00372cdafabde72}{menu\+\_\+action}} (int $\ast$argent, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre)
+int \mbox{\hyperlink{action_8c_aa317e26df3b995b37504df41118b042c}{menu\+\_\+action}} (\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+equipe\mbox{[}4\mbox{]}, \mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$tab\+\_\+action\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre, SDL\+\_\+\+Texture $\ast$texture\+\_\+prof)
 \begin{DoxyCompactList}\small\item\em Fonction principale des actions. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{action_8c_a99bb2462f2184ea2da9e751690e13898}\label{action_8c_a99bb2462f2184ea2da9e751690e13898}} 
-void {\bfseries fonc\+\_\+action\+\_\+1} (int jour)
-\item 
-\mbox{\Hypertarget{action_8c_a8a570a35567063a7a66c4298f240dd21}\label{action_8c_a8a570a35567063a7a66c4298f240dd21}} 
-void {\bfseries fonc\+\_\+action\+\_\+2} (int jour)
-\item 
-\mbox{\Hypertarget{action_8c_a9d59e17983e74567b7a725e566a88840}\label{action_8c_a9d59e17983e74567b7a725e566a88840}} 
-void {\bfseries fonc\+\_\+action\+\_\+3} (int jour)
-\item 
-\mbox{\Hypertarget{action_8c_a333d4f6d90abb819d39752ff82cb79f3}\label{action_8c_a333d4f6d90abb819d39752ff82cb79f3}} 
-void {\bfseries fonc\+\_\+action\+\_\+4} (int jour)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{action_8c_ac247ba7bdc213d1c9761f9ea308bb312}{fonc\+\_\+action\+\_\+1}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre, SDL\+\_\+\+Rect $\ast$barre\+\_\+sonore, SDL\+\_\+\+Rect $\ast$barre\+\_\+depression)
+\begin{DoxyCompactList}\small\item\em Fonction pointé par l\textquotesingle{}action 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{action_8c_ae22a6dc92e6f5c963646ec7bcc1f6b44}{fonc\+\_\+action\+\_\+2}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre, SDL\+\_\+\+Rect $\ast$barre\+\_\+sonore, SDL\+\_\+\+Rect $\ast$barre\+\_\+depression)
+\begin{DoxyCompactList}\small\item\em Fonction pointé par l\textquotesingle{}action 2. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{action_8c_a753275c652b3747cdb22c4c152ad79f4}{fonc\+\_\+action\+\_\+3}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre, SDL\+\_\+\+Rect $\ast$barre\+\_\+sonore, SDL\+\_\+\+Rect $\ast$barre\+\_\+depression)
+\begin{DoxyCompactList}\small\item\em Fonction pointé par l\textquotesingle{}action 3. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{action_8c_a3c726ae404f552deba4b82f2cdac9635}{fonc\+\_\+action\+\_\+4}} (\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$parametre, SDL\+\_\+\+Rect $\ast$barre\+\_\+sonore, SDL\+\_\+\+Rect $\ast$barre\+\_\+depression)
+\begin{DoxyCompactList}\small\item\em Fonction pointé par l\textquotesingle{}action 4. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
@@ -69,12 +66,28 @@ Vallet Guillaume
 \end{DoxyAuthor}
 
 
+\doxysubsection{Documentation des macros}
+\mbox{\Hypertarget{action_8c_af2c6fe436cc665fcfa139caabcbc51f0}\label{action_8c_af2c6fe436cc665fcfa139caabcbc51f0}} 
+\index{action.c@{action.c}!EQUIP\_1@{EQUIP\_1}}
+\index{EQUIP\_1@{EQUIP\_1}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{EQUIP\_1}{EQUIP\_1}}
+{\footnotesize\ttfamily \#define EQUIP\+\_\+1~-\/1}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em EQUIP\+\_\+X} & sont des macros qui permettent de retourner une valeur lors d\textquotesingle{}un clique \\
+\hline
+{\em QUITTE\+\_\+X} & sont des macros qui permettent de retourner une valeur lors d\textquotesingle{}un clique \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{action_8c_a0a6810fc16bbe576854ad58cfba1782e}\label{action_8c_a0a6810fc16bbe576854ad58cfba1782e}} 
+\mbox{\Hypertarget{action_8c_a5817d6f4e967e5a43c005c667029e326}\label{action_8c_a5817d6f4e967e5a43c005c667029e326}} 
 \index{action.c@{action.c}!achat\_action@{achat\_action}}
 \index{achat\_action@{achat\_action}!action.c@{action.c}}
 \doxysubsubsection{\texorpdfstring{achat\_action()}{achat\_action()}}
-{\footnotesize\ttfamily int achat\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{action,  }\item[{int $\ast$}]{argent }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int achat\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{action,  }\item[{int}]{argent }\end{DoxyParamCaption})}
 
 
 
@@ -83,7 +96,7 @@ Modifie le statut d\textquotesingle{}une action.
 Si le joueur clic sur une action la fonction se lance et regarde la somme d\textquotesingle{}argent du joueur. Si la somme en question est assez grande alors l\textquotesingle{}action change de statut est devient acheté, or, si la somme n\textquotesingle{}est pas assez grande rien ne se passe.
 
 \begin{DoxyReturn}{Renvoie}
-On return un {\itshape int} qui défini si oui ou non l\textquotesingle{}action à changé de statut. 
+On return un {\itshape int} qui défini la somme d\textquotesingle{}argent restant au joueur. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{action_8c_a55f5b5abd046d56ede5104c175703137}\label{action_8c_a55f5b5abd046d56ede5104c175703137}} 
 \index{action.c@{action.c}!affiche\_barre\_action@{affiche\_barre\_action}}
@@ -95,7 +108,7 @@ On return un {\itshape int} qui défini si oui ou non l\textquotesingle{}action 
 
 Affiche la barre contenant les actions. 
 
-On commence par afficher le fond de la barre et ensuite on affiche les actions en fonction de leur état, si elles sont acheté ou non. 
+On commence par afficher le fond de la barre et ensuite on affiche les actions en fonction de leur état, si elles sont achetés ou non. 
 \begin{DoxyParams}{Paramètres}
 {\em action\+\_\+equipe} & est le tableau contenant l\textquotesingle{}ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement. \\
 \hline
@@ -113,11 +126,8 @@ La fonction ne return aucune valeurs, elle ne fait que de l\textquotesingle{}aff
 
 Affiche le menu des actions. 
 
-On commence par afficher le fond du tableau contenant toutes les actions achetés pour ensuite les achiffer sous forme de liste, à ne pas confondre avec {\itshape affiche\+\_\+barre\+\_\+action} car ici on affiche sous forme de liste alors que dans {\itshape affiche\+\_\+barre\+\_\+action} on affiche sous forme d\textquotesingle{}icone. 
-\begin{DoxyParams}{Paramètres}
-{\em action\+\_\+equipe\mbox{[}$\,$\mbox{]}} & action\+\_\+equipe est le tableau contenant l\textquotesingle{}ensemble des actions acheté par le joueurs, leur id correspond à leur emplacement.\\
-\hline
-\end{DoxyParams}
+On commence par afficher le fond du tableau contenant toutes les actions achetés pour ensuite les achiffer sous forme de liste, à ne pas confondre avec {\itshape affiche\+\_\+barre\+\_\+action} car ici on affiche sous forme de liste alors que dans {\itshape affiche\+\_\+barre\+\_\+action} on affiche sous forme d\textquotesingle{}icone.
+
 \begin{DoxyReturn}{Renvoie}
 La fonction ne return aucune valeurs, elle ne fait que de l\textquotesingle{}affichage 
 \end{DoxyReturn}
@@ -131,31 +141,71 @@ La fonction ne return aucune valeurs, elle ne fait que de l\textquotesingle{}aff
 
 Attend un clic du joueur. 
 
-Ici, la fonction va attendre un clic du joueur, elle va permettre de modifier l\textquotesingle{}emplacement des actions achetés par le joueur. Quand le joueur clic sur une action alors la fonction renvoie l\textquotesingle{}id de l\textquotesingle{}action allant de 0 à 4 (sa position dans le tableau) ou alors, si le joueur clic sur un emplacement alors la fonction renvoie le numéros de l\textquotesingle{}emplacement en valeur negative allant de -\/1 à -\/4.
+Ici, la fonction va attendre un clic du joueur, elle va permettre de modifier l\textquotesingle{}emplacement des actions achetés par le joueur. Quand le joueur clic sur une action alors la fonction renvoie l\textquotesingle{}id de l\textquotesingle{}action allant de 1 à 4 (sa position dans le tableau) ou alors, si le joueur clic sur un emplacement alors la fonction renvoie le numéros de l\textquotesingle{}emplacement en valeur negative allant de -\/1 à -\/4.
 
 \begin{DoxyReturn}{Renvoie}
 On return soit le numero de l\textquotesingle{}emplacement, l\textquotesingle{}id de l\textquotesingle{}action ou une valeur indiquant que l\textquotesingle{}on quitte le menu. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{action_8c_ae43587462fc34f5e07c37ebf7c72618e}\label{action_8c_ae43587462fc34f5e07c37ebf7c72618e}} 
+\mbox{\Hypertarget{action_8c_ab35fdf6580b3f66a61451f70e382519e}\label{action_8c_ab35fdf6580b3f66a61451f70e382519e}} 
 \index{action.c@{action.c}!equipe\_action@{equipe\_action}}
 \index{equipe\_action@{equipe\_action}!action.c@{action.c}}
 \doxysubsubsection{\texorpdfstring{equipe\_action()}{equipe\_action()}}
-{\footnotesize\ttfamily int equipe\+\_\+action (\begin{DoxyParamCaption}\item[{int}]{place,  }\item[{int $\ast$}]{argent,  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+equipe\mbox{[}4\mbox{]},  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+action\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int equipe\+\_\+action (\begin{DoxyParamCaption}\item[{int}]{place,  }\item[{int}]{argent,  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+equipe\mbox{[}4\mbox{]},  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+action\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+prof }\end{DoxyParamCaption})}
 
 
 
 Equipe une action. 
 
-à remplir
+Equipe une action a l\textquotesingle{}emplacement sélectionner si elle est acheté, sinon l\textquotesingle{}achete et relance le processus d\textquotesingle{}achat
 
 \begin{DoxyReturn}{Renvoie}
-à remplir 
+Une valeur de sortie pour quitter la boucle de menu\+\_\+action 
 \end{DoxyReturn}
-\mbox{\Hypertarget{action_8c_a988c4693604b8de8c059d66b907c667e}\label{action_8c_a988c4693604b8de8c059d66b907c667e}} 
+\mbox{\Hypertarget{action_8c_ac247ba7bdc213d1c9761f9ea308bb312}\label{action_8c_ac247ba7bdc213d1c9761f9ea308bb312}} 
+\index{action.c@{action.c}!fonc\_action\_1@{fonc\_action\_1}}
+\index{fonc\_action\_1@{fonc\_action\_1}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{fonc\_action\_1()}{fonc\_action\_1()}}
+{\footnotesize\ttfamily void fonc\+\_\+action\+\_\+1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+sonore,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+depression }\end{DoxyParamCaption})}
+
+
+
+Fonction pointé par l\textquotesingle{}action 1. 
+
+Cette fonction va reduire la barre sonore de 20 pixels une fois utilisé. \mbox{\Hypertarget{action_8c_ae22a6dc92e6f5c963646ec7bcc1f6b44}\label{action_8c_ae22a6dc92e6f5c963646ec7bcc1f6b44}} 
+\index{action.c@{action.c}!fonc\_action\_2@{fonc\_action\_2}}
+\index{fonc\_action\_2@{fonc\_action\_2}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{fonc\_action\_2()}{fonc\_action\_2()}}
+{\footnotesize\ttfamily void fonc\+\_\+action\+\_\+2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+sonore,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+depression }\end{DoxyParamCaption})}
+
+
+
+Fonction pointé par l\textquotesingle{}action 2. 
+
+Cette fonction va reduire la barre de depression de 20 pixels une fois utilisé. \mbox{\Hypertarget{action_8c_a753275c652b3747cdb22c4c152ad79f4}\label{action_8c_a753275c652b3747cdb22c4c152ad79f4}} 
+\index{action.c@{action.c}!fonc\_action\_3@{fonc\_action\_3}}
+\index{fonc\_action\_3@{fonc\_action\_3}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{fonc\_action\_3()}{fonc\_action\_3()}}
+{\footnotesize\ttfamily void fonc\+\_\+action\+\_\+3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+sonore,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+depression }\end{DoxyParamCaption})}
+
+
+
+Fonction pointé par l\textquotesingle{}action 3. 
+
+Cette fonction va reduire la barre sonore de 40 pixels une fois utilisé. \mbox{\Hypertarget{action_8c_a3c726ae404f552deba4b82f2cdac9635}\label{action_8c_a3c726ae404f552deba4b82f2cdac9635}} 
+\index{action.c@{action.c}!fonc\_action\_4@{fonc\_action\_4}}
+\index{fonc\_action\_4@{fonc\_action\_4}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{fonc\_action\_4()}{fonc\_action\_4()}}
+{\footnotesize\ttfamily void fonc\+\_\+action\+\_\+4 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+sonore,  }\item[{SDL\+\_\+\+Rect $\ast$}]{barre\+\_\+depression }\end{DoxyParamCaption})}
+
+
+
+Fonction pointé par l\textquotesingle{}action 4. 
+
+Cette fonction va reduire la barre de depression de 40 pixels une fois utilisé. \mbox{\Hypertarget{action_8c_a2c3f314017f680cf322ba6c996f8eec9}\label{action_8c_a2c3f314017f680cf322ba6c996f8eec9}} 
 \index{action.c@{action.c}!init\_action@{init\_action}}
 \index{init\_action@{init\_action}!action.c@{action.c}}
 \doxysubsubsection{\texorpdfstring{init\_action()}{init\_action()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structaction__t}{action\+\_\+t}}$\ast$ init\+\_\+action (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{prix,  }\item[{int}]{cd,  }\item[{void($\ast$)(int)}]{fonction,  }\item[{const char $\ast$}]{lien\+\_\+img\+\_\+rect,  }\item[{const char $\ast$}]{lien\+\_\+img\+\_\+rond }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structaction__t}{action\+\_\+t}}$\ast$ init\+\_\+action (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{prix,  }\item[{int}]{cd,  }\item[{void($\ast$)(\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$, SDL\+\_\+\+Rect $\ast$, SDL\+\_\+\+Rect $\ast$)}]{fonction,  }\item[{const char $\ast$}]{lien\+\_\+img\+\_\+rect,  }\item[{const char $\ast$}]{lien\+\_\+img\+\_\+rond,  }\item[{const char $\ast$}]{lien\+\_\+img\+\_\+flou }\end{DoxyParamCaption})}
 
 
 
@@ -163,6 +213,23 @@ Initialise les informations d\textquotesingle{}une action.
 
 Ici, on va initialiser les informations pour chaque action en {\itshape static} pour ne pas qu\textquotesingle{}elle se retrouve modifer dans la fonction main.
 
+
+\begin{DoxyParams}{Paramètres}
+{\em id} & correspond à sont emplacement dans le tableau des actions \\
+\hline
+{\em prix} & est un entier qui represente sont prix \\
+\hline
+{\em statut} & est un boolean qui permet de savoir si l\textquotesingle{}action est acheté ou non \\
+\hline
+{\em equipe} & est un entier qui prend comme valeur sa place dans le tableau {\itshape action\+\_\+equipe} \\
+\hline
+{\em cd} & est un entier qui represente le temps d\textquotesingle{}attente entre chaque utilisation de l\textquotesingle{}action en jeu \\
+\hline
+{\em action\+\_\+realise} & est un pointeur sur fonction qui pointe sur une fonction qui agit sur le jeu (reduire la barre sonore par exemple) \\
+\hline
+{\em img\+\_\+action\+\_\+X} & sont des liens pour récupérer les images approprié pour l\textquotesingle{}appropriés pour l\textquotesingle{}affichage\\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 On return un {\itshape \mbox{\hyperlink{structaction__t}{action\+\_\+t}}} qui est notre action initialisé. 
 \end{DoxyReturn}
@@ -181,11 +248,11 @@ Ici, on va initialiser un tableau d\textquotesingle{}action, chaque case corresp
 \begin{DoxyReturn}{Renvoie}
 On return aucune valeur car on modifie un pointeur sur un tableau. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{action_8c_a245ff95c6a3a42e0f00372cdafabde72}\label{action_8c_a245ff95c6a3a42e0f00372cdafabde72}} 
+\mbox{\Hypertarget{action_8c_aa317e26df3b995b37504df41118b042c}\label{action_8c_aa317e26df3b995b37504df41118b042c}} 
 \index{action.c@{action.c}!menu\_action@{menu\_action}}
 \index{menu\_action@{menu\_action}!action.c@{action.c}}
 \doxysubsubsection{\texorpdfstring{menu\_action()}{menu\_action()}}
-{\footnotesize\ttfamily void menu\+\_\+action (\begin{DoxyParamCaption}\item[{int $\ast$}]{argent,  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+equipe\mbox{[}4\mbox{]},  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+action\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int menu\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+equipe\mbox{[}4\mbox{]},  }\item[{\mbox{\hyperlink{structaction__t}{action\+\_\+t}} $\ast$}]{tab\+\_\+action\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structparam__t}{param\+\_\+t}} $\ast$}]{parametre,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+prof }\end{DoxyParamCaption})}
 
 
 
