@@ -1,10 +1,10 @@
-all : prog
+all : survive_students
 lib = -I ../include -L ../lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 opt = -m32
-prog.o = main.o fonction.o timer.o barre.o jeu_matin.o tuto.o argent.o self.o salle_prof.o action.o depression.o nombre_jour.o save.o
+survive_students.o = main.o fonction.o timer.o barre.o jeu_matin.o tuto.o argent.o self.o salle_prof.o action.o depression.o nombre_jour.o save.o
 
-prog : $(prog.o)
-	gcc $(opt) -o ../bin/prog $(prog.o) $(lib)
+survive_students : $(survive_students.o)
+	gcc $(opt) -o ../bin/survive_students $(survive_students.o) $(lib)
 
 main.o : main.c
 	gcc $(opt) -o main.o -c main.c $(lib) 
