@@ -58,6 +58,7 @@ int main (int argc, char ** argv)
 
 	int status_tuto = -1;
 	int argent = 5;
+	bool antiOOM = true; //anti out of memory
 
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 		SDL_ExitWithError("Initialisation SDL");
@@ -80,8 +81,14 @@ int main (int argc, char ** argv)
 	param_t * parametre = malloc(sizeof(param_t));
 	
 	SDL_RenderPresent(renderer);
+
+
 	while(program_launched)
 	{
+		if (antiOOM == true)
+		{
+
+		antiOOM = false;
 
 		parametre->temps_jeu = temps_jeu;
 		parametre->cd_action1 = cd_action1;
@@ -95,6 +102,7 @@ int main (int argc, char ** argv)
 		parametre->renderer = renderer;
 		parametre->quitte = SDL_FALSE;
 		parametre->perdu = SDL_FALSE;
+		parametre->load = SDL_FALSE;
 
 		init_tab_action(action_equipe);
 		init_tab_action(liste_action);
@@ -106,6 +114,7 @@ int main (int argc, char ** argv)
 		action_equipe[3] = NULL;*/
 
 		action_equipe[0]->statut = true;
+		}
 		
 		SDL_Event event;
 
@@ -121,7 +130,7 @@ int main (int argc, char ** argv)
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
 						//si on appuie sur le bouton jouer
-						
+						antiOOM = true;
 						SDL_RenderClear(renderer);
 
 						while(!(parametre->quitte) && !(parametre->perdu))
@@ -158,12 +167,18 @@ int main (int argc, char ** argv)
 						SDL_RenderPresent(renderer);
 					}
 
-					if((event.button.x < BTN_REP_X_MAX && event.button.x > BTN_REP_X_MIN)&&(event.button.y < BTN_REP_Y_MAX && event.button.y > BTN_REP_Y_MIN) && status_tuto == -1)
+					if(((event.button.x < BTN_REP_X_MAX && event.button.x > BTN_REP_X_MIN)&&(event.button.y < BTN_REP_Y_MAX && event.button.y > BTN_REP_Y_MIN) && status_tuto == -1) || parametre->load == SDL_TRUE)
 					{
 						//si on clique sur reprendre
-
+						antiOOM = true;
 						if(charger(&(parametre->argent),&(parametre->nb_jour),liste_action,action_equipe)){
+							liste_action[0]->equipe = 1;
 
+							/*action_equipe[1] = NULL;
+							action_equipe[2] = NULL;
+							action_equipe[3] = NULL;*/
+
+							action_equipe[0]->statut = true;
 							SDL_RenderClear(renderer);
 
 							while(!(parametre->quitte) && !(parametre->perdu))
