@@ -87,9 +87,14 @@ int main (int argc, char ** argv)
 	{
 		if (antiOOM == true)
 		{
+		ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
+		ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+		ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+		ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
+		ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 		antiOOM = false;
-
+		printf("bou\n");
 		parametre->temps_jeu = temps_jeu;
 		parametre->cd_action1 = cd_action1;
 		parametre->cd_action2 = cd_action2;
@@ -112,13 +117,14 @@ int main (int argc, char ** argv)
 		/*action_equipe[1] = NULL;
 		action_equipe[2] = NULL;
 		action_equipe[3] = NULL;*/
-
+		liste_action[0]->statut = true;
 		action_equipe[0]->statut = true;
+		SDL_RenderPresent(renderer);
 		}
 		
 		SDL_Event event;
 
-		while(SDL_PollEvent(&event))
+		while(SDL_PollEvent(&event) || parametre->load == SDL_TRUE)
 		{
 			switch(event.type)
 			{
@@ -154,13 +160,6 @@ int main (int argc, char ** argv)
 								printf("Réussite !\n");
 						}
 										
-
-						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
-						ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
-						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
-
 						parametre->quitte = SDL_FALSE;
 						parametre->perdu = SDL_FALSE;
 
@@ -172,13 +171,6 @@ int main (int argc, char ** argv)
 						//si on clique sur reprendre
 						antiOOM = true;
 						if(charger(&(parametre->argent),&(parametre->nb_jour),liste_action,action_equipe)){
-							liste_action[0]->equipe = 1;
-
-							/*action_equipe[1] = NULL;
-							action_equipe[2] = NULL;
-							action_equipe[3] = NULL;*/
-
-							action_equipe[0]->statut = true;
 							SDL_RenderClear(renderer);
 
 							while(!(parametre->quitte) && !(parametre->perdu))
@@ -202,13 +194,6 @@ int main (int argc, char ** argv)
 									printf("Réussite !\n");
 							}
 							
-
-							ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-							ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
-							ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
-							ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
-							ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
-
 							parametre->quitte = SDL_FALSE;
 							parametre->perdu = SDL_FALSE;
 

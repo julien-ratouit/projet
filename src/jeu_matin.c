@@ -38,7 +38,6 @@ void lancement_matin(param_t * parametre)
 	
 	//variables pour les barres
 	int cpt1 = 0;
-	int nb_jour = 0;
 	int agit = 0;
 	int temps = 30;
 	srand(time(NULL));
@@ -112,7 +111,7 @@ void lancement_matin(param_t * parametre)
 
 		//mise a jour des barres atomatic
 		//printf("debut barre:\n");
-		agit = nb_jour + VITESSE_BARRES;
+		agit = parametre->nb_jour + VITESSE_BARRES;
 		//printf("temps:%d\n", temps);
 		
 		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
@@ -428,6 +427,7 @@ void lancement_matin(param_t * parametre)
 
 						parametre->perdu = SDL_TRUE;//defaite = 0 et on charge la derniere sauvegarde
 						program_launched = SDL_FALSE;
+						parametre->load = SDL_FALSE;
 					}
 			
 					if((event.button.x > ACTION1_X_MIN && event.button.x < ACTION1_X_MAX)&&(event.button.y > ACTION1_Y_MIN && event.button.y < ACTION1_Y_MAX)&&status_menu == -1)
@@ -576,6 +576,7 @@ void lancement_matin(param_t * parametre)
 						/*si on clique sur le bouton 'quitter le jeu'*/ 
 						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
+						parametre->load = SDL_FALSE;
 					}
 
 					if((event.button.x < REPRENDRE_X_MAX && event.button.x > REPRENDRE_X_MIN)&&(event.button.y < REPRENDRE_Y_MAX && event.button.y > REPRENDRE_Y_MIN)&&status_menu == 1 && gameOver_actif == false)
