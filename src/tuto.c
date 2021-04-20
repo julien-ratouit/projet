@@ -37,7 +37,6 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 				switch(event.type)
 				{
 					case SDL_MOUSEBUTTONDOWN:
-						printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 						if((event.button.x < FERMER_TUTO_X_MAX && event.button.x > FERMER_TUTO_X_MIN)&&(event.button.y < FERMER_TUTO_Y_MAX && event.button.y > FERMER_TUTO_Y_MIN)/* && status_tuto == 1*/)
 						{
 							/*si on clique sur la croix*/
@@ -74,7 +73,7 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 								case 1:ajout_texture(texture_tuto ,"images/tuto1-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
 								case 2:ajout_texture(texture_tuto ,"images/tuto2-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
 								case 3:ajout_texture(texture_tuto ,"images/tuto3-600-900.png" , renderer, window, HAUTEUR , LARGEUR); break;
-								default: printf("ça a bugué\n"); break;
+								default: break;
 							}
 
 							SDL_RenderPresent(renderer);

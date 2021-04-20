@@ -94,7 +94,6 @@ int main (int argc, char ** argv)
 		ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
 		antiOOM = false;
-		printf("bou\n");
 		parametre->temps_jeu = temps_jeu;
 		parametre->cd_action1 = cd_action1;
 		parametre->cd_action2 = cd_action2;
@@ -130,9 +129,6 @@ int main (int argc, char ** argv)
 			{
 				case SDL_MOUSEBUTTONDOWN:
 
-
-
-					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
 						//si on appuie sur le bouton jouer
@@ -154,10 +150,9 @@ int main (int argc, char ** argv)
 							parametre->nb_jour += 1;
 
 						}
-						printf("%i\n",parametre->perdu);
 						if(parametre->perdu == SDL_TRUE){
-							if(remove("save.txt") == 0)
-								printf("Réussite !\n");
+							if(remove("save.txt") != 0)
+								printf("Sauvegarde non effecté !\n");
 						}
 										
 						parametre->quitte = SDL_FALSE;
@@ -188,10 +183,9 @@ int main (int argc, char ** argv)
 								parametre->nb_jour += 1;
 
 							}
-							printf("%i\n",parametre->perdu);
 							if(parametre->perdu == SDL_FALSE){
-								if(remove("save.txt") == 0)
-									printf("Réussite !\n");
+								if(remove("save.txt") != 0)
+									printf("Sauvegarde non effectué\n");
 							}
 							
 							parametre->quitte = SDL_FALSE;

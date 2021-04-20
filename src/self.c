@@ -89,7 +89,6 @@ void lancement_self(param_t *parametre)
 			switch (event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
-					printf("x : %i & y : %i\n", event.button.x, event.button.y);
 					if((event.button.x > 535 && event.button.x < 747)&&(event.button.y > 367 && event.button.y < 413) && statut_mess == 1)
 					{
 						/*on clique sur continuer*/

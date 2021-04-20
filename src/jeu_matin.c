@@ -633,7 +633,6 @@ void lancement_matin(param_t * parametre)
 	(parametre->cd_action3)->stop(parametre->cd_action3);
 	(parametre->cd_action4)->stop(parametre->cd_action4);
 	parametre->val_depression = (*barre_depression).h;
-	printf("tu quitte le cour du matin\n");
 	SDL_DestroyTexture(texture_action4);
 	SDL_DestroyTexture(texture_action3);
 	SDL_DestroyTexture(texture_action2);
