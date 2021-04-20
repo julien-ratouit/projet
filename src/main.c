@@ -57,7 +57,8 @@ int main (int argc, char ** argv)
 
 
 	int status_tuto = -1;
-	int argent = 200;
+	int argent = 5;
+	bool antiOOM = true; //anti out of memory
 
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 		SDL_ExitWithError("Initialisation SDL");
@@ -80,9 +81,19 @@ int main (int argc, char ** argv)
 	param_t * parametre = malloc(sizeof(param_t));
 	
 	SDL_RenderPresent(renderer);
+
+
 	while(program_launched)
 	{
+		if (antiOOM == true)
+		{
+		ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
+		ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
+		ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
+		ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
+		ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
 
+		antiOOM = false;
 		parametre->temps_jeu = temps_jeu;
 		parametre->cd_action1 = cd_action1;
 		parametre->cd_action2 = cd_action2;
@@ -95,33 +106,38 @@ int main (int argc, char ** argv)
 		parametre->renderer = renderer;
 		parametre->quitte = SDL_FALSE;
 		parametre->perdu = SDL_FALSE;
+		parametre->load = SDL_FALSE;
 
 		init_tab_action(action_equipe);
 		init_tab_action(liste_action);
+
 		liste_action[0]->equipe = 1;
-		liste_action[1]->equipe = 2;
-		liste_action[2]->equipe = 3;
-		liste_action[3]->equipe = 4;
+
+		/*action_equipe[1] = NULL;
+		action_equipe[2] = NULL;
+		action_equipe[3] = NULL;*/
+		liste_action[0]->statut = true;
+		action_equipe[0]->statut = true;
+		SDL_RenderPresent(renderer);
+		}
 		
 		SDL_Event event;
 
-		while(SDL_PollEvent(&event))
+		while(SDL_PollEvent(&event) || parametre->load == SDL_TRUE)
 		{
 			switch(event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
 
-
-
-					printf("x : %i\ny : %i\n\n", event.button.x, event.button.y);
 					if((event.button.x < BOUTON_PLAY_X_MAX && event.button.x > BOUTON_PLAY_X_MIN)&&(event.button.y < BOUTON_PLAY_Y_MAX && event.button.y > BOUTON_PLAY_Y_MIN) && status_tuto == -1)
 					{
 						//si on appuie sur le bouton jouer
-						
+						antiOOM = true;
 						SDL_RenderClear(renderer);
 
 						while(!(parametre->quitte) && !(parametre->perdu))
 						{
+							parametre->val_depression = -5;
 
 							if(!(parametre->quitte) && !(parametre->perdu))
 								lancement_matin(parametre);
@@ -134,33 +150,27 @@ int main (int argc, char ** argv)
 							parametre->nb_jour += 1;
 
 						}
-						printf("%i\n",parametre->perdu);
 						if(parametre->perdu == SDL_TRUE){
-							if(remove("save.txt") == 0)
-								printf("Réussite !\n");
+							if(remove("save.txt") != 0)
+								printf("Sauvegarde non effecté !\n");
 						}
 										
-
-						ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
-						ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
-						ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
-						ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
-
 						parametre->quitte = SDL_FALSE;
 						parametre->perdu = SDL_FALSE;
 
 						SDL_RenderPresent(renderer);
 					}
 
-					if((event.button.x < BTN_REP_X_MAX && event.button.x > BTN_REP_X_MIN)&&(event.button.y < BTN_REP_Y_MAX && event.button.y > BTN_REP_Y_MIN) && status_tuto == -1)
+					if(((event.button.x < BTN_REP_X_MAX && event.button.x > BTN_REP_X_MIN)&&(event.button.y < BTN_REP_Y_MAX && event.button.y > BTN_REP_Y_MIN) && status_tuto == -1) || parametre->load == SDL_TRUE)
 					{
+						//si on clique sur reprendre
+						antiOOM = true;
 						if(charger(&(parametre->argent),&(parametre->nb_jour),liste_action,action_equipe)){
-
 							SDL_RenderClear(renderer);
 
 							while(!(parametre->quitte) && !(parametre->perdu))
 							{
+								parametre->val_depression = -5;
 
 								if(!(parametre->quitte) && !(parametre->perdu))
 									lancement_matin(parametre);
@@ -173,19 +183,11 @@ int main (int argc, char ** argv)
 								parametre->nb_jour += 1;
 
 							}
-							printf("%i\n",parametre->perdu);
 							if(parametre->perdu == SDL_FALSE){
-								if(remove("save.txt") == 0)
-									printf("Réussite !\n");
+								if(remove("save.txt") != 0)
+									printf("Sauvegarde non effectué\n");
 							}
 							
-
-							ajout_texture(texture_menu ,"images/menu.jpg" , renderer, window, HAUTEUR , LARGEUR);
-							ajout_texture(texture_bouton ,"images/boutons/jouer.png" , renderer, window, HAUTEUR , LARGEUR);
-							ajout_texture(texture_bouton ,"images/boutons/reprendre.png" , renderer, window, HAUTEUR*1.3, LARGEUR);
-							ajout_texture(texture_bouton ,"images/boutons/tuto.png", renderer, window, HAUTEUR*1.6, LARGEUR);
-							ajout_texture(texture_logo ,"images/logo.png" , renderer, window, HAUTEUR/2 , LARGEUR);
-
 							parametre->quitte = SDL_FALSE;
 							parametre->perdu = SDL_FALSE;
 

@@ -12,8 +12,8 @@
 #include "../include/self.h"
 #include <time.h>
 
-#define VITESSE_BARRES 60
-#define TEMPS_COUR 15000
+#define VITESSE_BARRES 1
+#define TEMPS_COUR 30000
 
 /**
 * \fn void lancement_matin(param_t * parametre)
@@ -38,7 +38,6 @@ void lancement_matin(param_t * parametre)
 	
 	//variables pour les barres
 	int cpt1 = 0;
-	int nb_jour = 0;
 	int agit = 0;
 	int temps = 30;
 	srand(time(NULL));
@@ -91,7 +90,7 @@ void lancement_matin(param_t * parametre)
 	ajout_texture_non_centre(texture_btn_option , "images/option.png", parametre->renderer, parametre->window, OPTION_HAUTEUR, OPTION_LARGEUR);
 	affiche_nb_jour(parametre->window, parametre->renderer, parametre->nb_jour);
 
-	init_barre_depression(parametre->renderer, barre_depression, -5);
+	init_barre_depression(parametre->renderer, barre_depression, parametre->val_depression);
 	init_barre_sonore(parametre->renderer, barre_sonore);
 
 	ajout_texture_non_centre(texture_barre_son, "images/barre_son_depression.png", parametre->renderer, parametre->window, BARRE_SON_X, BARRE_SON_Y);
@@ -112,7 +111,7 @@ void lancement_matin(param_t * parametre)
 
 		//mise a jour des barres atomatic
 		//printf("debut barre:\n");
-		agit = nb_jour + VITESSE_BARRES;
+		agit = parametre->nb_jour + VITESSE_BARRES;
 		//printf("temps:%d\n", temps);
 		
 		if(((*barre_depression).h>(-250)) && status_menu == -1 && temps == ((cpt1 % 181)+20))
@@ -354,12 +353,12 @@ void lancement_matin(param_t * parametre)
 
 
 
-		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) <= action_equipe[0]->cd )
+		/*if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) <= action_equipe[0]->cd && action_equipe[0]->statut == true)
 		{
 			ajout_texture_non_centre(texture_cd_action1, (action_equipe[0]->img_action_flou), parametre->renderer, parametre->window, ACTION1_HAUTEUR,ACTION1_LARGEUR);
 			SDL_RenderPresent(parametre->renderer);
 		}
-		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) > action_equipe[0]->cd )
+		if ( (parametre->cd_action1)->get_ticks(parametre->cd_action1) > action_equipe[0]->cd && action_equipe[0]->statut == true)
 		{
 			SDL_DestroyTexture(texture_cd_action1);
 			SDL_RenderPresent(parametre->renderer);
@@ -367,12 +366,12 @@ void lancement_matin(param_t * parametre)
 
 
 
-		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) <= action_equipe[1]->cd )
+		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) <= action_equipe[1]->cd && action_equipe[1]->statut == true)
 		{
 			ajout_texture_non_centre(texture_cd_action2, (action_equipe[1]->img_action_flou), parametre->renderer, parametre->window, ACTION2_HAUTEUR,ACTION2_LARGEUR);
 			SDL_RenderPresent(parametre->renderer);
 		}
-		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) > action_equipe[1]->cd )
+		if ( (parametre->cd_action2)->get_ticks(parametre->cd_action2) > action_equipe[1]->cd && action_equipe[1]->statut == true)
 		{
 			SDL_DestroyTexture(texture_cd_action2);
 			SDL_RenderPresent(parametre->renderer);
@@ -380,12 +379,12 @@ void lancement_matin(param_t * parametre)
 
 
 
-		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) <= action_equipe[2]->cd )
+		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) <= action_equipe[2]->cd && action_equipe[2]->statut == true)
 		{
 			ajout_texture_non_centre(texture_cd_action3, (action_equipe[2]->img_action_flou), parametre->renderer, parametre->window, ACTION3_HAUTEUR,ACTION3_LARGEUR);
 			SDL_RenderPresent(parametre->renderer);
 		}
-		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) > action_equipe[2]->cd )
+		if ( (parametre->cd_action3)->get_ticks(parametre->cd_action3) > action_equipe[2]->cd && action_equipe[2]->statut == true)
 		{
 			SDL_DestroyTexture(texture_cd_action3);
 			SDL_RenderPresent(parametre->renderer);
@@ -393,16 +392,16 @@ void lancement_matin(param_t * parametre)
 
 
 
-		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) <= action_equipe[3]->cd )
+		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) <= action_equipe[3]->cd && action_equipe[3]->statut == true)
 		{
 			ajout_texture_non_centre(texture_cd_action4, (action_equipe[3]->img_action_flou), parametre->renderer, parametre->window, ACTION4_HAUTEUR,ACTION4_LARGEUR);
 			SDL_RenderPresent(parametre->renderer);
 		}
-		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) > action_equipe[3]->cd )
+		if ( (parametre->cd_action4)->get_ticks(parametre->cd_action4) > action_equipe[3]->cd && action_equipe[3]->statut == true)
 		{
 			SDL_DestroyTexture(texture_cd_action4);
 			SDL_RenderPresent(parametre->renderer);
-		}
+		}*/
 		
 
 
@@ -428,12 +427,13 @@ void lancement_matin(param_t * parametre)
 
 						parametre->perdu = SDL_TRUE;//defaite = 0 et on charge la derniere sauvegarde
 						program_launched = SDL_FALSE;
+						parametre->load = SDL_FALSE;
 					}
 			
 					if((event.button.x > ACTION1_X_MIN && event.button.x < ACTION1_X_MAX)&&(event.button.y > ACTION1_Y_MIN && event.button.y < ACTION1_Y_MAX)&&status_menu == -1)
 					{
 						//si on clique sur l'action 1, on vérifie que le couldown est terminé
-						if( (parametre->cd_action1)->get_ticks(parametre->cd_action1) > action_equipe[0]->cd )
+						if( (parametre->cd_action1)->get_ticks(parametre->cd_action1) > action_equipe[0]->cd && action_equipe[0]->statut == true)
 						{
 							(parametre->cd_action1)->stop(parametre->cd_action1);
 							(parametre->cd_action2)->stop(parametre->cd_action2);
@@ -461,7 +461,7 @@ void lancement_matin(param_t * parametre)
 					if((event.button.x > ACTION2_X_MIN && event.button.x < ACTION2_X_MAX)&&(event.button.y > ACTION2_Y_MIN && event.button.y < ACTION2_Y_MAX)&&status_menu == -1)
 					{
 						/*si on clique sur l'action 2*/
-						if( (parametre->cd_action2)->get_ticks(parametre->cd_action2) > action_equipe[1]->cd )
+						if( (parametre->cd_action2)->get_ticks(parametre->cd_action2) > action_equipe[1]->cd  && action_equipe[1]->statut == true)
 						{
 							(parametre->cd_action1)->stop(parametre->cd_action1);
 							(parametre->cd_action2)->stop(parametre->cd_action2);
@@ -490,7 +490,7 @@ void lancement_matin(param_t * parametre)
 					if((event.button.x > ACTION3_X_MIN && event.button.x < ACTION3_X_MAX)&&(event.button.y > ACTION3_Y_MIN && event.button.y < ACTION3_Y_MAX)&&status_menu == -1)
 					{
 						/*si on clique sur l'action 3*/
-						if( (parametre->cd_action3)->get_ticks(parametre->cd_action3) > action_equipe[2]->cd )
+						if( (parametre->cd_action3)->get_ticks(parametre->cd_action3) > action_equipe[2]->cd  && action_equipe[2]->statut == true)
 						{
 							(parametre->cd_action1)->stop(parametre->cd_action1);
 							(parametre->cd_action2)->stop(parametre->cd_action2);
@@ -518,7 +518,7 @@ void lancement_matin(param_t * parametre)
 					if((event.button.x > ACTION4_X_MIN && event.button.x < ACTION4_X_MAX)&&(event.button.y > ACTION4_Y_MIN && event.button.y < ACTION4_Y_MAX)&&status_menu == -1)
 					{
 						/*si on clique sur l'action 4*/
-						if( (parametre->cd_action4)->get_ticks(parametre->cd_action4) > action_equipe[3]->cd )
+						if( (parametre->cd_action4)->get_ticks(parametre->cd_action4) > action_equipe[3]->cd  && action_equipe[3]->statut == true)
 						{
 							(parametre->cd_action1)->stop(parametre->cd_action1);
 							(parametre->cd_action2)->stop(parametre->cd_action2);
@@ -545,8 +545,16 @@ void lancement_matin(param_t * parametre)
 
 					if((event.button.x < OPTION_X_MAX && event.button.x > OPTION_X_MIN)&&(event.button.y < OPTION_Y_MAX && event.button.y > OPTION_Y_MIN) && gameOver_actif == false)
 					{
-						(parametre->temps_jeu)->pause(parametre->temps_jeu);
+
 						/*si on clique sur le menu*/
+
+						(parametre->temps_jeu)->pause(parametre->temps_jeu);
+
+						(parametre->cd_action1)->pause(parametre->cd_action1);
+						(parametre->cd_action2)->pause(parametre->cd_action2);
+						(parametre->cd_action3)->pause(parametre->cd_action3);
+						(parametre->cd_action4)->pause(parametre->cd_action4);
+						
 						status_menu = 1;//variable qui permet d'evite d'agire sur les autres bouton pendant le menu pause
 
 						SDL_DestroyTexture(texture_menu_option);
@@ -557,17 +565,31 @@ void lancement_matin(param_t * parametre)
 
 					if((event.button.x < QUIT_X_MAX && event.button.x > QUIT_X_MIN)&&(event.button.y < QUIT_Y_MAX && event.button.y > QUIT_Y_MIN)&&status_menu == 1 && gameOver_actif == false)
 					{
-						(parametre->temps_jeu)->stop(parametre->temps_jeu); 
+						/*si on clique sur le bouton 'quitter le jeu'*/
+
+						(parametre->temps_jeu)->stop(parametre->temps_jeu);
+
+						(parametre->cd_action1)->stop(parametre->cd_action1);
+						(parametre->cd_action2)->stop(parametre->cd_action2);
+						(parametre->cd_action3)->stop(parametre->cd_action3);
+						(parametre->cd_action4)->stop(parametre->cd_action4); 
 						/*si on clique sur le bouton 'quitter le jeu'*/ 
 						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
+						parametre->load = SDL_FALSE;
 					}
 
 					if((event.button.x < REPRENDRE_X_MAX && event.button.x > REPRENDRE_X_MIN)&&(event.button.y < REPRENDRE_Y_MAX && event.button.y > REPRENDRE_Y_MIN)&&status_menu == 1 && gameOver_actif == false)
 					{
+						/*si on clique sur le bouton 'reprendre le jeu'*/
 
 						(parametre->temps_jeu)->unpause(parametre->temps_jeu);
-						/*si on clique sur le bouton 'reprendre le jeu'*/
+
+						(parametre->cd_action1)->unpause(parametre->cd_action1);
+						(parametre->cd_action2)->unpause(parametre->cd_action2);
+						(parametre->cd_action3)->unpause(parametre->cd_action3);
+						(parametre->cd_action4)->unpause(parametre->cd_action4);
+						
 						//printf("%d ms\n", parametre->temps_jeu->get_ticks(parametre->temps_jeu));
 
 						status_menu = -1;
@@ -611,7 +633,6 @@ void lancement_matin(param_t * parametre)
 	(parametre->cd_action3)->stop(parametre->cd_action3);
 	(parametre->cd_action4)->stop(parametre->cd_action4);
 	parametre->val_depression = (*barre_depression).h;
-	printf("tu quitte le cour du matin\n");
 	SDL_DestroyTexture(texture_action4);
 	SDL_DestroyTexture(texture_action3);
 	SDL_DestroyTexture(texture_action2);

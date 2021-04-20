@@ -137,10 +137,10 @@ extern action_t *init_action(int id, int prix, int cd,void (*fonction)(param_t *
 */
 extern void init_tab_action(action_t * tab[])
 {
-	tab[0] = init_action(0, 1 , 5000,fonc_action_1, "images/actions/action_barre_n1.png", "images/actions/action_n1.png", "images/actions/action_flou1.png");
-	tab[1] = init_action(1, 1 , 10000,fonc_action_2, "images/actions/action_barre_n2.png", "images/actions/action_n2.png", "images/actions/action_flou2.png");
-	tab[2] = init_action(2, 1 , 15000,fonc_action_3, "images/actions/action_barre_n3.png", "images/actions/action_n3.png", "images/actions/action_flou3.png");
-	tab[3] = init_action(3, 1 , 20000,fonc_action_4, "images/actions/action_barre_n4.png", "images/actions/action_n4.png", "images/actions/action_flou4.png");
+	tab[0] = init_action(0, 0 , 2000,fonc_action_1, "images/actions/action_barre_n1.png", "images/actions/action_n1.png", "images/actions/action_flou1.png");
+	tab[1] = init_action(1, 10 , 5000,fonc_action_2, "images/actions/action_barre_n2.png", "images/actions/action_n2.png", "images/actions/action_flou2.png");
+	tab[2] = init_action(2, 20 , 3000,fonc_action_3, "images/actions/action_barre_n3.png", "images/actions/action_n3.png", "images/actions/action_flou3.png");
+	tab[3] = init_action(3, 30 , 7000,fonc_action_4, "images/actions/action_barre_n4.png", "images/actions/action_n4.png", "images/actions/action_flou4.png");
 }
 
 /**

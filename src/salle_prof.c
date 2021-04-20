@@ -41,7 +41,7 @@ void aff_texture_sp(param_t *parametre, SDL_Texture *texture_prof)
 void lancement_salle_prof(param_t *parametre)
 {
 
-	(parametre->argent) += 5;
+	(parametre->argent) = (parametre->argent) + 3 + (parametre->nb_jour);
 
 	SDL_Texture *texture_prof = NULL;
 	SDL_Texture *texture_mess = NULL;
@@ -71,7 +71,6 @@ void lancement_salle_prof(param_t *parametre)
 			switch (event.type)
 			{
 				case SDL_MOUSEBUTTONDOWN:
-					printf("x : %i & y : %i\n", event.button.x, event.button.y);
 					if((event.button.x > 535 && event.button.x < 747)&&(event.button.y > 367 && event.button.y < 413) && statut_mess == 1)
 					{
 						statut_mess = 0;
@@ -142,7 +141,6 @@ void lancement_salle_prof(param_t *parametre)
 					{
 						//on clique sur bouton pour commencer une nouvelle journee
 
-						printf("tu as clique sur le bouton restart\n");
 
 						SDL_DestroyTexture(texture_prof);
 						SDL_DestroyTexture(texture_mess);
@@ -155,7 +153,6 @@ void lancement_salle_prof(param_t *parametre)
 					{
 						//on clique pour sauvegarder et quitter
 						
-						printf("tu as clique sur le bouton save\n");
 						parametre->quitte = SDL_TRUE;
 						program_launched = SDL_FALSE;
 						sauvegarde(parametre->argent, (parametre->nb_jour)+1, liste_action, action_equipe);

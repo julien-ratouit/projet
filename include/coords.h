@@ -49,11 +49,11 @@
 
 /*Zone bouton 'fermer_tuto'*/
 /*----------------------------------------*/
-#define FERMER_TUTO_X_MAX 1070
-#define FERMER_TUTO_X_MIN 1010
+#define FERMER_TUTO_X_MAX 1160
+#define FERMER_TUTO_X_MIN 1103
 
-#define FERMER_TUTO_Y_MAX 130
-#define FERMER_TUTO_Y_MIN 70
+#define FERMER_TUTO_Y_MAX 111
+#define FERMER_TUTO_Y_MIN 33
 /*----------------------------------------*/
 
 /*Zone bouton 'tuto'*/
@@ -67,19 +67,19 @@
 
 /*Zone bouton 'next'*/
 /*----------------------------------------*/
-#define NEXT_TUTO_X_MAX 1060
-#define NEXT_TUTO_X_MIN 950
+#define NEXT_TUTO_X_MAX 1130
+#define NEXT_TUTO_X_MIN 914
 
-#define NEXT_TUTO_Y_MAX 640
+#define NEXT_TUTO_Y_MAX 686
 #define NEXT_TUTO_Y_MIN 600
 /*----------------------------------------*/
 
 /*Zone bouton 'prev'*/
 /*----------------------------------------*/
-#define PREV_TUTO_X_MAX 310
-#define PREV_TUTO_X_MIN 200
+#define PREV_TUTO_X_MAX 353
+#define PREV_TUTO_X_MIN 138
 
-#define PREV_TUTO_Y_MAX 640
+#define PREV_TUTO_Y_MAX 686
 #define PREV_TUTO_Y_MIN 600
 /*----------------------------------------*/
 
@@ -98,8 +98,8 @@
 
 /*Zone bouton 'charger derniere sauvegarde'*/
 /*----------------------------------------*/
-#define BOUTON_LOAD_SAVE_X_MAX 441
-#define BOUTON_LOAD_SAVE_X_MIN 532 
+#define BOUTON_LOAD_SAVE_X_MAX 714
+#define BOUTON_LOAD_SAVE_X_MIN 806
 
 #define BOUTON_LOAD_SAVE_Y_MAX 410
 #define BOUTON_LOAD_SAVE_Y_MIN 442
@@ -107,8 +107,8 @@
 
 /*Zone bouton 'quitter'*/
 /*----------------------------------------*/
-#define BOUTON_FIN_X_MAX 714
-#define BOUTON_FIN_X_MIN 806
+#define BOUTON_FIN_X_MAX 441
+#define BOUTON_FIN_X_MIN 532
 
 #define BOUTON_FIN_Y_MAX 410
 #define BOUTON_FIN_Y_MIN 442
