@@ -44,11 +44,9 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 						}	
 						if((event.button.x < NEXT_TUTO_X_MAX && event.button.x > NEXT_TUTO_X_MIN)&&(event.button.y < NEXT_TUTO_Y_MAX && event.button.y > NEXT_TUTO_Y_MIN))
 						{
-							/*si on clique sur le tuto*/
+							/*si on clique sur le next*/
 							
 							page++;
-
-							SDL_SetRenderTarget(renderer, NULL);// Dorénavent, on modifie à nouveau le renderer
 
 							switch(page)
 							{
@@ -60,13 +58,10 @@ void tuto(SDL_Renderer *renderer, SDL_Window *window)
 
 							SDL_RenderPresent(renderer);
 						}	
-						if((event.button.x < PREV_TUTO_X_MAX && event.button.x > PREV_TUTO_X_MIN)&&(event.button.y < PREV_TUTO_Y_MAX && event.button.y > PREV_TUTO_Y_MIN) && page < 1)
+						if((event.button.x < PREV_TUTO_X_MAX && event.button.x > PREV_TUTO_X_MIN)&&(event.button.y < PREV_TUTO_Y_MAX && event.button.y > PREV_TUTO_Y_MIN) && page > 1)
 						{
-							/*si on clique sur le tuto*/
-							
+							/*si on clique sur le prev*/
 							page--;
-
-							SDL_SetRenderTarget(renderer, NULL);// Dorénavent, on modifie à nouveau le renderer
 
 							switch(page)
 							{
