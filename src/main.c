@@ -108,16 +108,14 @@ int main (int argc, char ** argv)
 		parametre->perdu = SDL_FALSE;
 		parametre->load = SDL_FALSE;
 
-		init_tab_action(action_equipe);
 		init_tab_action(liste_action);
-
+		action_equipe[0] = liste_action[0];
+		action_equipe[1] = liste_action[1];
+		action_equipe[2] = liste_action[2];
+		action_equipe[3] = liste_action[3];
 		liste_action[0]->equipe = 1;
-
-		/*action_equipe[1] = NULL;
-		action_equipe[2] = NULL;
-		action_equipe[3] = NULL;*/
 		liste_action[0]->statut = true;
-		action_equipe[0]->statut = true;
+
 		SDL_RenderPresent(renderer);
 		}
 		

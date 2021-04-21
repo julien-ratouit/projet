@@ -39,13 +39,13 @@ void affiche_barre_action(param_t *parametre)
 	aff_texture_sp(parametre, texture_prof);
     ajout_texture_non_centre(background_menu_action,"images/barre_action.png", parametre->renderer, parametre->window, 420, 450);
 
-	if(action_equipe[0] != NULL)
+	if(action_equipe[0]->statut == true)
     	ajout_texture_non_centre(action_barre_n1, (action_equipe[0]->img_action_rond), parametre->renderer,parametre->window, 481, 471);
-    if(action_equipe[1] != NULL)
+    if(action_equipe[1]->statut == true)
 		ajout_texture_non_centre(action_barre_n2, (action_equipe[1]->img_action_rond), parametre->renderer, parametre->window, 558, 471);
-    if(action_equipe[2] != NULL)
+    if(action_equipe[2]->statut == true)
 		ajout_texture_non_centre(action_barre_n3, (action_equipe[2]->img_action_rond), parametre->renderer, parametre->window, 635, 471);
-    if(action_equipe[3] != NULL)
+    if(action_equipe[3]->statut == true)
 		ajout_texture_non_centre(action_barre_n4, (action_equipe[3]->img_action_rond), parametre->renderer, parametre->window, 712, 471);
 	
     SDL_RenderPresent(parametre->renderer);
