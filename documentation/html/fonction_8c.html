@@ -71,7 +71,7 @@ $(function() {
 
 <p>Ce programme rassemble quelques fonctions.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;commun.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;../include/commun.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
@@ -87,19 +87,16 @@ Fonctions</h2></td></tr>
 <tr class="memitem:ab0dd0bd262e07ff19e971a9553d07fc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonction_8c.html#ab0dd0bd262e07ff19e971a9553d07fc8">ajout_texture_non_centre</a> (SDL_Texture *texture, const char *lien_img, SDL_Renderer *renderer, SDL_Window *window, int x, int y)</td></tr>
 <tr class="memdesc:ab0dd0bd262e07ff19e971a9553d07fc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ajoute une texture à l'ecran.  <a href="fonction_8c.html#ab0dd0bd262e07ff19e971a9553d07fc8">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ab0dd0bd262e07ff19e971a9553d07fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9833c7f8b48b9fe37bed6741dcc8283f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonction_8c.html#a9833c7f8b48b9fe37bed6741dcc8283f">aff_action</a> (int *achat, SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture_achat1, SDL_Texture *texture_achat2, SDL_Texture *texture_achat3, SDL_Texture *texture_achat4)</td></tr>
-<tr class="memdesc:a9833c7f8b48b9fe37bed6741dcc8283f"><td class="mdescLeft">&#160;</td><td class="mdescRight">affiche les actions sur l'ecran de jeu.  <a href="fonction_8c.html#a9833c7f8b48b9fe37bed6741dcc8283f">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a9833c7f8b48b9fe37bed6741dcc8283f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f85b8c9cb46bc892a2c8a94e93a6c15"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonction_8c.html#a5f85b8c9cb46bc892a2c8a94e93a6c15">press_action</a> (SDL_Renderer *renderer, int num_action)</td></tr>
-<tr class="memdesc:a5f85b8c9cb46bc892a2c8a94e93a6c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">à définir.  <a href="fonction_8c.html#a5f85b8c9cb46bc892a2c8a94e93a6c15">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a5f85b8c9cb46bc892a2c8a94e93a6c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1e1555780886b23dc63003f761ed5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonction_8c.html#a8a1e1555780886b23dc63003f761ed5d">aff_action</a> (SDL_Renderer *renderer, SDL_Window *window, SDL_Texture *texture_achat1, SDL_Texture *texture_achat2, SDL_Texture *texture_achat3, SDL_Texture *texture_achat4)</td></tr>
+<tr class="memdesc:a8a1e1555780886b23dc63003f761ed5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">affiche les actions sur l'ecran de jeu.  <a href="fonction_8c.html#a8a1e1555780886b23dc63003f761ed5d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8a1e1555780886b23dc63003f761ed5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Ce programme rassemble quelques fonctions. </p>
-<p>On utilise ce programme pour définir des fonctions utile dans tout le programme. </p><dl class="section author"><dt>Auteur</dt><dd>Vallet Guillaume, Quenault Maxime, Renoit Charles </dd></dl>
+<p>On utilise ce fichier pour définir des fonctions utile dans tout le programme. </p><dl class="section author"><dt>Auteur</dt><dd>Vallet Guillaume, Quenault Maxime, Renoit Charles </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="a9833c7f8b48b9fe37bed6741dcc8283f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9833c7f8b48b9fe37bed6741dcc8283f">&#9670;&nbsp;</a></span>aff_action()</h2>
+<a id="a8a1e1555780886b23dc63003f761ed5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1e1555780886b23dc63003f761ed5d">&#9670;&nbsp;</a></span>aff_action()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -107,12 +104,6 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void aff_action </td>
           <td>(</td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>achat</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">SDL_Renderer *&#160;</td>
           <td class="paramname"><em>renderer</em>, </td>
         </tr>
@@ -266,37 +257,6 @@ Fonctions</h2></td></tr>
 
 <p>ajoute une texture à l'ecran. </p>
 <p>Cette fonction réalise toute les étapes nécéssaire à la création d'une texture. Sa particularité est qu'elle ajoute une texture de façon non centré. les valeurs x et y représente donc sont point de départ pour l'affichage. </p>
-
-</div>
-</div>
-<a id="a5f85b8c9cb46bc892a2c8a94e93a6c15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f85b8c9cb46bc892a2c8a94e93a6c15">&#9670;&nbsp;</a></span>press_action()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int press_action </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num_action</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>à définir. </p>
-<p>à définir </p>
 
 </div>
 </div>

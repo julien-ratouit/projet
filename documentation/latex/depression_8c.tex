@@ -1,0 +1,40 @@
+\hypertarget{depression_8c}{}\doxysection{Référence du fichier depression.\+c}
+\label{depression_8c}\index{depression.c@{depression.c}}
+
+
+Ce programme permet de gerer l\textquotesingle{}affichage de la depression.  
+
+
+{\ttfamily \#include \char`\"{}../include/commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/depression.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{depression_8c_ab9e5f738cc76dc9bb759b323c5d17c64}{affiche\+\_\+depression}} (SDL\+\_\+\+Window $\ast$window, SDL\+\_\+\+Renderer $\ast$renderer, int val)
+\begin{DoxyCompactList}\small\item\em Affiche le taux de depression du joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce programme permet de gerer l\textquotesingle{}affichage de la depression. 
+
+On utilise ce programme pour afficher le taux de depression du joueur en temps réel dans le self. \begin{DoxyAuthor}{Auteur}
+Quenault Maxime 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{depression_8c_ab9e5f738cc76dc9bb759b323c5d17c64}\label{depression_8c_ab9e5f738cc76dc9bb759b323c5d17c64}} 
+\index{depression.c@{depression.c}!affiche\_depression@{affiche\_depression}}
+\index{affiche\_depression@{affiche\_depression}!depression.c@{depression.c}}
+\doxysubsubsection{\texorpdfstring{affiche\_depression()}{affiche\_depression()}}
+{\footnotesize\ttfamily void affiche\+\_\+depression (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Affiche le taux de depression du joueur. 
+
+Dans un premier temps, on récupère la hauteur de la barre de depression en paramètre. Cette valeur on la transforme en pourcentage pour ensuite en déduire une dizaine et une unité. C\textquotesingle{}est à ce moment là qu\textquotesingle{}on affiche à l\textquotesingle{}ecrans le bon chiffre à la bonne place (même procédé que dans \mbox{\hyperlink{argent_8c}{argent.\+c}}).
+
+\begin{DoxyReturn}{Renvoie}
+On return aucunes valeur, cette fonction ne fait que de l\textquotesingle{}affichage. 
+\end{DoxyReturn}

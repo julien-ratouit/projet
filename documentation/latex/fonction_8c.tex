@@ -5,7 +5,7 @@
 Ce programme rassemble quelques fonctions.  
 
 
-{\ttfamily \#include \char`\"{}commun.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/commun.\+h\char`\"{}}\newline
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
@@ -17,26 +17,24 @@ void \mbox{\hyperlink{fonction_8c_aea438a54219c31fc820cdaffa0cf811f}{ajout\+\_\+
 \begin{DoxyCompactList}\small\item\em ajoute une texture à l\textquotesingle{}ecran. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{fonction_8c_ab0dd0bd262e07ff19e971a9553d07fc8}{ajout\+\_\+texture\+\_\+non\+\_\+centre}} (SDL\+\_\+\+Texture $\ast$texture, const char $\ast$lien\+\_\+img, SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window, int x, int y)
 \begin{DoxyCompactList}\small\item\em ajoute une texture à l\textquotesingle{}ecran. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{fonction_8c_a9833c7f8b48b9fe37bed6741dcc8283f}{aff\+\_\+action}} (int $\ast$achat, SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat1, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat2, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat3, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat4)
-\begin{DoxyCompactList}\small\item\em affiche les actions sur l\textquotesingle{}ecran de jeu. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{fonction_8c_a5f85b8c9cb46bc892a2c8a94e93a6c15}{press\+\_\+action}} (SDL\+\_\+\+Renderer $\ast$renderer, int num\+\_\+action)
-\begin{DoxyCompactList}\small\item\em à définir. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{fonction_8c_a8a1e1555780886b23dc63003f761ed5d}{aff\+\_\+action}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Window $\ast$window, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat1, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat2, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat3, SDL\+\_\+\+Texture $\ast$texture\+\_\+achat4)
+\begin{DoxyCompactList}\small\item\em affiche les actions sur l\textquotesingle{}ecran de jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
 Ce programme rassemble quelques fonctions. 
 
-On utilise ce programme pour définir des fonctions utile dans tout le programme. \begin{DoxyAuthor}{Auteur}
+On utilise ce fichier pour définir des fonctions utile dans tout le programme. \begin{DoxyAuthor}{Auteur}
 Vallet Guillaume, Quenault Maxime, Renoit Charles 
 \end{DoxyAuthor}
 
 
 \doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{fonction_8c_a9833c7f8b48b9fe37bed6741dcc8283f}\label{fonction_8c_a9833c7f8b48b9fe37bed6741dcc8283f}} 
+\mbox{\Hypertarget{fonction_8c_a8a1e1555780886b23dc63003f761ed5d}\label{fonction_8c_a8a1e1555780886b23dc63003f761ed5d}} 
 \index{fonction.c@{fonction.c}!aff\_action@{aff\_action}}
 \index{aff\_action@{aff\_action}!fonction.c@{fonction.c}}
 \doxysubsubsection{\texorpdfstring{aff\_action()}{aff\_action()}}
-{\footnotesize\ttfamily void aff\+\_\+action (\begin{DoxyParamCaption}\item[{int $\ast$}]{achat,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat1,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat2,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat3,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat4 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void aff\+\_\+action (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Window $\ast$}]{window,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat1,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat2,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat3,  }\item[{SDL\+\_\+\+Texture $\ast$}]{texture\+\_\+achat4 }\end{DoxyParamCaption})}
 
 
 
@@ -62,17 +60,7 @@ Cette fonction réalise toute les étapes nécéssaire à la création d\textquo
 
 ajoute une texture à l\textquotesingle{}ecran. 
 
-Cette fonction réalise toute les étapes nécéssaire à la création d\textquotesingle{}une texture. Sa particularité est qu\textquotesingle{}elle ajoute une texture de façon non centré. les valeurs x et y représente donc sont point de départ pour l\textquotesingle{}affichage. \mbox{\Hypertarget{fonction_8c_a5f85b8c9cb46bc892a2c8a94e93a6c15}\label{fonction_8c_a5f85b8c9cb46bc892a2c8a94e93a6c15}} 
-\index{fonction.c@{fonction.c}!press\_action@{press\_action}}
-\index{press\_action@{press\_action}!fonction.c@{fonction.c}}
-\doxysubsubsection{\texorpdfstring{press\_action()}{press\_action()}}
-{\footnotesize\ttfamily int press\+\_\+action (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{num\+\_\+action }\end{DoxyParamCaption})}
-
-
-
-à définir. 
-
-à définir \mbox{\Hypertarget{fonction_8c_a1680cec827fb8102616c94cc9b1eabdf}\label{fonction_8c_a1680cec827fb8102616c94cc9b1eabdf}} 
+Cette fonction réalise toute les étapes nécéssaire à la création d\textquotesingle{}une texture. Sa particularité est qu\textquotesingle{}elle ajoute une texture de façon non centré. les valeurs x et y représente donc sont point de départ pour l\textquotesingle{}affichage. \mbox{\Hypertarget{fonction_8c_a1680cec827fb8102616c94cc9b1eabdf}\label{fonction_8c_a1680cec827fb8102616c94cc9b1eabdf}} 
 \index{fonction.c@{fonction.c}!SDL\_ExitImageWithError@{SDL\_ExitImageWithError}}
 \index{SDL\_ExitImageWithError@{SDL\_ExitImageWithError}!fonction.c@{fonction.c}}
 \doxysubsubsection{\texorpdfstring{SDL\_ExitImageWithError()}{SDL\_ExitImageWithError()}}

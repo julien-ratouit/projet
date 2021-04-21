@@ -1,9 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "abceimpt",
+  0: "abcdefijlmnpstu",
   1: "apt",
-  2: "ab",
-  3: "aceim"
+  2: "abdfjmnst",
+  3: "acefilmstu",
+  4: "e"
 };
 
 var indexSectionNames =
@@ -11,7 +12,8 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "files",
-  3: "functions"
+  3: "functions",
+  4: "defines"
 };
 
 var indexSectionLabels =
@@ -19,6 +21,7 @@ var indexSectionLabels =
   0: "Tout",
   1: "Classes",
   2: "Fichiers",
-  3: "Fonctions"
+  3: "Fonctions",
+  4: "Macros"
 };
 

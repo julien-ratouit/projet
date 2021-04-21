@@ -71,24 +71,24 @@ $(function() {
 
 <p>Ensemble de fonction qui s'occupe de la sauvegarde d'une partie.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;commun.h&quot;</code><br />
-<code>#include &quot;save.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;../include/commun.h&quot;</code><br />
+<code>#include &quot;../include/save.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:aaf0f2dc8f7dd4c0bc2051ba9cb7101f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="save_8c.html#aaf0f2dc8f7dd4c0bc2051ba9cb7101f7">sauvegarde</a> (int money, int jour, int nb_action, int action_achete[], int action_equipe[])</td></tr>
-<tr class="memdesc:aaf0f2dc8f7dd4c0bc2051ba9cb7101f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui sauvegarde la progression du joueur.  <a href="save_8c.html#aaf0f2dc8f7dd4c0bc2051ba9cb7101f7">Plus de détails...</a><br /></td></tr>
-<tr class="separator:aaf0f2dc8f7dd4c0bc2051ba9cb7101f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06e7f9a9745168acdb6c9eb4eeb0489d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="save_8c.html#a06e7f9a9745168acdb6c9eb4eeb0489d">charger</a> (int *money, int *jour, int *nb_action, int action_achete[], int action_equipe[])</td></tr>
-<tr class="memdesc:a06e7f9a9745168acdb6c9eb4eeb0489d"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui charge une anciènne sauvegarde.  <a href="save_8c.html#a06e7f9a9745168acdb6c9eb4eeb0489d">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a06e7f9a9745168acdb6c9eb4eeb0489d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8df7b2591f9fe0ee0d58ed38148cf8cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="save_8c.html#a8df7b2591f9fe0ee0d58ed38148cf8cb">sauvegarde</a> (int money, int jour, <a class="el" href="structaction__t.html">action_t</a> *liste_action[], <a class="el" href="structaction__t.html">action_t</a> *action_equipe[])</td></tr>
+<tr class="memdesc:a8df7b2591f9fe0ee0d58ed38148cf8cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui sauvegarde la progression du joueur.  <a href="save_8c.html#a8df7b2591f9fe0ee0d58ed38148cf8cb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8df7b2591f9fe0ee0d58ed38148cf8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25496c4e292ff0e7b0dd3cadbc5dca86"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="save_8c.html#a25496c4e292ff0e7b0dd3cadbc5dca86">charger</a> (int *money, int *jour, <a class="el" href="structaction__t.html">action_t</a> *liste_action[], <a class="el" href="structaction__t.html">action_t</a> *action_equipe[])</td></tr>
+<tr class="memdesc:a25496c4e292ff0e7b0dd3cadbc5dca86"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui charge une anciènne sauvegarde.  <a href="save_8c.html#a25496c4e292ff0e7b0dd3cadbc5dca86">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a25496c4e292ff0e7b0dd3cadbc5dca86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Ensemble de fonction qui s'occupe de la sauvegarde d'une partie. </p>
 <p>c'est dans ces fonctions que l'on met en place la sauvegarde mais aussi le chargement d'une partie. </p><dl class="section author"><dt>Auteur</dt><dd>Vallet Guillaume </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="a06e7f9a9745168acdb6c9eb4eeb0489d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06e7f9a9745168acdb6c9eb4eeb0489d">&#9670;&nbsp;</a></span>charger()</h2>
+<a id="a25496c4e292ff0e7b0dd3cadbc5dca86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25496c4e292ff0e7b0dd3cadbc5dca86">&#9670;&nbsp;</a></span>charger()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -108,19 +108,13 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>nb_action</em>, </td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
+          <td class="paramname"><em>liste_action</em>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>action_achete</em>[], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
           <td class="paramname"><em>action_equipe</em>[]&#160;</td>
         </tr>
         <tr>
@@ -136,8 +130,8 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a id="aaf0f2dc8f7dd4c0bc2051ba9cb7101f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf0f2dc8f7dd4c0bc2051ba9cb7101f7">&#9670;&nbsp;</a></span>sauvegarde()</h2>
+<a id="a8df7b2591f9fe0ee0d58ed38148cf8cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8df7b2591f9fe0ee0d58ed38148cf8cb">&#9670;&nbsp;</a></span>sauvegarde()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,19 +151,13 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nb_action</em>, </td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
+          <td class="paramname"><em>liste_action</em>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>action_achete</em>[], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="structaction__t.html">action_t</a> *&#160;</td>
           <td class="paramname"><em>action_equipe</em>[]&#160;</td>
         </tr>
         <tr>
